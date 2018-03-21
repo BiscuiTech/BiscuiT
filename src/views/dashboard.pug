@@ -1,0 +1,20 @@
+extends layout
+block content
+    .jumbotron#dashboard-header
+        h1.display-3    #{title}
+        h5    Access Data from PoS with D3.JS
+        .container#getData  
+            .d-flex.justify-content-center
+                form.form-inline.p-1
+                    .form-group.mx-sm-3.mb-2
+                        select.form-control#selected-api
+                            option PointofSale v1
+                            option PointofSale v2
+                            //-option Weezevent
+                            //-option Outbox
+                    a.mb-2.btn.btn-primary#getData Fetch     
+    .container
+        table.table.table-hover#dataTable
+    script(src="/js/script.js")
+    script(src="https://d3js.org/d3.v4.min.js")
+    

@@ -1,0 +1,48 @@
+doctype html
+html
+  head
+    title= title
+    link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous")
+    link(rel='stylesheet', href='/styles/style.css')
+    nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
+      a.navbar-brand(href='/') BiscuiTech
+      button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
+        span.navbar-toggler-icon
+      #navbarSupportedContent.collapse.navbar-collapse
+        ul.navbar-nav.mr-auto
+          li.nav-item.active
+            a.nav-link(href='/') Home
+          li.nav-item.dropdown
+            a#navbarDropdown.nav-link.dropdown-toggle(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false') Data
+            .dropdown-menu(aria-labelledby='navbarDropdown')
+              a.dropdown-item(href='/dashboard') Dashboard
+              a.dropdown-item(href='/calendar') Calendar
+          //-li.navbarDropdown.nav-link.dropdown-toggle(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false') Coming Soon
+            .dropdown-menu(aria-labelledby='navbarDropdown')
+              a.dropdown-item(href='/dashboard') Color Game
+              a.dropdown-item(href='/calendar') 
+              //-.dropdown-divider
+              //-a.dropdown-item(href='#') Something else here
+          //-li.nav-item
+            a.nav-link.disabled(href='#') Disabled
+        ul.navbar-nav
+          if currentUser
+            li.nav-item.active
+              a.nav-link(href='#') Signed In As #{currentUser.username}
+            li.nav-item.active
+              a.nav-link(href='/logout') Logout
+          else
+            li.nav-item.active
+              a.nav-link(href='/login') Login
+            //-li.nav-item.active
+              a.nav-link(href='/register') Sign Up
+  .container
+    if(error && error.length > 0)
+      .alert.alert-danger(role='alert') #{error}
+    if(success && success.length > 0)
+      .alert.alert-success(role='alert') #{success}
+  body
+    block content
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous")
+    script(src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous")
