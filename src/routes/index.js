@@ -1,16 +1,16 @@
 const express = require('express')
 const router = express.Router()
-const passport = require('passport')
-const middleware = require('../helpers/middleware')
+/* const passport = require('passport') */
+/* const middleware = require('../helpers/middleware') */
 
 /* var User = require('../models/user') */
 
 /* GET home page. */
-router.get('/index', middleware.isLoggedIn, function (req, res, next) {
+/* router.get('/index', middleware.isLoggedIn, function (req, res, next) {
   res.render('index', { title: 'Dashboard' })
-})
+}) */
 
-router.get('/', function (req, res, next) {
+router.get('/', function(req, res, next) {
   res.render('landing')
 })
 // show register form
@@ -34,22 +34,24 @@ router.get('/', function (req, res, next) {
 }) */
 
 // show login form
-router.get('/login', function (req, res) {
+router.get('/login', function(req, res) {
   res.render('login')
 })
 
 // handling login logic
-router.post('/login', passport.authenticate('local',
-  {
+/* router.post(
+  '/login',
+  passport.authenticate('local', {
     successRedirect: '/',
-    failureRedirect: '/login'
-  }), function (req, res) {
-})
+    failureRedirect: '/login',
+  }),
+  function(req, res) {}
+) */
 
 // logout route
-router.get('/logout', function (req, res) {
+/* router.get('/logout', function(req, res) {
   req.logout()
   req.flash('success', 'Logged you out!')
   res.redirect('/')
-})
+}) */
 module.exports = router
