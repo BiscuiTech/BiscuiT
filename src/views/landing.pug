@@ -13,14 +13,15 @@ html(lang="en")
     // CSS Files
     link(href="/css/bootstrap.min.css" rel="stylesheet")
     link(href="/css/now-ui-kit.css?v=1.1.0" rel="stylesheet")
-    // CSS Just for demo purpose, don't include it in your project
-    link(href="/css/demo.css" rel="stylesheet")
+    link(rel="stylesheet", href="/fonts/MAXWELL LIGHT.ttf")
+    //- CSS Just for demo purpose, don't include it in your project
+    //- link(href="/css/demo.css" rel="stylesheet")
   body.landing-page.sidebar-collapse
     // Navbar
     nav.navbar.navbar-expand-lg.bg-primary.fixed-top.navbar-transparent(color-on-scroll="400")
       .container
         .dropdown.button-dropdown
-          a#navbarDropdown.dropdown-toggle(href="#pablo" data-toggle="dropdown")
+          a#navbarDropdown.dropdown-toggle(href="#" data-toggle="dropdown")
             span.button-bar
             span.button-bar
             span.button-bar
@@ -34,7 +35,7 @@ html(lang="en")
             .dropdown-divider
             a.dropdown-item(href="#") Contact
         .navbar-translate
-          a.navbar-brand(href="http://demos.creative-tim.com/now-ui-kit/index.html" rel="tooltip" title="Designed by Invision. Coded by Creative Tim" data-placement="bottom" target="_blank")
+          a.navbar-brand(href="/")
             | BiscuiTech
           button.navbar-toggler.navbar-toggler(type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation")
             span.navbar-toggler-bar.bar1
@@ -46,7 +47,7 @@ html(lang="en")
               a.nav-link(href="/services") Services
             li.nav-item
               a.nav-link(href="/index") Client Zone
-            
+
             li.nav-item
               a.nav-link(rel="tooltip" title="Follow us on Twitter" data-placement="bottom" href="https://twitter.com/BiscuiTech" target="_blank")
                 i.fa.fa-twitter
@@ -62,17 +63,19 @@ html(lang="en")
     // End Navbar
     .wrapper
       .page-header.page-header-small
-        .page-header-image(data-parallax="true" style="background-image: url('/img/bg6.jpg');")
+        .page-header-image(data-parallax="true" style="background-image: url('/img/hands-peace-sign-in-water_4460x4460.jpg');")
         .container
           .content-center
             //- TODO:
             h1.title This is biscuiTech.
+            img(src="/img/Full Logo.svg", alt="")
+
             .text-center
-              a.btn.btn-primary.btn-icon.btn-round(href="#pablo")
+              a.btn.btn-primary.btn-icon.btn-round(href="#")
                 i.fa.fa-facebook-square
-              a.btn.btn-primary.btn-icon.btn-round(href="#pablo")
+              a.btn.btn-primary.btn-icon.btn-round(href="#")
                 i.fa.fa-twitter
-              a.btn.btn-primary.btn-icon.btn-round(href="#pablo")
+              a.btn.btn-primary.btn-icon.btn-round(href="#")
                 i.fa.fa-google-plus
       .section.section-about-us
         .container
@@ -85,7 +88,7 @@ html(lang="en")
           .section-story-overview
             .row
               .col-md-6
-                .image-container.image-left(style="background-image: url('/img/login.jpg')")
+                .image-container.image-left(style="background-image: url('/img/feedback-for-web-design-mockups_4460x4460.jpg')")
                   // First image on the left side
                   p.blockquote.blockquote-primary
                     | "Over the span of the satellite record, Arctic sea ice has been declining significantly, while sea ice in the Antarctichas increased very slightly"
@@ -93,15 +96,15 @@ html(lang="en")
                     br
                     small -NOAA
                 // Second image on the left side of the article
-                .image-container(style="background-image: url('/img/bg3.jpg')")
+                .image-container(style="background-image: url('/img/contact-us-iphone_4460x4460.jpg')")
               .col-md-5
                 // First image on the right side, above the article
-                .image-container.image-right(style="background-image: url('/img/bg1.jpg')")
+                .image-container.image-right(style="background-image: url('/img/javascript-with-laptop-code_4460x4460.jpg')")
                 h3 So what can I offer you?
                 p
-                  | An efficient, scalable and completely autonomous service for your data management and website hosting. You have an API endpoint for which you want more utility from? I got your back. 
+                  | An efficient, scalable and completely autonomous service for your data management and website hosting. You have an API endpoint for which you want more utility from? I got your back.
                 p
-                  | TODO: I also offer 
+                  | TODO: I also offer
                 p
                   | TODO: The Arctic Ocean freezes every winter and much of the sea-ice then thaws every summer, and that process will continue whatever happens with climate change. Even if the Arctic continues to be one of the fastest-warming regions of the world, it will always be plunged into bitterly cold polar dark every winter. And year-by-year, for all kinds of natural reasons, there’s huge variety of the state of the ice.
       //-.section.section-team.text-center
