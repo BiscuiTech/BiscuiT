@@ -1,183 +1,196 @@
-extends layout
+doctype html
+html
+  head
+    title Untitled
+    meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1, user-scalable=no")
+    link(rel="stylesheet" href="stylesheets/css/main.css")
+    noscript
+      link(rel="stylesheet" href="stylesheets/css/noscript.css")
+  body.is-preload
+    // Sidebar
+    section#sidebar
+      .inner
+        img(src="assets/Biscui.svg", alt="Biscui Logo", srcset="").logo
 
-block content
-  section#sidebar
-  .inner
-    nav
-      ul
-        li
-          a(href='#intro') Welcome
-        li
-          a(href='#one') Who we are
-        li
-          a(href='#two') What we do
-        li
-          a(href='#three') Get in touch
-// Wrapper
-#wrapper
-  // Intro
-  section#intro.wrapper.style1.fullscreen.fade-up
-    .inner
-      h1 Hyperspace
-      p
-        | Cras aliquam amet adipiscing nibh faucibus suscipit ut Parturient
-        br
-        | &#x9;&#x9;&#x9;&#x9;&#x9;col accumsan est arcu donec sed Eleifend Integer.
-      ul.actions
-        li
-          a.button.scrolly(href='#one') Learn more
-  // One
-  section#one.wrapper.style2.spotlights
-    section
-      a.image(href='#')
-        img(src='images/pic01.jpg' alt='' data-position='center center')
-      .content
+        nav
+          ul
+            li
+              a(href="#intro") Welcome
+            li
+              a(href="#one") Who I am
+            li
+              a(href="#two") What I do
+            li
+              a(href="#three") Get in touch
+    // Wrapper
+    #wrapper
+      // Intro
+      section#intro.wrapper.style1.fullscreen.fade-up
+        #particles-js
+
         .inner
-          h2 Sed ipsum dolor
+          h1 BiscuiTech
           p
-            | Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada
-            | quis. Aliquam dapibus.
+            | Your online presence starts here.
+
           ul.actions
             li
-              a.button(href='generic.html') Learn more
-    section
-      a.image(href='#')
-        img(src='images/pic02.jpg' alt='' data-position='top center')
-      .content
+              a.button.scrolly(href="#one") Learn more
+      // One
+      section#one.wrapper.style2.spotlights
+        section
+          a.image(href="#")
+            img(src="images/pic01.jpg" alt="" data-position="center center")
+          .content
+            .inner
+              h2 Sed ipsum dolor
+              p
+                | Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada
+                | quis. Aliquam dapibus.
+              ul.actions
+                li
+                  a.button(href="generic.html") Learn more
+        section
+          a.image(href="#")
+            img(src="images/pic02.jpg" alt="" data-position="top center")
+          .content
+            .inner
+              h2 Feugiat consequat
+              p
+                | Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada
+                | quis. Aliquam dapibus.
+              ul.actions
+                li
+                  a.button(href="generic.html") Learn more
+        section
+          a.image(href="#")
+            img(src="images/pic03.jpg" alt="" data-position="25% 25%")
+          .content
+            .inner
+              h2 Ultricies aliquam
+              p
+                | Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada
+                | quis. Aliquam dapibus.
+              ul.actions
+                li
+                  a.button(href="generic.html") Learn more
+      // Two
+      section#two.wrapper.style3.fade-up
         .inner
-          h2 Feugiat consequat
+          h2 What we do
           p
-            | Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada
-            | quis. Aliquam dapibus.
+            | Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis.
+            | Aliquam dapibus, lacus eget hendrerit bibendum, urna est aliquam sem, sit amet imperdiet est velit quis lorem.
+          .features
+            section
+              span.icon.major.fa-code
+              h3 Lorem ipsum amet
+              p
+                | Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat
+                | dapibus.
+            section
+              span.icon.major.fa-lock
+              h3 Aliquam sed nullam
+              p
+                | Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat
+                | dapibus.
+            section
+              span.icon.major.fa-cog
+              h3 Sed erat ullam corper
+              p
+                | Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat
+                | dapibus.
+            section
+              span.icon.major.fa-desktop
+              h3 Veroeros quis lorem
+              p
+                | Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat
+                | dapibus.
+            section
+              span.icon.major.fa-chain
+              h3 Urna quis bibendum
+              p
+                | Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat
+                | dapibus.
+            section
+              span.icon.major.fa-diamond
+              h3 Aliquam urna dapibus
+              p
+                | Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat
+                | dapibus.
           ul.actions
             li
-              a.button(href='generic.html') Learn more
-    section
-      a.image(href='#')
-        img(src='images/pic03.jpg' alt='' data-position='25% 25%')
-      .content
+              a.button(href="generic.html") Learn more
+      // Three
+      section#three.wrapper.style1.fade-up
         .inner
-          h2 Ultricies aliquam
+          h2 Get in touch
           p
-            | Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada
-            | quis. Aliquam dapibus.
-          ul.actions
-            li
-              a.button(href='generic.html') Learn more
-  // Two
-  section#two.wrapper.style3.fade-up
-    .inner
-      h2 What we do
-      p
-        | Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis.
-        | Aliquam dapibus, lacus eget hendrerit bibendum, urna est aliquam sem, sit amet imperdiet est velit quis lorem.
-      .features
-        section
-          span.icon.major.fa-code
-          h3 Lorem ipsum amet
-          p
-            | Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat
-            | dapibus.
-        section
-          span.icon.major.fa-lock
-          h3 Aliquam sed nullam
-          p
-            | Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat
-            | dapibus.
-        section
-          span.icon.major.fa-cog
-          h3 Sed erat ullam corper
-          p
-            | Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat
-            | dapibus.
-        section
-          span.icon.major.fa-desktop
-          h3 Veroeros quis lorem
-          p
-            | Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat
-            | dapibus.
-        section
-          span.icon.major.fa-chain
-          h3 Urna quis bibendum
-          p
-            | Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat
-            | dapibus.
-        section
-          span.icon.major.fa-diamond
-          h3 Aliquam urna dapibus
-          p
-            | Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat
-            | dapibus.
-      ul.actions
-        li
-          a.button(href='generic.html') Learn more
-  // Three
-  section#three.wrapper.style1.fade-up
-    .inner
-      h2 Get in touch
-      p
-        | Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis.
-        | Aliquam dapibus, lacus eget hendrerit bibendum, urna est aliquam sem, sit amet imperdiet est velit quis lorem.
-      .split.style1
-        section
-          form(method='post' action='#')
-            .fields
-              .field.half
-                label(for='name') Name
-                input#name(type='text' name='name')
-              .field.half
-                label(for='email') Email
-                input#email(type='text' name='email')
-              .field
-                label(for='message') Message
-                textarea#message(name='message' rows='5')
-            ul.actions
-              li
-                a.button.submit(href='') Send Message
-        section
-          ul.contact
-            li
-              h3 Address
-              span
-                | 12345 Somewhere Road #654
-                br
-                | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;Nashville, TN 00000-0000
-                br
-                | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;USA
-            li
-              h3 Email
-              a(href='#') user@untitled.tld
-            li
-              h3 Phone
-              span (000) 000-0000
-            li
-              h3 Social
-              ul.icons
+            | Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis.
+            | Aliquam dapibus, lacus eget hendrerit bibendum, urna est aliquam sem, sit amet imperdiet est velit quis lorem.
+          .split.style1
+            section
+              form(method="post" action="#")
+                .fields
+                  .field.half
+                    label(for="name") Name
+                    input#name(type="text" name="name")
+                  .field.half
+                    label(for="email") Email
+                    input#email(type="text" name="email")
+                  .field
+                    label(for="message") Message
+                    textarea#message(name="message" rows="5")
+                ul.actions
+                  li
+                    a.button.submit(href="") Send Message
+            section
+              ul.contact
                 li
-                  a.fa-twitter(href='#')
-                    span.label Twitter
+                  h3 Address
+                  span
+                    | 12345 Somewhere Road #654
+                    br
+                    | 									Nashville, TN 00000-0000
+                    br
+                    | 									USA
                 li
-                  a.fa-facebook(href='#')
-                    span.label Facebook
+                  h3 Email
+                  a(href="#") user@untitled.tld
                 li
-                  a.fa-github(href='#')
-                    span.label GitHub
+                  h3 Phone
+                  span (000) 000-0000
                 li
-                  a.fa-instagram(href='#')
-                    span.label Instagram
-                li
-                  a.fa-linkedin(href='#')
-                    span.label LinkedIn
-// Footer
-footer#footer.wrapper.style1-alt
-  .inner
-    ul.menu
-      li &copy; BiscuiTech. All rights reserved.
-// Scripts
-script(src='assets/js/jquery.min.js')
-script(src='assets/js/jquery.scrollex.min.js')
-script(src='assets/js/jquery.scrolly.min.js')
-script(src='assets/js/browser.min.js')
-script(src='assets/js/breakpoints.min.js')
-script(src='assets/js/util.js')
-script(src='assets/js/main.js')
+                  h3 Social
+                  ul.icons
+                    li
+                      a.fa-twitter(href="#")
+                        span.label Twitter
+                    li
+                      a.fa-facebook(href="#")
+                        span.label Facebook
+                    li
+                      a.fa-github(href="#")
+                        span.label GitHub
+                    li
+                      a.fa-instagram(href="#")
+                        span.label Instagram
+                    li
+                      a.fa-linkedin(href="#")
+                        span.label LinkedIn
+    // Footer
+    footer#footer.wrapper.style1-alt
+      .inner
+        ul.menu
+          li © BiscuiTech. All rights reserved.
+    // Scripts
+    script(src="javascripts/jquery.min.js")
+    script(src="javascripts/jquery.scrollex.min.js")
+    script(src="javascripts/jquery.scrolly.min.js")
+    script(src="javascripts/browser.min.js")
+    script(src="javascripts/breakpoints.min.js")
+    script(src="javascripts/util.js")
+    script(src="javascripts/main.js")
+    script(src="javascripts/particles.js")
+    script(src="javascripts/particles-app.js")
