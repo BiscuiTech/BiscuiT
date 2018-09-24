@@ -3,10 +3,10 @@ let express = require('express');
 let favicon = require('serve-favicon')
 let path = require('path');
 let cookieParser = require('cookie-parser');
+let bodyParser = require('body-parser')
 let logger = require('morgan');
 let indexRouter = require('./routes/index');
-let usersRouter = require('./routes/users');
-
+let contactRouter = require('./routes/contact');
 let app = express();
 
 // view engine setup
@@ -15,12 +15,14 @@ app.set('view engine', 'pug');
 
 app.use(logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(path.join(__dirname, 'public', 'Biscui.png')))
+
+// routes definition
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/contact', contactRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
