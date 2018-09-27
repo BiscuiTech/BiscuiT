@@ -216,6 +216,13 @@ body.is-preload *:after {
 	transition: none !important;
 }
 
+#three>div>div>section:nth-child(2) {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
 /* Type */
 
 body,
@@ -2607,6 +2614,15 @@ input[type="radio"]+label:before {
 	opacity: 1.0;
 }
 
+/* Logo */
+.logo {
+	width: 20%;
+	height: 20%;
+	transform: rotate(-20deg);
+	display: block;
+	margin: 0 auto 0 auto;
+}
+
 /* Icon */
 
 .icon {
@@ -3600,6 +3616,14 @@ body.is-preload .wrapper.fade>.inner {
 		padding-top: 3.5em;
 	}
 
+	.logo {
+		/* TODO: */
+		margin: 0;
+		width: initial;
+		height: initial;
+
+	}
+
 }
 
 @media screen and (max-width: 736px) {
@@ -3686,14 +3710,6 @@ body.is-preload .wrapper.fade>.inner {
 	min-height: 100%;
 	opacity: 1;
 	width: 100%;
-}
-
-.logo {
-	width: 20%;
-	height: 20%;
-	transform: rotate(-20deg);
-	display: block;
-	margin: 0 auto 0 auto;
 }
 
 body.is-ie #sidebar>.inner {

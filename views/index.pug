@@ -8,6 +8,18 @@ html
     noscript
       link(rel="stylesheet" href="stylesheets/css/noscript.css")
   body.is-preload
+    // Load Facebook SDK for JavaScript
+    #fb-root
+    script.
+      (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js#xfbml=1&version=v2.12&autoLogAppEvents=1';
+      fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    // Your customer chat code
+    .fb-customerchat(attribution='setup_tool' page_id='330183527489356' logged_in_greeting='Hey! What is your next big idea?' logged_out_greeting='Hey! What is your next big idea?')
     // Sidebar
     section#sidebar
       .inner
@@ -41,38 +53,37 @@ html
       section#one.wrapper.style2.spotlights
         section
           a.image(href="#")
-            img(src="images/pic01.jpg" alt="" data-position="center center")
+            img(src="images/ben-kolde-403278-unsplash.jpg" alt="" data-position="center center")
           .content
             .inner
-              h2 Sed ipsum dolor
+              h2 Freelance
               p
-                | Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada
-                | quis. Aliquam dapibus.
-              ul.actions
+                | I am here to provide the Bang for your Buck. Period.
+              //-ul.actions
                 li
                   a.button(href="generic.html") Learn more
         section
           a.image(href="#")
-            img(src="images/pic02.jpg" alt="" data-position="top center")
+            img(src="/images/kobu-agency-798655-unsplash.jpg" alt="" data-position="top center")
           .content
             .inner
-              h2 Feugiat consequat
+              h2 Perfectionnist
               p
-                | Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada
-                | quis. Aliquam dapibus.
-              ul.actions
+                | Low cost doesn't mean low quality. Being a freelance, I have learned to arm myself with a plethora of hugely talented partners.
+                | By using their expertise, you can rely on a distributed network of professionals.
+              //-ul.actions
                 li
                   a.button(href="generic.html") Learn more
         section
           a.image(href="#")
-            img(src="images/pic03.jpg" alt="" data-position="25% 25%")
+            img(src="/images/edho-pratama-152392-unsplash.jpg" alt="" data-position="25% 25%")
           .content
             .inner
-              h2 Ultricies aliquam
+              h2 Ressourceful
               p
-                | Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada
-                | quis. Aliquam dapibus.
-              ul.actions
+                | As a web developer, I know how tools are a huge part of anyone's work.
+                | With the languages and techniques I have, we can build and distribute the platform you really want.
+              //-ul.actions
                 li
                   a.button(href="generic.html") Learn more
       // Two
@@ -80,46 +91,42 @@ html
         .inner
           h2 What I do
           p
-            | I specializ
-            | Aliquam dapibus, lacus eget hendrerit bibendum, urna est aliquam sem, sit amet imperdiet est velit quis lorem.
+            | Everything from your standard website to a full fledge distributed CMS (Content Management System) enabled website.
+            | <b>You name it</b>.
           .features
             section
               span.icon.major.fa-code
-              h3 Lorem ipsum amet
-              p
-                | Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat
-                | dapibus.
-            section
-              span.icon.major.fa-lock
-              h3 Aliquam sed nullam
-              p
-                | Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat
-                | dapibus.
-            section
-              span.icon.major.fa-cog
-              h3 Sed erat ullam corper
-              p
-                | Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat
-                | dapibus.
-            section
-              span.icon.major.fa-desktop
-              h3 Veroeros quis lorem
-              p
-                | Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat
-                | dapibus.
-            section
-              span.icon.major.fa-chain
-              h3 Urna quis bibendum
+              h3 Static Website
               p
                 | Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat
                 | dapibus.
             section
               span.icon.major.fa-diamond
-              h3 Aliquam urna dapibus
+              h3 Single Page Application
               p
                 | Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat
                 | dapibus.
-          ul.actions
+            section
+              span.icon.major.fa-cog
+              h3 Server Side Rendering & SEO Optimization
+              p
+                | These days, you need your platform to be optimized for all search engines, like Google, to be seen more frequently by visitors. Using the newest and latest technology - like Server Side Rendering - will boost Google's algorithm and increase your search results.
+            section
+              span.icon.major.fa-desktop
+              h3 CMS - Content Management System
+              p
+                | If you require the ability to personally change the content of your website, you need a CMS. A Content Management System is an interface through which you add, modify and delete the content and structure of your website. A CMS is the perfect solution for ever-evolving platforms!
+            section
+              span.icon.major.fa-lock
+              h3 Choose your Design
+              p
+                | If you do not already have a design ready for production, you can choose from my wide portfolio or guide me through your very own ideas from the ground up.
+            section
+              span.icon.major.fa-lock
+              h3 Weekly Content Addition
+              p
+                | In addition to website creation, I also manage the content of your website according to your needs.
+          //-ul.actions
             li
               a.button(href="generic.html") Learn more
       // Three
@@ -127,11 +134,11 @@ html
         .inner
           h2 Get in touch
           p
-            | For questions and inquiries, do not hesitate to write or call me.
+            | For questions and inquiries, do not hesitate to write me!
             | I'll be glad to discuss about your needs and how I can meet them!
           .split.style1
             section
-              form(method="post" action="#")
+              form(method="post" action="/contact" id="contact-form" role="form")
                 .fields
                   .field.half
                     label(for="name") Name
@@ -144,19 +151,16 @@ html
                     textarea#message(name="message" rows="5")
                 ul.actions
                   li
-                    a.button.submit(href="") Send Message
+                    button(type="submit") Send Message
             section
               ul.contact
                 li
                   h3 Email
-                  a(href="#") inquiries@biscuitech.me
-                li
-                  h3 Phone
-                  span (438) 492-3565
+                  a(href="#") tech@biscuitech.me
                 li
                   h3 Social
                   ul.icons
-                    li
+                    //-li
                       a.fa-twitter(href="#")
                         span.label Twitter
                     li
@@ -165,7 +169,7 @@ html
                     li
                       a.fa-github(href="#")
                         span.label GitHub
-                    li
+                    //-li
                       a.fa-instagram(href="#")
                         span.label Instagram
                     li
