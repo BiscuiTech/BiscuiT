@@ -23,6 +23,6 @@ router.post("/", function (req, res) {
 			res.send("There seems to be an error with your message. Please");
 			throw new Error("PostMark Failed to deliver message");
 		});
-		res.end();
+		res.render('index')
 });
 module.exports = router;
