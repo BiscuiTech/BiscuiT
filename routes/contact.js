@@ -6,12 +6,10 @@ const POSTMARK_SERVERKEY = process.env.POSTMARK_SERVERKEY;
 let client = new postmark.Client(POSTMARK_SERVERKEY);
 
 router.post("/", function (req, res) {
-
-	console.log(req.body);
-	/* client.sendEmail({
+	client.sendEmail({
 		"From": req.body.email,
 		"To": "tech@biscuitech.me",
-		"Subject": "New Message from Website: " + req.body.subject,
+		"Subject": "New Message from Website: " + req.body.name,
 		"TextBody": req.body.message
 	})
 		.then(client.sendEmail({
@@ -24,7 +22,6 @@ router.post("/", function (req, res) {
 		.catch(res => {
 			res.send("There seems to be an error with your message. Please");
 			throw new Error("PostMark Failed to deliver message");
-		}); */
-		res.send('200')
+		});
 });
 module.exports = router;
