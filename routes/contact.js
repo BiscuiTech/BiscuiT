@@ -7,10 +7,10 @@ let client = new postmark.Client(POSTMARK_SERVERKEY);
 
 router.post("/", function (req, res) {
 	client.sendEmail({
-		"From": req.body.email,
+		"From": "tech@biscuitech.me",
 		"To": "tech@biscuitech.me",
 		"Subject": "New Message from Website: " + req.body.name,
-		"TextBody": req.body.message
+		"TextBody": `${req.body.email}: ${req.body.message}`
 	})
 		.then(client.sendEmail({
 			"From": "tech@biscuitech.me",
