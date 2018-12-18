@@ -1,22 +1,28 @@
 {
-  "name": "express",
-  "version": "0.0.0",
-  "private": true,
+  "name": "biscuit",
+  "version": "2.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "start": "node ./bin/www"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BiscuiTech/BiscuiT.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BiscuiTech/BiscuiT/issues"
+  },
+  "homepage": "https://github.com/BiscuiTech/BiscuiT#readme",
   "dependencies": {
-    "@sentry/node": "^4.0.6",
-    "body-parser": "^1.18.3",
-    "cookie-parser": "~1.4.3",
-    "debug": "~2.6.9",
-    "dotenv": "^6.0.0",
-    "express": "~4.16.0",
-    "http-errors": "^1.7.1",
-    "morgan": "~1.9.0",
-    "nodemailer": "^4.6.8",
-    "postmark": "^1.6.1",
-    "pug": "^2.0.3",
-    "serve-favicon": "^2.5.0"
+    "next": "^7.0.2",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3",
+    "styled-components": "^4.1.3"
   }
 }
