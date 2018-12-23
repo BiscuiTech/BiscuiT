@@ -22,6 +22,12 @@ const BorderStyle = createGlobalStyle`
 	#right {right: 0;}
 	#top {top: 0;}
 	#bottom {bottom: 0;}
+
+	@media (max-width: 768px) {
+		#top, #bottom, #left, #right {
+	  	display: none;
+		}
+  }
 `;
 
 const Home = () => (

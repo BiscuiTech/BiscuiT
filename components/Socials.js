@@ -8,7 +8,11 @@ const SocialsContainer = styled.div`
   flex-direction: row;
   margin: 18px 18px;
   top: 0;
-  right: 0;
+  @media (max-width: 768px) {
+    margin: 18px 0;
+    width: 100%;
+    justify-content: center;
+  }
 `;
 
 export default class Socials extends Component {
