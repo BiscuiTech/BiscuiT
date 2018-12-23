@@ -27,6 +27,7 @@ const msgs = [
   {text: 'Enjoy your day! 💻',type: 'string'},
 ]
 
+const MsgIndex = 0;
 export default class Messages extends Component {
   constructor(props) {
     super(props)
@@ -45,7 +46,7 @@ export default class Messages extends Component {
   }
 
   componentDidMount(){
-    // Initialize a timer to push messages every x seconds
+    // Initialize a timer to push (display) messages every x seconds
     this.timer = setInterval(() => {
       this.pushMessage();
     }, 1000);
@@ -56,6 +57,7 @@ export default class Messages extends Component {
 
   pushMessage(){
     // Take the quantity of pushed messages as an index to the state of msgs
+
     // push that bad boy
   }
 
