@@ -19,11 +19,11 @@ const MsgContainer = styled.div`
 
 const msgs = [
   {text: 'Hey! 🙋‍♂️ My name is Jean-Cédric Huet, but please call me BiscuiTech 🍪',type: 'string'},
-  {text: 'Click here for my Portfolio 📚',type: 'link', link: 'www.biscui.tech/portfolio'}, // TODO: Remove this item
+  /* {text: 'Click here for my Portfolio 📚',type: 'link', link: 'www.biscui.tech/portfolio'}, */
   {text: 'I’m currently accepting freelance work', type: 'string'},
   {text: 'Feel free to let me know using the Facebook Messenger button at the right',type: 'string'},
   {text: 'Or by email using this address:',type: 'string'},
-  {text: 'tech@biscui.tech',type:'email' },
+  {text: 'tech@biscui.tech',type:'email', email: 'tech@biscui.tech' },
   {text: 'Enjoy your day! 💻',type: 'string'},
 ]
 
@@ -35,7 +35,7 @@ export default class Messages extends Component {
       loading: true,
       msgs : [
         {text: 'Hey! 🙋‍♂️ My name is Jean-Cédric Huet, but please call me BiscuiTech 🍪',type: 'string'},
-        {text: 'Click here for my Portfolio 📚',type: 'link', link: 'www.biscui.tech/portfolio'},
+        /* {text: 'Click here for my Portfolio 📚',type: 'link', link: 'www.biscui.tech/portfolio'}, */
         {text: 'I’m currently accepting freelance work', type: 'string'},
         {text: 'Feel free to let me know using the Facebook Messenger button at the right',type: 'string'},
         {text: 'Or by email using this address:',type: 'string'},
@@ -64,7 +64,7 @@ export default class Messages extends Component {
   render() {
     return (
       <MsgContainer>
-        {msgs.map((msg, i) => (<Message msg={msg} key={i} display={false} />))}
+        {msgs.map((msg, i) => (<Message msg={msg} key={i} display={true} />))}
       </MsgContainer>
     )
   }

@@ -11,6 +11,10 @@ const Msg = styled.div`
   box-sizing: content-box;
   padding: 12px 22px 12px 22px;
   margin: 2px 0 2px 0;
+  a:link,a:visited,a:hover,a:active  {
+  text-decoration: underline;
+  color: inherit;
+  }
   /* Rounded Corners */
   border-top-right-radius: 1.3em;
   border-bottom-right-radius: 1.3em;
@@ -29,6 +33,15 @@ const Msg = styled.div`
 `;
 
 const Message = ({msg, display}) => {
+  if (msg.type === 'link') {
+    return(
+      <Msg display={display}><a href={msg.link}>{msg.text}</a></Msg>
+    )
+  }else if(msg.type === 'email') {
+    return(
+      <Msg display={display}><a href={`mailto:${msg.email}`} >{msg.text}</a></Msg>
+    )
+  }
   return (
     <Msg display={display}>{msg.text}</Msg>
   )
