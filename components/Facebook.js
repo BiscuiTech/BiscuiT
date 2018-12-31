@@ -4,7 +4,8 @@ export default class Facebook extends Component {
   componentDidMount(){
     var js, fjs = document.getElementsByTagName('script')[0];
     if (document.getElementById('facebook-jssdk')) return;
-    js = document.createElement('script'); js.id = 'facebook-jssdk';
+    js = document.createElement('script');
+    js.id = 'facebook-jssdk';
     js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
     fjs.parentNode.insertBefore(js, fjs);
   }
