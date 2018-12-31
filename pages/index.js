@@ -4,6 +4,7 @@ import Head from '../components/Head';
 import Messages from "../components/Messages";
 import Socials from "../components/Socials";
 import { createGlobalStyle } from 'styled-components';
+import Facebook from '../components/Facebook';
 
 const BorderStyle = createGlobalStyle`
   #top, #bottom, #left, #right {
@@ -32,6 +33,7 @@ const BorderStyle = createGlobalStyle`
 
 const Home = () => (
   <React.Fragment>
+		<div id="fb-root"></div>
     <BorderStyle/>
     <div id="left"></div>
     <div id="right"></div>
@@ -40,6 +42,7 @@ const Home = () => (
     <Head title='Biscui.Tech'/>
     <Socials/>
     <Messages/>
+		<Facebook/>
   </React.Fragment>
 )
 
