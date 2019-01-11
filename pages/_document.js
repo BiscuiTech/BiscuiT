@@ -12,10 +12,9 @@ export default class MyDocument extends Document {
   render () {
     return (
       <html>
-        {/* <Head>
-          <title>My page</title>
+        <Head>
           {this.props.styleTags}
-        </Head> */}
+        </Head>
         <body>
           <Main />
           <NextScript />
