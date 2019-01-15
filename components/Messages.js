@@ -64,7 +64,7 @@ export default class Messages extends Component {
   render() {
     return (
       <MsgContainer>
-        {msgs.map((msg, i) => (<Message msg={msg} key={i} display={true} />))}
+        {msgs.map((msg, i) => (<Message msg={msg} key={i} display='true' />))}
       </MsgContainer>
     )
   }

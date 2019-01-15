@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/BiscuiTech/BiscuiT#readme",
   "dependencies": {
-    "babel-core": "^6.26.3",
+    "babel-core": "^7.0.0-beta.3",
     "babel-plugin-styled-components": "^1.10.0",
     "next": "^7.0.2",
     "react": "^16.7.0",

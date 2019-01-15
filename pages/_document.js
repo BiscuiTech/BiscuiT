@@ -16,6 +16,11 @@ export default class MyDocument extends Document {
           {this.props.styleTags}
         </Head>
         <body>
+		      <div id="fb-root"></div>
+          <div className="fb-customerchat"
+            attribution='setup_tool'
+            page_id="330183527489356">
+          </div>
           <Main />
           <NextScript />
         </body>
