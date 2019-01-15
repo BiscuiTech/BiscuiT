@@ -4,7 +4,6 @@ import Head from '../components/Head';
 import Messages from "../components/Messages";
 import Socials from "../components/Socials";
 import { createGlobalStyle } from 'styled-components';
-import MessengerCustomerChat from 'react-messenger-customer-chat';
 
 const BorderStyle = createGlobalStyle`
   #top, #bottom, #left, #right {
@@ -33,6 +32,24 @@ const BorderStyle = createGlobalStyle`
 
 const Home = () => (
   <React.Fragment>
+		{/* <!-- Google Tag Manager (noscript) --> */}
+		<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5C4VKCP"
+		height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+		{/* <!-- End Google Tag Manager (noscript) --> */}
+		{/* <!-- Load Facebook SDK for JavaScript --> */}
+		<div id="fb-root"></div>
+		<script>(function(d, s, id) {(
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id)) return;
+			js = d.createElement(s); js.id = id;
+			js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+			fjs.parentNode.insertBefore(js, fjs);
+		)}(document, 'script', 'facebook-jssdk'));</script>
+		{/* <!-- Your customer chat code --> */}
+		<div class="fb-customerchat"
+			attribution=setup_tool
+			page_id="330183527489356">
+		</div>
     <BorderStyle/>
     <div id="left"></div>
     <div id="right"></div>
@@ -41,11 +58,6 @@ const Home = () => (
     <Head title='Biscui.Tech'/>
     <Socials/>
     <Messages/>
-		<MessengerCustomerChat
-			pageId="330183527489356"
-			appId="<APP_ID>"
-			htmlRef="<REF_STRING>"
-		/>
   </React.Fragment>
 )
 
