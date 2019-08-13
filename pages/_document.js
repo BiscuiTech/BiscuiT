@@ -11,11 +11,11 @@ export default class MyDocument extends Document {
 
   render () {
     return (
-      <html>
+      <html style={{height: '100vh', width: '100vw'}}>
         <Head>
           {this.props.styleTags}
         </Head>
-        <body>
+        <body style={{overflow: 'hidden',height: '100vh', width: '100vw'}}>
 		      <div id="fb-root"></div>
           <div className="fb-customerchat"
             attribution='setup_tool'

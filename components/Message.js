@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const Msg = styled.div`
   display: ${props => props.display ? 'inline-block' : 'none'};
-  font-family: 'Roboto';
+  font-family: 'Source Sans Pro';
   background-color: #0084ff;
   color: #fff;
   flex: 0 1 auto;
