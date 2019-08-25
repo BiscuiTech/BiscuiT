@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "next",
+    "dev": "CHOKIDAR_USEPOLLING=true next -p 7777",
     "build": "next build",
     "start": "next start"
   },
@@ -18,15 +18,36 @@
   "bugs": {
     "url": "https://github.com/BiscuiTech/BiscuiT/issues"
   },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
   "homepage": "https://github.com/BiscuiTech/BiscuiT#readme",
   "dependencies": {
-    "babel-core": "^7.0.0-beta.3",
+    "@biscuitech/eslint-config": "^1.0.0",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-eslint": "^10.0.2",
     "babel-plugin-styled-components": "^1.10.6",
-    "next": "^9.0.4",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-config-prettier": "^6.1.0",
+    "eslint-plugin-html": "^6.0.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-react": "^7.14.3",
+    "eslint-plugin-react-hooks": "^2.0.1",
+    "next": "^9.0.5",
+    "prettier": "^1.18.2",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-messenger-customer-chat": "^0.7.2",
+    "react-spring": "^8.0.27",
     "styled-components": "^4.3.2"
+  },
+  "engines": {
+    "node": ">=10"
   },
   "babel": {
     "env": {
@@ -80,5 +101,9 @@
         ]
       }
     }
+  },
+  "devDependencies": {
+    "eslint": "^6.2.2",
+    "nodemon": "^1.19.1"
   }
 }

@@ -1,9 +1,5 @@
 {
   "name": "Biscui.Tech",
   "version": 2,
-  "alias": ["biscui.tech", "www.biscui.tech", "test.biscui.tech"],
-  "builds": [{
-    "src": "next.config.js",
-    "use": "@now/next"
-  }]
+  "alias": ["biscui.tech", "www.biscui.tech", "test.biscui.tech"]
 }
