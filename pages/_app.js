@@ -1,12 +1,7 @@
 import App from 'next/app';
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
-
-const theme = {
-  menu: {
-    font: 'Inter',
-  },
-};
+import theme from '../components/Theme';
 
 export default class MyApp extends App {
   componentDidCatch(error, errorInfo) {

@@ -23,6 +23,9 @@ const NavStyles = styled.div`
   grid-template-areas: 'logo . menu';
   grid-column-gap: 0px;
   grid-row-gap: 0px;
+  @media (max-width: 580px) {
+    grid-template-columns: 3fr auto 1fr;
+  }
 `;
 
 const Logo = styled.div`

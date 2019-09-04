@@ -4,46 +4,139 @@ import { useSprings, animated } from 'react-spring';
 import Overlay from './Overlay';
 
 const X = styled.div`
-  align-self: center;
   grid-area: menu;
-  position: relative;
-  z-index: 100;
-  cursor: pointer;
-`;
-
-const SVG = styled.svg`
-  height: 80px;
-  cursor: inherit;
-  width: 80px;
-  margin: 0 20px;
-  line {
-    cursor: inherit;
+  z-index: 10;
+  .nav {
+    width: 64px;
+    height: 64px;
+    position: absolute;
+    right: 0%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 0px;
+    background-color: transparent;
+    border-style: none;
+    outline: none;
+    cursor: pointer;
   }
-  /* border: 1px solid black; */
-  &:hover {
-    #top {
-      animation: hoverTop 1s ease-in-out alternate;
-    }
-    #middle {
-      animation: hoverMiddle 1s ease-in-out alternate;
-    }
-    #bottom {
-      animation: hoverBottom 1s ease-in-out alternate;
-    }
+  .nav span {
+    width: 100%;
+    height: 2px;
+    background-color: #000;
+    display: block;
+    position: absolute;
+    border-radius: 2px;
+    transition: all 0.5s ease;
   }
-  @keyframes hoverTop {
+  .nav span:nth-child(1) {
+    top: 0px;
+    left: 0px;
+  }
+  .nav span:nth-child(2) {
+    top: 20px;
+    right: 0px;
+  }
+  .nav span:nth-child(3) {
+    top: 40px;
+    left: 0px;
+  }
+  .nav.open span:nth-child(2) {
+    animation: span2 1.5s forwards cubic-bezier(0.8, 0.5, 0.2, 1.4);
+  }
+  @keyframes span2 {
+    0% {
+      transform: translate(0, 0) scale(1);
+    }
+    20% {
+      width: 5px;
+      border-radius: 50%;
+      transform: translate(0, 0) scale(1);
+    }
+    40% {
+      width: 5px;
+      border-radius: 50%;
+      transform: translate(0, 0) scale(1);
+    }
     50% {
-      transform: translateX(-15px);
+      width: 5px;
+      border-radius: 50%;
+      transform: translate(0, 18px) scale(1);
+    }
+    80% {
+      width: 5px;
+      border-radius: 50%;
+      transform: translate(0, -16px) scale(1);
+      background-color: #fff;
+    }
+    100% {
+      width: 5px;
+      border-radius: 50%;
+      transform: translate(0, 100px) scale(0);
     }
   }
-  @keyframes hoverMiddle {
-    50% {
-      transform: translateX(-35px);
+  .nav.open span:nth-child(3) {
+    animation: span3 0.8s forwards cubic-bezier(0.8, 0.5, 0.2, 1.4);
+    animation-delay: 0.7s;
+  }
+  @keyframes span3 {
+    0% {
+      transform: translate(0, 0);
+    }
+    60% {
+      transform: rotate(80deg) translate(-7px, -7px);
+    }
+    100% {
+      transform: rotate(45deg) translate(-7px, -7px);
+      background-color: #fff;
     }
   }
-  @keyframes hoverBottom {
-    50% {
-      transform: scaleX(0.7);
+  .nav.open span:nth-child(1) {
+    animation: span1 0.8s forwards cubic-bezier(0.8, 0.5, 0.2, 1.4);
+    animation-delay: 1.1s;
+  }
+  @keyframes span1 {
+    0% {
+      transform: translate(0, 0);
+    }
+    60% {
+      transform: rotate(-110deg) translate(-7px, -7px);
+    }
+    100% {
+      transform: rotate(-45deg) translate(-20px, 20px);
+      background-color: #fff;
+    }
+  }
+  .nav span:nth-child(1) {
+    animation: span1_close 0.8s forwards cubic-bezier(0.8, 0.5, 0.2, 1.4);
+  }
+  @keyframes span1_close {
+    0% {
+      transform: rotate(-45deg) translate(-20px, 20px);
+    }
+    100% {
+      transform: rotate(0deg) translate(0, 0);
+    }
+  }
+  .nav span:nth-child(2) {
+    animation: span2_close 0.8s forwards cubic-bezier(0.8, 0.5, 0.2, 1.4);
+  }
+  @keyframes span2_close {
+    0% {
+      transform: translate(0, 40px) scale(0);
+    }
+    100% {
+      transform: translate(0, 0) scale(1);
+    }
+  }
+  .nav span:nth-child(3) {
+    animation: span3_close 0.8s forwards cubic-bezier(0.8, 0.5, 0.2, 1.4);
+  }
+  @keyframes span3_close {
+    0% {
+      transform: rotate(45deg) translate(-7px, -7px);
+    }
+    100% {
+      transform: rotate(0deg) translate(0, 0);
     }
   }
 `;
@@ -51,58 +144,21 @@ const SVG = styled.svg`
 const Menu = () => {
   const [isHovered, setIsHovered] = useState(false);
   const [isNavOpen, setNavOpen] = useState(false);
-  /* const [springs, setSprings] = useSprings(lines.length, lines.map(line => ({
-    x1:'',
-    x2:''
-  }))); */
+  const handleClick = e => {
+    e.preventDefault();
+    setNavOpen(!isNavOpen);
+  };
   return (
     <>
-      <X
-        onClick={() => setNavOpen(!isNavOpen)}
-        onMouseEnter={() => {
-          setIsHovered(true);
-        }}
-        onMouseLeave={() => {
-          setIsHovered(false);
-        }}
-      >
-        <SVG
-          width="80"
-          height="80"
-          xmlns="http://www.w3.org/2000/svg"
-          version="1.1"
+      <X open={isNavOpen}>
+        <button
+          className={`nav ${isNavOpen ? 'open' : ''}`}
+          onClick={e => handleClick(e)}
         >
-          <line
-            id="top"
-            x1="25"
-            x2="70"
-            y1="20"
-            y2="20"
-            stroke="black"
-            strokeWidth="1.5"
-            strokeLinecap="square"
-          />
-          <line
-            id="middle"
-            x1="45" //  move this to 36 and back to 56
-            x2="70" //  move this to 76 and back to 96
-            y1="40"
-            y2="40"
-            stroke="black"
-            strokeWidth="1.5"
-            strokeLinecap="square"
-          />
-          <line
-            id="bottom"
-            x1="10"
-            x2="70"
-            y1="60"
-            y2="60"
-            stroke="black"
-            strokeWidth="1.5"
-            strokeLinecap="square"
-          />
-        </SVG>
+          <span />
+          <span />
+          <span />
+        </button>
       </X>
       <Overlay isOpen={isNavOpen} />
     </>

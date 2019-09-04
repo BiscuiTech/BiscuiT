@@ -17,7 +17,12 @@ const Pane = styled.div`
 const OverlayPane = styled(animated.div)`
   width: 100%;
   height: 100%;
-  background: linear-gradient(125.95deg, #0082fa 0%, #25c3d9 50%, #d1a637 100%);
+  background: linear-gradient(
+    125.95deg,
+    hsl(209, 100%, 49%) 0%,
+    hsl(187, 71%, 50%) 50%,
+    hsl(34, 100%, 50%) 100%
+  );
   background-size: 300%;
   animation: overlay-animation 4s infinite alternate;
   @keyframes overlay-animation {
@@ -40,19 +45,35 @@ const LinkBox = styled.div`
 `;
 
 const StyledLink = styled.a`
+  position: relative;
   margin: 20px auto;
   text-decoration: none;
   font-size: 36px;
+  z-index: 1;
   color: white;
   font-family: ${props => props.theme.menu.font};
   font-weight: 200;
   justify-self: center;
-  transition: 0.3s ease border;
   cursor: pointer;
-  padding-bottom: 2px;
-  border-bottom: solid 2px transparent;
-  :hover {
-    border-bottom: solid 2px white;
+  :after {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    height: 6px;
+    margin-top: -10px;
+    z-index: -1;
+    display: block;
+    content: '';
+    background: #ff512f;
+    box-shadow: inset -40px 0px 30px -18px #dd2476;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 250ms ease-in;
+  }
+  :hover:after {
+    transform: scaleX(1);
+    transform-origin: left;
   }
 `;
 

@@ -1,15 +1,15 @@
-import React, { Component } from 'react'
-import styled, {keyframes} from 'styled-components';
+import React, { Component } from 'react';
+import styled, { keyframes } from 'styled-components';
 
 const BallStyles = styled.div`
-	position: absolute;
+  position: absolute;
   border-radius: 100%;
   opacity: 0.7;
-  height: ${props=> props.height};
-  width:${props=> props.width};
-  top: ${props=> props.top};
-  right:${props=> props.right};
-  background: ${props=> props.background};
+  height: ${props => props.height};
+  width: ${props => props.width};
+  top: ${props => props.top};
+  right: ${props => props.right};
+  background: ${props => props.background};
   z-index: -1;
 `;
 /* const anim = keyframes`
@@ -21,10 +21,6 @@ const BallStyles = styled.div`
   }
 `; */
 
-const Ball = (props) => {
-  return (
-    <BallStyles height={props.width}{...props }/>
-  )
-}
+const Ball = props => <BallStyles height={props.width} {...props} />;
 
-export default Ball
+export default Ball;
