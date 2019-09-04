@@ -3,13 +3,13 @@ import Link from 'next/link';
 import Messages from '../components/Messages';
 import Ball from '../components/Ball';
 import Layout from '../components/Layout';
-
+import Home from '../components/Home';
 /* const Balls = styled.div`
   width: 100%;
   height: 100%;
 `; */
 
-export default class Home extends Component {
+export default class Index extends Component {
   /* balls = () => {
     const colors = ['#3CC157', '#2AA7FF', '#1B1B1B', '#FCBC0F', '#F85F36'];
     const quantity = 60;
@@ -22,6 +22,10 @@ export default class Home extends Component {
   }; */
 
   render() {
-    return <Layout>hey!</Layout>;
+    return (
+      <Layout>
+        <Home />
+      </Layout>
+    );
   }
 }

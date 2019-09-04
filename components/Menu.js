@@ -6,12 +6,13 @@ import Overlay from './Overlay';
 const X = styled.div`
   grid-area: menu;
   z-index: 10;
+  align-self: center;
   .nav {
     width: 64px;
     height: 64px;
     position: absolute;
     right: 0%;
-    top: 50%;
+    top: 60%;
     transform: translate(-50%, -50%);
     padding: 0px;
     background-color: transparent;

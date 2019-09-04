@@ -1,5 +1,7 @@
 {
   "name": "Biscui.Tech",
   "version": 2,
-  "alias": ["biscui.tech", "www.biscui.tech", "test.biscui.tech"]
+  "alias": [
+    "beta.biscui.tech"
+  ]
 }

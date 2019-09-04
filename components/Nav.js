@@ -31,9 +31,17 @@ const NavStyles = styled.div`
 const Logo = styled.div`
   grid-area: logo;
   margin: auto;
+  cursor: pointer;
   img {
     height: 100px;
   }
+`;
+
+const Beta = styled.i`
+  align-self: auto;
+  text-align: center;
+  margin: auto;
+  font-size: 18px;
 `;
 
 const Nav = () => (
@@ -43,6 +51,10 @@ const Nav = () => (
         <img src="/static/BiscuiTech Logo (2019).png" alt="BiscuiTech Logo" />
       </Link>
     </Logo>
+    <Beta>
+      ⚠ This is a beta version ⚠<br />
+      Website is under heavy construction
+    </Beta>
     <Menu />
   </NavStyles>
 );

@@ -43,10 +43,10 @@ const Head = ({ title, description, url, ogImage }) => (
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <link rel="stylesheet" href="/static/inter.css" />
-    {/* <link
-      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro"
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:100,200,400&display=swap"
       rel="stylesheet"
-    /> */}
+    />
     {/* <script src="/static/ball.js" /> */}
   </NextHead>
 );
