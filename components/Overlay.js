@@ -104,7 +104,7 @@ const Overlay = ({ isOpen }) => {
             <StyledLink>How</StyledLink>
           </Link>
         </LinkBox>
-        <Socials />
+        <Socials /> {/* TODO: change mobile position */}
       </OverlayPane>
     </Pane>
   );
