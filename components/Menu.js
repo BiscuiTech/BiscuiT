@@ -142,6 +142,17 @@ const X = styled.div`
   }
 `;
 
+const Button = styled.button`
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  spa
+  
+`;
+
 const Menu = () => {
   const [isHovered, setIsHovered] = useState(false);
   const [isNavOpen, setNavOpen] = useState(false);
