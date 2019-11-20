@@ -95,14 +95,14 @@ const Overlay = ({ isOpen }) => {
       >
         <LinkBox>
           <Link href="/who">
-            <StyledLink>Who</StyledLink>
+            <StyledLink>Who am I</StyledLink>
           </Link>
-          <Link href="/what">
+          {/* <Link href="/what">
             <StyledLink>What</StyledLink>
           </Link>
           <Link href="/how">
             <StyledLink>How</StyledLink>
-          </Link>
+          </Link> */}
         </LinkBox>
         <Socials /> {/* TODO: change mobile position */}
       </OverlayPane>

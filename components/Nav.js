@@ -51,10 +51,10 @@ const Nav = () => (
         <img src="/static/BiscuiTech Logo (2019).png" alt="BiscuiTech Logo" />
       </Link>
     </Logo>
-    <Beta>
+    {/* <Beta>
       ⚠ This is a beta version ⚠<br />
       Website is under heavy construction
-    </Beta>
+    </Beta> */}
     <Menu />
   </NavStyles>
 );

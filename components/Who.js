@@ -3,14 +3,10 @@ import styled from 'styled-components';
 import Header from './Header';
 
 const WhoWrapper = styled.div`
-  display: grid;
   grid-area: content;
+  display: grid;
   grid-template-areas: 'image text';
   grid-template-columns: 1fr 1fr;
-  p {
-    grid-area: text;
-    align-self: center;
-  }
 `;
 
 const Img = styled.div`
@@ -23,13 +19,24 @@ const Img = styled.div`
   /* position: relative; */
   overflow: hidden;
   margin: auto;
-
+  box-sizing: content-box;
   img {
     margin: 0 auto;
     margin-top: -20%;
     height: auto;
     z-index: -1;
     width: 100%;
+  }
+`;
+
+const Text = styled.div`
+  p {
+    grid-area: text;
+    align-self: center;
+    line-height: 1.3;
+  }
+  .closing-words {
+    font-weight: 600;
   }
 `;
 
@@ -43,15 +50,19 @@ const Who = () => (
           alt="Mug shot of Jean-Cédric Huet, also known as BiscuiTech"
         />
       </Img>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas sapiente
-        tenetur possimus debitis minima quia soluta ad voluptates. Rem, error
-        doloremque quos dolorum inventore officiis sint ratione aperiam dicta
-        aut?Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-        Consequatur minus voluptatibus, iste non alias sit quibusdam unde
-        dolorum, maxime reprehenderit incidunt possimus sequi corrupti.
-        Necessitatibus hic aperiam mollitia molestias maxime.
-      </p>
+      <Text>
+        <p>
+          Working as a Developer Analyst for a big Entertainment company in
+          Montréal, Cédric learnt the ropes of the industry quickly with massive
+          projects. Having a passion for cutting edge technology, he pushed his
+          own projects internally. Now having his own name, set of skills and
+          talent, Cedric is ready to give your web presence a touch of modern,
+          speed, reliabilty and performance.
+          <p className="closing-words">
+            Are you up for a revamp? I'm your guy.
+          </p>
+        </p>
+      </Text>
     </WhoWrapper>
   </>
 );

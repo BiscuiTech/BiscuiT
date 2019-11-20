@@ -3,13 +3,15 @@ import styled from 'styled-components';
 import Message from './Message';
 
 const MsgContainer = styled.div`
+  grid-area: content;
   display: flex;
   flex-direction: column;
   align-content: flex-end;
   align-items: flex-start;
   justify-content: flex-end;
-  bottom: 0;
-  position: fixed;
+  /*   bottom: 0;
+  position: fixed; */
+  z-index: 5;
   margin: 0 0 36px 24px;
   @media (max-width: 768px) {
     margin: 0 0 15px 8px;
@@ -26,7 +28,7 @@ const msgs = [
   {
     text: 'Click here for my Portfolio 📚',
     type: 'link',
-    link: 'www.biscui.tech/what',
+    link: '/what',
   },
   { text: 'I’m currently accepting freelance work', type: 'string' },
   {

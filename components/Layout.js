@@ -7,9 +7,26 @@ import FacebookMessenger from './FacebookMessenger';
 
 const GlobaStyle = createGlobalStyle`
   body {
-    border: 10px solid #0082fa;
+    /* background: #0082fa; */
+    /* border: 10px solid #0082fa;
     margin:0;
-    padding: 0;
+    padding: 0; */
+    background: linear-gradient(
+    125.95deg,
+    hsl(209, 100%, 49%) 0%,
+    hsl(187, 71%, 50%) 50%,
+    hsl(34, 100%, 50%) 100%
+  );
+  background-size: 300%;
+  animation: overlay-animation 4s infinite alternate;
+  @keyframes overlay-animation {
+    0% {
+      background-position: left;
+    }
+    100% {
+      background-position: right;
+    }
+  }
     font-size: calc(14px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
   }
   h1 {
@@ -21,18 +38,24 @@ const GlobaStyle = createGlobalStyle`
 `;
 
 const Page = styled.div`
-  height: calc(100vh - 20px);
-  width: calc(100vw - 20px);
+  /* height: calc(100vh - 20px);
+  width: calc(100vw - 20px); */
+  border-radius: 10px;
+  width: 100%;
+  height: 100%;
   background: white;
 `;
 
 const Content = styled.div`
+  border-radius: 10px;
+
+  background: white;
   display: grid;
   grid-template-areas:
     'header'
     'content';
   grid-template-rows: 150px auto;
-  margin: 8px 36px;
+  padding: 12px 36px;
 `;
 
 const Layout = ({ title, description, url, ogImage, children }) => (

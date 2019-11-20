@@ -50,6 +50,7 @@ const Home = () => {
   }, []);
   return (
     <>
+      <Messages />
       <Wrapper>
         {balls().map((b, i) => (
           <Ball
@@ -63,7 +64,6 @@ const Home = () => {
           />
         ))}
       </Wrapper>
-      <Messages />
     </>
   );
 };
