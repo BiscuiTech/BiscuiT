@@ -40,6 +40,8 @@ const GlobaStyle = createGlobalStyle`
 const Page = styled.div`
   /* height: calc(100vh - 20px);
   width: calc(100vw - 20px); */
+  min-height: 100vh; /* Fallback for browsers that do not support Custom Properties */
+  min-height: calc(var(--vh, 1vh) * 100);
   border-radius: 10px;
   width: 100%;
   height: 100%;
@@ -58,21 +60,53 @@ const Content = styled.div`
   padding: 12px 36px;
 `;
 
-const Layout = ({ title, description, url, ogImage, children }) => (
-  <>
-    <GlobaStyle />
-    <Page>
-      <Head
-        title={title}
-        description={description}
-        url={url}
-        ogImage={ogImage}
-      />
-      <Nav />
-      <Content>{children}</Content>
-      <FacebookMessenger pageId="330183527489356" />
-    </Page>
-  </>
-);
+function debounce(...args) {
+  let timeout;
+  return function() {
+    const context = this;
+    const later = function() {
+      timeout = null;
+      if (!immediate) func.apply(context, args);
+    };
+    const callNow = immediate && !timeout;
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+    if (callNow) func.apply(context, args);
+  };
+}
+
+const Layout = ({ title, description, url, ogImage, children }) => {
+  if (process.browser) {
+    // First we get the viewport height and we multiple it by 1% to get a value for a vh unit
+    const vh = window.innerHeight * 0.01;
+    // Then we set the value in the --vh custom property to the root of the document
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+    // We listen to the resize event
+    window.addEventListener(
+      'resize',
+      debounce(() => {
+        // We execute the same script as before
+        const vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty('--vh', `${vh}px`);
+      }, 400)
+    );
+  }
+  return (
+    <>
+      <GlobaStyle />
+      <Page>
+        <Head
+          title={title}
+          description={description}
+          url={url}
+          ogImage={ogImage}
+        />
+        <Nav />
+        <Content>{children}</Content>
+        <FacebookMessenger pageId="330183527489356" />
+      </Page>
+    </>
+  );
+};
 
 export default Layout;
