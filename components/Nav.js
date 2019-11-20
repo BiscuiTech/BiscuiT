@@ -35,6 +35,12 @@ const Logo = styled.div`
   img {
     height: 100px;
   }
+  @media (max-width: 580px) {
+    img {
+      max-width: 260px;
+      height: auto;
+    }
+  }
 `;
 
 const Beta = styled.i`

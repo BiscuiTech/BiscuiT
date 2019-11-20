@@ -94,6 +94,9 @@ const Overlay = ({ isOpen }) => {
         }}
       >
         <LinkBox>
+          <Link href="/">
+            <StyledLink>Homepage</StyledLink>
+          </Link>
           <Link href="/who">
             <StyledLink>Who am I</StyledLink>
           </Link>

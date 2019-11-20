@@ -150,7 +150,7 @@ const Button = styled.button`
   top: 50%;
   transform: translate(-50%, -50%);
   spa
-  
+
 `;
 
 const Menu = () => {
@@ -166,6 +166,7 @@ const Menu = () => {
         <button
           className={`nav ${isNavOpen ? 'open' : ''}`}
           onClick={e => handleClick(e)}
+          type="button"
         >
           <span />
           <span />
