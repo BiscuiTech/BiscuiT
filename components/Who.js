@@ -94,7 +94,7 @@ const Who = () => (
     <WhoWrapper>
       <Img>
         <img
-          src="/static/images/mug-shot-2019.png"
+          src="/static/images/biscuitech-portrait.png"
           alt="Mug shot of Jean-Cédric Huet, also known as BiscuiTech"
         />
       </Img>
@@ -106,10 +106,10 @@ const Who = () => (
           own projects for the company to strive on. Now having my own name, set
           of skills and talent, I am ready to give your web presence a touch of
           modern, speed, reliabilty and performance.
-          <p className="closing-words">
-            Are you up for a revamp?{' '}
-            <span className="biscuitech">Biscui.Tech</span> is your guy.
-          </p>
+        </p>
+        <p className="closing-words">
+          Are you up for a revamp?{' '}
+          <span className="biscuitech">Biscui.Tech</span> is your guy.
         </p>
       </Text>
     </WhoWrapper>

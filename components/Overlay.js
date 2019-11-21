@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { useSpring, animated } from 'react-spring';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import Socials from './Socials';
 
 const Pane = styled.div`
@@ -55,7 +56,11 @@ const StyledLink = styled.a`
   font-family: ${props => props.theme.menu.font};
   font-weight: 200;
   justify-self: center;
-  cursor: pointer;
+  cursor: ${props => (props.current === true ? null : 'pointer')};
+
+  font-style: ${props => (props.current === true ? 'italic' : 'black')};
+  color: ${props => (props.current === true ? 'hsla(0, 0%, 90%,1) ' : 'white')};
+  font-weight: ${props => (props.current === true ? 400 : '200')};
   :after {
     position: absolute;
     left: 0;
@@ -73,12 +78,13 @@ const StyledLink = styled.a`
     transition: transform 250ms ease-in;
   }
   :hover:after {
-    transform: scaleX(1);
+    transform: ${props => (props.current === true ? null : 'scaleX(1)')};
     transform-origin: left;
   }
 `;
 
-const Overlay = ({ isOpen }) => {
+const Overlay = ({ isOpen, query }) => {
+  const { pathname } = useRouter();
   const { x } = useSpring({
     x: isOpen ? 0 : 100,
     config: {
@@ -94,11 +100,11 @@ const Overlay = ({ isOpen }) => {
         }}
       >
         <LinkBox>
-          <Link href="/">
-            <StyledLink>Homepage</StyledLink>
+          <Link href={pathname === '/' ? null : '/'}>
+            <StyledLink current={pathname === '/'}>Homepage</StyledLink>
           </Link>
-          <Link href="/who">
-            <StyledLink>Who am I</StyledLink>
+          <Link href={pathname === '/who' ? null : '/who'}>
+            <StyledLink current={pathname === '/who'}>Who am I</StyledLink>
           </Link>
           {/* <Link href="/what">
             <StyledLink>What</StyledLink>
