@@ -25,11 +25,11 @@ const msgs = [
       'Hey! 🙋‍♂️ My name is Jean-Cédric Huet, but please call me BiscuiTech 🍪',
     type: 'string',
   },
-  {
+  /* {
     text: 'Click here for my Portfolio 📚',
     type: 'link',
     link: '/what',
-  },
+  }, */
   { text: 'I’m currently accepting freelance work', type: 'string' },
   {
     text:
