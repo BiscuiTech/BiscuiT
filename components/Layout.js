@@ -84,6 +84,17 @@ function debounce(func, wait, immediate) {
 
 const Layout = ({ title, description, url, ogImage, children }) => {
   if (process.browser) {
+    (function(w, d, s, l, i) {
+      w[l] = w[l] || [];
+      w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+      const f = d.getElementsByTagName(s)[0];
+      const j = d.createElement(s);
+      const dl = l != 'dataLayer' ? `&l=${l}` : '';
+      j.async = true;
+      j.src = `https://www.googletagmanager.com/gtm.js?id=${i}${dl}`;
+      f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-5C4VKCP');
+
     // First we get the viewport height and we multiple it by 1% to get a value for a vh unit
     const vh = window.innerHeight * 0.01;
     // Then we set the value in the --vh custom property to the root of the document
