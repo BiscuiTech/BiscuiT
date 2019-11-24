@@ -1,30 +1,50 @@
-import Document, { Head, Main, NextScript } from 'next/document'
-import { ServerStyleSheet } from 'styled-components'
+import Document, { Html, Head, Main, NextScript } from 'next/document';
+import { ServerStyleSheet } from 'styled-components';
 
 export default class MyDocument extends Document {
-  static getInitialProps ({ renderPage }) {
-    const sheet = new ServerStyleSheet()
-    const page = renderPage(App => props => sheet.collectStyles(<App {...props} />))
-    const styleTags = sheet.getStyleElement()
-    return { ...page, styleTags }
+  static async getInitialProps(ctx) {
+    const sheet = new ServerStyleSheet();
+    const originalRenderPage = ctx.renderPage;
+
+    try {
+      ctx.renderPage = () =>
+        originalRenderPage({
+          enhanceApp: App => props => sheet.collectStyles(<App {...props} />),
+        });
+
+      const initialProps = await Document.getInitialProps(ctx);
+      return {
+        ...initialProps,
+        styles: (
+          <>
+            {initialProps.styles}
+            {sheet.getStyleElement()}
+          </>
+        ),
+      };
+    } finally {
+      sheet.seal();
+    }
   }
 
-  render () {
+  render() {
     return (
-      <html style={{height: '100vh', width: '100vw'}}>
-        <Head>
-          {this.props.styleTags}
-        </Head>
-        <body style={{overflow: 'hidden',height: '100vh', width: '100vw'}}>
-		      <div id="fb-root"></div>
-          <div className="fb-customerchat"
-            attribution='setup_tool'
-            page_id="330183527489356">
-          </div>
+      <Html>
+        <Head />
+        <body>
+          <noscript>
+            <iframe
+              title="gtm"
+              src="https://www.googletagmanager.com/ns.html?id=GTM-5C4VKCP"
+              height="0"
+              width="0"
+              style={{ display: 'none', visibility: 'hidden' }}
+            />
+          </noscript>
           <Main />
           <NextScript />
         </body>
-      </html>
-    )
+      </Html>
+    );
   }
 }
