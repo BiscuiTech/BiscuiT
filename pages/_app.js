@@ -1,7 +1,7 @@
 import App from 'next/app';
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
-import * as Sentry from '@sentry/browser';
+import * as Sentry from '@sentry/node';
 import theme from '../components/Theme';
 
 Sentry.init({
@@ -16,7 +16,7 @@ export default class MyApp extends App {
 
   render() {
     const { Component, pageProps } = this.props;
-    // Workaround for https://github.com/zeit/next.js/issues/8592
+    // Workaround for https://github.com/zeit/next. js/issues/8592
     const { err } = this.props;
     const modifiedPageProps = { ...pageProps, err };
     return (
