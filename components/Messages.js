@@ -9,12 +9,12 @@ const MsgContainer = styled.div`
   align-content: flex-end;
   align-items: flex-start;
   justify-content: flex-end;
-  /*   bottom: 0;
-  position: fixed; */
+  bottom: 0;
+  position: fixed;
   z-index: 5;
-  margin: 0 0 0 12px;
+  margin: 0 0 24px 12px;
   @media (max-width: 768px) {
-    margin: 0 0 6px 6px;
+    margin: 0 0 24px 6px;
     max-width: 300px;
   }
 `;
