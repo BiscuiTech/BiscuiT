@@ -17,11 +17,11 @@ const BallsWrapper = styled.div`
 `;
 
 const Home = () => {
-  const balls = () => {
+  const ballsGenerator = () => {
     const colors = ['#3CC157', '#2AA7FF', '#1B1B1B', '#FCBC0F', '#F85F36'];
     const quantity = 60;
     const arr = [];
-    for (let index = 0; index < quantity; index++) {
+    for (let index = 0; index < quantity; index += 1) {
       const color = colors[Math.floor(Math.random() * colors.length)];
       arr.push({ color });
     }
@@ -36,27 +36,28 @@ const Home = () => {
         x: Math.random() * (i % 2 === 0 ? -10 : 11),
         y: Math.random() * 10,
       };
-
-      const anim = el.animate(
-        [
-          { transform: 'translate(0, 0)' },
-          { transform: `translate(${to.x}rem, ${to.y}rem)` },
-        ],
-        {
-          duration: (Math.random() + 1) * 2000, // random duration
-          direction: 'alternate',
-          fill: 'both',
-          iterations: Infinity,
-          easing: 'ease-in-out',
-        }
-      );
+      if (typeof el.animate !== 'undefined') {
+        el.animate(
+          [
+            { transform: 'translate(0, 0)' },
+            { transform: `translate(${to.x}rem, ${to.y}rem)` },
+          ],
+          {
+            duration: (Math.random() + 1) * 2000, // random duration
+            direction: 'alternate',
+            fill: 'both',
+            iterations: Infinity,
+            easing: 'ease-in-out',
+          }
+        );
+      }
     });
   }, []);
   return (
     <>
       <Messages />
       <BallsWrapper>
-        {balls().map((b, i) => (
+        {ballsGenerator().map((b, i) => (
           <Ball
             className="ball"
             key={i}

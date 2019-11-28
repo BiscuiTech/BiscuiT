@@ -89,6 +89,17 @@ function debounce(func, wait, immediate) {
 
 const Layout = ({ title, description, url, ogImage, children }) => {
   if (process.browser) {
+    Sentry.init({
+      dsn: 'https://c0e5b834500d45b88fb648ccf7c489bf@sentry.io/1838052',
+      beforeSend(event, hint) {
+        // Check if it is an exception, and if so, show the report dialog
+        if (event.exception) {
+          Sentry.showReportDialog({ eventId: event.event_id });
+        }
+        return event;
+      },
+    });
+
     (function(w, d, s, l, i) {
       w[l] = w[l] || [];
       w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
