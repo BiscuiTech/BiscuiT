@@ -108,10 +108,13 @@ const Overlay = ({ isOpen, query }) => {
           </Link>
           {/* <Link href="/what">
             <StyledLink>What</StyledLink>
-          </Link>
-          <Link href="/how">
+            </Link>
+            <Link href="/how">
             <StyledLink>How</StyledLink>
           </Link> */}
+          <Link href={pathname === '/contact' ? null : '/contact'}>
+            <StyledLink current={pathname === '/contact'}>Contact</StyledLink>
+          </Link>
         </LinkBox>
         <Socials /> {/* TODO: change mobile position */}
       </OverlayPane>

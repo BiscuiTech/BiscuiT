@@ -116,11 +116,9 @@ const Who = () => (
           Are you up for a revamp?{' '}
           <span className="biscuitech">Biscui.Tech</span> is your guy.
         </p>
-        <Link href="/contact">
-          <ContactButton>
-            <span className="text-gradient">Contact Me</span>
-          </ContactButton>
-        </Link>
+        <ContactButton>
+          <span className="text-gradient">Contact Me</span>
+        </ContactButton>
       </Text>
     </WhoWrapper>
   </>
