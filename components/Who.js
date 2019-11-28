@@ -114,7 +114,7 @@ const Who = () => (
         </p>
         <p className="closing-words">
           Are you up for a revamp?{' '}
-          <span className="biscuitech">Biscui.Tech</span> is your guy.
+          <span className="biscuitech">BiscuiTech</span> is your guy.
         </p>
         <ContactButton>
           <span className="text-gradient">Contact Me</span>
