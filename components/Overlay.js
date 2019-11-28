@@ -100,10 +100,10 @@ const Overlay = ({ isOpen, query }) => {
         }}
       >
         <LinkBox>
-          <Link href={pathname === '/' ? null : '/'}>
+          <Link href="/">
             <StyledLink current={pathname === '/'}>Homepage</StyledLink>
           </Link>
-          <Link href={pathname === '/who' ? null : '/who'}>
+          <Link href="/who">
             <StyledLink current={pathname === '/who'}>Who am I</StyledLink>
           </Link>
           {/* <Link href="/what">
@@ -112,7 +112,7 @@ const Overlay = ({ isOpen, query }) => {
             <Link href="/how">
             <StyledLink>How</StyledLink>
           </Link> */}
-          <Link href={pathname === '/contact' ? null : '/contact'}>
+          <Link href="/contact">
             <StyledLink current={pathname === '/contact'}>Contact</StyledLink>
           </Link>
         </LinkBox>

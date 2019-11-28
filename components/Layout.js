@@ -1,6 +1,8 @@
 import React from 'react';
 import Link from 'next/link';
+/* import LogRocket from 'logrocket'; */
 import styled, { createGlobalStyle } from 'styled-components';
+/* import setupLogRocketReact from 'logrocket-react'; */
 import Head from './Head';
 import Nav from './Nav';
 import FacebookMessenger from './FacebookMessenger';
@@ -100,6 +102,9 @@ const Layout = ({ title, description, url, ogImage, children }) => {
       },
     });
 
+    /* LogRocket.init('7agr7w/biscuitech');
+    // plugins should also only be initialized when in the browser
+    setupLogRocketReact(LogRocket); */
     (function(w, d, s, l, i) {
       w[l] = w[l] || [];
       w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
