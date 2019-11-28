@@ -1,7 +1,9 @@
 import React from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
+import { useRouter } from 'next/router';
 import Menu from './Menu';
+import ContactButton from './ContactButton';
 
 const NavStyles = styled.div`
   max-height: 100px;
@@ -19,15 +21,20 @@ const NavStyles = styled.div`
   }
   display: grid;
   grid-template-columns: 400px auto 150px;
-  grid-template-rows: 1fr;
-  grid-template-areas: 'logo . menu';
+  /* grid-template-rows: 1fr; */
+  grid-template-areas: 'logo contact menu';
   grid-column-gap: 0px;
   grid-row-gap: 0px;
   @media (max-width: 580px) {
     grid-template-columns: 3fr auto 1fr;
   }
 `;
-
+const ContactWrapper = styled.div`
+  display: ${props => props.display};
+  @media (max-width: 780px) {
+    display: none;
+  }
+`;
 const Logo = styled.div`
   grid-area: logo;
   margin: auto;
@@ -43,26 +50,21 @@ const Logo = styled.div`
   }
 `;
 
-const Beta = styled.i`
-  align-self: auto;
-  text-align: center;
-  margin: auto;
-  font-size: 18px;
-`;
-
-const Nav = () => (
-  <NavStyles>
-    <Logo>
-      <Link href="/">
-        <img src="/static/BiscuiTech Logo (2019).png" alt="BiscuiTech Logo" />
-      </Link>
-    </Logo>
-    {/* <Beta>
-      ⚠ This is a beta version ⚠<br />
-      Website is under heavy construction
-    </Beta> */}
-    <Menu />
-  </NavStyles>
-);
+const Nav = () => {
+  const { pathname } = useRouter();
+  return (
+    <NavStyles>
+      <Logo>
+        <Link href="/">
+          <img src="/static/BiscuiTech Logo (2019).png" alt="BiscuiTech Logo" />
+        </Link>
+      </Logo>
+      <ContactWrapper display={pathname === '/contact' ? 'none' : 'block'}>
+        <ContactButton>Contact Me</ContactButton>
+      </ContactWrapper>
+      <Menu />
+    </NavStyles>
+  );
+};
 
 export default Nav;

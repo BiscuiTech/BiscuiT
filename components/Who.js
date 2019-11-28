@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+import Link from 'next/link';
 import Header from './Header';
+import ContactButton from './ContactButton';
 
 const WhoWrapper = styled.div`
   height: 100%;
@@ -10,8 +12,7 @@ const WhoWrapper = styled.div`
   grid-template-areas: 'image text';
   grid-template-columns: 50% 50%;
   @media (max-width: 900px) {
-    grid-template-columns: 80px 75%;
-    grid-gap: 12px;
+    display: block;
   }
 `;
 
@@ -33,20 +34,24 @@ const Img = styled.div`
     width: 100%;
   }
   @media (max-width: 900px) {
-    width: 80px;
-    height: 80px;
-    margin-top: 20%;
+    width: 88px;
+    height: 88px;
+    margin: 10% 24px 24px 24px;
     align-self: start;
+    float: left;
   }
 `;
 
 const Text = styled.div`
   height: 100%;
   width: 100%;
+  text-align: center;
   p {
+    text-align: left;
     grid-area: text;
     align-self: center;
     line-height: 1.3;
+    text-indent: 18px;
   }
   .closing-words {
     font-weight: 600;
@@ -109,8 +114,11 @@ const Who = () => (
         </p>
         <p className="closing-words">
           Are you up for a revamp?{' '}
-          <span className="biscuitech">Biscui.Tech</span> is your guy.
+          <span className="biscuitech">BiscuiTech</span> is your guy.
         </p>
+        <ContactButton>
+          <span className="text-gradient">Contact Me</span>
+        </ContactButton>
       </Text>
     </WhoWrapper>
   </>

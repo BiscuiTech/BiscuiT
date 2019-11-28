@@ -18,6 +18,13 @@ const SocialsContainer = styled.div`
       cursor: inherit;
     }
   }
+  @media (max-width: 780px) {
+    margin: 6px;
+    justify-content: left;
+    a {
+      margin: 6px;
+    }
+  }
 `;
 
 const Socials = () => (

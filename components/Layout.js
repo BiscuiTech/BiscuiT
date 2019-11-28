@@ -1,6 +1,8 @@
 import React from 'react';
 import Link from 'next/link';
+/* import LogRocket from 'logrocket'; */
 import styled, { createGlobalStyle } from 'styled-components';
+/* import setupLogRocketReact from 'logrocket-react'; */
 import Head from './Head';
 import Nav from './Nav';
 import FacebookMessenger from './FacebookMessenger';
@@ -40,8 +42,10 @@ const GlobaStyle = createGlobalStyle`
 const Page = styled.div`
   /* height: calc(100vh - 20px);
   width: calc(100vw - 20px); */
-  min-height: 100vh; /* Fallback for browsers that do not support Custom Properties */
-  min-height: calc(var(--vh, 1vh) * 100);
+  min-height: calc(
+    100vh - 20px
+  ); /* Fallback for browsers that do not support Custom Properties */
+  min-height: calc((var(--vh, 1vh) * 100) - 20px);
   border-radius: 10px;
   width: 100%;
   height: 100%;
@@ -50,14 +54,17 @@ const Page = styled.div`
 
 const Content = styled.div`
   border-radius: 10px;
-
   background: white;
   display: grid;
   grid-template-areas:
     'header'
     'content';
-  grid-template-rows: 150px auto;
+  grid-template-rows: 100px auto;
   padding: 12px 36px;
+  @media (max-width: 780px) {
+    grid-template-rows: 100px auto;
+    padding: 6px 12px;
+  }
 `;
 
 function debounce(func, wait, immediate) {
@@ -84,6 +91,20 @@ function debounce(func, wait, immediate) {
 
 const Layout = ({ title, description, url, ogImage, children }) => {
   if (process.browser) {
+    Sentry.init({
+      dsn: 'https://c0e5b834500d45b88fb648ccf7c489bf@sentry.io/1838052',
+      beforeSend(event, hint) {
+        // Check if it is an exception, and if so, show the report dialog
+        if (event.exception) {
+          Sentry.showReportDialog({ eventId: event.event_id });
+        }
+        return event;
+      },
+    });
+
+    /* LogRocket.init('7agr7w/biscuitech');
+    // plugins should also only be initialized when in the browser
+    setupLogRocketReact(LogRocket); */
     (function(w, d, s, l, i) {
       w[l] = w[l] || [];
       w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
@@ -98,14 +119,14 @@ const Layout = ({ title, description, url, ogImage, children }) => {
     // First we get the viewport height and we multiple it by 1% to get a value for a vh unit
     const vh = window.innerHeight * 0.01;
     // Then we set the value in the --vh custom property to the root of the document
-    document.documentElement.style.setProperty('--vh', `${vh}px`);
+    document.documentElement.style.setProperty('--vh', `${Number(vh)}px`);
     // We listen to the resize event
     window.addEventListener(
       'resize',
       debounce(() => {
         // We execute the same script as before
         const vh = window.innerHeight * 0.01;
-        document.documentElement.style.setProperty('--vh', `${vh}px`);
+        document.documentElement.style.setProperty('--vh', `${Number(vh)}px`);
       }, 400)
     );
   }

@@ -41,8 +41,21 @@ const X = styled.div`
     top: 40px;
     left: 0px;
   }
-  .nav.open span:nth-child(2) {
-    animation: span2 1.5s forwards cubic-bezier(0.8, 0.5, 0.2, 1.4);
+  @keyframes span1 {
+    0% {
+      transform: translate(0, 0);
+    }
+    60% {
+      transform: rotate(-110deg) translate(-7px, -7px);
+    }
+    100% {
+      transform: rotate(-45deg) translate(-20px, 20px);
+      background-color: #fff;
+    }
+  }
+  .nav.open span:nth-child(1) {
+    animation: span1 0.8s forwards cubic-bezier(0.8, 0.5, 0.2, 1.4);
+    animation-delay: 1.1s;
   }
   @keyframes span2 {
     0% {
@@ -75,10 +88,10 @@ const X = styled.div`
       transform: translate(0, 100px) scale(0);
     }
   }
-  .nav.open span:nth-child(3) {
-    animation: span3 0.8s forwards cubic-bezier(0.8, 0.5, 0.2, 1.4);
-    animation-delay: 0.7s;
+  .nav.open span:nth-child(2) {
+    animation: span2 1.5s forwards cubic-bezier(0.8, 0.5, 0.2, 1.4);
   }
+
   @keyframes span3 {
     0% {
       transform: translate(0, 0);
@@ -91,24 +104,9 @@ const X = styled.div`
       background-color: #fff;
     }
   }
-  .nav.open span:nth-child(1) {
-    animation: span1 0.8s forwards cubic-bezier(0.8, 0.5, 0.2, 1.4);
-    animation-delay: 1.1s;
-  }
-  @keyframes span1 {
-    0% {
-      transform: translate(0, 0);
-    }
-    60% {
-      transform: rotate(-110deg) translate(-7px, -7px);
-    }
-    100% {
-      transform: rotate(-45deg) translate(-20px, 20px);
-      background-color: #fff;
-    }
-  }
-  .nav span:nth-child(1) {
-    animation: span1_close 0.8s forwards cubic-bezier(0.8, 0.5, 0.2, 1.4);
+  .nav.open span:nth-child(3) {
+    animation: span3 0.8s forwards cubic-bezier(0.8, 0.5, 0.2, 1.4);
+    animation-delay: 0.7s;
   }
   @keyframes span1_close {
     0% {
@@ -118,8 +116,8 @@ const X = styled.div`
       transform: rotate(0deg) translate(0, 0);
     }
   }
-  .nav span:nth-child(2) {
-    animation: span2_close 0.8s forwards cubic-bezier(0.8, 0.5, 0.2, 1.4);
+  .nav span:nth-child(1) {
+    animation: span1_close 0.8s forwards cubic-bezier(0.8, 0.5, 0.2, 1.4);
   }
   @keyframes span2_close {
     0% {
@@ -129,8 +127,8 @@ const X = styled.div`
       transform: translate(0, 0) scale(1);
     }
   }
-  .nav span:nth-child(3) {
-    animation: span3_close 0.8s forwards cubic-bezier(0.8, 0.5, 0.2, 1.4);
+  .nav span:nth-child(2) {
+    animation: span2_close 0.8s forwards cubic-bezier(0.8, 0.5, 0.2, 1.4);
   }
   @keyframes span3_close {
     0% {
@@ -138,6 +136,39 @@ const X = styled.div`
     }
     100% {
       transform: rotate(0deg) translate(0, 0);
+    }
+  }
+  .nav span:nth-child(3) {
+    animation: span3_close 0.8s forwards cubic-bezier(0.8, 0.5, 0.2, 1.4);
+  }
+  @media (max-width: 780px) {
+    .nav {
+      width: 48px;
+      height: 48px;
+    }
+    .nav span:nth-child(1) {
+      top: 0px;
+      left: 0px;
+    }
+    .nav span:nth-child(2) {
+      top: 15px;
+      right: 0px;
+    }
+    .nav span:nth-child(3) {
+      top: 30px;
+      left: 0px;
+    }
+    @keyframes span3 {
+      0% {
+        transform: translate(0, 0);
+      }
+      60% {
+        transform: rotate(80deg) translate(-7px, -7px);
+      }
+      100% {
+        transform: rotate(45deg) translate(-1px, -1px);
+        background-color: #fff;
+      }
     }
   }
 `;

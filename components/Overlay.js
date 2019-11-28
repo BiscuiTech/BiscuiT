@@ -54,7 +54,7 @@ const StyledLink = styled.a`
   z-index: 1;
   color: white;
   font-family: ${props => props.theme.menu.font};
-  font-weight: 200;
+  /*   font-weight: 200; */
   justify-self: center;
   cursor: ${props => (props.current === true ? null : 'pointer')};
 
@@ -100,18 +100,21 @@ const Overlay = ({ isOpen, query }) => {
         }}
       >
         <LinkBox>
-          <Link href={pathname === '/' ? null : '/'}>
+          <Link href="/">
             <StyledLink current={pathname === '/'}>Homepage</StyledLink>
           </Link>
-          <Link href={pathname === '/who' ? null : '/who'}>
+          <Link href="/who">
             <StyledLink current={pathname === '/who'}>Who am I</StyledLink>
           </Link>
           {/* <Link href="/what">
             <StyledLink>What</StyledLink>
-          </Link>
-          <Link href="/how">
+            </Link>
+            <Link href="/how">
             <StyledLink>How</StyledLink>
           </Link> */}
+          <Link href="/contact">
+            <StyledLink current={pathname === '/contact'}>Contact</StyledLink>
+          </Link>
         </LinkBox>
         <Socials /> {/* TODO: change mobile position */}
       </OverlayPane>
