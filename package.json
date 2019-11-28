@@ -106,7 +106,7 @@
     }
   },
   "devDependencies": {
-    "@zeit/next-source-maps": "0.0.3",
+    "@zeit/next-source-maps": "0.0.4-canary.1",
     "eslint": "^6.7.1",
     "nodemon": "^2.0.1"
   }
