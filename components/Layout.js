@@ -40,8 +40,10 @@ const GlobaStyle = createGlobalStyle`
 const Page = styled.div`
   /* height: calc(100vh - 20px);
   width: calc(100vw - 20px); */
-  min-height: 100vh; /* Fallback for browsers that do not support Custom Properties */
-  min-height: calc(var(--vh, 1vh) * 100);
+  min-height: calc(
+    100vh - 20px
+  ); /* Fallback for browsers that do not support Custom Properties */
+  min-height: calc((var(--vh, 1vh) * 100) - 20px);
   border-radius: 10px;
   width: 100%;
   height: 100%;
@@ -50,7 +52,6 @@ const Page = styled.div`
 
 const Content = styled.div`
   border-radius: 10px;
-
   background: white;
   display: grid;
   grid-template-areas:
@@ -58,6 +59,10 @@ const Content = styled.div`
     'content';
   grid-template-rows: 150px auto;
   padding: 12px 36px;
+  @media (max-width: 780px) {
+    grid-template-rows: 100px auto;
+    padding: 6px 12px;
+  }
 `;
 
 function debounce(func, wait, immediate) {
@@ -98,17 +103,14 @@ const Layout = ({ title, description, url, ogImage, children }) => {
     // First we get the viewport height and we multiple it by 1% to get a value for a vh unit
     const vh = window.innerHeight * 0.01;
     // Then we set the value in the --vh custom property to the root of the document
-    document.documentElement.style.setProperty('--vh', `${Number(vh) - 50}px`);
+    document.documentElement.style.setProperty('--vh', `${Number(vh)}px`);
     // We listen to the resize event
     window.addEventListener(
       'resize',
       debounce(() => {
         // We execute the same script as before
         const vh = window.innerHeight * 0.01;
-        document.documentElement.style.setProperty(
-          '--vh',
-          `${Number(vh) - 50}px`
-        );
+        document.documentElement.style.setProperty('--vh', `${Number(vh)}px`);
       }, 400)
     );
   }

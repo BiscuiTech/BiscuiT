@@ -12,9 +12,9 @@ const MsgContainer = styled.div`
   /*   bottom: 0;
   position: fixed; */
   z-index: 5;
-  margin: 0 0 36px 24px;
+  margin: 0 0 0 12px;
   @media (max-width: 768px) {
-    margin: 0 0 15px 8px;
+    margin: 0 0 6px 6px;
     max-width: 300px;
   }
 `;

@@ -3,13 +3,17 @@ import styled from 'styled-components';
 import Ball from './Ball';
 import Messages from './Messages';
 
-const Wrapper = styled.div`
+const BallsWrapper = styled.div`
   width: calc(100% - 20px);
   grid-row: span 2;
   position: absolute;
   overflow: hidden;
   height: calc(100% - 120px);
   margin: -8px -36px;
+  @media (max-width: 780px) {
+    width: calc(100% - 20px);
+    margin: -6px -12px;
+  }
 `;
 
 const Home = () => {
@@ -51,7 +55,7 @@ const Home = () => {
   return (
     <>
       <Messages />
-      <Wrapper>
+      <BallsWrapper>
         {balls().map((b, i) => (
           <Ball
             className="ball"
@@ -63,7 +67,7 @@ const Home = () => {
             width={`${Math.random()}em`}
           />
         ))}
-      </Wrapper>
+      </BallsWrapper>
     </>
   );
 };
