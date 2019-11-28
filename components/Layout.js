@@ -57,7 +57,7 @@ const Content = styled.div`
   grid-template-areas:
     'header'
     'content';
-  grid-template-rows: 150px auto;
+  grid-template-rows: 100px auto;
   padding: 12px 36px;
   @media (max-width: 780px) {
     grid-template-rows: 100px auto;

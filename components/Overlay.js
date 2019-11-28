@@ -54,7 +54,7 @@ const StyledLink = styled.a`
   z-index: 1;
   color: white;
   font-family: ${props => props.theme.menu.font};
-  font-weight: 200;
+  /*   font-weight: 200; */
   justify-self: center;
   cursor: ${props => (props.current === true ? null : 'pointer')};
 
