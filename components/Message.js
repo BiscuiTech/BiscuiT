@@ -9,7 +9,7 @@ const Msg = styled.div`
   font-size: 24px;
   box-sizing: content-box;
   padding: 12px 22px 12px 22px;
-  margin: 2px 0 2px 0;
+  margin-bottom: 1px;
   a:link,
   a:visited,
   a:hover,
@@ -18,19 +18,20 @@ const Msg = styled.div`
     color: inherit;
   }
   /* Rounded Corners */
-  border-top-right-radius: 48px;
-  border-bottom-right-radius: 48px;
-  border-top-left-radius: 32px;
-  border-bottom-left-radius: 32px;
+  border-top-right-radius: 28px;
+  border-bottom-right-radius: 28px;
+  border-top-left-radius: 16px;
+  border-bottom-left-radius: 16px;
   /* First and Last message being differently rounded */
   :first-child {
-    border-top-left-radius: 48px;
+    border-top-left-radius: 28px;
   }
   :last-child {
-    border-bottom-left-radius: 48px;
+    border-bottom-left-radius: 28px;
   }
   @media (max-width: 768px) {
     font-size: 14px;
+    max-width: 200px;
   }
 `;
 

@@ -33,7 +33,7 @@ const msgs = [
   { text: 'I’m currently accepting freelance work', type: 'string' },
   {
     text:
-      'Feel free to let me know using the Facebook Messenger button at the right',
+      'Feel free to contact me using the Facebook Messenger button at the right',
     type: 'string',
   },
   { text: 'Or by email using this address:', type: 'string' },
