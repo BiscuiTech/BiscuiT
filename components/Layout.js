@@ -60,10 +60,10 @@ const Content = styled.div`
     'header'
     'content';
   grid-template-rows: 100px auto;
-  padding: 12px 36px;
+  padding: 24px 36px;
   @media (max-width: 780px) {
     grid-template-rows: 100px auto;
-    padding: 6px 12px;
+    padding: 12px 18px;
   }
 `;
 
