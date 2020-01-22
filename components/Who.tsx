@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Link from 'next/link';
 import Header from './Header';
 import ContactButton from './ContactButton';
+import useTranslation from '../hooks/useTranslation'
 
 const WhoWrapper = styled.div`
   height: 100%;
@@ -93,35 +94,36 @@ const Text = styled.div`
   }
 `;
 
-const Who = () => (
-  <>
-    <Header>I am Jean-Cédric Huet.</Header>
-    <WhoWrapper>
-      <Img>
-        <img
-          src="/static/images/biscuitech-portrait.png"
-          alt="Mug shot of Jean-Cédric Huet, also known as BiscuiTech"
-        />
-      </Img>
-      <Text>
-        <p>
-          Working as a Developer Analyst for a big Entertainment company in
-          Montréal, I learned the ropes of the industry quickly with massive
-          projects. Having a passion for cutting edge technology, I pushed my
-          own projects for the company to strive on. Now being a Freelance,
-          having my own set of skills and talent, I am ready to give your web
-          presence a touch of modern, speed, reliabilty and performance.
-        </p>
-        <p className="closing-words">
-          Are you up for a revamp?{' '}
-          <span className="biscuitech">BiscuiTech</span> is your guy.
-        </p>
-        <ContactButton>
-          <span className="text-gradient">Contact Me</span>
-        </ContactButton>
-      </Text>
-    </WhoWrapper>
-  </>
-);
+const Who = () => {
+  const { t, locale } = useTranslation()
+  return (
+    <>
+      <Header>{t('whoTitle')}</Header>
+      <WhoWrapper>
+        <Img>
+          <img
+            src="/static/images/biscuitech-portrait.png"
+            alt="Mug shot of Jean-Cédric Huet, also known as BiscuiTech"
+          />
+        </Img>
+        <Text>
+          <p>
+            {t('biography')}
+          </p>
+          <p className="closing-words">
+            {t('biography_closingWords_1')}
+            <span className="biscuitech">BiscuiTech</span>{t('biography_closingWords_2')}
+          </p>
+          <ContactButton
+            href="/[lang]/contact"
+            as={`/${locale}/contact`}
+          >
+            <span className="text-gradient">{t("contactMe")}</span>
+          </ContactButton>
+        </Text>
+      </WhoWrapper>
+    </>
+  )
+};
 
 export default Who;

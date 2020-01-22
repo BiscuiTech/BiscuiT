@@ -4,6 +4,8 @@ import { useSpring, animated } from 'react-spring';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import Socials from './Socials';
+import useTranslation from '../hooks/useTranslation'
+import LocaleSwitcher from './LocaleSwitcher'
 
 const Pane = styled.div`
   position: fixed;
@@ -54,7 +56,6 @@ const StyledLink = styled.a`
   z-index: 1;
   color: white;
   font-family: ${props => props.theme.menu.font};
-  /*   font-weight: 200; */
   justify-self: center;
   cursor: ${props => (props.current === true ? null : 'pointer')};
 
@@ -83,7 +84,13 @@ const StyledLink = styled.a`
   }
 `;
 
-const Overlay = ({ isOpen, query }) => {
+interface IOverlay {
+  isOpen: boolean,
+  query?: string
+}
+
+const Overlay = ({ isOpen, query }: IOverlay) => {
+  const { locale, t } = useTranslation()
   const { pathname } = useRouter();
   const { x } = useSpring({
     x: isOpen ? 0 : 100,
@@ -99,24 +106,25 @@ const Overlay = ({ isOpen, query }) => {
           transform: x.interpolate(x => `translate3d(${x /* * -1 */}%,0,0)`),
         }}
       >
+        <LocaleSwitcher />
         <LinkBox>
-          <Link href="/">
-            <StyledLink current={pathname === '/'}>Homepage</StyledLink>
+          <Link href="/[lang]" as={`/${locale}`} >
+            <StyledLink current={pathname === '/[lang]'}>{t("overlay_Homepage")}</StyledLink>
           </Link>
-          <Link href="/who">
-            <StyledLink current={pathname === '/who'}>Who am I</StyledLink>
+          <Link href="/[lang]/who" as={`/${locale}/who`}>
+            <StyledLink current={pathname === '/[lang]/who'}>{t("overlay_Who")}</StyledLink>
           </Link>
           {/* <Link href="/what">
-            <StyledLink>What</StyledLink>
+            <StyledLink>{t("overlay_What")}</StyledLink>
             </Link>
             <Link href="/how">
-            <StyledLink>How</StyledLink>
+            <StyledLink>{t("overlay_How")}</StyledLink>
           </Link> */}
-          <Link href="/contact">
-            <StyledLink current={pathname === '/contact'}>Contact</StyledLink>
+          <Link href="/[lang]/contact" as={`/${locale}/contact`}>
+            <StyledLink current={pathname === '/[lang]/contact'}>{t("overlay_Contact")}</StyledLink>
           </Link>
         </LinkBox>
-        <Socials /> {/* TODO: change mobile position */}
+        <Socials />
       </OverlayPane>
     </Pane>
   );

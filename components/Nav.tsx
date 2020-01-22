@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { useRouter } from 'next/router';
 import Menu from './Menu';
 import ContactButton from './ContactButton';
+import useTranslation from '../hooks/useTranslation'
 
 const NavStyles = styled.div`
   max-height: 100px;
@@ -51,16 +52,20 @@ const Logo = styled.div`
 `;
 
 const Nav = () => {
+  const { t, locale } = useTranslation()
   const { pathname } = useRouter();
   return (
     <NavStyles>
       <Logo>
-        <Link href="/">
+        <Link href="/[lang]" as={`/${locale}`} >
           <img src="/static/BiscuiTech Logo (2019).png" alt="BiscuiTech Logo" />
         </Link>
       </Logo>
       <ContactWrapper display={pathname === '/contact' ? 'none' : 'block'}>
-        <ContactButton>Contact Me</ContactButton>
+        <ContactButton
+          href="/[lang]/contact"
+          as={`/${locale}/contact`}
+        >{t("contactMe")}</ContactButton>
       </ContactWrapper>
       <Menu />
     </NavStyles>

@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
+import useTranslation from '../hooks/useTranslation'
 
 const ContactButtonStyles = styled.div`
   margin: 10px auto;
@@ -66,24 +67,32 @@ const ContactButtonStyles = styled.div`
   }
 `;
 
-const ContactButton = ({ href, children }) => (
-  <ContactButtonStyles>
-    <Link href={href || '/contact'}>
-      <a>
-        <svg>
-          <defs>
-            <linearGradient id="myGradient">
-              <stop offset="0%" stopColor="hsl(209, 100%, 49%)" />
-              <stop offset="50%" stopColor="hsl(187, 71%, 50%)" />
-              <stop offset="100%" stopColor="hsl(34, 100%, 50%)" />
-            </linearGradient>
-          </defs>
-          <rect x="0" y="0" fill="none" width="100%" height="100%" />
-        </svg>
-        {children}
-      </a>
-    </Link>
-  </ContactButtonStyles>
-);
+interface IContactButton {
+  href: string,
+  as: string,
+  children: any
+}
+
+const ContactButton = ({ href, as, children }: IContactButton) => {
+  return (
+    <ContactButtonStyles>
+      <Link href={href} as={`${as}`}>
+        <a>
+          <svg>
+            <defs>
+              <linearGradient id="myGradient">
+                <stop offset="0%" stopColor="hsl(209, 100%, 49%)" />
+                <stop offset="50%" stopColor="hsl(187, 71%, 50%)" />
+                <stop offset="100%" stopColor="hsl(34, 100%, 50%)" />
+              </linearGradient>
+            </defs>
+            <rect x="0" y="0" fill="none" width="100%" height="100%" />
+          </svg>
+          {children}
+        </a>
+      </Link>
+    </ContactButtonStyles >
+  )
+};
 
 export default ContactButton;
