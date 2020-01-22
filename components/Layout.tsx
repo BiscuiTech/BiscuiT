@@ -92,7 +92,7 @@ function debounce(func, wait, immediate?) {
 const Layout = ({ title, description, /* url, ogImage,  */ children }) => {
   if (process.browser) {
     // @ts-ignore
-    /* Sentry.init({
+    entry.init({
       dsn: 'https://c0e5b834500d45b88fb648ccf7c489bf@sentry.io/1838052',
       beforeSend(event, hint) {
         // Check if it is an exception, and if so, show the report dialog
@@ -102,7 +102,7 @@ const Layout = ({ title, description, /* url, ogImage,  */ children }) => {
         }
         return event;
       },
-    }); */
+    });
 
     /* LogRocket.init('7agr7w/biscuitech');
     // plugins should also only be initialized when in the browser
