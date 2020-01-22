@@ -67,14 +67,14 @@ const Content = styled.div`
   }
 `;
 
-function debounce(func, wait, immediate) {
+function debounce(func, wait, immediate?) {
   let timeout;
 
   return function executedFunction() {
     const context = this;
     const args = arguments;
 
-    const later = function() {
+    const later = function () {
       timeout = null;
       if (!immediate) func.apply(context, args);
     };
@@ -89,13 +89,15 @@ function debounce(func, wait, immediate) {
   };
 }
 
-const Layout = ({ title, description, url, ogImage, children }) => {
+const Layout = ({ title, description, /* url, ogImage,  */ children }) => {
   if (process.browser) {
+    // @ts-ignore
     Sentry.init({
       dsn: 'https://c0e5b834500d45b88fb648ccf7c489bf@sentry.io/1838052',
       beforeSend(event, hint) {
         // Check if it is an exception, and if so, show the report dialog
         if (event.exception) {
+          // @ts-ignore
           Sentry.showReportDialog({ eventId: event.event_id });
         }
         return event;
@@ -105,11 +107,11 @@ const Layout = ({ title, description, url, ogImage, children }) => {
     /* LogRocket.init('7agr7w/biscuitech');
     // plugins should also only be initialized when in the browser
     setupLogRocketReact(LogRocket); */
-    (function(w, d, s, l, i) {
+    (function (w, d, s, l, i) {
       w[l] = w[l] || [];
       w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
       const f = d.getElementsByTagName(s)[0];
-      const j = d.createElement(s);
+      const j: any = d.createElement(s);
       const dl = l != 'dataLayer' ? `&l=${l}` : '';
       j.async = true;
       j.src = `https://www.googletagmanager.com/gtm.js?id=${i}${dl}`;
@@ -137,8 +139,8 @@ const Layout = ({ title, description, url, ogImage, children }) => {
         <Head
           title={title}
           description={description}
-          url={url}
-          ogImage={ogImage}
+        // url={url}
+        // ogImage={ogImage}
         />
         <Nav />
         <Content>{children}</Content>
