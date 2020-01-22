@@ -22,7 +22,7 @@ export default class MyApp extends App {
     const modifiedPageProps = { ...pageProps, err };
     return (
       <ThemeProvider theme={theme}>
-        <Component {...pageProps} />
+        <Component {...modifiedPageProps} />
       </ThemeProvider>
     );
   }
