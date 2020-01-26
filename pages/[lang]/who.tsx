@@ -1,7 +1,7 @@
 import React from 'react';
 import Layout from '../../components/Layout';
 import Who from '../../components/Who';
-import withLocale from '../../hocs/withLocale'
+import withAPILocale from '../../hocs/withAPILocale'
 
 const WhoPage: React.FC = () => (
   <Layout
@@ -12,4 +12,4 @@ const WhoPage: React.FC = () => (
   </Layout>
 );
 
-export default withLocale(WhoPage);
+export default withAPILocale('who')(WhoPage);

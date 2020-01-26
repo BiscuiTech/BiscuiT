@@ -1,32 +1,44 @@
 import React from 'react'
 import { useRouter } from 'next/router'
-import { Locale, isLocale } from '../translations/types'
+import { Locale, Translations, isLocale } from '../translations/types'
+// import strings from '../translations/strings.old'
+import strings from '../translations/locales/en'
+interface LocaleProps {
+  lang: Locale
+  translations: Translations
+  namespace: string
+}
 
 interface ContextProps {
-  readonly locale: Locale
-  readonly setLocale: (locale: Locale) => void
+  readonly locale: LocaleProps
+  readonly setLocale: (locale: LocaleProps) => void
 }
 
 export const LocaleContext = React.createContext<ContextProps>({
-  locale: 'en',
+  locale: {
+    lang: 'en', // default lang
+    translations: strings.common, // default translations TODO: what to do here?
+    namespace: 'common' // default namespace TODO: could we null this? 'common' might be misleading
+  },
   setLocale: () => null
 })
 
-export const LocaleProvider: React.FC<{ lang: Locale }> = ({ lang, children }) => {
-  const [locale, setLocale] = React.useState(lang)
+export const LocaleProvider: React.FC<LocaleProps> = ({ lang, translations, namespace, children }) => {
+  const [locale, setLocale] = React.useState({ lang, translations, namespace })
   const { query } = useRouter()
 
   React.useEffect(() => {
-    if (locale !== localStorage.getItem('locale')) {
-      localStorage.setItem('locale', locale)
+    if (locale.lang !== localStorage.getItem('locale')) {
+      localStorage.setItem('locale', locale.lang)
     }
-  }, [locale])
+  }, [locale.lang])
 
   React.useEffect(() => {
-    if (typeof query.lang === 'string' && isLocale(query.lang) && locale !== query.lang) {
-      setLocale(query.lang)
+    const { lang } = query
+    if (typeof lang === 'string' && isLocale(lang) && locale.lang !== lang) {
+      setLocale({ lang, translations, namespace })
     }
-  }, [query.lang, locale])
+  }, [query.lang, locale.lang, query, translations, namespace])
 
   return <LocaleContext.Provider value={{ locale, setLocale }}>{children}</LocaleContext.Provider>
 }

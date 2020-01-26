@@ -65,7 +65,7 @@ const Nav = () => {
         <ContactButton
           href="/[lang]/contact"
           as={`/${locale}/contact`}
-        >{t("contactMe")}</ContactButton>
+        >{t("common").contactMe}</ContactButton>
       </ContactWrapper>
       <Menu />
     </NavStyles>

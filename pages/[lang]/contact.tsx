@@ -1,7 +1,7 @@
 import React from 'react';
 import Layout from '../../components/Layout';
 import Contact from '../../components/Contact';
-import withLocale from '../../hocs/withLocale'
+import withAPILocale from '../../hocs/withAPILocale'
 
 const contact = () => (
   <Layout
@@ -11,4 +11,4 @@ const contact = () => (
   </Layout>
 );
 
-export default withLocale(contact);
+export default withAPILocale('common')(contact);

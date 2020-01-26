@@ -118,7 +118,7 @@ const Who = () => {
             href="/[lang]/contact"
             as={`/${locale}/contact`}
           >
-            <span className="text-gradient">{t("contactMe")}</span>
+            <span className="text-gradient">{t("common").contactMe}</span>
           </ContactButton>
         </Text>
       </WhoWrapper>
