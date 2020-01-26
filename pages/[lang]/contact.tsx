@@ -11,4 +11,4 @@ const contact = () => (
   </Layout>
 );
 
-export default withAPILocale('common')(contact);
+export default withAPILocale('contact')(contact);
