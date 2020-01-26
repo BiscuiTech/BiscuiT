@@ -102,7 +102,7 @@ const Who = () => {
       <WhoWrapper>
         <Img>
           <img
-            src="/static/images/biscuitech-portrait.png"
+            src="/images/biscuitech-portrait.png"
             alt="Mug shot of Jean-Cédric Huet, also known as BiscuiTech"
           />
         </Img>

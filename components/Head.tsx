@@ -25,11 +25,11 @@ const Head = ({ title, description, url, ogImage }) => (
     <title>{title || 'Biscui.Tech'}</title>
     <meta name="description" content={description || defaultDescription} />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" sizes="192x192" href="/static/touch-icon.png" />
-    <link rel="apple-touch-icon" href="/static/touch-icon.png" />
-    <link rel="mask-icon" href="/static/favicon-mask.svg" color="#49B882" />
-    <link rel="shortcut icon" href="/static/favicon.ico" />
-    <link rel="shortcut icon" href="/static/favicon.svg" />
+    <link rel="icon" sizes="192x192" href="/touch-icon.png" />
+    <link rel="apple-touch-icon" href="/touch-icon.png" />
+    <link rel="mask-icon" href="/favicon-mask.svg" color="#49B882" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="shortcut icon" href="/favicon.svg" />
     <meta property="og:url" content={url || defaultOGURL} />
     <meta property="og:title" content={title || 'Biscui.Tech'} />
     <meta
@@ -42,7 +42,7 @@ const Head = ({ title, description, url, ogImage }) => (
     <meta property="og:image" content={ogImage || defaultOGImage} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <link rel="stylesheet" href="/static/inter.css" />
+    <link rel="stylesheet" href="/inter.css" />
     <link
       href="https://fonts.googleapis.com/css?family=Montserrat:100,200,400&display=swap"
       rel="stylesheet"
