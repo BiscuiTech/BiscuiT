@@ -1,0 +1,6 @@
+Sitemap: https://biscui.tech/sitemap.xml
+
+User-agent: *
+Allow: /*
+
+Disallow: /api/*

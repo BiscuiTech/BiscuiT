@@ -50,6 +50,8 @@
     "react-dom": "^16.12.0",
     "react-messenger-customer-chat": "^0.7.2",
     "react-spring": "^8.0.27",
+    "sitemap": "^5.1.0",
+    "@zeit/next-source-maps": "0.0.4-canary.1",
     "styled-components": "^5.0.0"
   },
   "engines": {
@@ -115,7 +117,6 @@
     "@types/react-dom": "^16.9.5",
     "@typescript-eslint/eslint-plugin": "^2.17.0",
     "@typescript-eslint/parser": "^2.17.0",
-    "@zeit/next-source-maps": "0.0.4-canary.1",
     "babel-eslint": "^10.0.3",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.9.0",
