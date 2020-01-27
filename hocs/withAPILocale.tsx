@@ -5,7 +5,7 @@ import Error from 'next/error'
 import { getDisplayName } from 'next/dist/next-server/lib/utils'
 import { isLocale, Locale } from '../translations/types'
 import { LocaleProvider } from '../context/LocaleContext'
-
+import absoluteUrl from '../lib/absoluteUrl'
 interface LangProps {
   locale?: Locale
   translations?: { [key: string]: string }
@@ -27,6 +27,7 @@ export default (namespace: string) => (WrappedPage: NextPage<any>) => {
   }
 
   WithLocale.getInitialProps = async ctx => {
+    const { origin } = absoluteUrl(ctx.req, "http://localhost:3000")
     let pageProps = {}
     if (WrappedPage.getInitialProps) {
       pageProps = await WrappedPage.getInitialProps(ctx)
@@ -34,8 +35,8 @@ export default (namespace: string) => (WrappedPage: NextPage<any>) => {
     if (typeof ctx.query.lang !== 'string' || !isLocale(ctx.query.lang)) {
       return { ...pageProps }
     }
-    const url = process.env.NODE_ENV === 'production' ? 'https://biscui.tech' : 'http://localhost:3000'
-    const translations = await fetch(`${url}/api/${ctx.query.lang}?namespace=${namespace || 'common'}`).then(data => data.json())
+    //const url = process.env.NODE_ENV === 'production' ? 'https://biscui.tech' : 'http://localhost:3000'
+    const translations = await fetch(`${origin}/api/${ctx.query.lang}?namespace=${namespace || 'common'}`).then(data => data.json())
     return { ...pageProps, locale: ctx.query.lang, translations }
   }
 
