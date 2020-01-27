@@ -23,8 +23,7 @@ const LangBtn = styled.button`
 
 const LocaleSwitcher: React.FC = () => {
   const router = useRouter()
-  const { locale: currentLocale } = React.useContext(LocaleContext)
-
+  const { locale: { lang } } = React.useContext(LocaleContext)
   const handleLocaleChange = React.useCallback(
     (e: React.ChangeEvent<HTMLButtonElement>) => {
       const regex = new RegExp(`^/(${locales.join('|')})`)
@@ -36,7 +35,7 @@ const LocaleSwitcher: React.FC = () => {
   return (
     <LangWrapper>
       {locales.map(locale => (
-        <LangBtn key={locale} value={locale} current={locale === currentLocale} onClick={handleLocaleChange}>
+        <LangBtn key={locale} value={locale} current={locale === lang} onClick={handleLocaleChange}>
           {languageNames[locale]}
         </LangBtn>
       ))}

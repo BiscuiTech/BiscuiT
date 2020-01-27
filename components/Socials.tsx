@@ -35,7 +35,7 @@ const Socials = () => (
       rel="noopener noreferrer"
     >
       <img
-        src="/static/facebook.svg"
+        src="/facebook.svg"
         width="50px"
         height="50px"
         alt="Facebook Icon \& link"
@@ -47,7 +47,7 @@ const Socials = () => (
       rel="noopener noreferrer"
     >
       <img
-        src="/static/linkedin.svg"
+        src="/linkedin.svg"
         width="50px"
         height="50px"
         alt="LinkedIn Icon \& link"
@@ -59,7 +59,7 @@ const Socials = () => (
       rel="noopener noreferrer"
     >
       <img
-        src="/static/twitter.svg"
+        src="/twitter.svg"
         width="50px"
         height="50px"
         alt="Twitter Icon \& link"
@@ -71,7 +71,7 @@ const Socials = () => (
       rel="noopener noreferrer"
     >
       <img
-        src="/static/github.svg"
+        src="/github.svg"
         width="50px"
         height="50px"
         alt="GitHub Icon \& link"
