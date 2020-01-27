@@ -198,7 +198,7 @@ const Menu = () => {
           className={`nav ${isNavOpen ? 'open' : ''}`}
           onClick={e => handleClick(e)}
           type="button"
-          name="Menu"
+          aria-label="Menu Button"
         >
           <span />
           <span />
