@@ -111,7 +111,7 @@ const Who = () => {
       <Header>{t('whoTitle')}</Header>
       <WhoWrapper>
         <Img>
-          <Image publicId="biscui.tech/biscuitech-portrait" cloudName="biscuitech" alt="Mug shot of Jean-Cédric Huet, also known as BiscuiTech">
+          <Image publicId="biscui.tech/biscuitech-portrait.webp" cloudName="biscuitech" alt="Mug shot of Jean-Cédric Huet, also known as BiscuiTech">
             <Transformation width="400" quality="auto" crop="scale" />
           </Image>
         </Img>
