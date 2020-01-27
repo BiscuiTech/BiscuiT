@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 import Menu from './Menu';
 import ContactButton from './ContactButton';
 import useTranslation from '../hooks/useTranslation'
+import { Image, Transformation } from 'cloudinary-react';
 
 const NavStyles = styled.div`
   max-height: 100px;
@@ -58,7 +59,9 @@ const Nav = () => {
     <NavStyles>
       <Logo>
         <Link href="/[lang]" as={`/${locale}`} >
-          <img src="/BiscuiTech Logo (2019).png" alt="BiscuiTech Logo" />
+          <Image publicId="biscui.tech/BiscuiTech_Logo_2019.png" cloudName="biscuitech">
+            <Transformation height="200" quality="auto" crop="scale" />
+          </Image>
         </Link>
       </Logo>
       <ContactWrapper display={pathname === '/contact' ? 'none' : 'block'}>

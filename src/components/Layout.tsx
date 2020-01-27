@@ -1,6 +1,6 @@
 import React from 'react';
-import LogRocket from 'logrocket';
-import setupLogRocketReact from 'logrocket-react';
+/* import LogRocket from 'logrocket';
+import setupLogRocketReact from 'logrocket-react'; */
 import styled, { createGlobalStyle } from 'styled-components';
 import Head from './Head';
 import Nav from './Nav';
@@ -86,7 +86,7 @@ function debounce(func, wait, immediate?) {
 const Layout = ({ title, description, /* url, ogImage,  */ children }) => {
   if (process.browser) {
     // @ts-ignore
-    if (Sentry !== undefined) {
+    /* if (Sentry !== undefined) {
       LogRocket.init('7agr7w/biscuitech');
       // @ts-ignore
       Sentry.init({
@@ -103,7 +103,7 @@ const Layout = ({ title, description, /* url, ogImage,  */ children }) => {
         },
       });
 
-    }
+    } */
     (function (w, d, s, l, i) {
       w[l] = w[l] || [];
       w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
