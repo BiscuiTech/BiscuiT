@@ -1,18 +1,13 @@
 import React from 'react';
-import Link from 'next/link';
-/* import LogRocket from 'logrocket'; */
+import LogRocket from 'logrocket';
 import styled, { createGlobalStyle } from 'styled-components';
-/* import setupLogRocketReact from 'logrocket-react'; */
+import setupLogRocketReact from 'logrocket-react';
 import Head from './Head';
 import Nav from './Nav';
 import FacebookMessenger from './FacebookMessenger';
 
 const GlobaStyle = createGlobalStyle`
   body {
-    /* background: #0082fa; */
-    /* border: 10px solid #0082fa;
-    margin:0;
-    padding: 0; */
     background: linear-gradient(
     125.95deg,
     hsl(209, 100%, 49%) 0%,
@@ -40,11 +35,10 @@ const GlobaStyle = createGlobalStyle`
 `;
 
 const Page = styled.div`
-  /* height: calc(100vh - 20px);
-  width: calc(100vw - 20px); */
   min-height: calc(
     100vh - 20px
-  ); /* Fallback for browsers that do not support Custom Properties */
+  );
+/* Fallback for browsers that do not support Custom Properties */
   min-height: calc((var(--vh, 1vh) * 100) - 20px);
   border-radius: 10px;
   width: 100%;
@@ -91,7 +85,7 @@ function debounce(func, wait, immediate?) {
 
 const Layout = ({ title, description, /* url, ogImage,  */ children }) => {
   if (process.browser) {
-    /* // @ts-ignore
+    // @ts-ignore
     if (Sentry !== undefined) {
       // @ts-ignore
       Sentry.init({
@@ -105,11 +99,10 @@ const Layout = ({ title, description, /* url, ogImage,  */ children }) => {
           return event;
         },
       });
-    } */
-
-    /* LogRocket.init('7agr7w/biscuitech');
+    }
+    LogRocket.init('7agr7w/biscuitech');
     // plugins should also only be initialized when in the browser
-    setupLogRocketReact(LogRocket); */
+    setupLogRocketReact(LogRocket);
     (function (w, d, s, l, i) {
       w[l] = w[l] || [];
       w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
