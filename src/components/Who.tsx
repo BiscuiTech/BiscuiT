@@ -20,13 +20,16 @@ const WhoWrapper = styled.div`
 const Img = styled.div`
   grid-area: image;
   align-self: center;
-  width: 480px;
-  height: 480px;
+  width: 100%;
+  max-width: 480px;
+  height: 100%;
+  max-height: 480px;
   border-radius: 50%;
   vertical-align: middle;
   /* position: relative; */
   overflow: hidden;
   margin: auto;
+  margin-right: 24px;
   img {
     margin: 0 auto;
     margin-top: -20%;
@@ -35,9 +38,16 @@ const Img = styled.div`
     width: 100%;
   }
   @media (max-width: 900px) {
-    width: 88px;
-    height: 88px;
-    margin: 10% 24px 24px 24px;
+    width: 240px;
+    height: 240px;
+    margin: 10% 12px 6px 0px;
+    align-self: start;
+    float: left;
+  }
+  @media (max-width: 620px) {
+    width: 140px;
+    height: 140px;
+    margin: 10% 12px 6px 0px;
     align-self: start;
     float: left;
   }
