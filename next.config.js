@@ -12,4 +12,11 @@ module.exports = withSourceMaps({
     }
     return config;
   },
+  experimental: {
+    modern: true,
+    async rewrites() {
+      return [{ source: '/sitemap.xml', destination: '/api/sitemap.xml' }];
+    },
+    catchAllRouting: true,
+  },
 });
