@@ -1,7 +1,7 @@
 import React from 'react';
 import LogRocket from 'logrocket';
-import styled, { createGlobalStyle } from 'styled-components';
 import setupLogRocketReact from 'logrocket-react';
+import styled, { createGlobalStyle } from 'styled-components';
 import Head from './Head';
 import Nav from './Nav';
 import FacebookMessenger from './FacebookMessenger';
@@ -87,22 +87,23 @@ const Layout = ({ title, description, /* url, ogImage,  */ children }) => {
   if (process.browser) {
     // @ts-ignore
     if (Sentry !== undefined) {
+      LogRocket.init('7agr7w/biscuitech');
       // @ts-ignore
       Sentry.init({
         dsn: 'https://c0e5b834500d45b88fb648ccf7c489bf@sentry.io/1838052',
         beforeSend(event, hint) {
           // Check if it is an exception, and if so, show the report dialog
           if (event.exception) {
+            // plugins should also only be initialized when in the browser
+            setupLogRocketReact(LogRocket);
             // @ts-ignore
             Sentry.showReportDialog({ eventId: event.event_id });
           }
           return event;
         },
       });
+
     }
-    LogRocket.init('7agr7w/biscuitech');
-    // plugins should also only be initialized when in the browser
-    setupLogRocketReact(LogRocket);
     (function (w, d, s, l, i) {
       w[l] = w[l] || [];
       w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
