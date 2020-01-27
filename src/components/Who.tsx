@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import Link from 'next/link';
 import Header from './Header';
 import ContactButton from './ContactButton';
 import useTranslation from '../hooks/useTranslation'
+import { Image, Transformation } from 'cloudinary-react';
 
 const WhoWrapper = styled.div`
   height: 100%;
@@ -101,10 +101,9 @@ const Who = () => {
       <Header>{t('whoTitle')}</Header>
       <WhoWrapper>
         <Img>
-          <img
-            src="/images/biscuitech-portrait.png"
-            alt="Mug shot of Jean-Cédric Huet, also known as BiscuiTech"
-          />
+          <Image publicId="biscuitech-portrait" cloudName="biscuitech" alt="Mug shot of Jean-Cédric Huet, also known as BiscuiTech">
+            <Transformation width="400" quality="auto" crop="scale" />
+          </Image>
         </Img>
         <Text>
           <p>
