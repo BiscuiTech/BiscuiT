@@ -198,6 +198,7 @@ const Menu = () => {
           className={`nav ${isNavOpen ? 'open' : ''}`}
           onClick={e => handleClick(e)}
           type="button"
+          name="Menu"
         >
           <span />
           <span />

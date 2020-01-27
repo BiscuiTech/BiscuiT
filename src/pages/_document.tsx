@@ -1,11 +1,12 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
+import { GA_TRACKING_ID } from '../lib/gtag'
 
 export default class MyDocument extends Document {
   static async getInitialProps(ctx) {
     const sheet = new ServerStyleSheet();
     const originalRenderPage = ctx.renderPage;
-
+    /*     console.log(ctx.query.lang) */
     try {
       ctx.renderPage = () =>
         originalRenderPage({
@@ -15,6 +16,7 @@ export default class MyDocument extends Document {
       const initialProps = await Document.getInitialProps(ctx);
       return {
         ...initialProps,
+        locale: ctx?.query?.lang,
         styles: (
           <>
             {initialProps.styles}
@@ -27,20 +29,29 @@ export default class MyDocument extends Document {
     }
   }
 
+
   render() {
     return (
-      <Html>
-        <Head />
+      <Html lang={this.props.locale || 'en'} > {/* TODO: find a way to make this dynamic */}
+        <Head>
+          <script
+            async
+            src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
+          />
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_TRACKING_ID}', {
+              page_path: window.location.pathname,
+            });
+          `,
+            }}
+          />
+        </Head>
         <body>
-          <noscript>
-            <iframe
-              title="gtm"
-              src="https://www.googletagmanager.com/ns.html?id=GTM-5C4VKCP"
-              height="0"
-              width="0"
-              style={{ display: 'none', visibility: 'hidden' }}
-            />
-          </noscript>
           <Main />
           <NextScript />
         </body>

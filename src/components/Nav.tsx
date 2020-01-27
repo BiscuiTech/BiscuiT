@@ -59,7 +59,7 @@ const Nav = () => {
     <NavStyles>
       <Logo>
         <Link href="/[lang]" as={`/${locale}`} >
-          <Image publicId="biscui.tech/BiscuiTech_Logo_2019.png" cloudName="biscuitech">
+          <Image publicId="biscui.tech/BiscuiTech_Logo_2019.png" cloudName="biscuitech" alt="BiscuiTech Logo">
             <Transformation height="200" quality="auto" crop="scale" />
           </Image>
         </Link>

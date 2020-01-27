@@ -1,4 +1,5 @@
 import React from 'react';
+/* import { Html } from 'next/document' */
 /* import LogRocket from 'logrocket';
 import setupLogRocketReact from 'logrocket-react'; */
 import styled, { createGlobalStyle } from 'styled-components';
@@ -44,9 +45,21 @@ const Page = styled.div`
   width: 100%;
   height: 100%;
   background: white;
+  .skip-link{
+    position: absolute;
+  top: -40px;
+  left: 0;
+
+  color: white;
+  padding: 8px;
+  z-index: 100;
+    &:focus{
+      top: 0;
+    }
+  }
 `;
 
-const Content = styled.div`
+const Content = styled.main`
   border-radius: 10px;
   background: white;
   display: grid;
@@ -139,8 +152,9 @@ const Layout = ({ title, description, /* url, ogImage,  */ children }) => {
         // url={url}
         // ogImage={ogImage}
         />
+        <a className="skip-link" href="#maincontent">Skip to main</a>
         <Nav />
-        <Content>{children}</Content>
+        <Content id="maincontent">{children}</Content>
         <FacebookMessenger pageId="330183527489356" />
       </Page>
     </>
