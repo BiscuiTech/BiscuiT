@@ -5,7 +5,7 @@ import setupLogRocketReact from 'logrocket-react'; */
 import styled, { createGlobalStyle } from 'styled-components';
 import Head from './Head';
 import Nav from './Nav';
-import FacebookMessenger from './FacebookMessenger';
+import MessengerCustomerChat from 'react-messenger-customer-chat';
 
 const GlobaStyle = createGlobalStyle`
   body {
@@ -117,7 +117,7 @@ const Layout = ({ title, description, /* url, ogImage,  */ children }) => {
       });
 
     } */
-    (function (w, d, s, l, i) {
+    /* (function (w, d, s, l, i) {
       w[l] = w[l] || [];
       w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
       const f = d.getElementsByTagName(s)[0];
@@ -126,7 +126,7 @@ const Layout = ({ title, description, /* url, ogImage,  */ children }) => {
       j.async = true;
       j.src = `https://www.googletagmanager.com/gtm.js?id=${i}${dl}`;
       f.parentNode.insertBefore(j, f);
-    })(window, document, 'script', 'dataLayer', 'GTM-5C4VKCP');
+    })(window, document, 'script', 'dataLayer', 'GTM-5C4VKCP'); */
 
     // First we get the viewport height and we multiple it by 1% to get a value for a vh unit
     const vh = window.innerHeight * 0.01;
@@ -155,7 +155,7 @@ const Layout = ({ title, description, /* url, ogImage,  */ children }) => {
         <a className="skip-link" href="#maincontent">Skip to main</a>
         <Nav />
         <Content id="maincontent">{children}</Content>
-        <FacebookMessenger pageId="330183527489356" />
+        <MessengerCustomerChat pageId="330183527489356" />
       </Page>
     </>
   );
