@@ -2,8 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 
 const SocialsContainer = styled.div`
-  bottom: 0;
-  position: absolute;
+  /* bottom: 0;
+  position: absolute; */
   margin: auto;
   width: 100%;
   margin: auto;

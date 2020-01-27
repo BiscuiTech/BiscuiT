@@ -27,6 +27,8 @@ const OverlayPane = styled(animated.div)`
     hsl(187, 71%, 50%) 50%,
     hsl(34, 100%, 50%) 100%
   );
+  display: flex;
+  flex-direction: column;
   background-size: 300%;
   animation: overlay-animation 4s infinite alternate;
   @keyframes overlay-animation {
@@ -43,8 +45,8 @@ const LinkBox = styled.div`
   display: flex;
   flex-direction: column;
   margin: auto;
-  width: 100%;
-  height: 100%;
+/*   width: 100%;
+  height: 100%; */
   justify-content: center;
 `;
 
@@ -62,6 +64,9 @@ const StyledLink = styled.a`
   font-style: ${props => (props.current === true ? 'italic' : 'black')};
   color: ${props => (props.current === true ? 'hsla(0, 0%, 90%,1) ' : 'white')};
   font-weight: ${props => (props.current === true ? 400 : '200')};
+  @media (max-height: 500px) {
+    margin: 8px auto;
+  }
   :after {
     position: absolute;
     left: 0;
