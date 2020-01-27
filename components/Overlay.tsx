@@ -109,10 +109,10 @@ const Overlay = ({ isOpen, query }: IOverlay) => {
         <LocaleSwitcher />
         <LinkBox>
           <Link href="/[lang]" as={`/${locale}`} >
-            <StyledLink current={pathname === '/[lang]'}>{t("common").overlay_Homepage}</StyledLink>
+            <StyledLink current={pathname === '/[lang]'}>{t("common")["overlay_Homepage"]}</StyledLink>
           </Link>
           <Link href="/[lang]/who" as={`/${locale}/who`}>
-            <StyledLink current={pathname === '/[lang]/who'}>{t("common").overlay_Who}</StyledLink>
+            <StyledLink current={pathname === '/[lang]/who'}>{t("common")["overlay_Who"]}</StyledLink>
           </Link>
           {/* <Link href="/what">
             <StyledLink>{t("overlay_What")}</StyledLink>
@@ -121,7 +121,7 @@ const Overlay = ({ isOpen, query }: IOverlay) => {
             <StyledLink>{t("overlay_How")}</StyledLink>
           </Link> */}
           <Link href="/[lang]/contact" as={`/${locale}/contact`}>
-            <StyledLink current={pathname === '/[lang]/contact'}>{t("common").overlay_Contact}</StyledLink>
+            <StyledLink current={pathname === '/[lang]/contact'}>{t("common")["overlay_Contact"]}</StyledLink>
           </Link>
         </LinkBox>
         <Socials />
