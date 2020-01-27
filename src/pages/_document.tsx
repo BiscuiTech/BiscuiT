@@ -32,6 +32,7 @@ export default class MyDocument extends Document {
 
   render() {
     return (
+      // @ts-ignore
       <Html lang={this.props.locale || 'en'} > {/* TODO: find a way to make this dynamic */}
         <Head>
           <script
