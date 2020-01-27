@@ -91,18 +91,21 @@ function debounce(func, wait, immediate?) {
 
 const Layout = ({ title, description, /* url, ogImage,  */ children }) => {
   if (process.browser) {
-    // @ts-ignore
-    Sentry.init({
-      dsn: 'https://c0e5b834500d45b88fb648ccf7c489bf@sentry.io/1838052',
-      beforeSend(event, hint) {
-        // Check if it is an exception, and if so, show the report dialog
-        if (event.exception) {
-          // @ts-ignore
-          Sentry.showReportDialog({ eventId: event.event_id });
-        }
-        return event;
-      },
-    });
+    /* // @ts-ignore
+    if (Sentry !== undefined) {
+      // @ts-ignore
+      Sentry.init({
+        dsn: 'https://c0e5b834500d45b88fb648ccf7c489bf@sentry.io/1838052',
+        beforeSend(event, hint) {
+          // Check if it is an exception, and if so, show the report dialog
+          if (event.exception) {
+            // @ts-ignore
+            Sentry.showReportDialog({ eventId: event.event_id });
+          }
+          return event;
+        },
+      });
+    } */
 
     /* LogRocket.init('7agr7w/biscuitech');
     // plugins should also only be initialized when in the browser

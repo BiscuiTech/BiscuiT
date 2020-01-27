@@ -40,6 +40,7 @@
     "eslint-plugin-prettier": "^3.1.2",
     "eslint-plugin-react": "^7.17.0",
     "eslint-plugin-react-hooks": "^2.3.0",
+    "isomorphic-unfetch": "^3.0.0",
     "logrocket": "^1.0.6",
     "logrocket-react": "^4.0.1",
     "next": "^9.2.0",
@@ -109,7 +110,7 @@
   },
   "devDependencies": {
     "@sentry/typescript": "^5.10.0",
-    "@types/node": "^13.1.8",
+    "@types/node": "^13.5.0",
     "@types/react": "^16.9.19",
     "@types/react-dom": "^16.9.5",
     "@typescript-eslint/eslint-plugin": "^2.17.0",

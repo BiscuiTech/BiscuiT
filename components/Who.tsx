@@ -102,7 +102,7 @@ const Who = () => {
       <WhoWrapper>
         <Img>
           <img
-            src="/static/images/biscuitech-portrait.png"
+            src="/images/biscuitech-portrait.png"
             alt="Mug shot of Jean-Cédric Huet, also known as BiscuiTech"
           />
         </Img>
@@ -118,7 +118,7 @@ const Who = () => {
             href="/[lang]/contact"
             as={`/${locale}/contact`}
           >
-            <span className="text-gradient">{t("contactMe")}</span>
+            <span className="text-gradient">{t("common")["contactMe"]}</span>
           </ContactButton>
         </Text>
       </WhoWrapper>

@@ -58,14 +58,14 @@ const Nav = () => {
     <NavStyles>
       <Logo>
         <Link href="/[lang]" as={`/${locale}`} >
-          <img src="/static/BiscuiTech Logo (2019).png" alt="BiscuiTech Logo" />
+          <img src="/BiscuiTech Logo (2019).png" alt="BiscuiTech Logo" />
         </Link>
       </Logo>
       <ContactWrapper display={pathname === '/contact' ? 'none' : 'block'}>
         <ContactButton
           href="/[lang]/contact"
           as={`/${locale}/contact`}
-        >{t("contactMe")}</ContactButton>
+        >{t("common")["contactMe"]}</ContactButton>
       </ContactWrapper>
       <Menu />
     </NavStyles>

@@ -18,7 +18,7 @@ const Contact = () => {
       <Header>{t("contact_Header")}</Header>
       <ContactWrapper>
         <p>
-          {t("contact_text_1")}
+          {t("contact_text_1")}{' '}
           <span>
             <AnchorTag href="mailto:tech@biscui.tech">tech@biscui.tech</AnchorTag>
           </span>
