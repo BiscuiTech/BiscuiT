@@ -51,6 +51,7 @@ const Head = ({ title, description, url, ogImage }) => (
     <link rel="preconnect" href="https://www.facebook.com" />
     <link rel="preconnect" href="https://connect.facebook.net" />
     <link rel="preconnect" href="https://www.googletagmanager.com" />
+    <link rel="preconnect" href="https://static.xx.fbcdn.net" />
     {/* <script
       src="https://browser.sentry-cdn.com/5.9.1/bundle.min.js"
       integrity="sha384-/x1aHz0nKRd6zVUazsV6CbQvjJvr6zQL2CHbQZf3yoLkezyEtZUpqUNnOLW9Nt3v"
