@@ -1,4 +1,4 @@
-const what {
+const what = {
 
 }
 
