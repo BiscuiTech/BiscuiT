@@ -55,7 +55,7 @@ const Header = () => {
           </Link>
         </Logo>
       </HeaderStyles>
-      <Overlay isOpen={isNavOpen} />
+      <Overlay isOpen={isNavOpen} onClick={handleClick} />
     </>
 
   )

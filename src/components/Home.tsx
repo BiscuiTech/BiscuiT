@@ -10,7 +10,8 @@ const Welcome = styled.div`
   flex-direction: column;
   width: 90%;
   .welcome--my-name {
-    font-size: 36px;
+    /* font-size: 36px; */
+    font-size: calc(36px + (56px - 36px) * ((100vw - 500px) / (1600px - 500px)));
     font-family: 'Montserrat';
     margin-bottom: 36px;
     font-weight: 200;
@@ -21,7 +22,7 @@ const Welcome = styled.div`
   }
   .welcome--from {
     font-size: 24px;
-    font-family: 'Calibri';
+    font-family: 'Roboto';
     color: hsl(0,0%,0%,55%);
     width: 70%;
     min-width: 230px;

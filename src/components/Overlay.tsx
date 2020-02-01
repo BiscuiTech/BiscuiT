@@ -15,8 +15,7 @@ const Pane = styled.div`
   display: flex;
   pointer-events: ${props => (props.isOpen ? 'all' : 'none')};
   z-index: 9;
-  background: ${props => props.isOpen ? '#00000080' : null};
-   transition: background .5s ease-out;
+
 `;
 
 const OverlayPane = styled(animated.div)`
@@ -25,10 +24,12 @@ const OverlayPane = styled(animated.div)`
   max-width: 600px;
   background: white;
   clip-path: polygon(0% 0%, 100% 0%, 0% 100%, 0% 0%);
+  pointer-events: all;
 `;
 
 const LinkBox = styled.div`
   margin: 24px 12px;
+  margin-bottom: 0;
   display: inline-block;
   border-bottom: 1px solid hsl(0,0%,0%,20%);
 `;
@@ -71,12 +72,27 @@ const StyledLink = styled.a`
   }
 `;
 
+const ShadowOverlay = styled.div`
+  height: 100%;
+  width: 100%;
+  top: 0;
+  bottom: 0;
+  right:0;
+  left: 0;
+  pointer-events: ${props => (props.isOpen ? 'all' : 'none')};
+  position: absolute;
+  z-index: -1;
+  background: ${props => props.isOpen ? '#00000080' : null};
+  transition: background .5s ease-out;
+`;
+
 interface IOverlay {
   isOpen: boolean,
-  query?: string
+  query?: string,
+  onClick: object,
 }
 
-const Overlay = ({ isOpen, query }: IOverlay) => {
+const Overlay = ({ isOpen, query, onClick }: IOverlay) => {
   const { locale, t } = useTranslation()
   const { pathname } = useRouter();
   const { x } = useSpring({
@@ -87,32 +103,35 @@ const Overlay = ({ isOpen, query }: IOverlay) => {
     },
   });
   return (
-    <Pane isOpen={isOpen}>
-      <OverlayPane
-        style={{
-          transform: x.interpolate(x => `translate3d(-${x /* * -1 */}%,0,0)`),
-        }}
-      >
-        <LinkBox>
-          <Link href="/[lang]" as={`/${locale}`} >
-            <StyledLink current={pathname === '/[lang]'}>Home</StyledLink>
-          </Link>
-          <Link href="/[lang]/who" as={`/${locale}/who`}>
-            <StyledLink current={pathname === '/[lang]/who'}>About</StyledLink>
-          </Link>
-          <Link href="/what">
-            <StyledLink>Work</StyledLink>
-          </Link>
-          <Link href="/how">
-            <StyledLink>Blog</StyledLink>
-          </Link>
-          <Link href="/[lang]/contact" as={`/${locale}/contact`}>
-            <StyledLink current={pathname === '/[lang]/contact'}>Contact</StyledLink>
-          </Link>
-        </LinkBox>
-        <LocaleSwitcher />
-      </OverlayPane>
-    </Pane>
+    <>
+      <Pane isOpen={isOpen}>
+        <OverlayPane
+          style={{
+            transform: x.interpolate(x => `translate3d(-${x /* * -1 */}%,0,0)`),
+          }}
+        >
+          <LinkBox>
+            <Link href="/[lang]" as={`/${locale}`} >
+              <StyledLink current={pathname === '/[lang]'}>Home</StyledLink>
+            </Link>
+            <Link href="/[lang]/who" as={`/${locale}/who`}>
+              <StyledLink current={pathname === '/[lang]/who'}>About</StyledLink>
+            </Link>
+            <Link href="/what">
+              <StyledLink>Work</StyledLink>
+            </Link>
+            <Link href="/how">
+              <StyledLink>Blog</StyledLink>
+            </Link>
+            <Link href="/[lang]/contact" as={`/${locale}/contact`}>
+              <StyledLink current={pathname === '/[lang]/contact'}>Contact</StyledLink>
+            </Link>
+          </LinkBox>
+          <LocaleSwitcher />
+        </OverlayPane>
+        <ShadowOverlay isOpen={isOpen} onClick={onClick} />
+      </Pane>
+    </>
   );
 };
 

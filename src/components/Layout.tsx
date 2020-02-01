@@ -126,7 +126,7 @@ const Layout = ({ title, description, /* url, ogImage,  */ children }) => {
         />
         <a className="skip-link" href="#maincontent">Skip to main</a>
         <Header />
-        <Navigation />
+        {/* <Navigation /> */}
         <Content id="maincontent">{children}</Content>
       </Page>
     </>

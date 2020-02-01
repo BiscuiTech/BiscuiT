@@ -43,7 +43,7 @@ const Head = ({ title, description, url, ogImage }) => (
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <link rel="stylesheet" href="/inter.css" />
-    <link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto|Source+Code+Pro&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,400,600,700,800|Roboto:100,300,400|Source+Code+Pro&display=swap" rel="stylesheet" />
     {/* TODO: add fonts */}
     {/* <link rel="preconnect" href="https://www.google-analytics.com" />
     <link rel="preconnect" href="https://www.facebook.com" />

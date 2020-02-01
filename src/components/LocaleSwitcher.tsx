@@ -5,34 +5,98 @@ import { LocaleContext } from '../context/LocaleContext'
 import styled from 'styled-components'
 
 const LangWrapper = styled.div`
-  margin: 12px auto 0 auto;
+  margin: 12px 24px;
+  width: 100%;
   display: flex;
-  flex-direction: column;
   justify-content: center;
-  input[type=checkbox]{
-	height: 0;
-	width: 0;
-	visibility: hidden;
-}
-input:checked + label {
-	background: #bada55;
-}
+  font-family: 'Montserrat';
+  justify-content: start;
+  font-size: 14px;
+  ul {
+    padding: 0;
+    margin: 0;
+    li{
+      list-style: none;
 
-input:checked + label:after {
-	left: calc(100% - 5px);
-	transform: translateX(-100%);
-}
+    }
+  }
+  ul>li:not(:last-child) {
+    margin-bottom: 12px 0;
+  }
+  input[type=checkbox]{
+
+  }
+  input:checked + label {
+    background: #bada55;
+  }
+
+  input:checked + label:after {
+    left: calc(100% - 5px);
+    transform: translateX(-100%);
+  }
 `;
 
-const LangBtn = styled.button`
-  border: none;
-  background: none;
-  text-decoration: ${props => props.current ? 'underline' : 'none'};
-  cursor: pointer;
-  font-size: 24px;
-  font-weight: ${props => props.current ? 600 : 200};
-  font-family: ${props => props.theme.menu.font};
-  color: black;
+const LangBtn = styled.div`
+  transform: rotate(90deg);
+  /* The switch - the box around the slider */
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 30px;
+  }
+
+  /* Hide default HTML checkbox */
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  /* The slider */
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 22px;
+    width: 22px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+  }
+
+  input:checked + .slider {
+    background-color: #2196F3;
+  }
+
+  input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+  }
+
+  input:checked + .slider:before {
+    transform: translateX(20px);
+  }
+
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 34px;
+  }
+
+  .slider.round:before {
+    border-radius: 50%;
+  }
 `;
 
 const LocaleSwitcher: React.FC = () => {
@@ -52,12 +116,12 @@ const LocaleSwitcher: React.FC = () => {
         <li>Français</li>
         <li>English</li>
       </ul>
-      <input type="checkbox" />
-      {locales.map(locale => (
-        <LangBtn key={locale} value={locale} current={locale === lang} onClick={handleLocaleChange}>
-          {languageNames[locale]}
-        </LangBtn>
-      ))}
+      <LangBtn>
+        <label className="switch">
+          <input type="checkbox" />
+          <span className="slider round"></span>
+        </label>
+      </LangBtn>
     </LangWrapper>
   )
 }
