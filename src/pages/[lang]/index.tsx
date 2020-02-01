@@ -10,8 +10,9 @@ const IndexPage: React.FC = () => {
       description="Biscui.Tech Home page"
     >
       <Home
-        messagesKey="homepageMessages"
+
       />
+
     </Layout>
   );
 };

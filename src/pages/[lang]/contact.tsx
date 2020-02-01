@@ -1,14 +1,14 @@
 import React from 'react';
 import Layout from '../../components/Layout';
-import Contact from '../../components/Contact';
+// import Contact from '../../components/Contact';
 import withAPILocale from '../../hocs/withAPILocale'
 
-const contact = () => (
+const ContactPage = () => (
   <Layout
     title="Biscui.Tech"
     description="Biscui.Tech Home page">
-    <Contact />
+    {/* <Contact /> */}
   </Layout>
 );
 
-export default withAPILocale('contact')(contact);
+export default withAPILocale('contact')(ContactPage);

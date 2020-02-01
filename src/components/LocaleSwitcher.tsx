@@ -7,7 +7,21 @@ import styled from 'styled-components'
 const LangWrapper = styled.div`
   margin: 12px auto 0 auto;
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  input[type=checkbox]{
+	height: 0;
+	width: 0;
+	visibility: hidden;
+}
+input:checked + label {
+	background: #bada55;
+}
+
+input:checked + label:after {
+	left: calc(100% - 5px);
+	transform: translateX(-100%);
+}
 `;
 
 const LangBtn = styled.button`
@@ -18,7 +32,7 @@ const LangBtn = styled.button`
   font-size: 24px;
   font-weight: ${props => props.current ? 600 : 200};
   font-family: ${props => props.theme.menu.font};
-  color: white;
+  color: black;
 `;
 
 const LocaleSwitcher: React.FC = () => {
@@ -34,6 +48,11 @@ const LocaleSwitcher: React.FC = () => {
 
   return (
     <LangWrapper>
+      <ul>
+        <li>Français</li>
+        <li>English</li>
+      </ul>
+      <input type="checkbox" />
       {locales.map(locale => (
         <LangBtn key={locale} value={locale} current={locale === lang} onClick={handleLocaleChange}>
           {languageNames[locale]}

@@ -4,55 +4,38 @@ import React from 'react';
 import setupLogRocketReact from 'logrocket-react'; */
 import styled, { createGlobalStyle } from 'styled-components';
 import Head from './Head';
-import Nav from './Nav';
-import MessengerCustomerChat from 'react-messenger-customer-chat';
+import Header from './Header';
+import Navigation from './Navigation';
 
 const GlobaStyle = createGlobalStyle`
   body {
-    background: linear-gradient(
-    125.95deg,
-    hsl(209, 100%, 49%) 0%,
-    hsl(187, 71%, 50%) 50%,
-    hsl(34, 100%, 50%) 100%
-  );
-  background-size: 300%;
-  animation: overlay-animation 4s infinite alternate;
-  @keyframes overlay-animation {
-    0% {
-      background-position: left;
-    }
-    100% {
-      background-position: right;
-    }
-  }
-    font-size: calc(14px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
+    padding:0;
+    margin:0;
+    width: 100%;
+    height: 100%;
   }
   h1 {
     font-family: 'Montserrat', sans-serif;
     font-weight: 200;
-    font-size: calc(28px + (64 - 28) * ((100vw - 300px) / (1600 - 300)));
-    margin: 8px;
+    font-size: calc(28px + (54 - 28) * ((100vw - 300px) / (1600 - 300)));
+    margin: 0;
+    padding: 6px 12px;
   }
 `;
 
 const Page = styled.div`
-  min-height: calc(
-    100vh - 20px
-  );
-/* Fallback for browsers that do not support Custom Properties */
-  min-height: calc((var(--vh, 1vh) * 100) - 20px);
-  border-radius: 10px;
   width: 100%;
   height: 100%;
-  background: white;
+  height: 100vh;
+  background: linear-gradient(180deg, #F2F2F2 0%, #FFFFFF 100%);
+
   .skip-link{
     position: absolute;
-  top: -40px;
-  left: 0;
-
-  color: white;
-  padding: 8px;
-  z-index: 100;
+    top: -40px;
+    left: 0;
+    color: white;
+    padding: 8px;
+    z-index: 100;
     &:focus{
       top: 0;
     }
@@ -60,18 +43,7 @@ const Page = styled.div`
 `;
 
 const Content = styled.main`
-  border-radius: 10px;
-  background: white;
-  display: grid;
-  grid-template-areas:
-    'header'
-    'content';
-  grid-template-rows: 100px auto;
-  padding: 24px 36px;
-  @media (max-width: 780px) {
-    grid-template-rows: 100px auto;
-    padding: 12px 18px;
-  }
+
 `;
 
 function debounce(func, wait, immediate?) {
@@ -153,9 +125,9 @@ const Layout = ({ title, description, /* url, ogImage,  */ children }) => {
         // ogImage={ogImage}
         />
         <a className="skip-link" href="#maincontent">Skip to main</a>
-        <Nav />
+        <Header />
+        <Navigation />
         <Content id="maincontent">{children}</Content>
-        <MessengerCustomerChat pageId="330183527489356" />
       </Page>
     </>
   );
