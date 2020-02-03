@@ -5,121 +5,123 @@ import { LocaleContext } from '../context/LocaleContext'
 import styled from 'styled-components'
 
 const LangWrapper = styled.div`
-  margin: 12px 24px;
+  margin: 6px 24px;
   width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
-  font-family: 'Montserrat';
   justify-content: start;
-  font-size: 14px;
-  ul {
-    padding: 0;
-    margin: 0;
-    li{
-      list-style: none;
+/*   font-family: 'Montserrat';
+  font-size: 14px; */
 
-    }
-  }
-  ul>li:not(:last-child) {
-    margin-bottom: 12px 0;
-  }
-  input[type=checkbox]{
-
-  }
-  input:checked + label {
-    background: #bada55;
-  }
-
-  input:checked + label:after {
-    left: calc(100% - 5px);
-    transform: translateX(-100%);
-  }
 `;
 
 const LangBtn = styled.div`
-  transform: rotate(90deg);
-  /* The switch - the box around the slider */
-  .switch {
-    position: relative;
-    display: inline-block;
-    width: 50px;
-    height: 30px;
-  }
+--gold: ${props => props.theme.color.gold};
+--speed3: cubic-bezier(0.26, 0.48, 0.08, 0.9);
+--height: 32px;
+.language-switcher {
+  position: relative;
+  display: inline-block;
+  width: calc(var(--height) * 2);
+  height: var(--height);
+  transform: translateY(40%);
 
-  /* Hide default HTML checkbox */
-  .switch input {
+  // Closing Animation
+  transition: transform 0.17s var(--speed3);
+
+  input {
     opacity: 0;
     width: 0;
     height: 0;
   }
 
-  /* The slider */
-  .slider {
+  .select-fr,
+  .select-en {
     position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    -webkit-transition: .4s;
-    transition: .4s;
+    font-size: calc(var(--height) / 2.5);
+    top: calc(var(--height) / 4);
+    color: #fff;
+    /* mix-blend-mode: difference; */
   }
+  .select-fr {
+    left: calc(var(--height) / 3.5);
+    color: ${props => props.lang === 'fr' ? '#000' : null};
+  }
+  .select-en {
+    right: calc(var(--height) / 4);
+    color: ${props => props.lang === 'en' ? '#000' : null};
+  }
+}
 
-  .slider:before {
-    position: absolute;
-    content: "";
-    height: 22px;
-    width: 22px;
-    left: 4px;
-    bottom: 4px;
-    background-color: white;
-    transition: .4s;
-  }
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--gold);
+  box-shadow: 0 3px 64px rgba(var(--gold), .1);
+  transition: 0.4s;
+}
 
-  input:checked + .slider {
-    background-color: #2196F3;
-  }
+.slider:before {
+  position: absolute;
+  content: "";
+  height: var(--height);
+  width: var(--height);
+  left: 0;
+  bottom: 0;
+  background-color: white;
+  box-shadow: 0 3px 64px rgba(var(--gold), .16);
+  transition: 0.4s;
+}
 
-  input:focus + .slider {
-    box-shadow: 0 0 1px #2196F3;
-  }
+input:checked + .slider {
+  background-color: var(--gold);
+}
 
-  input:checked + .slider:before {
-    transform: translateX(20px);
-  }
+input:focus + .slider {
+  box-shadow: none;
+}
 
-  /* Rounded sliders */
-  .slider.round {
-    border-radius: 34px;
-  }
+input:checked + .slider:before {
+  transform: translateX(var(--height));
+}
 
-  .slider.round:before {
-    border-radius: 50%;
-  }
+/* Rounded sliders */
+.slider.round {
+  border-radius: var(--height);
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
 `;
 
 const LocaleSwitcher: React.FC = () => {
   const router = useRouter()
   const { locale: { lang } } = React.useContext(LocaleContext)
   const handleLocaleChange = React.useCallback(
-    (e: React.ChangeEvent<HTMLButtonElement>) => {
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      const targetLang = e.target.checked ? 'en' : 'fr'
       const regex = new RegExp(`^/(${locales.join('|')})`)
-      router.push(router.pathname, router.asPath.replace(regex, `/${e.target.value}`))
+      router.push(router.pathname, router.asPath.replace(regex, `/${targetLang}`))
     },
     [router]
   )
 
   return (
     <LangWrapper>
-      <ul>
-        <li>Français</li>
-        <li>English</li>
-      </ul>
-      <LangBtn>
-        <label className="switch">
-          <input type="checkbox" />
+      <LangBtn lang={lang}>
+        <label className="language-switcher">
+          <input type="checkbox" onChange={handleLocaleChange} />
           <span className="slider round"></span>
+          <span className="select-fr">FR</span>
+          <span className="select-en">EN</span>
         </label>
       </LangBtn>
     </LangWrapper>

@@ -1,6 +1,7 @@
 import React from 'react';
 import Layout from '../../components/Layout';
 import Home from '../../components/Home';
+import HomeDetails from '../../components/HomeDetails';
 import withAPILocale from '../../hocs/withAPILocale'
 
 const IndexPage: React.FC = () => {
@@ -9,10 +10,8 @@ const IndexPage: React.FC = () => {
       title="Biscui.Tech"
       description="Biscui.Tech Home page"
     >
-      <Home
-
-      />
-
+      <Home />
+      <HomeDetails />
     </Layout>
   );
 };
