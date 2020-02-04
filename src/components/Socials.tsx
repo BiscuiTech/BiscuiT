@@ -5,7 +5,6 @@ const SocialsContainer = styled.div`
   margin: auto;
   display: flex;
   flex-direction: row;
-  margin: 18px 18px;
   justify-content: center;
   a {
     margin: auto 20px;

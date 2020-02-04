@@ -1,10 +1,10 @@
 const common = {
   contactMe: "Contact Me",
-  overlay_Homepage: "Homepage",
+  overlay_Home: "Home",
   overlay_Contact: "Contact",
-  overlay_Who: "Who",
-  overlay_How: "How",
-  overlay_What: "What",
+  overlay_About: "About",
+  overlay_Blog: "Blog",
+  overlay_Work: "Projects",
 }
 
 export default common

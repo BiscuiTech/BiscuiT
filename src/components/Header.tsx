@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { Image, Transformation } from 'cloudinary-react';
 import useTranslation from '../hooks/useTranslation'
 import Menu from './Menu'
-import Overlay from './Overlay';
+import Overlay from './Navigation';
 
 const HeaderStyles = styled.header`
   background: white;

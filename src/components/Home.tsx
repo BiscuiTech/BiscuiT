@@ -1,11 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
+import useTranslation from '../hooks/useTranslation'
 
 const Welcome = styled.div`
   text-align: center;
   margin: auto;
   display: flex;
-  height: 80vh;
+  height: 85vh;
   justify-content: center;
   flex-direction: column;
   width: 90%;
@@ -33,15 +34,16 @@ const Welcome = styled.div`
 `
 
 const Home = () => {
+  const { locale, t } = useTranslation()
   return (
     <>
       <Welcome>
         <h1 className="welcome--my-name">
-          Hi, my name is
+          {t('welcome_msg')}
           <br />
           <span>Jean-Cédric Huet</span>
         </h1>
-        <p className="welcome--from">I'm a Web Developer from Montréal.</p>
+        <p className="welcome--from">{t('i_am')}</p>
       </Welcome>
     </>
   );

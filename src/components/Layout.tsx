@@ -21,6 +21,7 @@ const GlobaStyle = createGlobalStyle`
     height: 100%;
     scrollbar-width: thin;
     scrollbar-color: var(--thumbBG) var(--scrollbarBG);
+    font-family: ${props => props.theme.font}
   }
   body::-webkit-scrollbar {
     width: 11px;
