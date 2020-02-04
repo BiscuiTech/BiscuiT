@@ -15,7 +15,6 @@ const Pane = styled.div`
   display: flex;
   pointer-events: ${props => (props.isOpen ? 'all' : 'none')};
   z-index: 9;
-
 `;
 
 const OverlayPane = styled(animated.div)`
