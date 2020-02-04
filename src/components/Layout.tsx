@@ -5,7 +5,7 @@ import setupLogRocketReact from 'logrocket-react'; */
 import styled, { createGlobalStyle } from 'styled-components';
 import Head from './Head';
 import Header from './Header';
-import Navigation from './Navigation';
+import Footer from './Footer';
 
 const GlobaStyle = createGlobalStyle`
 --gold: ${props => props.theme.color.gold};
@@ -45,9 +45,7 @@ const GlobaStyle = createGlobalStyle`
 const Page = styled.div`
   width: 100%;
   height: 100%;
-  height: 100vh;
   background: linear-gradient(180deg, #F2F2F2 0%, #FFFFFF 100%);
-
   .skip-link{
     position: absolute;
     top: -40px;
@@ -61,7 +59,7 @@ const Page = styled.div`
 `;
 
 const Content = styled.main`
-
+  height: 100%;
 `;
 
 function debounce(func, wait, immediate?) {
@@ -144,8 +142,8 @@ const Layout = ({ title, description, /* url, ogImage,  */ children }) => {
         />
         <a className="skip-link" href="#maincontent">Skip to main</a>
         <Header />
-        {/* <Navigation /> */}
         <Content id="maincontent">{children}</Content>
+        <Footer />
       </Page>
     </>
   );

@@ -4,10 +4,9 @@ import styled from 'styled-components';
 import { Image, Transformation } from 'cloudinary-react';
 import useTranslation from '../hooks/useTranslation'
 import Menu from './Menu'
-import { useSprings, animated } from 'react-spring';
 import Overlay from './Overlay';
 
-const HeaderStyles = styled.div`
+const HeaderStyles = styled.header`
   background: white;
   height: 60px;
   width: 100%;
