@@ -108,7 +108,6 @@ const Who = () => {
   const { t, locale } = useTranslation()
   return (
     <>
-      <Header>{t('whoTitle')}</Header>
       <WhoWrapper>
         <Img>
           <Image publicId="biscui.tech/biscuitech-portrait.webp" cloudName="biscuitech" alt="Mug shot of Jean-Cédric Huet, also known as BiscuiTech">
