@@ -117,8 +117,8 @@ const Navigation = ({ isOpen, query, onClick }: IOverlay) => {
             <Link href="/[lang]/about" as={`/${locale}/about`}>
               <StyledLink current={pathname === '/[lang]/who'}>{t('common')['overlay_About']}</StyledLink>
             </Link>
-            <Link href="/[lang]/work" as={`/${locale}/work`}>
-              <StyledLink current={pathname === '/[lang]/work'}>{t('common')['overlay_Work']}</StyledLink>
+            <Link href="/[lang]/projects" as={`/${locale}/projects`}>
+              <StyledLink current={pathname === '/[lang]/projects'}>{t('common')['overlay_Work']}</StyledLink>
             </Link>
             <Link href="/[lang]/blog" as={`/${locale}/blog`}>
               <StyledLink current={pathname === '/[lang]/blog'}>{t('common')['overlay_Blog']}</StyledLink>
