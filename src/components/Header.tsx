@@ -11,6 +11,9 @@ const HeaderStyles = styled.div`
   background: white;
   height: 60px;
   width: 100%;
+  position: sticky;
+  top:0;
+  z-index: 10;
 `;
 
 const Logo = styled.div`

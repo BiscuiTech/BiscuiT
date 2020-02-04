@@ -3,26 +3,44 @@ import styled from 'styled-components';
 import Card from './styles/Card'
 
 const HomeDetailsStyles = styled.div`
-  * >{
-    z-index: 5;
+  color: white;
+  &::before{
+    content: '';
+    position: absolute;
+    top: 90vh;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #0C344B;
+    transform: skewY(6deg);
+    transform-origin: top left;
+    z-index: 1;
   }
 `;
 
-const ClippedBackground = styled.div`
-  height: 100%;
-  width: 100%;
-  min-height: 200px;
-  background: #0C344B;
-  clip-path: polygon(0% 0%, 100% 50px, 100% 100%, 0% 100%, 0% 0%);
-  /* position: fixed; */
-  z-index:-10;
+const ContentWrapper = styled.div`
+  position: relative;
+  z-index: 2;
+  width: 80%;
+  margin: auto;
+`;
+
+const TechStack = styled.div`
+
 `;
 
 const HomeDetails = () => {
   return (
     <HomeDetailsStyles>
-      <ClippedBackground />
-      <Card>I specialize in custom-made websites tailored to your needs with an attention to detail. I work with specialized modern tooling, such as the PERNGL stack.</Card>
+      <ContentWrapper>
+        <Card>I specialize in custom-made websites tailored to your needs with an attention to detail. I work with specialized modern tooling, such as the PERNGL stack.</Card>
+        <TechStack>
+          <p>The <span>PERN-GL</span> Stack</p>
+          <p>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. At quis quae saepe officiis nam non, possimus voluptatibus cum quaerat consequuntur sit numquam fuga quasi molestiae eos asperiores cupiditate soluta ea?
+        </p>
+        </TechStack>
+      </ContentWrapper>
     </HomeDetailsStyles>
   )
 }
