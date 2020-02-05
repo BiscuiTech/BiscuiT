@@ -27,6 +27,12 @@ const FooterStyles = styled.div`
     grid-template-areas:
       '. logo facebook linkedin  .'
       '. logo twitter github  .';
+    & > a:nth-child(1) {
+      justify-self: right;
+    }
+    & > a:nth-child(4) {
+      justify-self: right;
+    }
   }
 `;
 
