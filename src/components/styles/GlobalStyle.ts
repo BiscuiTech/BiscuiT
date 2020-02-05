@@ -6,6 +6,7 @@ const GlobaStyle = createGlobalStyle`
   html {
     --scrollbarBG: #CFD8DC;
     --thumbBG: #90A4AE;
+    scroll-behavior: smooth;
   }
   body {
     padding:0;

@@ -39,7 +39,7 @@ const Logo = styled.div`
 
 
 const Header = () => {
-  const { t, locale } = useTranslation()
+  const { locale } = useTranslation()
   const [isNavOpen, setNavOpen] = useState(false);
   const handleClick = e => {
     e.preventDefault();
