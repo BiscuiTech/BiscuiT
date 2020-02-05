@@ -56,16 +56,12 @@ const StyledLink = styled.a`
     display: block;
     content: '';
     background: #FBB03B;
-    /* box-shadow:
-      inset 100px 0px 0px -40px #FBB03B,
-      inset 110px 10px 0px -40px red; */
     box-shadow: inset -40px 0px 30px -18px #FBB03B;
     transform: ${props => (props.current === true ? 'scaleX(1)' : 'scaleX(0)')};
     transform-origin: right;
     transition: transform 250ms ease-in;
   }
   :hover:after {
-    /* transform: ${props => (props.current === true ? null : 'scaleX(1)')}; */
     transform:scaleX(1);
     transform-origin: left;
   }
@@ -114,7 +110,7 @@ const Navigation = ({ isOpen, query, onClick }: IOverlay) => {
               <StyledLink current={pathname === '/[lang]'}>{t('common')['overlay_Home']}</StyledLink>
             </Link>
             <Link href="/[lang]/about" as={`/${locale}/about`}>
-              <StyledLink current={pathname === '/[lang]/who'}>{t('common')['overlay_About']}</StyledLink>
+              <StyledLink current={pathname === '/[lang]/about'}>{t('common')['overlay_About']}</StyledLink>
             </Link>
             <Link href="/[lang]/projects" as={`/${locale}/projects`}>
               <StyledLink current={pathname === '/[lang]/projects'}>{t('common')['overlay_Work']}</StyledLink>
