@@ -34,8 +34,8 @@ export default class MyDocument extends Document {
     return (
       // @ts-ignore
       <Html lang={this.props.locale || 'en'} > {/* TODO: find a way to make this dynamic */}
-        <Head> {/* TODO: reactivate this after deployment */}
-          {/* <script
+        <Head>
+          <script
             async
             src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
           />
@@ -50,7 +50,7 @@ export default class MyDocument extends Document {
             });
           `,
             }}
-          />*/}
+          />
         </Head>
         <body>
           <Main />

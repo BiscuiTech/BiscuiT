@@ -11,9 +11,9 @@ const FooterStyles = styled.div`
   margin-top: 24px;
   padding: 48px 0;
   border-top: 4px solid ${props => props.theme.color.gold};
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  color: white;
+  font-weight: 200;
+  text-align: center;
   a {
     margin: 0 6px;
   }
@@ -21,7 +21,13 @@ const FooterStyles = styled.div`
     margin: 0 6px;
     cursor: pointer;
   }
-  @media (max-width:420px) {
+`;
+
+const Grid = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+@media (max-width:420px) {
     display:grid;
     grid-template: 1fr 1fr / 10% 1fr 1fr 1.5fr 10% ;
     grid-template-areas:
@@ -41,63 +47,69 @@ const Footer = () => {
 
   return (
     <FooterStyles>
-      <a
-        href="https://www.facebook.com/biscuittech/"
-        target="_blank"
-        rel="noopener noreferrer"
-        style={{ gridArea: 'facebook' }}
-      >
-        <img
-          src="/facebook.svg"
-          width="50px"
-          height="50px"
-          alt="Facebook Icon \& link"
-        />
-      </a>
-      <a
-        href="https://ca.linkedin.com/in/jean-c%C3%A9dric-huet-7a0949a3"
-        target="_blank"
-        rel="noopener noreferrer"
-        style={{ gridArea: 'linkedin' }}
-      >
-        <img
-          src="/linkedin.svg"
-          width="50px"
-          height="50px"
-          alt="LinkedIn Icon \& link"
-        />
-      </a>
-      <Link href="/[lang]" as={`/${locale}`} >
-        <Image publicId="biscui.tech/Biscuit.png" cloudName="biscuitech" alt="BiscuiTech Logo" style={{ gridArea: 'logo', placeSelf: 'left' }}>
-          <Transformation height="80" crop="scale" />
-        </Image>
-      </Link>
-      <a
-        href="https://twitter.com/biscuitech"
-        target="_blank"
-        rel="noopener noreferrer"
-        style={{ gridArea: 'twitter' }}
-      >
-        <img
-          src="/twitter.svg"
-          width="50px"
-          height="50px"
-          alt="Twitter Icon \& link"
-        />
-      </a>
-      <a
-        href="https://github.com/biscuitech"
-        target="_blank"
-        rel="noopener noreferrer"
-        style={{ gridArea: 'github' }}
-      >
-        <img
-          src="/github.svg"
-          width="50px"
-          height="50px"
-          alt="GitHub Icon \& link"
-        />
-      </a>
+      <Grid>
+
+        <a
+          href="https://www.facebook.com/biscuittech/"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ gridArea: 'facebook' }}
+        >
+          <img
+            src="/facebook.svg"
+            width="50px"
+            height="50px"
+            alt="Facebook Icon \& link"
+          />
+        </a>
+        <a
+          href="https://ca.linkedin.com/in/jean-c%C3%A9dric-huet-7a0949a3"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ gridArea: 'linkedin' }}
+        >
+          <img
+            src="/linkedin.svg"
+            width="50px"
+            height="50px"
+            alt="LinkedIn Icon \& link"
+          />
+        </a>
+        <Link href="/[lang]" as={`/${locale}`} >
+          <Image publicId="biscui.tech/Biscuit.png" cloudName="biscuitech" alt="BiscuiTech Logo" style={{ gridArea: 'logo', placeSelf: 'left' }}>
+            <Transformation height="80" crop="scale" />
+          </Image>
+        </Link>
+        <a
+          href="https://twitter.com/biscuitech"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ gridArea: 'twitter' }}
+        >
+          <img
+            src="/twitter.svg"
+            width="50px"
+            height="50px"
+            alt="Twitter Icon \& link"
+          />
+        </a>
+        <a
+          href="https://github.com/biscuitech"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ gridArea: 'github' }}
+        >
+          <img
+            src="/github.svg"
+            width="50px"
+            height="50px"
+            alt="GitHub Icon \& link"
+          />
+        </a>
+      </Grid>
+      <div>
+        <p>To access previous version of this site, view the archive</p>
+      </div>
     </FooterStyles>
   )
 }
