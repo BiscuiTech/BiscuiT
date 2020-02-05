@@ -41,8 +41,6 @@ const LangBtn = styled.div`
     position: absolute;
     font-size: calc(var(--height) / 2.5);
     top: calc(var(--height) / 4);
-    color: #fff;
-    /* mix-blend-mode: difference; */
   }
   .select-fr {
     left: calc(var(--height) / 3.5);
@@ -118,7 +116,7 @@ const LocaleSwitcher: React.FC = () => {
     <LangWrapper>
       <LangBtn lang={lang}>
         <label className="language-switcher">
-          <input type="checkbox" onChange={handleLocaleChange} />
+          <input type="checkbox" onChange={handleLocaleChange} checked={lang === 'en' ? true : false} />
           <span className="slider round"></span>
           <span className="select-fr">FR</span>
           <span className="select-en">EN</span>
