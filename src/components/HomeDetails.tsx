@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components';
 import Card from './styles/Card'
 import A from './styles/a';
 import useTranslation from '../hooks/useTranslation'
+import { Waypoint } from 'react-waypoint';
+import { useSpring, animated, config } from 'react-spring';
 
 const HomeDetailsStyles = styled.div`
   color: white;
@@ -27,6 +29,9 @@ const TechStack = styled.div`
   * {
     position: relative;
   }
+  p:first-child{
+    text-align: center;
+  }
   p{
     max-width: 420px;
     padding: 12px 0;
@@ -50,19 +55,29 @@ const TechStack = styled.div`
 `;
 
 const HomeDetails = () => {
-  const { locale, t } = useTranslation()
-
+  const { t } = useTranslation()
+  const [toggle, setToggle] = useState(false);
+  const animation = useSpring({
+    config: { mass: 1, tension: 120, friction: 14, duration: 750 },
+    opacity: toggle ? 1 : 0,
+    transform: toggle ? 'translate3d(0,0,0)' : 'translate3d(50%,0,0)',
+    textAlign: 'center',
+  });
   return (
     <HomeDetailsStyles>
       <ContentWrapper>
-        <Card>{t('firstCard')}</Card>
+        <Card fadeIn={true}>{t('firstCard')}</Card>
         <TechStack>
-          <p style={{ textAlign: 'center' }}>The <span>PERN-GL</span> Stack</p>
-          <p>
+          <Waypoint
+            bottomOffset="20%"
+            onEnter={() => setToggle(true)}
+          />
+          <animated.p style={animation}>The <span>PERN-GL</span> Stack</animated.p>
+          <animated.p style={animation}>
             Lorem, ipsum dolor sit amet consectetur adipisicing elit. At quis quae saepe officiis nam non, possimus voluptatibus cum quaerat consequuntur sit numquam fuga quasi molestiae eos asperiores cupiditate soluta ea?
-        </p>
+          </animated.p>
         </TechStack>
-        <Card>My stack consists of trusted and widely used tools such as PostgreSQL, Node.js and some modern frameworks built around React and GraphQL. Both of them being built by Facebook and used in the <A href="https://www.cnet.com/news/facebooks-redesigned-look-for-desktops-is-coming-before-spring-2020/">2020 Facebook redesign</A>, you can be sure they are battle-tested for heavy-load and high throughput.</Card>
+        <Card fadeIn={true} markup={t('secondCardHTML')}></Card>
       </ContentWrapper>
     </HomeDetailsStyles>
   )
