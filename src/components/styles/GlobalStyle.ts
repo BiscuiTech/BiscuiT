@@ -7,12 +7,14 @@ const GlobaStyle = createGlobalStyle`
     --scrollbarBG: #CFD8DC;
     --thumbBG: #90A4AE;
     scroll-behavior: smooth;
+    height: 100%;
   }
   body {
     padding:0;
     margin:0;
     width: 100%;
     height: 100%;
+    min-height: 100%;
     scrollbar-width: thin;
     scrollbar-color: var(--thumbBG) var(--scrollbarBG);
     font-family: ${props => props.theme.font}

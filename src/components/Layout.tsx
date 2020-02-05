@@ -12,6 +12,7 @@ const Page = styled.div`
   width: 100%;
   height: 100%;
   background: linear-gradient(180deg, #F2F2F2 0%, #FFFFFF 100%);
+
   .skip-link{
     position: absolute;
     top: -40px;

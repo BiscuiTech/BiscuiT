@@ -8,7 +8,7 @@ const AboutPage: React.FC = () => (
     title="Biscui.Tech"
     description="Biscui.Tech Home page"
   >
-    {/* <Who /> */}
+    About me
   </Layout>
 );
 
