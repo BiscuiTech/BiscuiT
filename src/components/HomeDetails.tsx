@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import styled from 'styled-components';
 import Card from './styles/Card'
-import A from './styles/a';
 import useTranslation from '../hooks/useTranslation'
 import { Waypoint } from 'react-waypoint';
-import { useSpring, animated, config } from 'react-spring';
+import { useSpring, animated } from 'react-spring';
+import ReactHtmlParser from 'react-html-parser'
 
 const HomeDetailsStyles = styled.div`
   color: white;
@@ -38,20 +38,28 @@ const TechStack = styled.div`
     margin: 24px auto;
     z-index: 10;
   }
-  p > span {
-    font-weight: 600;
-  }
   &::before {
     content: '';
     width: 100%;
-    height: 500px;
+    height: 30vh;
+    background: #0C344B;
+    transform: skewY(6deg);
+    transform-origin: top right;
+    position: absolute;
+    z-index: 1;
+   /*  margin-top: -30vh; */
+  }
+  &::after {
+    content: '';
+    width: 100%;
+    height: 30vh;
     background: #0C344B;
     transform: skewY(6deg);
     transform-origin: top left;
     position: absolute;
     z-index: 1;
-    margin-top: -180px;
-  }
+    margin-top: -30vh;
+   }
 `;
 
 const HomeDetails = () => {
@@ -60,7 +68,7 @@ const HomeDetails = () => {
   const animation = useSpring({
     config: { mass: 1, tension: 120, friction: 14, duration: 750 },
     opacity: toggle ? 1 : 0,
-    transform: toggle ? 'translate3d(0,0,0)' : 'translate3d(50%,0,0)',
+    transform: toggle ? 'translate3d(0,0,0)' : 'translate3d(-50%,0,0)',
     textAlign: 'center',
   });
   return (
@@ -69,10 +77,10 @@ const HomeDetails = () => {
         <Card fadeIn={true}>{t('firstCard')}</Card>
         <TechStack>
           <Waypoint
-            bottomOffset="20%"
+            bottomOffset="30%"
             onEnter={() => setToggle(true)}
           />
-          <animated.p style={animation}>The <span>PERN-GL</span> Stack</animated.p>
+          <animated.p style={animation}>{ReactHtmlParser(t('techStack_header'))}</animated.p>
           <animated.p style={animation}>
             Lorem, ipsum dolor sit amet consectetur adipisicing elit. At quis quae saepe officiis nam non, possimus voluptatibus cum quaerat consequuntur sit numquam fuga quasi molestiae eos asperiores cupiditate soluta ea?
           </animated.p>

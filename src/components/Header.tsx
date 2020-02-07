@@ -9,7 +9,7 @@ import Overlay from './Navigation';
 const HeaderStyles = styled.header`
   background: white;
   height: 60px;
-  width: 100%;
+  width: 100vw;
   position: sticky;
   top:0;
   z-index: 10;

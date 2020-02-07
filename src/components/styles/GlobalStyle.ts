@@ -8,6 +8,7 @@ const GlobaStyle = createGlobalStyle`
     --thumbBG: #90A4AE;
     scroll-behavior: smooth;
     height: 100%;
+    overflow-x: hidden;
   }
   body {
     padding:0;
@@ -17,7 +18,7 @@ const GlobaStyle = createGlobalStyle`
     min-height: 100%;
     scrollbar-width: thin;
     scrollbar-color: var(--thumbBG) var(--scrollbarBG);
-    font-family: ${props => props.theme.font}
+    font-family: ${props => props.theme.font};
   }
   body::-webkit-scrollbar {
     width: 11px;

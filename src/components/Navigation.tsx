@@ -18,7 +18,7 @@ const Pane = styled.div`
 `;
 
 const OverlayPane = styled(animated.div)`
-  width: 100%;
+  width: 100vw;
   height: calc(100% - 60px);
   max-width: 600px;
   background: white;

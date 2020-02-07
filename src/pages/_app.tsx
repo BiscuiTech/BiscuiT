@@ -3,6 +3,8 @@ import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import * as Sentry from '@sentry/node';
 import theme from '../components/Theme';
+
+import '../styles/index.css'
 /**
  *
  *  This is for Google Analytics

@@ -12,7 +12,7 @@ const FooterStyles = styled.div`
   padding: 48px 0;
   border-top: 4px solid ${props => props.theme.color.gold};
   color: white;
-  font-weight: 200;
+  font-weight: 300;
   text-align: center;
   a {
     margin: 0 6px;
@@ -20,6 +20,10 @@ const FooterStyles = styled.div`
   img {
     margin: 0 6px;
     cursor: pointer;
+  }
+  a{
+    font-size: 14px;
+    margin: 6px;
   }
 `;
 
@@ -108,7 +112,9 @@ const Footer = () => {
         </a>
       </Grid>
       <div>
-        <p>To access previous version of this site, view the archive</p>
+        <Link href="/[lang]/archives" as={`/${locale}/archives`} >
+          <a>To access previous version of this site, view the archive</a>
+        </Link>
       </div>
     </FooterStyles>
   )
