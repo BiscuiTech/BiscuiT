@@ -15,7 +15,7 @@ const GlobaStyle = createGlobalStyle`
     margin:0;
     width: 100%;
     height: 100%;
-    min-height: 100%;
+    height: calc(var(--vh, 1vh) * 100);
     scrollbar-width: thin;
     scrollbar-color: var(--thumbBG) var(--scrollbarBG);
     font-family: ${props => props.theme.font};

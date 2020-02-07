@@ -12,7 +12,8 @@ const Page = styled.div`
   width: 100%;
   height: 100%;
   background: linear-gradient(180deg, #F2F2F2 0%, #FFFFFF 100%);
-
+  display: flex;
+  flex-direction: column;
   .skip-link{
     position: absolute;
     top: -40px;
@@ -22,11 +23,13 @@ const Page = styled.div`
     z-index: 100;
     &:focus{
       top: 0;
-    }  }
+    }
+  }
 `;
 
 const Content = styled.main`
   height: 100%;
+  flex: 1 0 auto;
 `;
 
 function debounce(func, wait, immediate?) {

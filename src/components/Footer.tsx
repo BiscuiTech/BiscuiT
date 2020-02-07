@@ -14,6 +14,7 @@ const FooterStyles = styled.div`
   color: white;
   font-weight: 300;
   text-align: center;
+  flex-shrink: 0;
   a {
     margin: 0 6px;
   }
@@ -31,7 +32,7 @@ const Grid = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-@media (max-width:420px) {
+  @media (max-width:420px) {
     display:grid;
     grid-template: 1fr 1fr / 10% 1fr 1fr 1.5fr 10% ;
     grid-template-areas:
@@ -52,7 +53,6 @@ const Footer = () => {
   return (
     <FooterStyles>
       <Grid>
-
         <a
           href="https://www.facebook.com/biscuittech/"
           target="_blank"
@@ -113,7 +113,7 @@ const Footer = () => {
       </Grid>
       <div>
         <Link href="/[lang]/archives" as={`/${locale}/archives`} >
-          <a>To access previous version of this site, view the archive</a>
+          <a>To access previous version of this site, view the archives.</a>
         </Link>
       </div>
     </FooterStyles>

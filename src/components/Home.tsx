@@ -12,7 +12,7 @@ const Welcome = styled.div`
   width: 90%;
   .welcome--my-name {
     /* font-size: 36px; */
-    font-size: calc(36px + (56px - 36px) * ((100vw - 500px) / (1600px - 500px)));
+    font-size: calc(36px + (56px - 36px) * ((100vw - 500px) / (1600 - 500)));
     font-family: 'Montserrat';
     margin-bottom: 36px;
     font-weight: 200;
