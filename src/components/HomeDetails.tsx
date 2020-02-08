@@ -80,7 +80,9 @@ const HomeDetails = () => {
             bottomOffset="30%"
             onEnter={() => setToggle(true)}
           />
-          <animated.p style={animation}>{ReactHtmlParser(t('techStack_header'))}</animated.p>
+          /<animated.p style={animation} dangerouslySetInnerHTML={{ __html: t('techStack_header') }}>
+            {/* <div  /> */}
+          </animated.p>
           <animated.p style={animation}>
             Lorem, ipsum dolor sit amet consectetur adipisicing elit. At quis quae saepe officiis nam non, possimus voluptatibus cum quaerat consequuntur sit numquam fuga quasi molestiae eos asperiores cupiditate soluta ea?
           </animated.p>

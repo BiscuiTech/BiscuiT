@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import styled, { keyframes, css } from 'styled-components';
 import { Waypoint } from 'react-waypoint';
-import ReactHtmlParser from 'react-html-parser';
 import A from './a';
 
 const fadeInAnimation = keyframes`
@@ -56,10 +55,11 @@ const Card = ({ children, fadeIn, markup }: CardProps) => {
   // not animated
   if (!fadeIn) {
     return (
-      <CardStyles
-        dangerouslySetInnerHTML={markup && createMarkup(markup)}>
-        {children}
-      </CardStyles>
+      markup
+        ? <CardStyles toggle={toggle} dangerouslySetInnerHTML={{ __html: markup }} />
+        : <CardStyles toggle={toggle}>
+          {children}
+        </CardStyles>
     )
   } else {
     // animated version
@@ -70,9 +70,7 @@ const Card = ({ children, fadeIn, markup }: CardProps) => {
           onEnter={() => setToggle(true)}
         />
         {markup
-          ? <CardStyles toggle={toggle}>
-            {ReactHtmlParser(markup)}
-          </CardStyles>
+          ? <CardStyles toggle={toggle} dangerouslySetInnerHTML={{ __html: markup }} />
           : <CardStyles toggle={toggle}>
             {children}
           </CardStyles>
