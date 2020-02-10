@@ -1,8 +1,8 @@
-import React from 'react'
-import styled from 'styled-components'
-import Link from 'next/link'
-import { Image, Transformation } from 'cloudinary-react';
-import useTranslation from '../hooks/useTranslation'
+import React from "react";
+import styled from "styled-components";
+import Link from "next/link";
+import { Image, Transformation } from "cloudinary-react";
+import useTranslation from "../hooks/useTranslation";
 
 const FooterStyles = styled.div`
   width: 100%;
@@ -22,7 +22,7 @@ const FooterStyles = styled.div`
     margin: 0 6px;
     cursor: pointer;
   }
-  a{
+  a {
     font-size: 14px;
     margin: 6px;
   }
@@ -32,12 +32,12 @@ const Grid = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  @media (max-width:420px) {
-    display:grid;
-    grid-template: 1fr 1fr / 10% 1fr 1fr 1.5fr 10% ;
+  @media (max-width: 420px) {
+    display: grid;
+    grid-template: 1fr 1fr / 10% 1fr 1fr 1.5fr 10%;
     grid-template-areas:
-      '. logo facebook linkedin  .'
-      '. logo twitter github  .';
+      ". logo facebook linkedin  ."
+      ". logo twitter github  .";
     & > a:nth-child(1) {
       justify-self: right;
     }
@@ -47,8 +47,13 @@ const Grid = styled.div`
   }
 `;
 
+/*
+TODO: scroll to top button
+
+*/
+
 const Footer = () => {
-  const { locale } = useTranslation()
+  const { locale } = useTranslation();
 
   return (
     <FooterStyles>
@@ -57,7 +62,7 @@ const Footer = () => {
           href="https://www.facebook.com/biscuittech/"
           target="_blank"
           rel="noopener noreferrer"
-          style={{ gridArea: 'facebook' }}
+          style={{ gridArea: "facebook" }}
         >
           <img
             src="/facebook.svg"
@@ -70,7 +75,7 @@ const Footer = () => {
           href="https://ca.linkedin.com/in/jean-c%C3%A9dric-huet-7a0949a3"
           target="_blank"
           rel="noopener noreferrer"
-          style={{ gridArea: 'linkedin' }}
+          style={{ gridArea: "linkedin" }}
         >
           <img
             src="/linkedin.svg"
@@ -79,8 +84,13 @@ const Footer = () => {
             alt="LinkedIn Icon \& link"
           />
         </a>
-        <Link href="/[lang]" as={`/${locale}`} >
-          <Image publicId="biscui.tech/Biscuit.png" cloudName="biscuitech" alt="BiscuiTech Logo" style={{ gridArea: 'logo', placeSelf: 'left' }}>
+        <Link href="/[lang]" as={`/${locale}`}>
+          <Image
+            publicId="biscui.tech/Biscuit.png"
+            cloudName="biscuitech"
+            alt="BiscuiTech Logo"
+            style={{ gridArea: "logo", placeSelf: "left" }}
+          >
             <Transformation height="80" crop="scale" />
           </Image>
         </Link>
@@ -88,7 +98,7 @@ const Footer = () => {
           href="https://twitter.com/biscuitech"
           target="_blank"
           rel="noopener noreferrer"
-          style={{ gridArea: 'twitter' }}
+          style={{ gridArea: "twitter" }}
         >
           <img
             src="/twitter.svg"
@@ -101,7 +111,7 @@ const Footer = () => {
           href="https://github.com/biscuitech"
           target="_blank"
           rel="noopener noreferrer"
-          style={{ gridArea: 'github' }}
+          style={{ gridArea: "github" }}
         >
           <img
             src="/github.svg"
@@ -112,12 +122,12 @@ const Footer = () => {
         </a>
       </Grid>
       <div>
-        <Link href="/[lang]/archives" as={`/${locale}/archives`} >
+        <Link href="/[lang]/archives" as={`/${locale}/archives`}>
           <a>To access previous version of this site, view the archives.</a>
         </Link>
       </div>
     </FooterStyles>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;
