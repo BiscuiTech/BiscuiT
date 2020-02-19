@@ -16,6 +16,7 @@ const FooterStyles = styled.div`
   font-weight: 300;
   text-align: center;
   flex-shrink: 0;
+  position: relative;
   a {
     margin: 0 6px;
   }
@@ -30,6 +31,14 @@ const FooterStyles = styled.div`
   .social-logo {
     height: auto;
     width: 40px;
+  }
+  .archives {
+    position: absolute;
+    bottom: 2px;
+    width: 100%;
+    text-align: center;
+    color: hsl(0, 0%, 100%, 70%);
+    font-size: 12px;
   }
 `;
 
@@ -130,7 +139,7 @@ const Footer = () => {
           />
         </a>
       </Grid>
-      <div>
+      <div className="archives">
         <Link href="/[lang]/archives" as={`/${locale}/archives`}>
           <a>To access previous version of this site, view the archives.</a>
         </Link>
