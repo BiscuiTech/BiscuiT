@@ -18,7 +18,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
     const pipeline = smStream.pipe(createGzip());
     // Add any static entries here
-    smStream.write({ url: '/', lastmod: process.env.siteUpdatedAt, changefreq: EnumChangefreq.WEEKLY });
+    smStream.write({ url: '/fr', lastmod: process.env.siteUpdatedAt, changefreq: EnumChangefreq.WEEKLY });
+    smStream.write({ url: '/en', lastmod: process.env.siteUpdatedAt, changefreq: EnumChangefreq.WEEKLY });
     smStream.write({ url: '/who', lastmod: process.env.siteUpdatedAt, changefreq: EnumChangefreq.MONTHLY });
     //smStream.write({ url: '/what', lastmod: process.env.siteUpdatedAt, changefreq: EnumChangefreq.MONTHLY });
     //smStream.write({ url: '/how', lastmod: process.env.siteUpdatedAt, changefreq: EnumChangefreq.MONTHLY });
