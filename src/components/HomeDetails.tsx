@@ -4,7 +4,6 @@ import Card from './styles/Card'
 import useTranslation from '../hooks/useTranslation'
 import { Waypoint } from 'react-waypoint';
 import { useSpring, animated } from 'react-spring';
-import ReactHtmlParser from 'react-html-parser'
 
 const HomeDetailsStyles = styled.div`
   color: white;

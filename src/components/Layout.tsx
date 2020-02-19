@@ -2,7 +2,7 @@ import React from 'react';
 /* import { Html } from 'next/document' */
 /* import LogRocket from 'logrocket';
 import setupLogRocketReact from 'logrocket-react'; */
-import styled, { createGlobalStyle } from 'styled-components';
+import styled from 'styled-components';
 import Head from './Head';
 import Header from './Header';
 import Footer from './Footer';
@@ -29,6 +29,7 @@ const Page = styled.div`
 
 const Content = styled.main`
   height: 100%;
+  min-height: calc(75vh - 85px);
   flex: 1 0 auto;
 `;
 

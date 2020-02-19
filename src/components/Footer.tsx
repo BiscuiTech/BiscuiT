@@ -6,7 +6,8 @@ import useTranslation from "../hooks/useTranslation";
 
 const FooterStyles = styled.div`
   width: 100%;
-  height: 100%;
+  height: 25vh;
+  min-height: 180px;
   background: #0c344b;
   margin-top: 24px;
   padding: 48px 0;
@@ -25,6 +26,10 @@ const FooterStyles = styled.div`
   a {
     font-size: 14px;
     margin: 6px;
+  }
+  .social-logo {
+    height: auto;
+    width: 40px;
   }
 `;
 
@@ -69,6 +74,7 @@ const Footer = () => {
             width="50px"
             height="50px"
             alt="Facebook Icon \& link"
+            className="social-logo"
           />
         </a>
         <a
@@ -82,6 +88,7 @@ const Footer = () => {
             width="50px"
             height="50px"
             alt="LinkedIn Icon \& link"
+            className="social-logo"
           />
         </a>
         <Link href="/[lang]" as={`/${locale}`}>
@@ -105,6 +112,7 @@ const Footer = () => {
             width="50px"
             height="50px"
             alt="Twitter Icon \& link"
+            className="social-logo"
           />
         </a>
         <a
@@ -118,6 +126,7 @@ const Footer = () => {
             width="50px"
             height="50px"
             alt="GitHub Icon \& link"
+            className="social-logo"
           />
         </a>
       </Grid>
