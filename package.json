@@ -126,6 +126,6 @@
     "eslint-plugin-react": "7.18.3",
     "eslint-plugin-react-hooks": "2.4.0",
     "nodemon": "2.0.2",
-    "typescript": "3.7.5"
+    "typescript": "3.8.2"
   }
 }
