@@ -20,7 +20,7 @@ const animation = () =>
     ${fadeInAnimation} 1s ease-in-out
 `;
 
-const BaseCardStyles = styled.div`
+export const BaseCardStyles = styled.div`
   width: 80%;
   max-width: ${props => props.maxWidth || '500px'};
   box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.35);

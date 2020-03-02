@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components';
-import PageHeader from './styles/PageHeader';
+import PageHeader, { SubHeader } from './styles/PageHeader';
 import useTranslation from '../hooks/useTranslation';
 import Card from './styles/Card';
 import { Image, Transformation } from 'cloudinary-react';
@@ -122,6 +122,9 @@ const About = () => {
   return (
     <>
       <PageHeader>{t('header')}</PageHeader>
+      <SubHeader>
+        {t('subHeader')}
+      </SubHeader>
       <AboutStyles>
         <Card fadeIn={false} textAlign="left" maxWidth="1000px">
           <AboutWrapper>

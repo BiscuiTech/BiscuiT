@@ -1,25 +1,21 @@
 import React from 'react';
 import styled from 'styled-components';
-import Link from 'next/link';
-import useTranslation from '../hooks/useTranslation'
 
 const ContactButtonStyles = styled.div`
-  margin: 10px auto;
   text-align: center;
-  /* display: flex; */
+  position: absolute;
+  bottom: 0; transform: translateX(50%);
   color: black;
   cursor: pointer;
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 400;
   line-height: 46px;
-  margin: auto;
   padding: 1em 20px;
   max-width: 220px;
-  position: relative;
   text-decoration: none;
   text-transform: uppercase;
   width: 100%;
-  height: 80px;
+  height: 70px;
   svg {
     height: 100%;
     max-height: 80px;
@@ -28,7 +24,6 @@ const ContactButtonStyles = styled.div`
     top: 8px;
     width: 100%;
   }
-
   rect {
     fill: none;
     stroke: black;
@@ -68,11 +63,12 @@ const ContactButtonStyles = styled.div`
 
 interface IContactButton {
   children: any
+  onClick?: any
 }
 
-const ContactButton = ({ children }: IContactButton) => {
+const ContactButton = ({ children, onClick }: IContactButton) => {
   return (
-    <ContactButtonStyles>
+    <ContactButtonStyles onClick={onClick}>
       <svg>
         <defs>
           <linearGradient id="myGradient">
