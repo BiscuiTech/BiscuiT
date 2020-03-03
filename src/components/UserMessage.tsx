@@ -5,18 +5,18 @@ import useTranslation from '../hooks/useTranslation';
 
 const ErrorStyles = styled.div`
   color: black;
-  padding: 2rem;
+  padding: 2em;
   background: white;
-  margin: 2rem 0;
+  margin: 2em 0;
   border: 1px solid rgba(0, 0, 0, 0.05);
   border-left: 5px solid red;
   p {
     margin: 0;
     font-weight: 400;
-    font-size: 1.6rem;
+    font-size: 18px;
   }
   strong {
-    margin-right: 1rem;
+    margin-right: 1em;
   }
   .error-message--code {
     font-size: 14px;
@@ -90,18 +90,18 @@ DisplayError.propTypes = {
 
 const SuccessStyles = styled.div`
   color: black;
-  padding: 2rem;
+  padding: 2em;
   background: white;
-  margin: 2rem 0;
+  margin: 2em 0;
   border: 1px solid rgba(0, 0, 0, 0.05);
   border-left: 5px solid green;
   p {
     margin: 0;
     font-weight: 400;
-    font-size: 1.6rem;
+    font-size: 18px;
   }
   strong {
-    margin-right: 1rem;
+    margin-right: 1em;
   }
 `;
 
@@ -115,7 +115,7 @@ export const DisplaySuccess = ({ message }) => (
 );
 
 DisplaySuccess.defaultProps = {
-  message: {},
+  message: '',
 };
 
 DisplaySuccess.propTypes = {
@@ -124,18 +124,18 @@ DisplaySuccess.propTypes = {
 
 const WarnStyles = styled.div`
   color: black;
-  padding: 2rem;
+  padding: 2em;
   background: white;
-  margin: 2rem 0;
+  margin: 2em 0;
   border: 1px solid rgba(0, 0, 0, 0.05);
   border-left: 5px solid orange;
   p {
     margin: 0;
     font-weight: 400;
-    font-size: 1.6rem;
+    font-size: 18px;
   }
   strong {
-    margin-right: 1rem;
+    margin-right: 1em;
   }
 `;
 

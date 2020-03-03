@@ -7,6 +7,7 @@ const contact = {
   contactFormName: 'Name',
   contactFormEmail: 'Email',
   contactFormMessage: 'Message',
+  contactFormButton: 'Send'
 }
 
 export default contact

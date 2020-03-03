@@ -6,7 +6,8 @@ const common = {
   overlay_Blog: "Blog",
   overlay_Work: "Projects",
   error_InvalidEmail: 'Your email is invalid',
-  userMsg_Error: 'Error!'
+  userMsg_Error: 'Error!',
+  error_InvalidForm: 'Make sure to fill up the form'
 }
 
 export default common

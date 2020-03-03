@@ -6,7 +6,8 @@ import { BaseCardStyles } from './styles/Card';
 import styled, { css, keyframes } from 'styled-components';
 import Button from './styles/button';
 import { email as emailRegEx } from '../lib/regEx'
-import { DisplayError } from './UserMessage';
+import { DisplayError, DisplaySuccess } from './UserMessage';
+
 const growOutAnimation = keyframes`
   0% {
     background: initial;
@@ -94,6 +95,11 @@ const AnimatedCard = styled(BaseCardStyles)`
         border: ${props => props.toggle ? '2px solid hsl(210, 50%, 75%, 100%)' : 'none'};
         margin:  ${props => props.toggle ? '2px' : 'none'};
       }
+      input:invalid,
+      textarea:invalid {
+        border: ${props => props.invalid && '2px solid hsl(350, 70%, 50%, 100%)'};
+        margin:  ${props => props.toggle ? '2px' : 'none'};
+      }
     }
   }
 `;
@@ -110,7 +116,6 @@ const CloseButton = styled.button`
 `;
 
 const ButtonWrapper = styled.div`
-  /* margin: 12px; */
   position: relative;
   width: 100%;
   height: 100%;
@@ -122,14 +127,16 @@ interface IStatus {
   submitting: boolean
   info: {
     error: boolean,
-    msg: any
+    msg: string
   }
 }
 
 const Contact = () => {
   const { t } = useTranslation()
   const [toggle, setToggle] = useState(false);
-  const [error, setError] = useState(null)
+  const [validate, setValidate] = useState({
+    target: null
+  })
   const [status, setStatus] = useState<IStatus>({
     submitted: false,
     submitting: false,
@@ -162,20 +169,52 @@ const Contact = () => {
       })
     }
   }
+  const checkValidity = () => {
+    if (!emailRegEx.test(messageProps.email)) {
+      setStatus({
+        ...status,
+        info: {
+          error: true,
+          msg: t('common')['error_InvalidEmail']
+        }
+      })
+      setValidate({ target: 'email' })
+      return false;
+    }
+    if (messageProps.name == '') {
+      setValidate({ target: 'name' })
+      return false;
+    }
+    if (messageProps.message == '') {
+      setValidate({ target: 'message' })
+      return false;
+    } else {
+      return true
+    }
+  }
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(emailRegEx)
+    if (!checkValidity()) {
+      setStatus({
+        ...status,
+        info: {
+          error: true,
+          msg: t('common')['error_InvalidForm']
+        }
+      })
+      return;
+    }
+    console.log(emailRegEx.test(messageProps.email))
     if (!emailRegEx.test(messageProps.email)) {
-      setError(t('common')['error_InvalidEmail'])
+      setStatus({
+        ...status,
+        info: {
+          error: true,
+          msg: t('common')['error_InvalidEmail']
+        }
+      })
       return;
     } else {
-      /* const data = new FormData(messageProps)   */
-      /* const payload = await fetch('/api/sendMessage', {
-        method: 'POST',
-        body: new FormData(document?.querySelector('#form--sendMessage'))
-      })
-      .then(res => console.log(res))
-      .catch(err => console.error(err)) */
       const res = await fetch('/api/sendMessage', {
         method: 'POST',
         headers: {
@@ -185,8 +224,6 @@ const Contact = () => {
       })
       const text = await res.text()
       handleResponse(res.status, text)
-      console.log(res)
-      setError(null)
     }
   }
   const handleInput = (e) => {
@@ -215,20 +252,21 @@ const Contact = () => {
               <label htmlFor="name">
                 {t('contactFormName')}
               </label>
-              <input type="text" name="name" onChange={handleInput} required />
+              <input type="text" name="name" onChange={handleInput} value={messageProps.name} />
               <label htmlFor="email">
                 {t('contactFormEmail')}
               </label>
-              <input type="text" name="email" onChange={handleInput} required />
+              <input type="text" name="email" onChange={handleInput} value={messageProps.email} />
               <label htmlFor="message">
                 {t('contactFormMessage')}
               </label>
-              <textarea name="message" onChange={handleInput} required />
+              <textarea name="message" onChange={handleInput} value={messageProps.message} />
             </fieldset>
             <Button>
-              Send
+              {t('contactFormButton')}
             </Button>
-            {error && <DisplayError error={{ message: error }} />}
+            {status.info.error && <DisplayError error={{ message: status.info.msg }} />}
+            {!status.info.error && status.info.msg && <DisplaySuccess message={status.info.msg} />}
           </form>
           {!toggle &&
             <ButtonWrapper>
