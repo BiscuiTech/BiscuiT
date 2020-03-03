@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import styled from 'styled-components';
+import styled, {keyframes} from 'styled-components';
 import Card from './styles/Card'
 import useTranslation from '../hooks/useTranslation'
 import { Waypoint } from 'react-waypoint';
@@ -17,6 +17,11 @@ const ContentWrapper = styled.div`
   position: relative;
   width:100%;
 `;
+
+const slide = keyframes`
+  from { background-position: 0 0; }
+  to { background-position: 12px 0; }
+`
 
 
 const TechStack = styled.div`
@@ -59,7 +64,34 @@ const TechStack = styled.div`
     z-index: 1;
     margin-top: -30vh;
    }
+   li {
+     display: flex;
+     flex-direction: row;
+     align-items: center;
+     text-align: left;
+     max-width: 380px;
+     height:2em;
+     margin: 6px 0;
+   }
+   .logo, .stack-icon {
+     height: 2em;
+     float: right;
+     /* margin-right: 60px; */
+   }
+   .stack-animation {
+     width: 100%;
+     height: 12px;
+     margin: 6px 12px;
+     padding-top: 12px;
+     background-image: url('/images/circle.svg');
+     background-repeat: repeat;
+     /* transform: translateX(12px); */
+     animation: ${slide} 0.5s linear infinite;
+   }
 `;
+
+
+
 
 const HomeDetails = () => {
   const { t } = useTranslation()
@@ -83,7 +115,52 @@ const HomeDetails = () => {
             {/* <div  /> */}
           </animated.p>
           <animated.p style={animation}>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. At quis quae saepe officiis nam non, possimus voluptatibus cum quaerat consequuntur sit numquam fuga quasi molestiae eos asperiores cupiditate soluta ea?
+            {/* PERN-GL */}
+            <ul>
+              <li>
+                PostgreSQL
+                <span className="stack-animation"/>
+                <span className="stack-icon">
+                  <object type="image/svg+xml" data="/images/stack/postgresql.svg" className="logo">
+                    {/* <!-- fallback image in CSS --> */}
+                  </object>
+                </span>
+              </li>
+              <li>
+                Express.js
+                <span className="stack-animation"/>
+                <span className="stack-icon">
+                  <object type="image/svg+xml" data="/images/stack/expressjs.svg" className="logo">
+                    {/* <!-- fallback image in CSS --> */}
+                  </object>
+                </span>
+              </li>
+              <li>React
+                <span className="stack-animation"/>
+                <span className="stack-icon">
+                  <object type="image/svg+xml" data="/images/stack/react.svg" className="logo">
+                    {/* <!-- fallback image in CSS --> */}
+                  </object>
+                </span>
+              </li>
+              <li>Node.js
+                <span className="stack-animation"/>
+                <span className="stack-icon">
+                  <object type="image/svg+xml" data="/images/stack/node-dot-js.svg" className="logo">
+                    {/* <!-- fallback image in CSS --> */}
+                  </object>
+                </span>
+              </li>
+              <li>
+                GraphQL
+                <span className="stack-animation"/>
+                <span className="stack-icon">
+                  <object type="image/svg+xml" data="/images/stack/graphql.svg" className="logo">
+                    {/* <!-- fallback image in CSS --> */}
+                  </object>
+                </span>
+              </li>
+            </ul>
           </animated.p>
         </TechStack>
         <Card fadeIn={true} markup={t('secondCardHTML')}></Card>

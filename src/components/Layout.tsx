@@ -55,6 +55,10 @@ function debounce(func, wait, immediate?) {
   };
 }
 
+/*
+TODO: add a pattern background
+*/
+
 const Layout = ({ title, description, /* url, ogImage,  */ children }) => {
   if (process.browser) {
     // @ts-ignore
