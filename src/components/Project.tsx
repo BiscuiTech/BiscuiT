@@ -18,7 +18,7 @@ const Image = styled.img``;
 const ImageBackground = styled.div``;
 
 const TechStack = styled.div`
-
+  display: flex;
 `;
 
 const Project = () => {
@@ -32,7 +32,12 @@ const Project = () => {
       </DescriptionStyles>
       <Image />
       <ImageBackground />
-      <TechStack />
+      <TechStack>
+        <ul>
+          <li></li>
+          <li></li>
+        </ul>
+      </TechStack>
     </Wrapper>
   )
 }
