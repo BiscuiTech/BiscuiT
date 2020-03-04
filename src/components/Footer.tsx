@@ -140,10 +140,12 @@ const Footer = () => {
           />
         </a>
       </Grid>
+      <a href="https://github.com/BiscuiTech/BiscuiT">This website is open source. View the code here. 👨‍💻</a>
       <div className="archives">
-        <Link href="/[lang]/archives" as={`/${locale}/archives`}>
-          <a>To access previous version of this site, view the archives.</a>
-        </Link>
+        {/* <Link href="/[lang]/archives" as={`/${locale}/archives`}>
+          <a>To access previous version of this site, view the archives. 🔓</a>
+        </Link> */}
+        <a href="https://github.com/BiscuiTech/BiscuiT">To access previous version of this site, view the archives. 🔓</a>
       </div>
     </FooterStyles>
   );

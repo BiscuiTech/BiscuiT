@@ -123,8 +123,8 @@ const Who = () => {
             <span className="biscuitech">BiscuiTech</span>{t('biography_closingWords_2')}
           </p>
           <ContactButton
-            href="/[lang]/contact"
-            as={`/${locale}/contact`}
+          /* href="/[lang]/contact"
+          as={`/${locale}/contact`} */
           >
             <span className="text-gradient">{t("common")["contactMe"]}</span>
           </ContactButton>

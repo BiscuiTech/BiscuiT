@@ -1,7 +1,8 @@
 import React from 'react';
 import Layout from '../../components/Layout';
 import withAPILocale from '../../hocs/withAPILocale'
-import Projects from '../../components/Projects'
+import Projects from '../../components/ProjectList'
+
 const ProjectsPage = () => (
   <Layout
     title="Biscui.Tech"
