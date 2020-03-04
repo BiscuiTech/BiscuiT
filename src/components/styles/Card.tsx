@@ -35,7 +35,7 @@ export const BaseCardStyles = styled.div`
   text-align: ${props => props.textAlign || 'center'};
   position: relative;
   z-index: 5;
-  display: flex;
+  display: ${props => props.display || 'flex'};
   flex-direction: row;
 `
 
@@ -51,38 +51,26 @@ type CardProps = {
   fadeIn?: boolean,
   markup?: string,
   maxWidth?: string,
-  textAlign?: string
+  textAlign?: string,
+  display?: string
 }
 
-const Card = ({ children, fadeIn, markup, maxWidth, textAlign }: CardProps) => {
+const Card = ({ children, fadeIn, markup, maxWidth, textAlign, display }: CardProps) => {
   const [toggle, setToggle] = useState(false);
-  if (!fadeIn) {
-    // not animated
-    return (
-      markup
-        ? <BaseCardStyles dangerouslySetInnerHTML={{ __html: markup }} maxWidth={maxWidth}
-          textAlign={textAlign} />
-        : <BaseCardStyles maxWidth={maxWidth} textAlign={textAlign}>
+  return (
+    <>
+      {fadeIn && <Waypoint
+        bottomOffset="30%"
+        onEnter={() => setToggle(true)}
+      />}
+      {markup
+        ? <CardStylesWithAnimation toggle={toggle} dangerouslySetInnerHTML={{ __html: markup }} maxWidth={maxWidth} textAlign={textAlign} display={display}>{children}</CardStylesWithAnimation>
+        : <CardStylesWithAnimation toggle={toggle} maxWidth={maxWidth} textAlign={textAlign} display={display}>
           {children}
-        </BaseCardStyles >
-    )
-  } else {
-    // animated version
-    return (
-      <>
-        <Waypoint
-          bottomOffset="30%"
-          onEnter={() => setToggle(true)}
-        />
-        {markup
-          ? <CardStylesWithAnimation toggle={toggle} dangerouslySetInnerHTML={{ __html: markup }} maxWidth={maxWidth} textAlign={textAlign} />
-          : <CardStylesWithAnimation toggle={toggle} maxWidth={maxWidth} textAlign={textAlign}>
-            {children}
-          </CardStylesWithAnimation>
-        }
-      </>
-    )
-  }
+        </CardStylesWithAnimation>
+      }
+    </>
+  )
 }
 
 

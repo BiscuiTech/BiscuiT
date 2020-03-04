@@ -9,6 +9,7 @@ const FooterStyles = styled.div`
   height: 25vh;
   min-height: 180px;
   background: #0c344b;
+  background: linear-gradient(330deg, hsl(200, 75%, 25%) 5%, hsl(200, 72%, 17%) 87%);
   margin-top: 24px;
   padding: 48px 0;
   border-top: 4px solid ${props => props.theme.color.gold};

@@ -11,7 +11,8 @@ import GlobalStyle from './styles/GlobalStyle';
 const Page = styled.div`
   width: 100%;
   height: 100%;
-  background: linear-gradient(180deg, #F2F2F2 0%, #FFFFFF 100%);
+  /* background:linear-gradient(180deg, #F2F2F2 0%, #FFFFFF 100%); */
+  background:  url('/images/brilliant.png') repeat,linear-gradient(180deg, #F2F2F2 0%, #FFFFFF 100%);
   display: flex;
   flex-direction: column;
   .skip-link{

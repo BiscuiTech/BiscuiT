@@ -1,16 +1,24 @@
 import React, { useState } from 'react'
-import styled, {keyframes} from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import Card from './styles/Card'
 import useTranslation from '../hooks/useTranslation'
 import { Waypoint } from 'react-waypoint';
 import { useSpring, animated } from 'react-spring';
-
+import Text from './styles/Text';
+import A from './styles/a'
 const HomeDetailsStyles = styled.div`
   color: white;
   height:100%;
   z-index:5;
   position: relative;
   padding-bottom: 64px;
+  .call-to-action {
+    margin-top: 24px;
+    /* font-size: 24px;
+    text-align: center;
+    color: black;
+    z-index: 5; */
+  }
 `;
 
 const ContentWrapper = styled.div`
@@ -23,8 +31,12 @@ const slide = keyframes`
   to { background-position: 12px 0; }
 `
 
+const SlantedBackgroundHeightValue = '40';
+export const SlantedBackgroundHeight = `${SlantedBackgroundHeightValue}vh`
 
 const TechStack = styled.div`
+  --SlantedBackgroundHeight: ${props => props.theme.home.slantedBackgroundHeight};
+  --SlantedBackgroundHeightNegative: ${props => `-${props.theme.home.slantedBackgroundHeight}`};
   position: relative;
   background: #0C344B;
   margin: 24px 0;
@@ -36,7 +48,7 @@ const TechStack = styled.div`
   p:first-child{
     text-align: center;
   }
-  p{
+  p,div{
     max-width: 420px;
     padding: 12px 0;
     margin: 24px auto;
@@ -45,24 +57,23 @@ const TechStack = styled.div`
   &::before {
     content: '';
     width: 100%;
-    height: 30vh;
+    height: var(--SlantedBackgroundHeight);
     background: #0C344B;
     transform: skewY(6deg);
     transform-origin: top right;
     position: absolute;
     z-index: 1;
-   /*  margin-top: -30vh; */
   }
   &::after {
     content: '';
     width: 100%;
-    height: 30vh;
+    height: var(--SlantedBackgroundHeight);
     background: #0C344B;
     transform: skewY(6deg);
     transform-origin: top left;
     position: absolute;
     z-index: 1;
-    margin-top: -30vh;
+    margin-top: var(--SlantedBackgroundHeightNegative);
    }
    li {
      display: flex;
@@ -73,10 +84,18 @@ const TechStack = styled.div`
      height:2em;
      margin: 6px 0;
    }
+   ul:first-letter {
+     font-weight: bold;
+     color: red;
+   }
    .logo, .stack-icon {
      height: 2em;
      float: right;
      /* margin-right: 60px; */
+   }
+   .stack-tool:first-letter {
+    font-weight: bold;
+    text-decoration: underline;
    }
    .stack-animation {
      width: 100%;
@@ -90,8 +109,28 @@ const TechStack = styled.div`
    }
 `;
 
-
-
+const CTA = styled(A)`
+  cursor: default;
+  margin: 24px 0;
+  position: relative;
+  &:after{
+    position: unset;
+    left: unset;
+    bottom:unset;
+    width: unset;
+    height: unset;
+    height: unset;
+    margin-top: unset;
+    z-index: unset;
+    display:unset;
+    content: unset;
+    background: unset;
+    box-shadow: unset;
+    transform: unset;
+    transform-origin: unset;
+    transition: transform unset;
+  }
+`;
 
 const HomeDetails = () => {
   const { t } = useTranslation()
@@ -105,21 +144,24 @@ const HomeDetails = () => {
   return (
     <HomeDetailsStyles>
       <ContentWrapper>
-        <Card fadeIn={true}>{t('firstCard')}</Card>
+        <Card fadeIn={true} display="block" maxWidth="600px">
+          <p>{t('firstCard')}</p>
+          <p className="call-to-action"><CTA>{t('firstCardCTA')}</CTA></p>
+        </Card>
+        {/* <p className="call-to-action-text">{t('firstCardCTA')}</p> */}
         <TechStack>
           <Waypoint
             bottomOffset="30%"
             onEnter={() => setToggle(true)}
           />
-          /<animated.p style={animation} dangerouslySetInnerHTML={{ __html: t('techStack_header') }}>
+          <animated.p style={animation} dangerouslySetInnerHTML={{ __html: t('techStack_header') }}>
             {/* <div  /> */}
           </animated.p>
-          <animated.p style={animation}>
-            {/* PERN-GL */}
+          <animated.div style={animation}>
             <ul>
               <li>
-                PostgreSQL
-                <span className="stack-animation"/>
+                <span className="stack-tool">PostgreSQL</span>
+                <span className="stack-animation" />
                 <span className="stack-icon">
                   <object type="image/svg+xml" data="/images/stack/postgresql.svg" className="logo">
                     {/* <!-- fallback image in CSS --> */}
@@ -127,24 +169,24 @@ const HomeDetails = () => {
                 </span>
               </li>
               <li>
-                Express.js
-                <span className="stack-animation"/>
+                <span className="stack-tool">Express.js</span>
+                <span className="stack-animation" />
                 <span className="stack-icon">
                   <object type="image/svg+xml" data="/images/stack/expressjs.svg" className="logo">
                     {/* <!-- fallback image in CSS --> */}
                   </object>
                 </span>
               </li>
-              <li>React
-                <span className="stack-animation"/>
+              <li><span className="stack-tool">React</span>
+                <span className="stack-animation" />
                 <span className="stack-icon">
                   <object type="image/svg+xml" data="/images/stack/react.svg" className="logo">
                     {/* <!-- fallback image in CSS --> */}
                   </object>
                 </span>
               </li>
-              <li>Node.js
-                <span className="stack-animation"/>
+              <li><span className="stack-tool">Node.js</span>
+                <span className="stack-animation" />
                 <span className="stack-icon">
                   <object type="image/svg+xml" data="/images/stack/node-dot-js.svg" className="logo">
                     {/* <!-- fallback image in CSS --> */}
@@ -152,8 +194,8 @@ const HomeDetails = () => {
                 </span>
               </li>
               <li>
-                GraphQL
-                <span className="stack-animation"/>
+                <span className="stack-tool">GraphQL</span>
+                <span className="stack-animation" />
                 <span className="stack-icon">
                   <object type="image/svg+xml" data="/images/stack/graphql.svg" className="logo">
                     {/* <!-- fallback image in CSS --> */}
@@ -161,9 +203,11 @@ const HomeDetails = () => {
                 </span>
               </li>
             </ul>
-          </animated.p>
+          </animated.div>
         </TechStack>
-        <Card fadeIn={true} markup={t('secondCardHTML')}></Card>
+        <Text marginTop={180}>
+          {t('secondCardHTML')}
+        </Text>
       </ContentWrapper>
     </HomeDetailsStyles>
   )

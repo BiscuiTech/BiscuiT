@@ -77,7 +77,10 @@ const AnimatedCard = styled(BaseCardStyles)`
       }
       label {
         margin-left: 12px;
-        color: hsl(0, 0%, 35%)
+        margin-bottom: -3px;
+        color: hsl(0, 0%, 35%);
+        font-size: 16px;
+        font-family: monospace;
       }
       * {
         width: 100%;

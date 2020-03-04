@@ -9,6 +9,9 @@ const theme = {
   font: 'Roboto',
   button: {
     background: '#0071bc'
+  },
+  home: {
+    slantedBackgroundHeight: '40vh'
   }
 };
 
