@@ -22,6 +22,7 @@ const SubHeaderStyles = styled.h2`
   font-size: 24px;
   font-weight: 200;
   text-align: center;
+  margin-top: -64px;
 `;
 
 export const SubHeader = ({ children }) => {
