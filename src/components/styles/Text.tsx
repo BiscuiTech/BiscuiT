@@ -15,6 +15,7 @@ const TextStyles = styled.div`
   line-height: 1.5;
   font-size: 18px;
   }
+  padding: 12px;
 `;
 
 const Text = ({ children, marginTop }) => (
