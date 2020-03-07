@@ -52,7 +52,7 @@
     "react-dom": "^16.12.0",
     "react-messenger-customer-chat": "^0.7.2",
     "react-spring": "^8.0.27",
-    "sitemap": "^5.1.0",
+    "sitemap": "^6.0.0",
     "styled-components": "^5.0.0"
   },
   "engines": {
