@@ -57,7 +57,6 @@ type CardProps = {
 
 const Card = ({ children, fadeIn, markup, maxWidth, textAlign, display }: CardProps) => {
   const [toggle, setToggle] = useState(false);
-  console.log(Boolean(fadeIn))
   if (fadeIn) {
 
     return (

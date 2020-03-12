@@ -7,6 +7,7 @@ import styled, { css, keyframes } from 'styled-components';
 import Button from './styles/button';
 import { email as emailRegEx } from '../lib/regEx'
 import { DisplayError, DisplaySuccess } from './UserMessage';
+import { LoadingSpinner } from './styles/LoadingSpinner';
 
 const growOutAnimation = keyframes`
   0% {
@@ -197,6 +198,11 @@ const Contact = () => {
   }
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setStatus({
+      submitted: false,
+      submitting: true,
+      info: { error: false, msg: '' }
+    })
     if (!checkValidity()) {
       setStatus({
         ...status,
@@ -206,8 +212,7 @@ const Contact = () => {
         }
       })
       return;
-    }
-    console.log(emailRegEx.test(messageProps.email))
+    }/*
     if (!emailRegEx.test(messageProps.email)) {
       setStatus({
         ...status,
@@ -217,7 +222,7 @@ const Contact = () => {
         }
       })
       return;
-    } else {
+    }  */else {
       const res = await fetch('/api/sendMessage', {
         method: 'POST',
         headers: {
@@ -265,9 +270,10 @@ const Contact = () => {
               </label>
               <textarea name="message" onChange={handleInput} value={messageProps.message} />
             </fieldset>
-            <Button>
+            {!status?.submitting && <Button>
               {t('contactFormButton')}
-            </Button>
+            </Button>}
+            {status?.submitting && <LoadingSpinner />}
             {status.info.error && <DisplayError error={{ message: status.info.msg }} />}
             {!status.info.error && status.info.msg && <DisplaySuccess message={status.info.msg} />}
           </form>

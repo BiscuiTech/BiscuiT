@@ -7,6 +7,7 @@ const common = {
   overlay_Work: "Projects",
   error_InvalidEmail: 'Your email is invalid',
   userMsg_Error: 'Error!',
+  userMsg_Success: 'Success!',
   error_InvalidForm: 'Make sure to fill up the form'
 }
 

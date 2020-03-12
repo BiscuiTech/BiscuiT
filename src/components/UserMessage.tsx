@@ -105,14 +105,17 @@ const SuccessStyles = styled.div`
   }
 `;
 
-export const DisplaySuccess = ({ message }) => (
-  <SuccessStyles>
-    <p>
-      <strong>Succès!</strong>
-      {message}
-    </p>
-  </SuccessStyles>
-);
+export const DisplaySuccess = ({ message }) => {
+  const { t } = useTranslation()
+  return (
+    <SuccessStyles>
+      <p>
+        <strong>{t('common')['userMsg_Success']}</strong>
+        {message}
+      </p>
+    </SuccessStyles>
+  )
+};
 
 DisplaySuccess.defaultProps = {
   message: '',

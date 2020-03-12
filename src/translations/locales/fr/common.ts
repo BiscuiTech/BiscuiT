@@ -7,6 +7,7 @@ const common = {
   overlay_Work: "Projets",
   error_InvalidEmail: 'Votre courriel est invalide',
   userMsg_Error: 'Erreur!',
+  userMsg_Success: 'Succès!',
   error_InvalidForm: 'Assurez-vous de remplir le formulaire'
 }
 
