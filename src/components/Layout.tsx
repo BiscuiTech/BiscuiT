@@ -1,28 +1,30 @@
-import React from 'react';
+import React, { Profiler } from "react";
 /* import { Html } from 'next/document' */
 /* import LogRocket from 'logrocket';
 import setupLogRocketReact from 'logrocket-react'; */
-import styled from 'styled-components';
-import Head from './Head';
-import Header from './Header';
-import Footer from './Footer';
-import GlobalStyle from './styles/GlobalStyle';
+import styled from "styled-components";
+import Head from "./Head";
+import Header from "./Header";
+import Footer from "./Footer";
+import GlobalStyle from "./styles/GlobalStyle";
+import { onRenderCallback } from "../lib/onRenderCallback";
 
 const Page = styled.div`
   width: 100%;
   height: 100%;
   /* background:linear-gradient(180deg, #F2F2F2 0%, #FFFFFF 100%); */
-  background:  url('/images/brilliant.png') repeat,linear-gradient(180deg, #F2F2F2 0%, #FFFFFF 100%);
+  background: url("/images/brilliant.png") repeat,
+    linear-gradient(180deg, #f2f2f2 0%, #ffffff 100%);
   display: flex;
   flex-direction: column;
-  .skip-link{
+  .skip-link {
     position: absolute;
     top: -40px;
     left: 0;
     color: white;
     padding: 8px;
     z-index: 100;
-    &:focus{
+    &:focus {
       top: 0;
     }
   }
@@ -41,7 +43,7 @@ function debounce(func, wait, immediate?) {
     const context = this;
     const args = arguments;
 
-    const later = function () {
+    const later = function() {
       timeout = null;
       if (!immediate) func.apply(context, args);
     };
@@ -95,32 +97,36 @@ const Layout = ({ title, description, /* url, ogImage,  */ children }) => {
     // First we get the viewport height and we multiple it by 1% to get a value for a vh unit
     const vh = window.innerHeight * 0.01;
     // Then we set the value in the --vh custom property to the root of the document
-    document.documentElement.style.setProperty('--vh', `${Number(vh)}px`);
+    document.documentElement.style.setProperty("--vh", `${Number(vh)}px`);
     // We listen to the resize event
     window.addEventListener(
-      'resize',
+      "resize",
       debounce(() => {
         // We execute the same script as before
         const vh = window.innerHeight * 0.01;
-        document.documentElement.style.setProperty('--vh', `${Number(vh)}px`);
+        document.documentElement.style.setProperty("--vh", `${Number(vh)}px`);
       }, 400)
     );
   }
   return (
     <>
       <GlobalStyle />
-      <Page>
-        <Head
-          title={title}
-          description={description}
-        // url={url}
-        // ogImage={ogImage}
-        />
-        <a className="skip-link" href="#maincontent">Skip to main</a>
-        <Header />
-        <Content id="maincontent">{children}</Content>
-        <Footer />
-      </Page>
+      <Profiler id="Page" onRender={onRenderCallback}>
+        <Page>
+          <Head
+            title={title}
+            description={description}
+            // url={url}
+            // ogImage={ogImage}
+          />
+          <a className="skip-link" href="#maincontent">
+            Skip to main
+          </a>
+          <Header />
+          <Content id="maincontent">{children}</Content>
+          <Footer />
+        </Page>
+      </Profiler>
     </>
   );
 };

@@ -1,4 +1,5 @@
 const withSourceMaps = require('@zeit/next-source-maps')();
+const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = withSourceMaps({
   webpack: (config, options) => {
@@ -11,7 +12,16 @@ module.exports = withSourceMaps({
       config.resolve.alias['@sentry/node'] = '@sentry/browser';
       config.resolve.alias['react-dom$'] = 'react-dom/profiling';
       config.resolve.alias['scheduler/tracing'] = 'scheduler/tracing-profiling';
+      config.optimization.minimizer = [
+        new TerserPlugin({
+          terserOptions: {
+            keep_classnames: true,
+            keep_fnames: true,
+          },
+        }),
+      ];
     }
+
     return config;
   },
   experimental: {
