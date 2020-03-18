@@ -9,6 +9,8 @@ module.exports = withSourceMaps({
 
     if (!options.isServer) {
       config.resolve.alias['@sentry/node'] = '@sentry/browser';
+      config.resolve.alias['react-dom$'] = 'react-dom/profiling';
+      config.resolve.alias['scheduler/tracing'] = 'scheduler/tracing-profiling';
     }
     return config;
   },
