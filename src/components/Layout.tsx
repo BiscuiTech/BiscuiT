@@ -122,8 +122,12 @@ const Layout = ({ title, description, /* url, ogImage,  */ children }) => {
           <a className="skip-link" href="#maincontent">
             Skip to main
           </a>
-          <Header />
-          <Content id="maincontent">{children}</Content>
+          <Profiler id="Header" onRender={onRenderCallback}>
+            <Header />
+          </Profiler>
+          <Profiler id="Content" onRender={onRenderCallback}>
+            <Content id="maincontent">{children}</Content>
+          </Profiler>
           <Footer />
         </Page>
       </Profiler>

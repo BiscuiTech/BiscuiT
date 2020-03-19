@@ -34,7 +34,7 @@ export function onRenderCallback<IRenderCallback>(
   });
 }
 
-function sendProfileQueue() {
+async function sendProfileQueue() {
   if (!queue.length) {
     return Promise.resolve();
   }
@@ -43,7 +43,14 @@ function sendProfileQueue() {
 
   // here's where we'd actually make the server call to send the queueToSend
   // data to our backend...
-
   console.info("sending profile queue", queueToSend);
+  const result = await fetch("/api/monitoring", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(queueToSend)
+  });
+  console.log("user-land result", result);
   return Promise.resolve();
 }
