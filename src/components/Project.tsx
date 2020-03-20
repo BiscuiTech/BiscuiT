@@ -6,12 +6,12 @@ const ProjectWrapper = styled.li`
   max-width: 500px;
   height: 100%;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(5, 20%);
   grid-template-rows: auto;
   grid-template-areas:
     '. . image image image',
-    'title title title title title',
-    'description description description description description',
+    'title title title title title'
+    'description description description description description'
     'techstack techstack techstack techstack techstack';
 `;
 
@@ -22,22 +22,26 @@ const TitleStyles = styled.h3`
   text-transform: lowercase;
   grid-area: 'title';
   width: 100%;
+  background: red;
 `;
 
 const DescriptionStyles = styled.p`
   font-weight: 300;
   font-size: 18px;
   color: hsl(0, 0%, 25%);
-  grid-area: 'description';
+  grid-area: description;
   padding: 12px;
   width: 100%;
+  background: blue;
 `;
 
 
 const Image = styled.img`
-  margin: 20px;
-  height: 30vh;
-  width: 30vh;
+  /* margin: 20px; */
+  height: 100%;
+  width: 100%;
+  /* height: 30vh;
+  width: 30vh; */
   grid-area: 'image';
   /* transform: translateY(-30vh); */
   border-radius: 10px;
@@ -47,16 +51,22 @@ const ImageBackground = styled.div`
   background: orange;
   /* height: calc(30vh + 40px);
   width: calc(30vh + 40px); */
-  height: 30vh;
-  width: 30vh;
+  /* height: 30vh;
+  width: 30vh; */
   /* grid-area: image; */
   border-radius: 10px;
+  height: 100%;
+  width: 100%;
 `;
 
 const TechStack = styled.div`
   display: flex;
   grid-area: techstack;
+  /* grid-column: 1 / 6;
+  grid-row: 3 / 4; */
   width: 100%;
+  height:100%;
+  background: green;
 `;
 
 const Project = () => {
