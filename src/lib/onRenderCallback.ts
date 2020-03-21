@@ -43,7 +43,7 @@ async function sendProfileQueue() {
 
   // here's where we'd actually make the server call to send the queueToSend
   // data to our backend...
-  console.info("sending profile queue", queueToSend);
+  //console.info("sending profile queue", queueToSend);
   const result = await fetch("/api/monitoring", {
     method: "POST",
     headers: {
@@ -51,6 +51,6 @@ async function sendProfileQueue() {
     },
     body: JSON.stringify(queueToSend)
   });
-  console.log("user-land result", result);
+  //console.log("user-land result", result);
   return Promise.resolve();
 }

@@ -1,91 +1,102 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components';
+import TechStack from './TechStack';
 
 const ProjectWrapper = styled.li`
   margin: 12px auto;
   max-width: 500px;
-  height: 100%;
-  display: grid;
-  grid-template-columns: repeat(5, 20%);
-  grid-template-rows: auto;
-  grid-template-areas:
-    '. . image image image',
-    'title title title title title'
-    'description description description description description'
-    'techstack techstack techstack techstack techstack';
+  width: 100%;
+  height: ${props => `calc(100% - ${props.imageHeight}px)`};
+  margin-bottom: ${props => - props.imageHeight + 'px'};
+  display: relative;
 `;
 
 const TitleStyles = styled.h3`
-  font-size: 28px;
+  font-size: ${props => props.active ? '28px' : '18px'};
   font-weight: 400;
   font-family: 'Montserrat';
-  text-transform: lowercase;
-  grid-area: 'title';
+  /* text-transform: uppercase; */
   width: 100%;
-  background: red;
+  padding: 0;
+  margin: 0 12px;
 `;
 
-const DescriptionStyles = styled.p`
-  font-weight: 300;
-  font-size: 18px;
-  color: hsl(0, 0%, 25%);
-  grid-area: description;
+const DescriptionStyles = styled.div`
   padding: 12px;
-  width: 100%;
-  background: blue;
+  margin: 0 12px;
+  display: inline-block;
+  transform: ${props => `translate3d(0,-${props.imageHeight + 5 + 'px'},0)`};
+  background: white;
+  background: #FFFFFF;
+  box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  p {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 22px;
+    font-size: 18px;
+    color: hsl(0, 0%, 25%);
+    padding: 24px 20px;
+  }
 `;
-
 
 const Image = styled.img`
-  /* margin: 20px; */
-  height: 100%;
-  width: 100%;
-  /* height: 30vh;
-  width: 30vh; */
-  grid-area: 'image';
-  /* transform: translateY(-30vh); */
+  display: block;
+  height: ${props => props.imageHeight + 'px' || '100%'};
+  width: ${props => props.imageWidth + 'px' || '100%'};
+  min-width: 70%;
   border-radius: 10px;
-  /* transform: translateY(calc(-30vh - 40px)); */
+  transform: ${props => `translate3d(-15px,-${25 + props.imageHeight + 'px'},0)`};
+  float: right;
+  margin-right: 8%;
+  @media (max-width:600px) {
+    width: 70%;
+    min-width: unset;
+  }
 `;
+
 const ImageBackground = styled.div`
-  background: orange;
-  /* height: calc(30vh + 40px);
-  width: calc(30vh + 40px); */
-  /* height: 30vh;
-  width: 30vh; */
-  /* grid-area: image; */
+  display: block;
+  height: ${props => props.imageHeight + 50 + 'px' || '100%'};
+  width: ${props => props.imageWidth + 30 + 'px' || '100%'};
+  min-width: calc(70% + 30px);
   border-radius: 10px;
-  height: 100%;
-  width: 100%;
+  background: orange;
+  box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.25);
+  float: right;
+  margin-right: 8%;
+  @media (max-width:600px) {
+    width: calc(70% + 30px);
+    min-width: unset;
+  }
 `;
 
-const TechStack = styled.div`
-  display: flex;
-  grid-area: techstack;
-  /* grid-column: 1 / 6;
-  grid-row: 3 / 4; */
-  width: 100%;
-  height:100%;
-  background: green;
-`;
 
-const Project = () => {
+const Project = ({ height, width, id, info, onClick, active }) => {
+  const imageHeight = height * 0.35;
+  const imageWidth = width * 0.35;
+  useEffect(() => {
+  }, [height, width])
   return (
-    <ProjectWrapper>
-      <TitleStyles>
-        example.com
+    <ProjectWrapper imageHeight={imageHeight}>
+      <TitleStyles active={active}>
+        {info.title}
       </TitleStyles>
-      <DescriptionStyles>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut adipisci fuga consequuntur amet nulla fugiat deleniti eos qui neque, deserunt exercitationem labore eaque iste nobis corporis, illo tenetur ab rem!
-      </DescriptionStyles>
-      <ImageBackground />
-      <Image src="/images/ocean.jpg" />
-      <TechStack>
-        <ul>
-          <li>apollo</li>
-          <li>graphql</li>
-        </ul>
-      </TechStack>
+      <ImageBackground imageHeight={imageHeight}
+        imageWidth={imageWidth} />
+      <Image src="/images/ocean.jpg" imageHeight={imageHeight}
+        imageWidth={imageWidth} />
+      {active &&
+        <>
+          <DescriptionStyles imageHeight={imageHeight}>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut adipisci fuga consequuntur amet nulla fugiat deleniti eos qui neque, deserunt exercitationem labore eaque iste nobis corporis, illo tenetur ab rem!
+            </p>
+          </DescriptionStyles>
+          <TechStack imageHeight={imageHeight} info={info.techStack} />
+        </>
+      }
     </ProjectWrapper>
   )
 }

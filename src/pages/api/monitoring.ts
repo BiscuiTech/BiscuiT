@@ -5,8 +5,8 @@ const client = new Client({
 
 const indexName = "biscuitech-profiler";
 
-export default async function(req, res) {
-  console.log(`Profiling data received: ${new Date()}`);
+export default async function (req, res) {
+  //console.log(`Profiling data received: ${new Date()}`);
   try {
     const { body } = req;
     body.map(async el => {
