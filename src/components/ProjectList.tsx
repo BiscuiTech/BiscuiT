@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components';
 import PageHeader, { SubHeader } from './styles/PageHeader'
 import Project from './Project'
@@ -12,19 +12,9 @@ const Projects = styled.ul`
   display: relative;
 `;
 
-/*
-function getInitialWindow() {
-  if (process.browser) {
-    return {
-      height: window?.innerHeight,
-      width: window?.innerWidth
-    }
-  }
-} */
-
 const ProjectList = () => {
   const { height, width } = useWindowDimensions();
-  const [active, setActive] = useState(0)
+  const [active, setActive] = useState(null)
   return (
     <>
       <PageHeader>Past Projects</PageHeader>

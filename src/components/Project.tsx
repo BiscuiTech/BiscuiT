@@ -72,7 +72,6 @@ const ImageBackground = styled.div`
   }
 `;
 
-
 const Project = ({ height, width, id, info, onClick, active }) => {
   const imageHeight = height * 0.35;
   const imageWidth = width * 0.35;

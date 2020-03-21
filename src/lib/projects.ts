@@ -1,10 +1,10 @@
 export enum ETechStack {
-  apollo,
-  graphql,
-  react,
-  prisma,
-  prostgresql,
-  'next.js'
+  'apollo' = 'apollo',
+  'graphql' = 'graphql',
+  'react' = 'react',
+  'prisma' = 'prisma',
+  'postgresql' = 'postgresql',
+  'next.js' = 'nextjs'
 }
 
 interface IProject {
@@ -17,7 +17,7 @@ interface IProject {
 }
 
 export const ConfiguredTech = [
-  { name: 'apollo', id: 'apollo', background: '#FFFFFF', color: '#FFFFFF' },
+  { name: 'apollo', id: 'apollo', background: '#FFFFFF', color: '#000000' },
   { name: 'graphql', id: 'graphql', background: '#E00098', color: '#FFFFFF' },
   { name: 'react', id: 'react', background: '#60D9FB', color: '#FFFFFF' },
   { name: 'prisma', id: 'prisma', background: '#0C344B', color: '#FFFFFF' },
@@ -36,7 +36,7 @@ const projects: IProject[] = [
       ETechStack.apollo,
       ETechStack["next.js"],
       ETechStack.graphql,
-      ETechStack.prostgresql
+      ETechStack.postgresql
     ]
   },
   {
@@ -49,7 +49,7 @@ const projects: IProject[] = [
       ETechStack.apollo,
       ETechStack["next.js"],
       ETechStack.graphql,
-      ETechStack.prostgresql
+      ETechStack.postgresql
     ]
   }
 ]

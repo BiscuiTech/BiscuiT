@@ -12,7 +12,6 @@ const TechStackStyles = styled.div`
     font-weight: normal;
     font-size: 18px;
     line-height: 17px;
-    /* identical to box height */
     margin: 12px;
     margin-bottom: -2px;
     font-variant: small-caps;
@@ -27,7 +26,6 @@ const TechStackStyles = styled.div`
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.35);
     border-radius: 5px;
     font-family: 'Source Code Pro';
-    background: white;
     font-size: 14px;
     line-height: 18px;
     text-align: center;
@@ -40,13 +38,19 @@ const TechStackStyles = styled.div`
   }
 `;
 
+const TechPill = styled.li`
+  background: ${props => `${props.styles.background}`};
+  color: ${props => `${props.styles.color}`};
+`;
+
 function getTechStyles(id: string) {
-  const payload = ConfiguredTech.filter(el => el.id === id)
+  const payload = ConfiguredTech.filter(el => {
+    return el.id === id
+  })
   return payload[0]
 }
 
 const TechStack = ({ imageHeight, info }) => {
-  console.log(info)
   return (
     <TechStackStyles imageHeight={imageHeight}>
       <h4>
@@ -54,13 +58,15 @@ const TechStack = ({ imageHeight, info }) => {
       </h4>
       <ul>
         {info.map((el, i) => {
-          const styles = getTechStyles(el.id);
+          const styles = getTechStyles(el);
+          console.log('styles: ', styles, `for el: ${el}`)
           return (
-            <li>
-              {el.name}
-            </li>
+            <TechPill key={i} styles={styles}>
+              {styles.name}
+            </TechPill>
           )
-        })}
+        })
+        }
       </ul>
     </TechStackStyles>
   )
