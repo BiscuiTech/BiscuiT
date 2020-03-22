@@ -5,16 +5,17 @@ import Project from './Project'
 import useWindowDimensions from '../lib/useWindowDimension';
 import projects from '../lib/projects'
 
-const Projects = styled.ul`
+const Projects = styled.div`
   margin: 80px 0;
   height: 100%;
   width:100%;
-  display: relative;
+  display: flex;
+  flex-direction: column;
 `;
 
 const ProjectList = () => {
   const { height, width } = useWindowDimensions();
-  const [active, setActive] = useState(null)
+  const [active, setActive] = useState(0)
   return (
     <>
       <PageHeader>Past Projects</PageHeader>
@@ -26,11 +27,12 @@ const ProjectList = () => {
           <Project
             height={height}
             width={width}
-            id={index}
+            index={index}
             key={index}
             info={el}
             onClick={setActive}
-            active={active == index ? true : false}
+            selected={active == index ? true : false}
+            active={active}
           />
         )
         )}

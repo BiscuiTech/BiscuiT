@@ -15,8 +15,6 @@ const TechStackStyles = styled.div`
     margin: 12px;
     margin-bottom: -2px;
     font-variant: small-caps;
-
-    color: #000000;
   }
   ul {
     display: flex;
