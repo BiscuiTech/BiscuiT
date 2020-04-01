@@ -11,7 +11,7 @@ const IndexPage: React.FC = () => {
       description="Biscui.Tech Home page"
     >
       <Home />
-      <HomeDetails />
+      {/* <HomeDetails /> */}
     </Layout>
   );
 };

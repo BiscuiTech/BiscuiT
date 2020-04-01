@@ -10,7 +10,7 @@ const Welcome = styled.div`
   justify-content: center;
   flex-direction: column;
   width: 100%;
-  background: white;
+  /* background: white; */
   .welcome--my-name {
     /* font-size: 36px; */
     font-size: calc(36px + (56px - 36px) * ((100vw - 500px) / (1600 - 500)));

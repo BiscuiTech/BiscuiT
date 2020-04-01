@@ -48,7 +48,7 @@ const Header = () => {
   return (
     <>
       <HeaderStyles>
-        <Menu onClick={handleClick} />
+        {/* <Menu onClick={handleClick} /> */}
         <Logo>
           <Link href="/[lang]" as={`/${locale}`} >
             <Image publicId="biscui.tech/BiscuiTech_Logo_2019.png" cloudName="biscuitech" alt="BiscuiTech Logo">
@@ -57,7 +57,7 @@ const Header = () => {
           </Link>
         </Logo>
       </HeaderStyles>
-      <Overlay isOpen={isNavOpen} onClick={handleClick} />
+      {/* <Overlay isOpen={isNavOpen} onClick={handleClick} /> */}
     </>
 
   )
