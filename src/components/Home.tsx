@@ -51,7 +51,7 @@ const ShortIntro = styled.div`
   }
 `;
 
-const Home = () => {
+const Home = ({ pid }) => {
   const { locale, t } = useTranslation()
   return (
     <>
@@ -69,7 +69,7 @@ const Home = () => {
           <StyledAnchor className="toRight">{t('common')['aboutMe']}</StyledAnchor>
         </Link>
       </ShortIntro>
-      <LatestBlog />
+      <LatestBlog pid={pid} />
     </>
   );
 };

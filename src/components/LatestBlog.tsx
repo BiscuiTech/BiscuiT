@@ -8,12 +8,15 @@ const LatestBlogStyles = styled.div`
   margin: auto;
   margin-top: 60px;
   overflow: auto;
+  h2 {
+    margin: 6px auto;
+  }
   p {
-    font-weight: 200;
-    font-size: 16px;
+    font-weight: 400;
+    font-size: 18px;
     line-height: 1.2em;
     padding-left: 6px;
-    color: hsl(0, 0%, 85%)
+    color: hsl(0, 0%, 85%);
   }
   .toRight {
     margin-right: 6px;
@@ -21,13 +24,13 @@ const LatestBlogStyles = styled.div`
   }
 `;
 
-export const LatestBlog = () => {
+export const LatestBlog = ({ pid }) => {
   const { locale, t } = useTranslation()
   return (
     <LatestBlogStyles>
       <h2>{t('latestBlog')}</h2>
-      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deserunt molestias recusandae omnis aperiam explicabo perferendis praesentium non, numquam veniam natus? Eum in, dolorem voluptatibus sapiente non voluptatum alias ipsa aperiam.</p>
-      <Link href="/blog">
+      <p>How to create an internationalized website with Next.js</p>
+      <Link href="/[lang]/blog/[pid]" as={`/${locale}/blog/${pid}`} >
         <StyledAnchor className="toRight">{t('viewBlog')}</StyledAnchor>
       </Link>
     </LatestBlogStyles>
