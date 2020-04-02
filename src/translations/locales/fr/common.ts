@@ -1,5 +1,6 @@
 const common = {
   contactMe: "Contactez-Moi",
+  aboutMe: "À propos de moi",
   overlay_Home: "Accueil",
   overlay_Contact: "Contact",
   overlay_About: "À Propos",

@@ -6,7 +6,7 @@ const theme = {
     gold: '#FBB03B',
     blue: '#0071bc',
   },
-  font: 'Roboto',
+  font: 'Open Sans',
   button: {
     background: '#0071bc'
   },

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styled, { keyframes, css } from 'styled-components';
 import { Waypoint } from 'react-waypoint';
-import A from './a';
+import A from './StyledAnchor';
 
 const fadeInAnimation = keyframes`
   0%{

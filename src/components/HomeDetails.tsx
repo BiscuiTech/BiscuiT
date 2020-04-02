@@ -5,7 +5,7 @@ import useTranslation from '../hooks/useTranslation'
 import { Waypoint } from 'react-waypoint';
 import { useSpring, animated } from 'react-spring';
 import Text from './styles/Text';
-import A from './styles/a'
+import A from './styles/StyledAnchor'
 const HomeDetailsStyles = styled.div`
   color: white;
   height:100%;

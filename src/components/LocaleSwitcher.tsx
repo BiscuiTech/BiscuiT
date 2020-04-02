@@ -5,21 +5,20 @@ import { LocaleContext } from '../context/LocaleContext'
 import styled from 'styled-components'
 
 const LangWrapper = styled.div`
-  margin: 6px 24px;
   width: 100%;
   height: 100%;
   display: flex;
   justify-content: center;
-  justify-content: start;
-/*   font-family: 'Montserrat';
-  font-size: 14px; */
-
+  justify-content: end;
+  font-family: 'Montserrat';
+  font-size: 14px;
 `;
 
 const LangBtn = styled.div`
 --gold: ${props => props.theme.color.gold};
 --speed3: cubic-bezier(0.26, 0.48, 0.08, 0.9);
 --height: 32px;
+  margin-right: 10%;
 .language-switcher {
   position: relative;
   display: inline-block;

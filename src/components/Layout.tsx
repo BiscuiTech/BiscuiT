@@ -1,7 +1,4 @@
 import React, { Profiler, useEffect } from "react";
-/* import { Html } from 'next/document' */
-/* import LogRocket from 'logrocket';
-import setupLogRocketReact from 'logrocket-react'; */
 import styled from "styled-components";
 import Head from "./Head";
 import Header from "./Header";
@@ -10,18 +7,12 @@ import GlobalStyle from "./styles/GlobalStyle";
 import { onRenderCallback } from "../lib/onRenderCallback";
 
 const Page = styled.div`
-  width: 100%;
-  height: 100%;
-  /* background:linear-gradient(180deg, #F2F2F2 0%, #FFFFFF 100%); */
-  /* background: url("/images/brilliant.png") repeat,
-    linear-gradient(180deg, #f2f2f2 0%, #ffffff 100%); */
-  /* display: flex;
-  flex-direction: column; */
-
+  height: 100vh;
   padding: 0;
 	margin: 0;
-	background: #001e2d;
-
+	background: hsl(200, 100%, 5%);
+  overflow: hidden;
+  overflow-y: scroll;
   .skip-link {
     position: absolute;
     top: -40px;
@@ -37,17 +28,24 @@ const Page = styled.div`
 
 const Content = styled.main`
   height: 100%;
-  min-height: calc(75vh - 85px);
-  flex: 1 0 auto;
+  /* flex: 1 0 auto; */
+  /* display: grid; */
+  max-width: 1000px;
+  width: 80%;
+  margin: auto;
+  margin-bottom: 60px;
+  padding-top: 96px;
 `;
 
 const Canvas = styled.canvas`
   position: absolute;
 	top: 0;
 	left: 0;
-
+  bottom: 0;
+  right:0;
 	width: 100%;
-	height: 100%;
+	height:100%;
+  pointer-events: none;
 `;
 
 function debounce(func, wait, immediate?) {
@@ -71,11 +69,6 @@ function debounce(func, wait, immediate?) {
     if (callNow) func.apply(context, args);
   };
 }
-
-
-/*
-TODO: add a pattern background
-*/
 
 const Layout = ({ title, description, /* url, ogImage,  */ children }) => {
   useEffect(() => {
@@ -156,7 +149,7 @@ const Layout = ({ title, description, /* url, ogImage,  */ children }) => {
       draw();
     });
 
-    canvas.addEventListener('mousemove', function (ev) {
+    window.addEventListener('mousemove', function (ev) {
       mouseX = ev.clientX;
       mouseY = ev.clientY;
     });
@@ -190,17 +183,6 @@ const Layout = ({ title, description, /* url, ogImage,  */ children }) => {
       });
 
     } */
-    /* (function (w, d, s, l, i) {
-      w[l] = w[l] || [];
-      w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
-      const f = d.getElementsByTagName(s)[0];
-      const j: any = d.createElement(s);
-      const dl = l != 'dataLayer' ? `&l=${l}` : '';
-      j.async = true;
-      j.src = `https://www.googletagmanager.com/gtm.js?id=${i}${dl}`;
-      f.parentNode.insertBefore(j, f);
-    })(window, document, 'script', 'dataLayer', 'GTM-5C4VKCP'); */
-
     // First we get the viewport height and we multiple it by 1% to get a value for a vh unit
     const vh = window.innerHeight * 0.01;
     // Then we set the value in the --vh custom property to the root of the document
@@ -220,9 +202,7 @@ const Layout = ({ title, description, /* url, ogImage,  */ children }) => {
       <GlobalStyle />
       <Profiler id="Page" onRender={onRenderCallback}>
         <Page>
-          <Canvas>
-          </Canvas>
-
+          <Canvas />
           <Head
             title={title}
             description={description}
