@@ -65,7 +65,7 @@ const Home = ({ pid }) => {
       </Welcome>
       <ShortIntro>
         <p>{t('short_intro')}</p>
-        <Link href="/about">
+        <Link href="/[lang]/about" as={`/${locale}/about`} >
           <StyledAnchor className="toRight">{t('common')['aboutMe']}</StyledAnchor>
         </Link>
       </ShortIntro>

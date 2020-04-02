@@ -26,13 +26,23 @@ const LatestBlogStyles = styled.div`
 
 export const LatestBlog = ({ pid }) => {
   const { locale, t } = useTranslation()
+  const fetchLatestBlog = () => {
+    return null;
+  }
+  const blogInfo = fetchLatestBlog()
   return (
     <LatestBlogStyles>
       <h2>{t('latestBlog')}</h2>
-      <p>How to create an internationalized website with Next.js</p>
-      <Link href="/[lang]/blog/[pid]" as={`/${locale}/blog/${pid}`} >
-        <StyledAnchor className="toRight">{t('viewBlog')}</StyledAnchor>
-      </Link>
+      {blogInfo
+        ?
+        <>
+          <p>How to create an internationalized website with Next.js</p>
+          <Link href="/[lang]/blog/[pid]" as={`/${locale}/blog/${pid}`} >
+            <StyledAnchor className="toRight">{t('viewBlog')}</StyledAnchor>
+          </Link>
+        </>
+        : <em>{t('common')['error_noBlogs']}</em>
+      }
     </LatestBlogStyles>
   )
 }

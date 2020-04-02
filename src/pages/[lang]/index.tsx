@@ -9,7 +9,12 @@ const IndexPage: React.FC = () => {
       title="Biscui.Tech"
       description="Biscui.Tech Home page"
     >
-      <Home pid={1} />
+      {/*
+        TODO: add an SSG api to fetch blogposts
+          and populate `pid` with the id
+
+      */}
+      <Home pid={null} />
     </Layout>
   );
 };

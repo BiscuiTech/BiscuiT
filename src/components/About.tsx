@@ -12,7 +12,7 @@ const AboutStyles = styled.div`
 `;
 
 const AboutWrapper = styled.div`
-  height: 100%;
+/*   height: 100%;
   width: 100%;
   grid-area: content;
   display: grid;
@@ -21,7 +21,7 @@ const AboutWrapper = styled.div`
   grid-column-gap: 12px;
   @media (max-width: 1000px) {
     display: block;
-  }
+  } */
 `;
 
 const Img = styled.div`
@@ -61,17 +61,23 @@ const Img = styled.div`
 const Text = styled.div`
   height: 100%;
   width: 100%;
-  text-align: center;
+  text-align: justify;
+  text-justify: inter-word;
+  /*
   grid-area: text;
   margin:auto;
   justify-self: center;
-  p {
+  */
+/*   p {
     padding: 12px;
     text-align: left;
     grid-area: text;
     align-self: center;
     line-height: 1.3;
     text-indent: 18px;
+  } */
+  p {
+    text-justify: distribute;
   }
   .closing-words {
     font-weight: 600;
@@ -126,28 +132,26 @@ const About = () => {
         {t('subHeader')}
       </SubHeader>
       <AboutStyles>
-        <Card fadeIn={false} textAlign="left" maxWidth="1000px">
-          <AboutWrapper>
-            <Img>
-              <Image publicId="biscui.tech/biscuitech-portrait.webp" cloudName="biscuitech" alt="Mug shot of Jean-Cédric Huet, also known as BiscuiTech">
-                <Transformation width="400" quality="auto" crop="scale" />
-              </Image>
-            </Img>
-            <Text>
-              <p>
-                {t('aboutMe')}
-              </p>
-              <br />
-              <p className="bobbing-anim">
-                <Link href="/[lang]/contact" as={`/${locale}/contact`}>
-                  <a className="biscuitech">
-                    {t('contactMe')}
-                  </a>
-                </Link>
-              </p>
-            </Text>
-          </AboutWrapper>
-        </Card>
+        <AboutWrapper>
+          <Img>
+            <Image publicId="biscui.tech/biscuitech-portrait.webp" cloudName="biscuitech" alt="Mug shot of Jean-Cédric Huet, also known as BiscuiTech">
+              <Transformation width="400" quality="auto" crop="scale" />
+            </Image>
+          </Img>
+          <Text>
+            <p>
+              {t('aboutMe')}
+            </p>
+            <br />
+            <p className="bobbing-anim">
+              <Link href="/[lang]/contact" as={`/${locale}/contact`}>
+                <a className="biscuitech">
+                  {t('contactMe')}
+                </a>
+              </Link>
+            </p>
+          </Text>
+        </AboutWrapper>
       </AboutStyles>
     </>
   )
