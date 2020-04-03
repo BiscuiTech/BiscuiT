@@ -9,7 +9,7 @@ const ContactButtonStyles = styled.div`
   transform: translateX(-50%);
   color:white;
   cursor: pointer;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 400;
   line-height: 46px;
   padding: 1em 20px;
