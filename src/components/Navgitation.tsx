@@ -25,7 +25,9 @@ const NavgitationStyles = styled.nav`
 `;
 
 const StyledMenuLink = styled.a`
-  padding: 6px;
+  font-size: 20px;
+  font-size: max(18px,max(2vw, 24px));
+  padding: 12px 6px;
   color: ${props => props.current ? props.theme.color.gold : 'inherit'};
   cursor: pointer;
 `;
