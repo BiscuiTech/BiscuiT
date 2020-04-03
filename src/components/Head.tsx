@@ -42,16 +42,13 @@ const Head = ({ title, description, url, ogImage }) => (
     <meta property="og:image" content={ogImage || defaultOGImage} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <link rel="stylesheet" href="/inter.css" />
-    <link
-      href="https://fonts.googleapis.com/css?family=Montserrat:100,200,400&display=swap"
-      rel="preconnect" as="font" crossOrigin="anonymous"
-    />
-    <link rel="preconnect" href="https://www.google-analytics.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,300;0,400;1,400&family=Open+Sans:wght@300&display=swap" rel="stylesheet" />
+    {/* TODO: add fonts */}
+    {/* <link rel="preconnect" href="https://www.google-analytics.com" />
     <link rel="preconnect" href="https://www.facebook.com" />
     <link rel="preconnect" href="https://connect.facebook.net" />
     <link rel="preconnect" href="https://www.googletagmanager.com" />
-    <link rel="preconnect" href="https://static.xx.fbcdn.net" />
+    <link rel="preconnect" href="https://static.xx.fbcdn.net" /> */}
     {/* <script
       src="https://browser.sentry-cdn.com/5.9.1/bundle.min.js"
       integrity="sha384-/x1aHz0nKRd6zVUazsV6CbQvjJvr6zQL2CHbQZf3yoLkezyEtZUpqUNnOLW9Nt3v"

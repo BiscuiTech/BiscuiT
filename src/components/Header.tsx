@@ -1,15 +1,25 @@
-import React from 'react';
+import React from 'react'
 import styled from 'styled-components';
+import useTranslation from '../hooks/useTranslation'
+import LocaleSwitcher from './LocaleSwitcher'
 
-const H1 = styled.h1`
-  grid-area: header;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 200;
-  font-size: calc(28px + (54 - 28) * ((100vw - 300px) / (1600 - 300)));
-  margin: 0;
-  padding: 6px 12px;
+const HeaderStyles = styled.header`
+  height: 60px;
+  width: 100vw;
+  position: absolute;
+  top:0;
 `;
 
-const Header = ({ children }) => <H1>{children}</H1>;
+const Header = () => {
+  const { locale } = useTranslation()
+  return (
+    <>
+      <HeaderStyles>
+        <LocaleSwitcher />
+      </HeaderStyles>
+    </>
 
-export default Header;
+  )
+}
+
+export default Header

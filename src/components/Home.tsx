@@ -1,74 +1,75 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import Ball from './Ball';
-import Messages from './Messages';
+import useTranslation from '../hooks/useTranslation'
+import Link from 'next/link';
+import StyledAnchor from './styles/StyledAnchor';
+import { LatestBlog } from './LatestBlog';
 
-const BallsWrapper = styled.div`
-  width: calc(100% - 20px);
-  grid-row: span 2;
-  position: absolute;
-  overflow: hidden;
-  height: calc(100% - 120px);
-  margin: -8px -36px;
-  @media (max-width: 780px) {
-    width: calc(100% - 20px);
-    margin: -6px -12px;
+const Welcome = styled.div`
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  text-align: left;
+  margin-bottom:48px;
+  padding: 0;
+  font-family: 'Montserrat';
+  font-weight: 200;
+  * {
+    padding: 0;
+  }
+  .welcome-hello {
+    font-size: 26px;
+    font-size: min(max(26px,3vw), 32px);
+  }
+  .welcome--my-name {
+    font-size: 36px;
+    font-size: min(max(36px,6vw), 72px);
+    font-weight: 800;
+    line-height: 100%;
+  }
+  .welcome--from {
+    font-size: 20px;
+    font-size: min(max(18px, 4vw), 24px);
+    width: 70%;
+    min-width: 230px;
+    margin: 0;
+    word-wrap: break-word;
+  }
+`
+
+const ShortIntro = styled.div`
+  width: 100%;
+  margin: auto;
+  text-align: left;
+  text-justify: auto;
+  overflow: auto;
+  .toRight {
+    margin-right: 6px;
+    float: right;
   }
 `;
 
-const Home = ({ messagesKey }) => {
-  const ballsGenerator = () => {
-    const colors = ['#3CC157', '#2AA7FF', '#1B1B1B', '#FCBC0F', '#F85F36'];
-    const quantity = 60;
-    const arr = [];
-    for (let index = 0; index < quantity; index += 1) {
-      const color = colors[Math.floor(Math.random() * colors.length)];
-      arr.push({ color });
-    }
-    return arr;
-  };
-  useEffect(() => {
-    const balls = document.querySelectorAll('.ball');
-
-    // Keyframes
-    balls.forEach((el, i, ra) => {
-      const to = {
-        x: Math.random() * (i % 2 === 0 ? -10 : 11),
-        y: Math.random() * 10,
-      };
-      if (typeof el.animate !== 'undefined') {
-        el.animate(
-          [
-            { transform: 'translate(0, 0)' },
-            { transform: `translate(${to.x}rem, ${to.y}rem)` },
-          ],
-          {
-            duration: (Math.random() + 1) * 2000, // random duration
-            direction: 'alternate',
-            fill: 'both',
-            iterations: Infinity,
-            easing: 'ease-in-out',
-          }
-        );
-      }
-    });
-  }, []);
+const Home = ({ pid }) => {
+  const { locale, t } = useTranslation()
   return (
     <>
-      <Messages />
-      <BallsWrapper>
-        {ballsGenerator().map((b, i) => (
-          <Ball
-            className="ball"
-            key={i}
-            background={b.color}
-            right={`${Math.floor(Math.random() * 100)}vw`}
-            top={`${Math.floor(Math.random() * 100)}vh`}
-            transform={`scale(${Math.random()})`}
-            width={`${Math.random()}em`}
-          />
-        ))}
-      </BallsWrapper>
+      <Welcome>
+        <h1 className="welcome--hello">
+          {t('welcome_msg')}
+          <br />
+          <span className="welcome--my-name">Jean-Cédric Huet</span>
+        </h1>
+        <p className="welcome--from">{t('i_am')}</p>
+      </Welcome>
+      <ShortIntro>
+        <p>{t('short_intro')}</p>
+        <Link href="/[lang]/about" as={`/${locale}/about`} >
+          <StyledAnchor className="toRight">{t('common')['aboutMe']}</StyledAnchor>
+        </Link>
+      </ShortIntro>
+      <LatestBlog pid={pid} />
     </>
   );
 };
