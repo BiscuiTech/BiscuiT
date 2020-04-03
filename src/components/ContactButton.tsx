@@ -4,16 +4,18 @@ import styled from 'styled-components';
 const ContactButtonStyles = styled.div`
   text-align: center;
   position: absolute;
-  bottom: 0; transform: translateX(50%);
-  color: black;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  color:white;
   cursor: pointer;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 400;
   line-height: 46px;
   padding: 1em 20px;
   max-width: 220px;
   text-decoration: none;
-  text-transform: uppercase;
+  text-transform: capitalize;
   width: 100%;
   height: 70px;
   svg {
@@ -26,7 +28,7 @@ const ContactButtonStyles = styled.div`
   }
   rect {
     fill: none;
-    stroke: black;
+    stroke: white;
     stroke-width: 2;
     stroke-dasharray: 422, 0;
     transition: all 0.35s linear;
@@ -79,8 +81,7 @@ const ContactButton = ({ children, onClick }: IContactButton) => {
         </defs>
         <rect x="0" y="0" fill="none" width="100%" height="100%" />
       </svg>
-      {children}
-
+      <button>{children}</button>
     </ContactButtonStyles >
   )
 };

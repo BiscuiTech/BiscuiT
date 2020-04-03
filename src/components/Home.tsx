@@ -25,7 +25,7 @@ const Welcome = styled.div`
   }
   .welcome--my-name {
     font-size: 36px;
-    font-size: min(max(36px,5vw), 56px);
+    font-size: min(max(36px,6vw), 72px);
     font-weight: 800;
     line-height: 100%;
   }

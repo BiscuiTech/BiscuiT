@@ -20,6 +20,7 @@ const GlobaStyle = createGlobalStyle`
     scrollbar-color: var(--thumbBG) var(--scrollbarBG);
     font-family: ${props => props.theme.font};
     color: white;
+    font-size: max(18px,min(2vw, 24px))
   }
   body::-webkit-scrollbar {
     width: 11px;
@@ -41,7 +42,7 @@ const GlobaStyle = createGlobalStyle`
     font-family: 'Montserrat', sans-serif;
     font-weight: 200;
     font-size: 30px;
-    font-size: min(max(28px,3vw),54px);
+    font-size: min(max(28px,5vw),54px);
     margin: 0;
     padding: 6px 12px;
   }

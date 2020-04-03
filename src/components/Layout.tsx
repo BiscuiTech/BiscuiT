@@ -5,14 +5,15 @@ import Header from "./Header";
 import Footer from "./Footer";
 import GlobalStyle from "./styles/GlobalStyle";
 import { onRenderCallback } from "../lib/onRenderCallback";
+import Navigation from "./Navgitation";
 
 const Page = styled.div`
   height: 100vh;
   padding: 0;
 	margin: 0;
-	background: hsl(200, 100%, 5%);
+	background: ${props => props.theme.background};
   overflow: hidden;
-  overflow-y: scroll;
+  overflow-y: auto;
   .skip-link {
     position: absolute;
     top: -40px;
@@ -27,7 +28,7 @@ const Page = styled.div`
 `;
 
 const Content = styled.main`
-  height: 100%;
+  /* height: 100%; */
   /* flex: 1 0 auto; */
   /* display: grid; */
   max-width: 1000px;
@@ -35,6 +36,9 @@ const Content = styled.main`
   margin: auto;
   margin-bottom: 60px;
   padding-top: 96px;
+  @media (min-width:1000px) {
+    width: 800px;
+  }
 `;
 
 const Canvas = styled.canvas`
@@ -212,6 +216,7 @@ const Layout = ({ title, description, /* url, ogImage,  */ children }) => {
           <a className="skip-link" href="#maincontent">
             Skip to main
           </a>
+          <Navigation />
           <Profiler id="Header" onRender={onRenderCallback}>
             <Header />
           </Profiler>

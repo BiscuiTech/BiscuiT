@@ -12,7 +12,8 @@ const theme = {
   },
   home: {
     slantedBackgroundHeight: '40vh'
-  }
+  },
+  background: 'hsl(200, 100%, 5%)'
 };
 
 export default theme;

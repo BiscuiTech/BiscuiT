@@ -5,7 +5,7 @@ const PageHeaderStyles = styled.h1`
   font-family: Montserrat;
   font-size: 36px;
   font-size: calc(36px + (56 - 36) * ((100vw - 500px) / (1600 - 500)));
-  margin: 64px auto;
+  margin: 24px auto 64px auto;
   text-align: center;
 `;
 
@@ -24,6 +24,7 @@ const SubHeaderStyles = styled.h2`
   font-weight: 200;
   text-align: center;
   margin-top: -64px;
+  margin-bottom: 24px;
 `;
 
 export const SubHeader = ({ children }) => {

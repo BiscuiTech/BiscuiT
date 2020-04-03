@@ -62,7 +62,7 @@ const Text = styled.div`
   height: 100%;
   width: 100%;
   text-align: justify;
-  text-justify: inter-word;
+  text-justify: inter-cluster;
   /*
   grid-area: text;
   margin:auto;
