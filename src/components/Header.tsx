@@ -6,7 +6,7 @@ import LocaleSwitcher from './LocaleSwitcher'
 const HeaderStyles = styled.header`
   height: 60px;
   width: 100vw;
-  position: absolute;
+  position: fixed;
   top:0;
 `;
 

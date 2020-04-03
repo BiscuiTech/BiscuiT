@@ -8,6 +8,7 @@ import Link from 'next/link';
 
 const AboutStyles = styled.div`
   margin: auto;
+  padding-bottom: 32px;
   text-align: center;
 `;
 
@@ -40,7 +41,7 @@ const Img = styled.div`
     margin: 0 auto;
     margin-top: -20%;
     height: auto;
-    /* z-index: 0; */
+    z-index: -1;
     width: 100%;
   }
   @media (max-width: 1000px) {
@@ -62,21 +63,18 @@ const Img = styled.div`
 const Text = styled.div`
   height: 100%;
   width: 100%;
-  text-align: justify;
-  text-justify: inter-cluster;
-  /*
+  text-align: left;
   grid-area: text;
   margin:auto;
   justify-self: center;
-  */
-/*   p {
+  p {
     padding: 12px;
     text-align: left;
     grid-area: text;
     align-self: center;
     line-height: 1.3;
     text-indent: 18px;
-  } */
+  }
   p {
     text-justify: distribute;
   }
