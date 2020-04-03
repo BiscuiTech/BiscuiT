@@ -74,8 +74,6 @@ const Text = styled.div`
     align-self: center;
     line-height: 1.3;
     text-indent: 18px;
-  }
-  p {
     text-justify: distribute;
   }
   .closing-words {
@@ -142,13 +140,13 @@ const About = () => {
               {t('aboutMe')}
             </p>
             <br />
-            <p className="bobbing-anim">
+            <div className="bobbing-anim">
               <Link href="/[lang]/contact" as={`/${locale}/contact`}>
                 <a className="biscuitech">
                   {t('contactMe')}
                 </a>
               </Link>
-            </p>
+            </div>
           </Text>
         </AboutWrapper>
       </AboutStyles>

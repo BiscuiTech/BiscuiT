@@ -21,17 +21,17 @@ const Welcome = styled.div`
   }
   .welcome-hello {
     font-size: 28px;
-    font-size: max(30px, min(3vw, 38px));
+    font-size: max(30px, min(3vh, 38px));
   }
   .welcome--my-name {
     font-size: 42px;
-    font-size: max(40px, min(6vw, 72px));
+    font-size: max(40px, min(6vh, 72px));
     font-weight: 800;
     line-height: 100%;
   }
   .welcome--from {
     font-size: 20px;
-    font-size: max(18px, min(4vw, 24px));
+    font-size: max(18px, min(4vh, 24px));
     width: 70%;
     min-width: 230px;
     margin: 0;
