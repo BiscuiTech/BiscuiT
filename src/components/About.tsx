@@ -69,6 +69,7 @@ const Text = styled.div`
   justify-self: center;
   p {
     padding: 12px;
+    font-size: max(18px,min(2vh, 24px));
     text-align: left;
     grid-area: text;
     align-self: center;
