@@ -12,7 +12,7 @@ const AboutStyles = styled.div`
 `;
 
 const AboutWrapper = styled.div`
-/*   height: 100%;
+  height: 100%;
   width: 100%;
   grid-area: content;
   display: grid;
@@ -21,7 +21,7 @@ const AboutWrapper = styled.div`
   grid-column-gap: 12px;
   @media (max-width: 1000px) {
     display: block;
-  } */
+  }
 `;
 
 const Img = styled.div`
@@ -35,11 +35,12 @@ const Img = styled.div`
   vertical-align: middle;
   overflow: hidden;
   margin: auto;
+  position: relative;
   img {
     margin: 0 auto;
     margin-top: -20%;
     height: auto;
-    z-index: -1;
+    /* z-index: 0; */
     width: 100%;
   }
   @media (max-width: 1000px) {
