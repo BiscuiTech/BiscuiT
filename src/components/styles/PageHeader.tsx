@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const PageHeaderStyles = styled.h1`
   font-family: Montserrat;
   font-size: 36px;
-  font-size: calc(36px + (56 - 36) * ((100vw - 500px) / (1600 - 500)));
+  font-size: max(36px,min(4vh,56px));
   margin: 24px auto 64px auto;
   text-align: center;
 `;
