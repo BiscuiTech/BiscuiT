@@ -21,11 +21,11 @@ const Welcome = styled.div`
   }
   .welcome-hello {
     font-size: 28px;
-    font-size: max(26px, min(3vw, 32px));
+    font-size: max(30px, min(3vw, 38px));
   }
   .welcome--my-name {
     font-size: 42px;
-    font-size: max(36px, min(6vw, 72px));
+    font-size: max(40px, min(6vw, 72px));
     font-weight: 800;
     line-height: 100%;
   }
@@ -43,6 +43,8 @@ const ShortIntro = styled.div`
   width: 100%;
   margin: auto;
   text-align: left;
+  font-size:
+    font-size: max(18px, min(4vw, 24px));
   text-justify: auto;
   overflow: auto;
   .toRight {
