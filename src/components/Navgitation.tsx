@@ -40,21 +40,21 @@ const Navigation = () => {
           {t('common')['navigation_Home']}
         </StyledMenuLink>
       </Link>
-      <Link href={"/[lang]/blog"} as={`/${locale}/blog`} >
+      {/* <Link href={"/[lang]/blog"} as={`/${locale}/blog`} >
         <StyledMenuLink current={pathname === '/[lang]/blog'}>
           {t('common')['navigation_Blog']}
         </StyledMenuLink>
-      </Link>
+      </Link> */}
       <Link href={"/[lang]/about"} as={`/${locale}/about`} >
         <StyledMenuLink current={pathname === '/[lang]/about'}>
           {t('common')['navigation_About']}
         </StyledMenuLink>
       </Link>
-      <Link href={"/[lang]/projects"} as={`/${locale}/projects`} >
+      {/* <Link href={"/[lang]/projects"} as={`/${locale}/projects`} >
         <StyledMenuLink current={pathname === '/[lang]/projects'}>
           {t('common')['navigation_Projects']}
         </StyledMenuLink>
-      </Link>
+      </Link> */}
       <Link href={"/[lang]/contact"} as={`/${locale}/contact`} >
         <StyledMenuLink current={pathname === '/[lang]/contact'}>
           {t('common')['navigation_Contact']}
