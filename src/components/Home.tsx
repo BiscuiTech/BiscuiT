@@ -20,18 +20,18 @@ const Welcome = styled.div`
     padding: 0;
   }
   .welcome-hello {
-    font-size: 26px;
-    font-size: min(max(26px,3vw), 32px);
+    font-size: 28px;
+    font-size: max(26px, min(3vw, 32px));
   }
   .welcome--my-name {
-    font-size: 36px;
-    font-size: min(max(36px,6vw), 72px);
+    font-size: 42px;
+    font-size: max(36px, min(6vw, 72px));
     font-weight: 800;
     line-height: 100%;
   }
   .welcome--from {
     font-size: 20px;
-    font-size: min(max(18px, 4vw), 24px);
+    font-size: max(18px, min(4vw, 24px));
     width: 70%;
     min-width: 230px;
     margin: 0;
