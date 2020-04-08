@@ -47,7 +47,7 @@ const NavgitationStyles = styled.nav`
 
 const StyledMenuLink = styled(motion.a)`
   font-size: 20px;
-  font-size: max(18px,max(2vw, 24px));
+  font-size: max(18px,max(2vw, 22px));
   padding: 12px 0;
   color: ${props => props.current ? 'black' : 'white'};
   cursor: pointer;
@@ -69,7 +69,10 @@ const Navigation = () => {
     <AnimateSharedLayout>
       <NavgitationStyles>
         {ActiveLinks.map(({ tKey, path }, i) => (
-          <Link href={`/[lang]/${path}`} as={`/${locale}/${path}`}>
+          <Link href={`/[lang]/${path}`} as={`/${locale}/${path}`}
+            key={i}
+
+          >
             <StyledMenuLink
               current={isCurrentPath(path)}
               animate
