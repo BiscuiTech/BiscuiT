@@ -9,7 +9,7 @@ const ContactButtonStyles = styled.div`
   transform: translateX(-50%);
   color:white;
   cursor: pointer;
-  font-size: 20px;
+  font-size: 24px;
   font-weight: 400;
   line-height: 46px;
   padding: 1em 20px;
@@ -17,10 +17,10 @@ const ContactButtonStyles = styled.div`
   text-decoration: none;
   text-transform: capitalize;
   width: 100%;
-  height: 70px;
+  height: 80px;
   svg {
     height: 100%;
-    max-height: 80px;
+    max-height: 100px;
     left: 0;
     position: absolute;
     top: 8px;
