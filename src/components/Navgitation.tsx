@@ -11,12 +11,16 @@ const NavgitationStyles = styled.nav`
   width:100%;
   display:flex;
   justify-content: space-around;
+  border-top: 1px solid ${props => props.theme.color.accent};
+  border-bottom: none;
   z-index: 5;
-  @media (min-width: 800px) {
+  @media (min-width: 820px) {
     bottom: unset;
     top:0;
     width: 600px;
     background: ${props => props.theme.background};
+    border-top: none;
+    border-bottom: 1px solid ${props => props.theme.color.accent};
     border-radius: 5px;
     margin:auto;
     left: 50%;

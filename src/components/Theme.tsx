@@ -4,6 +4,7 @@ const theme = {
   },
   color: {
     gold: '#FBB03B',
+    accent: '#FBB03B',
     blue: '#0071bc',
   },
   font: 'Open Sans',

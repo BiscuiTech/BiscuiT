@@ -18,7 +18,7 @@ const LangBtn = styled.div`
 --gold: ${props => props.theme.color.gold};
 --speed3: cubic-bezier(0.26, 0.48, 0.08, 0.9);
 --height: 32px;
-  margin-right: 10%;
+  margin-right: 5%;
 .language-switcher {
   position: relative;
   display: inline-block;
