@@ -83,6 +83,7 @@ const Text = styled.div`
   .biscuitech {
     box-sizing: content-box;
     font-weight: 600;
+    font-size: 1.2em;
     padding: 6px 12px;
     margin: none;
     color: white;
