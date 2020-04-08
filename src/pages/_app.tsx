@@ -3,6 +3,7 @@ import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import * as Sentry from '@sentry/node';
 import theme from '../components/Theme';
+import { AnimatePresence } from 'framer-motion'
 
 import '../styles/index.css'
 /**
@@ -19,7 +20,14 @@ process.env.NODE_ENV === 'production'
   ? Sentry.init({ dsn: 'https://c0e5b834500d45b88fb648ccf7c489bf@sentry.io/1838052' })
   : null;
 
-export default class MyApp extends App {
+
+function handleExitComplete() {
+  if (typeof window !== 'undefined') {
+    window.scrollTo({ top: 0 })
+  }
+}
+
+class MyApp extends App {
   componentDidCatch(error, errorInfo) {
     console.log('CUSTOM ERROR HANDLING', error);
     // This is needed to render errors correctly in development / production
@@ -27,15 +35,20 @@ export default class MyApp extends App {
   }
 
   render() {
-    const { Component, pageProps } = this.props;
-    // Workaround for https://github.com/zeit/next. js/issues/8592
+    const { Component, pageProps, router } = this.props;
+    // Workaround for https://github.com/zeit/next.js/issues/8592
     // @ts-ignore
     const { err } = this.props;
     const modifiedPageProps = { ...pageProps, err };
+
     return (
       <ThemeProvider theme={theme}>
-        <Component {...modifiedPageProps} />
+        <AnimatePresence exitBeforeEnter onExitComplete={handleExitComplete}>
+          <Component {...modifiedPageProps} key={router.route} />
+        </AnimatePresence>
       </ThemeProvider>
     );
   }
 }
+
+export default MyApp
