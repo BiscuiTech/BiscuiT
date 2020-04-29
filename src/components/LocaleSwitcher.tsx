@@ -1,8 +1,8 @@
 import React from 'react'
 import { useRouter } from 'next/router'
-import { locales, languageNames } from '../translations/config'
-import { LocaleContext } from '../context/LocaleContext'
+import { locales } from '../translations/config'
 import styled from 'styled-components'
+import { LanguageContext } from '../context/LanguageContext'
 
 const LangWrapper = styled.div`
   width: 100%;
@@ -100,22 +100,25 @@ input:checked + .slider:before {
 `;
 
 const LocaleSwitcher: React.FC = () => {
-  const router = useRouter()
-  const { locale: { lang } } = React.useContext(LocaleContext)
+  const router = useRouter();
+  const { localization } = React.useContext(LanguageContext);
   const handleLocaleChange = React.useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
-      const targetLang = e.target.checked ? 'en' : 'fr'
-      const regex = new RegExp(`^/(${locales.join('|')})`)
-      router.push(router.pathname, router.asPath.replace(regex, `/${targetLang}`))
+      const targetLang = e.target.checked ? "en" : "fr";
+      const regex = new RegExp(`^/(${locales.join("|")})`);
+      router.push(
+        router.pathname,
+        router.asPath.replace(regex, `/${targetLang}`)
+      );
     },
     [router]
-  )
+  );
 
   return (
     <LangWrapper>
-      <LangBtn lang={lang}>
+      <LangBtn lang={localization.locale}>
         <label className="language-switcher">
-          <input type="checkbox" onChange={handleLocaleChange} checked={lang === 'en' ? true : false} />
+          <input type="checkbox" onChange={handleLocaleChange} checked={localization.locale === 'en' ? true : false} />
           <span className="slider round"></span>
           <span className="select-fr">FR</span>
           <span className="select-en">EN</span>

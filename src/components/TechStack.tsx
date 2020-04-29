@@ -57,7 +57,6 @@ const TechStack = ({ imageHeight, info }) => {
       <ul>
         {info.map((el, i) => {
           const styles = getTechStyles(el);
-          console.log('styles: ', styles, `for el: ${el}`)
           return (
             <TechPill key={i} styles={styles}>
               {styles.name}
