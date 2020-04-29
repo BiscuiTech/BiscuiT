@@ -7,19 +7,6 @@ const defaultOGURL = '';
 const defaultOGImage = '';
 
 const Head = ({ title, description, url, ogImage }) => (
-  /* useEffect(() => {
-    (function(w, d, s, l, i) {
-      w[l] = w[l] || [];
-      w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
-      const f = d.getElementsByTagName(s)[0];
-      const j = d.createElement(s);
-      const dl = l != 'dataLayer' ? `&l=${l}` : '';
-      j.async = true;
-      j.src = `https://www.googletagmanager.com/gtm.js?id=${i}${dl}`;
-      f.parentNode.insertBefore(j, f);
-    })(window, document, 'script', 'dataLayer', 'GTM-5C4VKCP');
-  }); */
-
   <NextHead>
     <meta charSet="UTF-8" />
     <title>{title || 'Biscui.Tech'}</title>
@@ -43,18 +30,6 @@ const Head = ({ title, description, url, ogImage }) => (
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,300;0,400;1,400&family=Open+Sans:wght@300&display=swap" rel="stylesheet" />
-    {/* TODO: add fonts */}
-    {/* <link rel="preconnect" href="https://www.google-analytics.com" />
-    <link rel="preconnect" href="https://www.facebook.com" />
-    <link rel="preconnect" href="https://connect.facebook.net" />
-    <link rel="preconnect" href="https://www.googletagmanager.com" />
-    <link rel="preconnect" href="https://static.xx.fbcdn.net" /> */}
-    {/* <script
-      src="https://browser.sentry-cdn.com/5.9.1/bundle.min.js"
-      integrity="sha384-/x1aHz0nKRd6zVUazsV6CbQvjJvr6zQL2CHbQZf3yoLkezyEtZUpqUNnOLW9Nt3v"
-      crossOrigin="anonymous"
-
-    /> */}
   </NextHead>
 );
 

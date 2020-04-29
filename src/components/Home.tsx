@@ -47,6 +47,7 @@ const ShortIntro = styled.div`
   font-size: max(18px, min(4vh, 24px));
   text-justify: auto;
   overflow: auto;
+  /* max-width: 600px; */
   .toRight {
     margin-right: 6px;
     float: right;

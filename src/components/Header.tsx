@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components';
-import useTranslation from '../hooks/useTranslation'
 import LocaleSwitcher from './LocaleSwitcher'
 
 const HeaderStyles = styled.header`
@@ -11,14 +10,10 @@ const HeaderStyles = styled.header`
 `;
 
 const Header = () => {
-  const { locale } = useTranslation()
   return (
-    <>
-      <HeaderStyles>
-        <LocaleSwitcher />
-      </HeaderStyles>
-    </>
-
+    <HeaderStyles>
+      <LocaleSwitcher />
+    </HeaderStyles>
   )
 }
 

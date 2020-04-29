@@ -31,7 +31,7 @@ const Content = styled.main`
   /* height: 100%; */
   /* flex: 1 0 auto; */
   /* display: grid; */
-  max-width: 1000px;
+  max-width: 600px;
   width: 80%;
   margin: auto;
   margin-bottom: 60px;
