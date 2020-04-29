@@ -5,7 +5,8 @@ import useTranslation from '../hooks/useTranslation'
 import Link from 'next/link';
 
 const LatestBlogStyles = styled.div`
-  margin: auto;
+  max-width: 600px;
+ /*  margin: auto; */
   margin-top: 60px;
   overflow: auto;
   h2 {

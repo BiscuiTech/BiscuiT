@@ -41,7 +41,8 @@ const Welcome = styled.div`
 
 const ShortIntro = styled.div`
   width: 100%;
-  margin: auto;
+  max-width: 600px;
+  /* margin: auto; */
   text-align: left;
   font-size: 20px;
   font-size: max(18px, min(4vh, 24px));
