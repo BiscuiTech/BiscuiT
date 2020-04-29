@@ -18,12 +18,12 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
     const pipeline = smStream.pipe(createGzip());
     // Add any static entries here
-    smStream.write({ url: '/fr', lastmod: process.env.siteUpdatedAt, changefreq: EnumChangefreq.WEEKLY });
-    smStream.write({ url: '/en', lastmod: process.env.siteUpdatedAt, changefreq: EnumChangefreq.WEEKLY });
-    smStream.write({ url: '/who', lastmod: process.env.siteUpdatedAt, changefreq: EnumChangefreq.MONTHLY });
-    //smStream.write({ url: '/what', lastmod: process.env.siteUpdatedAt, changefreq: EnumChangefreq.MONTHLY });
-    //smStream.write({ url: '/how', lastmod: process.env.siteUpdatedAt, changefreq: EnumChangefreq.MONTHLY });
-    smStream.write({ url: '/contact', lastmod: process.env.siteUpdatedAt, changefreq: EnumChangefreq.MONTHLY });
+    smStream.write({ url: '/fr', lastmod: process.env.siteUpdatedAt, changefreq: EnumChangefreq.MONTHLY });
+    smStream.write({ url: '/en', lastmod: process.env.siteUpdatedAt, changefreq: EnumChangefreq.MONTHLY });
+    smStream.write({ url: '/fr/about', lastmod: process.env.siteUpdatedAt, changefreq: EnumChangefreq.MONTHLY });
+    smStream.write({ url: '/fr/contact', lastmod: process.env.siteUpdatedAt, changefreq: EnumChangefreq.MONTHLY });
+    smStream.write({ url: '/en/about', lastmod: process.env.siteUpdatedAt, changefreq: EnumChangefreq.MONTHLY });
+    smStream.write({ url: '/en/contact', lastmod: process.env.siteUpdatedAt, changefreq: EnumChangefreq.MONTHLY });
     // E.g. we create a sitemap.xml for articles
     // Set articles change frequencey is weekly
     //const articles = await fetchArticles();
