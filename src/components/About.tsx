@@ -7,7 +7,7 @@ const About = () => {
   const { t } = useTranslation()
   return (
     <>
-      <PageHeader>{t('header')}</PageHeader>
+      <PageHeader>{t('pageHeader')}</PageHeader>
       <SubHeader>
         {t('subHeader')}
       </SubHeader>

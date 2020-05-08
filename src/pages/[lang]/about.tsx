@@ -4,6 +4,7 @@ import About from '../../components/About';
 import { GetStaticProps, GetStaticPaths, NextPage } from 'next';
 import { LanguageProvider, getLocalizationProps } from '../../context/LanguageContext';
 import { Localization } from '../../translations/types';
+import Uses from '../../components/Uses';
 
 const AboutPage: NextPage<{ localization: Localization }> = ({ localization }) => (
   <LanguageProvider localization={localization}>

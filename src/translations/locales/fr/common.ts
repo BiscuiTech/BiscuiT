@@ -5,6 +5,7 @@ const common = {
   navigation_Contact: "Contact",
   navigation_About: "À Propos",
   navigation_Blog: "Blog",
+  navigation_Uses: "Tech",
   navigation_Projects: "Projets",
   error_InvalidEmail: 'Votre courriel est invalide',
   userMsg_Error: 'Erreur!',

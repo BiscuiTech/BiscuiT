@@ -12,6 +12,15 @@
 
   @apply text-yellow-300;
 }
+.colored-list li::before {
+  content: "\2022";
+  font-weight: bold;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
+  @apply text-yellow-300;
+
+}
 @import "tailwindcss/utilities";
 
 
