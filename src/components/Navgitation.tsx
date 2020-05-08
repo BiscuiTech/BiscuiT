@@ -10,7 +10,7 @@ const ActiveLinks = [
   { tKey: 'navigation_Blog', path: 'blog' },
   { tKey: "navigation_About", path: "about" },
   { tKey: "navigation_Uses", path: "uses" },
-  /* {tKey: 'navigation_Projects' , path: 'projects'}, */
+  { tKey: 'navigation_Projects', path: 'projects' },
   { tKey: "navigation_Contact", path: "contact" },
 ];
 

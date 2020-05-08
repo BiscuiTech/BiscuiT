@@ -1,16 +1,19 @@
 import React from 'react';
 import Layout from '../../components/Layout';
-import Projects from '../../components/ProjectList'
-import { GetStaticProps, GetStaticPaths } from 'next';
-import { getLocalizationProps } from '../../context/LanguageContext';
+import Projects from '../../components/Projects';
+import { GetStaticProps, GetStaticPaths, NextPage } from 'next';
+import { LanguageProvider, getLocalizationProps } from '../../context/LanguageContext';
+import { Localization } from '../../translations/types';
 
-const ProjectsPage = () => (
-  <Layout
-    title="Biscui.Tech"
-    description="Biscui.Tech Home page"
-  >
-    <Projects />
-  </Layout>
+const ProjectsPage: NextPage<{ localization: Localization }> = ({ localization }) => (
+  <LanguageProvider localization={localization}>
+    <Layout
+      title="Biscui.Tech"
+      description="Biscui.Tech Home page"
+    >
+      <Projects />
+    </Layout>
+  </LanguageProvider>
 );
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
