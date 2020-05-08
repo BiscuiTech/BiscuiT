@@ -247,7 +247,7 @@ const Layout = ({ title, description, /* url, ogImage,  */ children }) => {
         <Content id="maincontent" initial="initial" animate="enter" exit="exit" variants={variants} > {children}</Content>
         {/* </Profiler> */}
       </Page>
-      <Footer />
+      {/* <Footer /> */}
       {/* </Profiler> */}
     </>
   );

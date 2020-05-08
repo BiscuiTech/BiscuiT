@@ -43,7 +43,7 @@ const BlogList = ({ posts }) => {
           <div className="contaier flex justify-center">
             <input aria-label="Email address" type="email" required className="appearance-none w-full px-4 py-2 border border-gray-300 text-base leading-6 rounded-md text-gray-900 bg-white placeholder-gray-600 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out lg:max-w-sm" placeholder={t('searchBar')} />
           </div>
-          <div className="mt-6 border-t-2 border-yellow-400 pt-10">
+          <div className="mt-6 border-t-2 border-yellow-400 ">
             {posts.map((post, i) => (
               <ListItem
                 date={post.frontmatter.date}
