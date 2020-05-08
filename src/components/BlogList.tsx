@@ -34,7 +34,6 @@ const ListItem = ({ title, date, exceprt, locale, path, t }) => (
 
 const BlogList = ({ posts }) => {
   const { t, locale } = useTranslation()
-  console.log(posts)
   return (
     <>
       <PageHeader>Articles</PageHeader>

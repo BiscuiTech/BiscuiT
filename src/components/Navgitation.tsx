@@ -7,7 +7,7 @@ import { motion, AnimateSharedLayout } from "framer-motion";
 
 const ActiveLinks = [
   { tKey: "navigation_Home", path: "" },
-  /* {tKey: 'navigation_Blog' , path: 'blog'}, */
+  { tKey: 'navigation_Blog', path: 'blog' },
   { tKey: "navigation_About", path: "about" },
   /* {tKey: 'navigation_Projects' , path: 'projects'}, */
   { tKey: "navigation_Contact", path: "contact" },

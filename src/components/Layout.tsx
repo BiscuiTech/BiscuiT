@@ -6,6 +6,7 @@ import Footer from "./Footer";
 import GlobalStyle from "./styles/GlobalStyle";
 import { onRenderCallback } from "../lib/onRenderCallback";
 import Navigation from "./Navgitation";
+import { motion } from "framer-motion";
 
 const Page = styled.div`
   height: 100vh;
@@ -27,7 +28,7 @@ const Page = styled.div`
   }
 `;
 
-const Content = styled.main`
+const Content = styled(motion.main)`
   /* height: 100%; */
   /* flex: 1 0 auto; */
   /* display: grid; */
@@ -51,6 +52,16 @@ const Canvas = styled.canvas`
 	height:100%;
   pointer-events: none;
 `;
+
+let easing = [0.175, 0.85, 0.42, 0.96];
+const variants = {
+  exit: { y: 100, opacity: 0, transition: { duration: 0.5, ease: easing, staggerChildren: 0.1 } },
+  enter: {
+    y: 0,
+    opacity: 1,
+    transition: { duration: 0.5, ease: easing }
+  }
+};
 
 function debounce(func, wait, immediate?) {
   let timeout;
@@ -153,10 +164,10 @@ const Layout = ({ title, description, /* url, ogImage,  */ children }) => {
       draw();
     });
 
-    window.addEventListener('mousemove', function (ev) {
+    window.addEventListener('mousemove', debounce(function (ev) {
       mouseX = ev.clientX;
       mouseY = ev.clientY;
-    });
+    }, 0.1));
 
     onResize();
 
@@ -214,28 +225,28 @@ const Layout = ({ title, description, /* url, ogImage,  */ children }) => {
   return (
     <>
       <GlobalStyle />
-      <Profiler id="Page" onRender={onRenderCallback}>
-        <Page>
-          <Canvas />
-          <Head
-            title={title}
-            description={description}
-          // url={url}
-          // ogImage={ogImage}
-          />
-          <a className="skip-link" href="#maincontent">
-            Skip to main
+      {/* <Profiler id="Page" onRender={onRenderCallback}> */}
+      <Page>
+        <Canvas />
+        <Head
+          title={title}
+          description={description}
+        // url={url}
+        // ogImage={ogImage}
+        />
+        <a className="skip-link" href="#maincontent">
+          Skip to main
           </a>
-          <Navigation />
-          <Profiler id="Header" onRender={onRenderCallback}>
-            <Header />
-          </Profiler>
-          <Profiler id="Content" onRender={onRenderCallback}>
-            <Content id="maincontent">{children}</Content>
-          </Profiler>
-          {/* <Footer /> */}
-        </Page>
-      </Profiler>
+        <Navigation />
+        {/* <Profiler id="Header" onRender={onRenderCallback}> */}
+        <Header />
+        {/* </Profiler> */}
+        {/* <Profiler id="Content" onRender={onRenderCallback}> */}
+        <Content id="maincontent" initial="initial" animate="enter" exit="exit" variants={variants} > {children}</Content>
+        {/* </Profiler> */}
+        {/* <Footer /> */}
+      </Page>
+      {/* </Profiler> */}
     </>
   );
 };

@@ -23,7 +23,7 @@ const IndexPage: NextPage<{ localization: Localization }> = ({ localization }) =
 };
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
-  const localization = getLocalizationProps(ctx, 'archives');
+  const localization = getLocalizationProps(ctx, 'home');
   return {
     props: {
       localization,

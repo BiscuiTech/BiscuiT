@@ -14,7 +14,7 @@ const ProjectsPage = () => (
 );
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
-  const localization = getLocalizationProps(ctx, 'archives');
+  const localization = getLocalizationProps(ctx, 'projects');
   return {
     props: {
       localization,
