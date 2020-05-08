@@ -9,12 +9,14 @@ import Navigation from "./Navgitation";
 import { motion } from "framer-motion";
 
 const Page = styled.div`
-  height: 100vh;
+  min-height: 100vh;
   padding: 0;
+  position: relative;
 	margin: 0;
 	background: ${props => props.theme.background};
   overflow: hidden;
   overflow-y: auto;
+  z-index: 1;
   .skip-link {
     position: absolute;
     top: -40px;
@@ -244,8 +246,8 @@ const Layout = ({ title, description, /* url, ogImage,  */ children }) => {
         {/* <Profiler id="Content" onRender={onRenderCallback}> */}
         <Content id="maincontent" initial="initial" animate="enter" exit="exit" variants={variants} > {children}</Content>
         {/* </Profiler> */}
-        {/* <Footer /> */}
       </Page>
+      <Footer />
       {/* </Profiler> */}
     </>
   );

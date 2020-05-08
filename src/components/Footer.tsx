@@ -5,19 +5,20 @@ import { Image, Transformation } from "cloudinary-react";
 import useTranslation from "../hooks/useTranslation";
 
 const FooterStyles = styled.div`
+  position: sticky;
+  bottom:0;
   width: 100%;
-  height: 25vh;
+  /* height: 25vh; */
   min-height: 180px;
   background: #0c344b;
   background: linear-gradient(330deg, hsl(200, 75%, 25%) 5%, hsl(200, 72%, 17%) 87%);
-  margin-top: 24px;
+  /* margin-top: 24px; */
   padding: 48px 0;
   border-top: 4px solid ${props => props.theme.color.gold};
   color: white;
   font-weight: 300;
   text-align: center;
   flex-shrink: 0;
-  position: relative;
   a {
     margin: 0 6px;
   }
