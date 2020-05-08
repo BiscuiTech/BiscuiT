@@ -1,157 +1,54 @@
 import React from 'react'
-import styled from 'styled-components';
 import PageHeader, { SubHeader } from './styles/PageHeader';
 import useTranslation from '../hooks/useTranslation';
-import Card from './styles/Card';
 import { Image, Transformation } from 'cloudinary-react';
-import Link from 'next/link';
-
-const AboutStyles = styled.div`
-  margin: auto;
-  padding-bottom: 32px;
-  text-align: center;
-`;
-
-const AboutWrapper = styled.div`
-  height: 100%;
-  width: 100%;
-  grid-area: content;
-  display: grid;
-  grid-template-areas: 'image text';
-  grid-template-columns: minmax(20%, 350px) 1fr;
-  grid-column-gap: 12px;
-  @media (max-width: 1000px) {
-    display: block;
-  }
-`;
-
-const Img = styled.div`
-  grid-area: image;
-  align-self: center;
-  width: 100%;
-  height: 100%;
-  max-width: 350px;
-  max-height: 350px;
-  border-radius: 50%;
-  vertical-align: middle;
-  overflow: hidden;
-  margin: auto;
-  position: relative;
-  img {
-    margin: 0 auto;
-    margin-top: -20%;
-    height: auto;
-    z-index: -1;
-    width: 100%;
-  }
-  @media (max-width: 1000px) {
-    width: 240px;
-    height: 240px;
-    margin: 12px;
-    align-self: start;
-    float: left;
-  }
-  @media (max-width: 620px) {
-    width: 140px;
-    height: 140px;
-    margin: 12px;
-    align-self: start;
-    float: left;
-  }
-`;
-
-const Text = styled.div`
-  height: 100%;
-  width: 100%;
-  text-align: left;
-  grid-area: text;
-  margin:auto;
-  justify-self: center;
-  p {
-    padding: 12px;
-    font-size: max(18px,min(2vh, 24px));
-    text-align: left;
-    grid-area: text;
-    align-self: center;
-    line-height: 1.3;
-    text-indent: 18px;
-    text-justify: distribute;
-  }
-  .closing-words {
-    font-weight: 600;
-  }
-  .biscuitech {
-    box-sizing: content-box;
-    font-weight: 600;
-    font-size: 1.2em;
-    padding: 6px 12px;
-    margin: none;
-    color: white;
-    box-shadow: 4px 4px 6px hsl(0, 0%, 0%, 25%);
-    border-radius: 4px;
-    background: linear-gradient(
-      125.95deg,
-      hsl(209, 100%, 49%) 0%,
-      hsl(187, 71%, 50%) 50%,
-      hsl(34, 100%, 50%) 100%
-    );
-    background-size: 300%;
-    animation: overlay-animation 4s infinite alternate;
-    @keyframes overlay-animation {
-      0% {
-        background-position: left;
-      }
-      100% {
-        background-position: right;
-      }
-    }
-  }
-  .bobbing-anim {
-    width: 100%;
-    box-sizing:  content-box;
-    animation: size-animation ease-in-out 2s infinite alternate;
-    @keyframes size-animation {
-      0% {
-        transform: translateY(0px);
-      }
-      100% {
-        transform: translateY(-12px);
-      }
-    }
-  }
-`;
 
 const About = () => {
-  const { t, locale } = useTranslation()
-
+  const { t } = useTranslation()
   return (
     <>
       <PageHeader>{t('header')}</PageHeader>
       <SubHeader>
         {t('subHeader')}
       </SubHeader>
-      <AboutStyles>
-        <AboutWrapper>
-          <Img>
-            <Image publicId="biscui.tech/biscuitech-portrait.webp" cloudName="biscuitech" alt="Mug shot of Jean-Cédric Huet, also known as BiscuiTech">
-              <Transformation width="400" quality="auto" crop="scale" />
-            </Image>
-          </Img>
-          <Text>
-            <p>
-              {t('aboutMe')}
-            </p>
-            <br />
-            <div className="bobbing-anim">
-              <Link href="/[lang]/contact" as={`/${locale}/contact`}>
-                <a className="biscuitech">
-                  {t('contactMe')}
-                </a>
-              </Link>
+      <section className="overflow-hidden">
+        <div className="relative max-w-screen-xl mx-auto pt-20 pb-12 px-4 sm:px-6 lg:px-8 lg:py-20">
+          <div className="relative lg:flex lg:items-center">
+            <div className="hidden lg:block lg:flex-shrink-0">
+              <Image publicId="biscui.tech/biscuitech-portrait.webp" cloudName="biscuitech" alt="Mug shot of Jean-Cédric Huet, also known as BiscuiTech" className="h-64 w-64 rounded-full xl:h-80 xl:w-80 object-cover">
+                <Transformation width="400" quality="auto" crop="fit" />
+              </Image>
             </div>
-          </Text>
-        </AboutWrapper>
-      </AboutStyles>
+
+            <div className="relative lg:ml-10">
+              <svg className="absolute bottom-0 right-0 rotate-180 transform  h-36 w-36 text-indigo-200 opacity-50" stroke="currentColor" fill="none" viewBox="0 0 144 144">
+                <path strokeWidth="2" d="M41.485 15C17.753 31.753 1 59.208 1 89.455c0 24.664 14.891 39.09 32.109 39.09 16.287 0 28.386-13.03 28.386-28.387 0-15.356-10.703-26.524-24.663-26.524-2.792 0-6.515.465-7.446.93 2.327-15.821 17.218-34.435 32.11-43.742L41.485 15zm80.04 0c-23.268 16.753-40.02 44.208-40.02 74.455 0 24.664 14.891 39.09 32.109 39.09 15.822 0 28.386-13.03 28.386-28.387 0-15.356-11.168-26.524-25.129-26.524-2.792 0-6.049.465-6.98.93 2.327-15.821 16.753-34.435 31.644-43.742L121.525 15z" />
+              </svg>
+              <blockquote>
+                <div className="text-xl leading-9 font-medium text-gray-200">
+                  <p>
+                    {t('aboutMe')}
+                  </p>
+                </div>
+                <footer className="mt-8">
+                  <div className="flex">
+                    <div className="flex-shrink-0 lg:hidden">
+                      <Image publicId="biscui.tech/biscuitech-portrait.webp" cloudName="biscuitech" alt="Mug shot of Jean-Cédric Huet, also known as BiscuiTech" className="h-12 w-12 rounded-full">
+                        <Transformation width="400" quality="auto" crop="scale" />
+                      </Image>
+                    </div>
+
+                    <div className="ml-4 lg:ml-0">
+                      <div className="text-large leading-6 font-medium text-gray-200">Jean-Cédric Huet</div>
+                      <div className="text-base leading-6 font-medium text-indigo-600">{t('position')}</div>
+                    </div>
+                  </div>
+                </footer>
+              </blockquote>
+            </div>
+          </div>
+        </div>
+      </section>
     </>
   )
 }
