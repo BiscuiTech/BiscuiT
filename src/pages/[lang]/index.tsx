@@ -2,8 +2,7 @@ import React from 'react';
 import Layout from '../../components/Layout';
 import Home from '../../components/Home';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
-import locales from "../../translations/locales";
-import { LanguageProvider } from '../../context/LanguageContext';
+import { LanguageProvider, getLocalizationProps } from '../../context/LanguageContext';
 import { Localization } from '../../translations/types';
 
 const IndexPage: NextPage<{ localization: Localization }> = ({ localization }) => {
@@ -24,21 +23,10 @@ const IndexPage: NextPage<{ localization: Localization }> = ({ localization }) =
 };
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
-  const lang: any = ctx.params?.lang || "fr";
-  const namespace = "home";
-  const locale: any = locales[lang] || {};
-  const strings: any = locale[namespace] || {};
-  const translations = {
-    common: locales[lang].common,
-    ...strings,
-  };
+  const localization = getLocalizationProps(ctx, 'archives');
   return {
     props: {
-      localization: {
-        locale: ctx.params?.lang || "en",
-        translations: translations,
-        namespace: namespace,
-      },
+      localization,
     },
   };
 };

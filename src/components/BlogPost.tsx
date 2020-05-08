@@ -1,10 +1,16 @@
 import React from 'react'
 
-const BlogPost = ({ pid }) => {
+import ReactMarkdown from 'react-markdown'
+const BlogPost = ({ pid, frontmatter, markdownBody }) => {
   return (
-    <div>
-      viewing blog post id: {pid}
-    </div>
+    <article>
+      <span>view pid {pid}</span>
+      <h1>{frontmatter.title}</h1>
+      <p>By {frontmatter.author}</p>
+      <div>
+        <ReactMarkdown source={markdownBody} />
+      </div>
+    </article>
   )
 }
 

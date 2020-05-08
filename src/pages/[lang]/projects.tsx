@@ -2,7 +2,7 @@ import React from 'react';
 import Layout from '../../components/Layout';
 import Projects from '../../components/ProjectList'
 import { GetStaticProps, GetStaticPaths } from 'next';
-import locales from '../../translations/locales';
+import { getLocalizationProps } from '../../context/LanguageContext';
 
 const ProjectsPage = () => (
   <Layout
@@ -14,21 +14,10 @@ const ProjectsPage = () => (
 );
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
-  const lang: any = ctx.params?.lang || "fr";
-  const namespace = "projects";
-  const locale: any = locales[lang] || {};
-  const strings: any = locale[namespace] || {};
-  const translations = {
-    common: locales[lang].common,
-    ...strings,
-  };
+  const localization = getLocalizationProps(ctx, 'archives');
   return {
     props: {
-      localization: {
-        locale: ctx.params?.lang || "en",
-        translations: translations,
-        namespace: namespace,
-      },
+      localization,
     },
   };
 };

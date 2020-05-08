@@ -1,24 +1,17 @@
 import React from "react";
 import { useRouter } from "next/router";
-/* import { set, get } from "../services/localStorage"; */
 import { useLocalStorage } from "../hooks/useLocalStorage";
 import {
   isLocale,
-  Locale,
   Localization,
-  Translations,
+  Locale,
 } from "../translations/types";
 import strings from "../translations/locales/en";
+import locales from "../translations/locales";
 
 /**
  * Language Context
  */
-
-interface LocaleProps {
-  lang: Locale;
-  translations: Translations;
-  namespace: string;
-}
 
 interface ContextProps {
   readonly localization: Localization;
@@ -42,19 +35,18 @@ export const LanguageProvider: React.FC<{ localization: Localization }> = ({
   localization,
   children,
 }) => {
-  const [locale, setLocale] = React.useState({
+  const [localizationState, setLocalizationState] = React.useState({
     locale: localization?.locale,
     translations: localization?.translations,
     namespace: localization?.namespace,
   });
-  const [storedLocale, setStoredLocale] = useLocalStorage("locale", "en");
+  const [getStoredLocale, setStoredLocale] = useLocalStorage("locale");
   const { query } = useRouter();
-
   React.useEffect(() => {
-    if (locale !== storedLocale) {
-      setStoredLocale(localization?.locale, locale);
+    if (localizationState !== getStoredLocale) {
+      setStoredLocale(localizationState.locale);
     }
-  }, [locale]);
+  }, [localizationState]);
 
   React.useEffect(() => {
     if (
@@ -62,17 +54,34 @@ export const LanguageProvider: React.FC<{ localization: Localization }> = ({
       isLocale(query.lang) &&
       localization?.locale !== query.lang
     ) {
-      setLocale({
+      setLocalizationState({
         locale: localization?.locale,
         translations: localization?.translations,
         namespace: localization?.namespace,
       });
     }
-  }, [query.lang, locale]);
+  }, [query.lang, localizationState]);
 
   return (
-    <LanguageContext.Provider value={{ localization, setLocale }}>
+    <LanguageContext.Provider
+      value={{ localization, setLocale: setLocalizationState }}
+    >
       {children}
     </LanguageContext.Provider>
   );
 };
+
+export const getLocalizationProps = (ctx, namespace) => {
+  const lang: Locale = ctx.params?.lang || "fr";
+  const locale: any = locales[lang];
+  const strings: any = locale[namespace];
+  const translations = {
+    common: locales[lang].common,
+    ...strings,
+  };
+  return {
+    locale: ctx.params?.lang || "en",
+    translations,
+    namespace,
+  }
+}

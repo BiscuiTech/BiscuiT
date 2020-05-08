@@ -2,6 +2,7 @@ const withSourceMaps = require('@zeit/next-source-maps')();
 const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = withSourceMaps({
+  target: 'serverless',
   webpack: (config, options) => {
     // Fixes npm packages that depend on `fs` module
     config.node = {
@@ -21,11 +22,14 @@ module.exports = withSourceMaps({
         }),
       ];
     }
+    config.module.rules.push({
+      test: /\.md$/,
+      use: 'raw-loader',
+    });
 
     return config;
   },
   experimental: {
-    modern: true,
     async rewrites() {
       return [{ source: '/sitemap.xml', destination: '/api/sitemap.xml' }];
     },

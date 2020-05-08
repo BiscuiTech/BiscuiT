@@ -164,6 +164,16 @@ const Layout = ({ title, description, /* url, ogImage,  */ children }) => {
     mouseY = height / 2;
 
     draw();
+    return () => {
+      window.removeEventListener('resize', function () {
+        onResize();
+        draw();
+      }, true)
+      window.removeEventListener('mousemove', function (ev) {
+        mouseX = ev.clientX;
+        mouseY = ev.clientY;
+      }, true)
+    }
 
   }, [])
 
