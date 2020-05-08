@@ -3,6 +3,7 @@ import contact from './contact'
 import common from './common'
 import home from './home'
 import blog from './blog'
+import blogPost from './blogPost'
 import about from './about'
 
 export default {
@@ -10,5 +11,6 @@ export default {
   common,
   home,
   blog,
-  about
+  about,
+  blogPost
 }

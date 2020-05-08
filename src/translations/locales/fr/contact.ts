@@ -4,10 +4,11 @@ const contact = {
   subHeaderTwo: "Écrivez-moi.",
   contact_text_1: "Si vous souhaitez me contacter pour discuter de votre prochain projet, une refonte de votre site Web actuel ou simplement pour obtenir des informations sur une technologie spécifique que j'utilise, n'hésitez pas à m'envoyer un email à ",
   contact_text_2: "Sinon, vous pouvez me joindre avec Facebook Messenger à droite! -->",
-  contactFormName: 'Nom',
+  contactFormFirstName: 'First Nom',
+  contactFormLastName: 'Last Name',
   contactFormEmail: 'Courriel',
   contactFormMessage: 'Message',
-  contactFormButton: 'Envoyer'
+  contactFormButton: 'Parlons-nous'
 }
 
 export default contact

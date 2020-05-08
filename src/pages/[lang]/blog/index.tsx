@@ -5,7 +5,12 @@ import { GetStaticProps, GetStaticPaths } from 'next'
 import { getLocalizationProps, LanguageProvider } from '../../../context/LanguageContext'
 import matter from 'gray-matter'
 
-const BlogIndexPage = ({ localization, posts }) => {
+const BlogIndexPage = ({ localization, posts, preview = false }) => {
+  /**
+   * TODO: Preview mode
+   */
+  const publishedPosts = arr => arr.filter(el => el.frontmatter.published == 'true');
+  console.log(publishedPosts(posts))
   return (
     <LanguageProvider localization={localization}>
       <Layout
@@ -29,7 +34,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
       const document = matter(value.default)
       return {
         frontmatter: document.data,
-        markdownBody: document.content,
+        // markdownBody: document.content,
         slug,
       }
     })

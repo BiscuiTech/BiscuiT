@@ -2,9 +2,16 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 /* purgecss end ignore */
-.blog-hover:hover a {
+.blogItem:hover a {
   @apply text-yellow-300;
 };
+.blogItem:hover h3 {
+  @apply text-yellow-300;
+}
+.blogItem:hover .blogItem-hover {
+
+  @apply text-yellow-300;
+}
 @import "tailwindcss/utilities";
 
 

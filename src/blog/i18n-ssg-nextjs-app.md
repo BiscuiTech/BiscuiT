@@ -1,4 +1,5 @@
 ---
+published: 'true'
 title: 'i18n with Next.js and full SSG support'
 author: 'BiscuiTech'
 date: '2020-05-06'

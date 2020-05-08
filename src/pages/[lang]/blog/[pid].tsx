@@ -5,18 +5,20 @@ import { useRouter } from 'next/router'
 import matter from 'gray-matter'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { locales } from '../../../translations/config'
-import { getLocalizationProps } from '../../../context/LanguageContext'
+import { getLocalizationProps, LanguageProvider } from '../../../context/LanguageContext'
 
-const BlogPostPage = ({ frontmatter, markdownBody }) => {
+const BlogPostPage = ({ localization, frontmatter, markdownBody }) => {
   if (!frontmatter) return <></>
 
   const router = useRouter()
   const { pid } = router.query
   return (
-    <Layout title="Biscui.Tech"
-      description="Biscui.Tech Home page">
-      <BlogPost pid={pid} frontmatter={frontmatter} markdownBody={markdownBody} />
-    </Layout>
+    <LanguageProvider localization={localization}>
+      <Layout title="Biscui.Tech"
+        description="Biscui.Tech Home page">
+        <BlogPost pid={pid} frontmatter={frontmatter} markdownBody={markdownBody} />
+      </Layout>
+    </LanguageProvider>
   )
 }
 
@@ -25,7 +27,6 @@ export const getStaticProps: GetStaticProps = async ({ ...ctx }) => {
   const { pid } = ctx.params
   const content = await import(`../../../blog/${pid}.md`)
   const data = matter(content.default)
-
   return {
     props: {
       localization,
@@ -52,7 +53,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
       return { params: { lang: locale, pid: slug } }
     })
   })
-  console.log(paths)
   return {
     paths,
     fallback: false,
