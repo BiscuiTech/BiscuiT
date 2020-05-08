@@ -26,13 +26,13 @@ const NavgitationStyles = styled.nav`
   @media (min-width: 820px) {
     bottom: unset;
     top:0;
-    width: 400px;
+    width: 600px;
     background: ${props => props.theme.background};
     border-top: none;
     border-bottom: 1px solid ${props => props.theme.color.accent};
     margin:auto;
     left: 50%;
-    transform: translateX(-200px);
+    transform: translateX(-300px);
   }
   .nav-selected {
     /* background: ${(props) => props.theme.color.accent}; */
