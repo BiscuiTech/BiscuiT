@@ -1,12 +1,13 @@
 const withSourceMaps = require('@zeit/next-source-maps')();
 const TerserPlugin = require('terser-webpack-plugin');
+
 const withMDX = require('@next/mdx')({
   extension: /\.mdx?$/,
 });
 
 module.exports = withMDX(
   withSourceMaps({
-    pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
+    pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx', 'md'],
     target: 'serverless',
     webpack: (config, options) => {
       // Fixes npm packages that depend on `fs` module
@@ -29,7 +30,7 @@ module.exports = withMDX(
         ];
       }
       config.module.rules.push({
-        test: /\.md$/,
+        test: /\.mdx?$/,
         use: 'raw-loader',
       });
 
