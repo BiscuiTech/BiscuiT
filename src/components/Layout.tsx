@@ -39,7 +39,7 @@ const Content = styled(motion.main)`
   margin: auto;
   margin-bottom: 60px;
   padding-top: 96px;
-  @media (min-width:1000px) {
+  @media (min-width:820px) {
     width: 800px;
   }
 `;

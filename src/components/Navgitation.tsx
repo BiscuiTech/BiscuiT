@@ -10,7 +10,7 @@ const ActiveLinks = [
   { tKey: 'navigation_Blog', path: 'blog' },
   { tKey: "navigation_About", path: "about" },
   { tKey: "navigation_Uses", path: "uses" },
-  { tKey: 'navigation_Projects', path: 'projects' },
+  // { tKey: 'navigation_Projects', path: 'projects' },
   { tKey: "navigation_Contact", path: "contact" },
 ];
 
@@ -18,21 +18,23 @@ const NavgitationStyles = styled.nav`
   background: black;
   position: fixed;
   bottom:0;
-  width:100%;
+  width: 80%;
+  max-width: 1000px;
   display:flex;
   border-top: 1px solid ${(props) => props.theme.color.accent};
   border-bottom: none;
   z-index: 5;
+
   @media (min-width: 820px) {
     bottom: unset;
     top:0;
-    width: 600px;
+    width: 800px;
     background: ${props => props.theme.background};
     border-top: none;
     border-bottom: 1px solid ${props => props.theme.color.accent};
     margin:auto;
     left: 50%;
-    transform: translateX(-300px);
+    transform: translateX(-400px);
   }
   .nav-selected {
     /* background: ${(props) => props.theme.color.accent}; */
@@ -60,7 +62,7 @@ const StyledMenuLink = styled(motion.a)`
 const Navigation = () => {
   const { locale, t } = useTranslation();
   const { pathname } = useRouter();
-
+  // TODO: add a regex match for /blog/:pid
   const isCurrentPath = (path) => {
     return pathname === `/[lang]${path}` || pathname === `/[lang]/${path}`;
   };

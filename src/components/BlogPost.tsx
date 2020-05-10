@@ -1,6 +1,6 @@
 import React from 'react'
-
 import ReactMarkdown from 'react-markdown'
+
 const BlogPost = ({ pid, frontmatter, markdownBody }) => {
   return (
     <article>

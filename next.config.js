@@ -5,9 +5,10 @@ const withMDX = require('@next/mdx')({
   extension: /\.mdx?$/,
 });
 
-module.exports = withMDX(
+module.exports =
+  /* withMDX( */
   withSourceMaps({
-    pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx', 'md'],
+    pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
     target: 'serverless',
     webpack: (config, options) => {
       // Fixes npm packages that depend on `fs` module
@@ -20,14 +21,14 @@ module.exports = withMDX(
         config.resolve.alias['react-dom$'] = 'react-dom/profiling';
         config.resolve.alias['scheduler/tracing'] =
           'scheduler/tracing-profiling';
-        config.optimization.minimizer = [
-          new TerserPlugin({
-            terserOptions: {
-              keep_classnames: true,
-              keep_fnames: true,
-            },
-          }),
-        ];
+        // config.optimization.minimizer = [
+        //   new TerserPlugin({
+        //     terserOptions: {
+        //       keep_classnames: true,
+        //       keep_fnames: true,
+        //     },
+        //   }),
+        // ];
       }
       config.module.rules.push({
         test: /\.mdx?$/,
@@ -42,5 +43,5 @@ module.exports = withMDX(
       },
       catchAllRouting: true,
     },
-  })
-);
+  });
+/* ); */

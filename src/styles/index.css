@@ -9,7 +9,6 @@
   @apply text-yellow-300;
 }
 .blogItem:hover .blogItem-hover {
-
   @apply text-yellow-300;
 }
 .colored-list li::before {

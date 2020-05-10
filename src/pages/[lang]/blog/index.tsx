@@ -32,9 +32,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
     const data = keys.map((key, index) => {
       let slug = key.replace(/^.*[\\\/]/, "").slice(0, -3);
       const value = values[index];
-      console.log(value.default());
       const document = matter(value.default);
-      console.log(document);
       return {
         frontmatter: document.data,
         // markdownBody: document.content,
