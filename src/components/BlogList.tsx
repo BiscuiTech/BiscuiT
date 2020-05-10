@@ -3,14 +3,7 @@ import PageHeader, { SubHeader } from './styles/PageHeader'
 import useTranslation from '../hooks/useTranslation'
 import Link from 'next/link'
 
-
-
-const noBlogs = {
-  fr: "Aucun blogue pour l'instant. Revenez plus tard!",
-  en: "No blogs for now. Come back later!",
-}
-
-const ListItem = ({ title, date, exceprt, locale, path, t }) => (
+const ListItem = ({ title, date, excerpt, locale, path, t }) => (
   <div className="mt-8 blogItem hover:border-gray-700 border-4 border-transparent py-2 px-4 rounded transition ease-in-out duration-150">
     <Link
       href={`/[lang]/blog/${path}`} as={`/${locale}/blog/${path}`}
@@ -23,7 +16,7 @@ const ListItem = ({ title, date, exceprt, locale, path, t }) => (
           <time dateTime={date}>{date}</time>
         </p>
         <p className="text-base leading-6 text-gray-100">
-          {exceprt}
+          {excerpt}
         </p>
         <span className="text-base leading-6 font-medium text-indigo-400 transition ease-in-out duration-150 blogItem-hover">{t('readFullBlog')} →</span>
       </a>
@@ -52,7 +45,7 @@ const BlogList = ({ posts }) => {
             {posts.length > 0 && posts.map((post, i) => (
               <ListItem
                 date={post.frontmatter.date}
-                exceprt={post.frontmatter.exceprt}
+                excerpt={post.frontmatter.excerpt}
                 path={post.slug}
                 locale={locale}
                 t={t}

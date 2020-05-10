@@ -14,7 +14,6 @@ const BlogIndexPage = ({ localization, posts, preview = false }) => {
    */
   const publishedPosts = (arr) =>
     arr.filter((el) => el.frontmatter.published == "true");
-  console.log(publishedPosts(posts));
   return (
     <LanguageProvider localization={localization}>
       <Layout title="Biscui.Tech" description="Biscui.Tech Home page">
@@ -41,7 +40,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
     });
     return data;
     //@ts-ignore
-  })(require.context("../../../blog", true, /\.md$/));
+  })(require.context("../../../content/blog", true, /\.md$/));
 
   const localization = getLocalizationProps(ctx, "blog");
   return {
