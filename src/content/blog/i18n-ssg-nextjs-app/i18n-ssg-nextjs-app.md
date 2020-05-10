@@ -1,18 +1,18 @@
 ---
-published: 'true'
-title: 'i18n with Next.js and full SSG support'
-author: 'BiscuiTech'
-date: '2020-05-06'
-exceprt: 'Illo sint voluptas. Error voluptates culpa eligendi. Hic vel totam vitae illo. Non aliquid explicabo necessitatibus unde. Sed exercitationem placeat consectetur nulla deserunt vel. Iusto corrupti dicta.'
+published: "true"
+title: "i18n with Next.js and full SSG support"
+author: "BiscuiTech"
+date: "2020-05-06"
+excerpt: "Illo sint voluptas. Error voluptates culpa eligendi. Hic vel totam vitae illo. Non aliquid explicabo necessitatibus unde. Sed exercitationem placeat consectetur nulla deserunt vel. Iusto corrupti dicta."
 ---
 
-# i18n with Next.js and full SSG support
+<!-- # i18n with Next.js and full SSG support
 
-Photo by [Matthew Brodeur](https://unsplash.com/@mrbrodeur?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/s/photos/speed?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
+Photo by [Matthew Brodeur](https://unsplash.com/@mrbrodeur?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/s/photos/speed?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) -->
 
 ## The Issue
 
-If you tried to look around for *simple* i18n integrations of `next.js`, you'd soon realized that it just doesn't exist. The reference in the next.js example directory managed by Vercel (formely known as Zeit) points to an integration using a *custom server*. Although it's a nice display of next's different capabilities, we want to statically generate the html on the server - Server Side Generation. Using a custom server makes all serverless and static optimizations impossible.
+If you tried to look around for _simple_ i18n integrations of `next.js`, you'd soon realized that it just doesn't exist. The reference in the next.js example directory managed by Vercel (formely known as Zeit) points to an integration using a _custom server_. Although it's a nice display of next's different capabilities, we want to statically generate the html on the server - Server Side Generation. Using a custom server makes all serverless and static optimizations impossible.
 
 So let's dive in using Next.js 9.3 Server-Side Generation (SSG) and 100% serverless.
 
@@ -59,7 +59,6 @@ export type Localization = {
 export function isLocale(tested: string): tested is Locale {
   return locales.some((locale) => locale === tested);
 }
-
 ```
 
 Then, create a config.ts.
@@ -100,11 +99,11 @@ export const LanguageContext = React.createContext<ContextProps>({
 });
 ```
 
-The context will hold an object called `localization` with the keys `locale`, `translations `and `namespace`.
+The context will hold an object called `localization` with the keys `locale`, `translations`and `namespace`.
 
 - `locale` is the will the active language of the site. As a default, we're using 'en' for english.
 
-- `translations` will hold all the text strings. As a default we're using the *common* strings. Those will make sense later.
+- `translations` will hold all the text strings. As a default we're using the _common_ strings. Those will make sense later.
 
 - `namespace` will serve as the key to dynamically fetch text strings. As a default, we're using `common`.
 
@@ -151,8 +150,6 @@ export const LanguageProvider: React.FC<{ localization: Localization }> = ({
     </LanguageContext.Provider>
   );
 };
-
-
 ```
 
 Alright, this is a big file. Let's break it down.
@@ -162,7 +159,7 @@ export const LanguageProvider: React.FC<{ localization: Localiztion }> = ({
   localization,
   children,
 }) => {
-    return (
+  return (
     <LanguageContext.Provider
       value={{ localization, setLocale: setLocalizationState }}
     >

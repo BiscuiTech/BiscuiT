@@ -12,8 +12,8 @@ const Page = styled.div`
   min-height: 100vh;
   padding: 0;
   position: relative;
-	margin: 0;
-	background: ${props => props.theme.background};
+  margin: 0;
+  background: ${(props) => props.theme.background};
   overflow: hidden;
   overflow-y: auto;
   z-index: 1;
@@ -39,30 +39,34 @@ const Content = styled(motion.main)`
   margin: auto;
   margin-bottom: 60px;
   padding-top: 96px;
-  @media (min-width:820px) {
+  @media (min-width: 820px) {
     width: 800px;
   }
 `;
 
 const Canvas = styled.canvas`
   position: absolute;
-	top: 0;
-	left: 0;
+  top: 0;
+  left: 0;
   bottom: 0;
-  right:0;
-	width: 100%;
-	height:100%;
+  right: 0;
+  width: 100%;
+  height: 100%;
   pointer-events: none;
 `;
 
 let easing = [0.175, 0.85, 0.42, 0.96];
 const variants = {
-  exit: { y: 100, opacity: 0, transition: { duration: 0.5, ease: easing, staggerChildren: 0.1 } },
+  exit: {
+    y: 100,
+    opacity: 0,
+    transition: { duration: 0.5, ease: easing, staggerChildren: 0.1 },
+  },
   enter: {
     y: 0,
     opacity: 1,
-    transition: { duration: 0.5, ease: easing }
-  }
+    transition: { duration: 0.5, ease: easing },
+  },
 };
 
 function debounce(func, wait, immediate?) {
@@ -87,16 +91,31 @@ function debounce(func, wait, immediate?) {
   };
 }
 
-const Layout = ({ title, description, /* url, ogImage,  */ children }) => {
+interface ILayout {
+  title: string;
+  description: string;
+  ogImage?: string;
+  children?: any;
+  preview?: any;
+}
+
+const Layout = ({
+  title,
+  description,
+  ogImage,
+  /* url,  */
+  children,
+  preview = false,
+}: ILayout) => {
   useEffect(() => {
-    var canvas = document.querySelector('canvas');
-    var ctx = canvas.getContext('2d');
+    var canvas = document.querySelector("canvas");
+    var ctx = canvas.getContext("2d");
 
     // confioguration variables
     // space between each line
     var lineSpacing = 30;
 
-    var lineColor = 'rgba(255, 255, 255, 1)'; // RGBA supported, last value = alpha (between 0 and 1)
+    var lineColor = "rgba(255, 255, 255, 1)"; // RGBA supported, last value = alpha (between 0 and 1)
 
     // line length is calculated based on distance between mouse position and the position of a point
     // min and max are taken into account so the length of the line does not go below or above these values
@@ -121,8 +140,8 @@ const Layout = ({ title, description, /* url, ogImage,  */ children }) => {
     var onResize = function () {
       width = canvas.clientWidth;
       height = canvas.clientHeight;
-      linesX = Math.floor((width - (lineSpacing / 2)) / lineSpacing);
-      linesY = Math.floor((height - (lineSpacing / 2)) / lineSpacing);
+      linesX = Math.floor((width - lineSpacing / 2) / lineSpacing);
+      linesY = Math.floor((height - lineSpacing / 2) / lineSpacing);
       canvas.width = width;
       canvas.height = height;
     };
@@ -141,12 +160,21 @@ const Layout = ({ title, description, /* url, ogImage,  */ children }) => {
 
       for (var x = 0; x < linesX; x++) {
         for (var y = 0; y < linesY; y++) {
-          var screenX = (x * lineSpacing) + lineSpacing;
-          var screenY = (y * lineSpacing) + lineSpacing;
+          var screenX = x * lineSpacing + lineSpacing;
+          var screenY = y * lineSpacing + lineSpacing;
           var angle = Math.atan2(screenY - mouseY, screenX - mouseX);
-          var distance = Math.sqrt((mouseX - screenX) * (mouseX - screenX) + (mouseY - screenY) * (mouseY - screenY));
+          var distance = Math.sqrt(
+            (mouseX - screenX) * (mouseX - screenX) +
+              (mouseY - screenY) * (mouseY - screenY)
+          );
 
-          var length = Math.min(Math.max(lineMinLength, distance / ((width + height) / 2) * lineLengthMultiplier), lineMaxLength);
+          var length = Math.min(
+            Math.max(
+              lineMinLength,
+              (distance / ((width + height) / 2)) * lineLengthMultiplier
+            ),
+            lineMaxLength
+          );
 
           ctx.beginPath();
           ctx.moveTo(screenX, screenY);
@@ -161,15 +189,18 @@ const Layout = ({ title, description, /* url, ogImage,  */ children }) => {
       }
     };
 
-    window.addEventListener('resize', function () {
+    window.addEventListener("resize", function () {
       onResize();
       draw();
     });
 
-    window.addEventListener('mousemove', debounce(function (ev) {
-      mouseX = ev.clientX;
-      mouseY = ev.clientY;
-    }, 0.1));
+    window.addEventListener(
+      "mousemove",
+      debounce(function (ev) {
+        mouseX = ev.clientX;
+        mouseY = ev.clientY;
+      }, 0.1)
+    );
 
     onResize();
 
@@ -178,17 +209,24 @@ const Layout = ({ title, description, /* url, ogImage,  */ children }) => {
 
     draw();
     return () => {
-      window.removeEventListener('resize', function () {
-        onResize();
-        draw();
-      }, true)
-      window.removeEventListener('mousemove', function (ev) {
-        mouseX = ev.clientX;
-        mouseY = ev.clientY;
-      }, true)
-    }
-
-  }, [])
+      window.removeEventListener(
+        "resize",
+        function () {
+          onResize();
+          draw();
+        },
+        true
+      );
+      window.removeEventListener(
+        "mousemove",
+        function (ev) {
+          mouseX = ev.clientX;
+          mouseY = ev.clientY;
+        },
+        true
+      );
+    };
+  }, []);
 
   if (process.browser) {
     // @ts-ignore
@@ -233,18 +271,27 @@ const Layout = ({ title, description, /* url, ogImage,  */ children }) => {
         <Head
           title={title}
           description={description}
-        // url={url}
-        // ogImage={ogImage}
+          // url={url}
+          // ogImage={ogImage}
         />
         <a className="skip-link" href="#maincontent">
           Skip to main
-          </a>
+        </a>
         <Navigation />
         {/* <Profiler id="Header" onRender={onRenderCallback}> */}
         <Header />
         {/* </Profiler> */}
         {/* <Profiler id="Content" onRender={onRenderCallback}> */}
-        <Content id="maincontent" initial="initial" animate="enter" exit="exit" variants={variants} > {children}</Content>
+        <Content
+          id="maincontent"
+          initial="initial"
+          animate="enter"
+          exit="exit"
+          variants={variants}
+        >
+          {" "}
+          {children}
+        </Content>
         {/* </Profiler> */}
       </Page>
       {/* <Footer /> */}
