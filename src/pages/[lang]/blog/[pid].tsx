@@ -44,7 +44,6 @@ export const getStaticProps: GetStaticProps = async ({ ...ctx }) => {
     "ogImage",
     "coverImage",
   ]);
-
   //@ts-ignore
   const content = await markdownToHtml(post.content || "");
 
