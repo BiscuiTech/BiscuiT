@@ -6,7 +6,8 @@ import {
   getLocalizationProps,
   LanguageProvider,
 } from "../../../context/LanguageContext";
-import matter from "gray-matter";
+
+import { getAllPosts } from "../../../lib/api";
 
 const BlogIndexPage = ({ localization, posts, preview = false }) => {
   /**
@@ -24,24 +25,14 @@ const BlogIndexPage = ({ localization, posts, preview = false }) => {
 };
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
-  const posts = ((context) => {
-    const keys = context.keys();
-    const values = keys.map(context);
-
-    const data = keys.map((key, index) => {
-      let slug = key.replace(/^.*[\\\/]/, "").slice(0, -3);
-      const value = values[index];
-      const document = matter(value.default);
-      return {
-        frontmatter: document.data,
-        // markdownBody: document.content,
-        slug,
-      };
-    });
-    return data;
-    //@ts-ignore
-  })(require.context("../../../content/blog", true, /\.md$/));
-
+  const posts = getAllPosts([
+    'title',
+    'date',
+    'slug',
+    'author',
+    'coverImage',
+    'excerpt',
+  ])
   const localization = getLocalizationProps(ctx, "blog");
   return {
     props: {

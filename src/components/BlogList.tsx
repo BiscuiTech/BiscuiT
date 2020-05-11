@@ -44,12 +44,12 @@ const BlogList = ({ posts }) => {
           <div className="mt-6 border-t-2 border-yellow-400 ">
             {posts.length > 0 && posts.map((post, i) => (
               <ListItem
-                date={post.frontmatter.date}
-                excerpt={post.frontmatter.excerpt}
+                date={post.date}
+                excerpt={post.excerpt}
                 path={post.slug}
                 locale={locale}
                 t={t}
-                title={post.frontmatter.title}
+                title={post.title}
                 key={i}
               />
             ))}

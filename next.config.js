@@ -5,10 +5,9 @@ const withMDX = require('@next/mdx')({
   extension: /\.mdx?$/,
 });
 
-module.exports =
-  /* withMDX( */
+module.exports = withMDX(
   withSourceMaps({
-    pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
+    pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
     target: 'serverless',
     webpack: (config, options) => {
       // Fixes npm packages that depend on `fs` module
@@ -30,10 +29,10 @@ module.exports =
         //   }),
         // ];
       }
-      config.module.rules.push({
+      /* config.module.rules.push({
         test: /\.mdx?$/,
         use: 'raw-loader',
-      });
+      }); */
 
       return config;
     },
@@ -43,5 +42,5 @@ module.exports =
       },
       catchAllRouting: true,
     },
-  });
-/* ); */
+  })
+);
