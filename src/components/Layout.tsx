@@ -91,10 +91,24 @@ function debounce(func, wait, immediate?) {
   };
 }
 
+interface IOpenGraph {
+  title: string;
+  type: string;
+  image: string;
+  url: string;
+  audio?: string;
+  description?: string;
+  determiner: string;
+  locale?: string;
+  localeAlternate?: string;
+  siteName?: string;
+  video?: string;
+}
+
 interface ILayout {
   title: string;
   description: string;
-  ogImage?: string;
+  og: IOpenGraph;
   children?: any;
   preview?: any;
 }
@@ -102,8 +116,7 @@ interface ILayout {
 const Layout = ({
   title,
   description,
-  ogImage,
-  /* url,  */
+  og,
   children,
   preview = false,
 }: ILayout) => {
@@ -268,12 +281,7 @@ const Layout = ({
       {/* <Profiler id="Page" onRender={onRenderCallback}> */}
       <Page>
         <Canvas />
-        <Head
-          title={title}
-          description={description}
-          // url={url}
-          // ogImage={ogImage}
-        />
+        <Head title={title} description={description} og={og} />
         <a className="skip-link" href="#maincontent">
           Skip to main
         </a>
