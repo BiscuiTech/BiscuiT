@@ -11,7 +11,7 @@ const BlogPost = ({ pid, post, morePosts }) => {
     return <ErrorPage statusCode={404} />;
   }
   return (
-    <article>
+    <article className="relative">
       <div className="mb-8 md:mb-16 -mx-5 sm:mx-0">
         <CoverImage title={post.title} src={post.coverImage} slug={post.slug} />
       </div>
