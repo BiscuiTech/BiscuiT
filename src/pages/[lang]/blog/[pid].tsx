@@ -13,7 +13,6 @@ import ErrorPage from "next/error";
 
 const BlogPostPage = ({ localization, post, morePosts, preview }) => {
   const router = useRouter();
-  const { pid } = router.query;
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />;
   }
@@ -25,7 +24,7 @@ const BlogPostPage = ({ localization, post, morePosts, preview }) => {
         //TODO: add og:image prop
         preview={preview}
       >
-        <BlogPost pid={pid} post={post} morePosts={morePosts} />
+        <BlogPost pid={router.query.pid} post={post} morePosts={morePosts} />
       </Layout>
     </LanguageProvider>
   );

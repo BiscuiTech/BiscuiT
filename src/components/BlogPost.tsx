@@ -2,9 +2,8 @@ import React from "react";
 import ErrorPage from "next/error";
 import { useRouter } from "next/router";
 import CoverImage from "./md/CoverImage";
-import moduleName from "react-markdown";
-import ReactMarkdown from "react-markdown";
-import markdownToHtml from "../../lib/markdownToHtml";
+import MDX from '@mdx-js/runtime'
+import { Code } from "./md/renderers";
 
 const BlogPost = ({ pid, post, morePosts }) => {
   const router = useRouter();
@@ -17,7 +16,9 @@ const BlogPost = ({ pid, post, morePosts }) => {
         <CoverImage title={post.title} src={post.coverImage} slug={post.slug} />
       </div>
       <main>
-        <ReactMarkdown source={post.content} />
+        <MDX components={{ code: Code }}>
+          {post.content}
+        </MDX>
       </main>
     </article>
   );
