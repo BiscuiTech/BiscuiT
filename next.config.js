@@ -3,9 +3,21 @@ const TerserPlugin = require('terser-webpack-plugin');
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 });
+const withPlugins = require('next-compose-plugins');
+const optimizedImages = require('next-optimized-images');
 
-module.exports = withBundleAnalyzer(
-  withSourceMaps({
+module.exports = withPlugins(
+  [
+    [withBundleAnalyzer],
+    [withSourceMaps],
+    [
+      optimizedImages,
+      {
+        /* config for next-optimized-images */
+      },
+    ],
+  ],
+  {
     target: 'serverless',
     webpack: (config, options) => {
       // Fixes npm packages that depend on `fs` module
@@ -44,5 +56,5 @@ module.exports = withBundleAnalyzer(
       NOW_URL: process.env.NOW_URL,
       GA_TRACKING_ID: process.env.GA_TRACKING_ID,
     },
-  })
+  }
 );
