@@ -20,7 +20,7 @@ const UsesPage: NextPage<{ localization: Localization }> = ({
       <Layout
         title="Biscui.Tech"
         description="Biscui.Tech Home page"
-        og={useOpenGraph({, locale, router)}
+        og={useOpenGraph()}
       >
         <Uses />
       </Layout>
