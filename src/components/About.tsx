@@ -59,7 +59,7 @@ const About = () => {
                 <footer className="mt-8">
                   <div className="flex">
                     <div className="flex-shrink-0 lg:hidden">
-                      <img
+                      {/* <img
                         className="h-12 w-12 rounded-full"
                         sizes="(max-width: 1400px) 100vw, 1400px"
                         srcSet="
@@ -84,6 +84,11 @@ const About = () => {
                   /images/profile/biscuitech-profile_en4wcw_c_scale,w_1400.png 1400w"
                         src="biscuitech-profile_en4wcw_c_scale,w_1400.png"
                         alt="Mug shot of Jean-Cédric Huet, also known as BiscuiTech"
+                      /> */}
+                      <img
+                        src={require("./images/biscuitech-profile.png")}
+                        alt="Mug shot of Jean-Cédric Huet, also known as BiscuiTech"
+                        className="h-12 w-12 rounded-full"
                       />
                     </div>
 
