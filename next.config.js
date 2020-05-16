@@ -35,4 +35,7 @@ module.exports = withSourceMaps({
     },
     catchAllRouting: true,
   },
+  env: {
+    NOW_URL: process.env.NOW_URL,
+  },
 });
