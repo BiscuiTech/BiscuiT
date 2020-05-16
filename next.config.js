@@ -37,5 +37,6 @@ module.exports = withSourceMaps({
   },
   env: {
     NOW_URL: process.env.NOW_URL,
+    GA_TRACKING_ID: process.env.GA_TRACKING_ID,
   },
 });

@@ -30,8 +30,7 @@ function handleExitComplete() {
 
 export async function reportWebVitals(metric) {
   // These metrics can be sent to any analytics service
-  console.log(metric);
-  await fetch("/api/monitoring", {
+  await fetch("/api/web-vitals", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

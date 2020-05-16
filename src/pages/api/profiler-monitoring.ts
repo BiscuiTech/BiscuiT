@@ -1,6 +1,6 @@
 import { Client } from "@elastic/elasticsearch";
 const client = new Client({
-  node: "https://elasticsearch.dashboard.biscuitech.dev/"
+  node: "https://elasticsearch.dashboard.biscuitech.dev/",
 });
 
 const indexName = "biscuitech-profiler";
@@ -9,7 +9,7 @@ export default async function (req, res) {
   //console.log(`Profiling data received: ${new Date()}`);
   try {
     const { body } = req;
-    body.map(async el => {
+    body.map(async (el) => {
       await client.index({
         index: indexName,
         body: {
@@ -19,9 +19,9 @@ export default async function (req, res) {
           actualDuration: el.actualDuration,
           baseDuration: el.baseDuration,
           startTime: el.startTime,
-          commitTime: el.commitTime
+          commitTime: el.commitTime,
           // interactions: el.interactions
-        }
+        },
       });
     });
     return res.status(200).send("Profile sent successfully.");
