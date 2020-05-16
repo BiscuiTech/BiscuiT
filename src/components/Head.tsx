@@ -23,7 +23,7 @@ const Head = ({ title, description, og }) => (
       property="og:description"
       content={description || defaultDescription}
     />
-    <meta name="twitter:site" content={url || defaultOGURL} />
+    <meta name="twitter:site" content={og.url || defaultOGURL} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:image" content={og.image || defaultOGImage} />
     <meta property="og:image" content={og.image || defaultOGImage} />

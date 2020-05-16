@@ -4,6 +4,7 @@ import Home from '../../components/Home';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import { LanguageProvider, getLocalizationProps } from '../../context/LanguageContext';
 import { Localization } from '../../translations/types';
+import useOpenGraph from '../../lib/useOpenGraph';
 
 const IndexPage: NextPage<{ localization: Localization }> = ({ localization }) => {
   return (
@@ -11,6 +12,7 @@ const IndexPage: NextPage<{ localization: Localization }> = ({ localization }) =
       <Layout
         title="Biscui.Tech"
         description="Biscui.Tech Home page"
+        og={useOpenGraph()}
       >
         {/*
         TODO: add an SSG api to fetch blogposts

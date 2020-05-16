@@ -13,14 +13,14 @@ import useTranslation from "../../hooks/useTranslation";
 const UsesPage: NextPage<{ localization: Localization }> = ({
   localization,
 }) => {
-  const { t } = useTranslation();
+  const { t, locale } = useTranslation();
   const router = useRouter();
   return (
     <LanguageProvider localization={localization}>
       <Layout
         title="Biscui.Tech"
         description="Biscui.Tech Home page"
-        og={useOpenGraph(t, router)}
+        og={useOpenGraph({, locale, router)}
       >
         <Uses />
       </Layout>

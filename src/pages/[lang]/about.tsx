@@ -5,12 +5,14 @@ import { GetStaticProps, GetStaticPaths, NextPage } from 'next';
 import { LanguageProvider, getLocalizationProps } from '../../context/LanguageContext';
 import { Localization } from '../../translations/types';
 import Uses from '../../components/Uses';
+import useOpenGraph from '../../lib/useOpenGraph';
 
 const AboutPage: NextPage<{ localization: Localization }> = ({ localization }) => (
   <LanguageProvider localization={localization}>
     <Layout
       title="Biscui.Tech"
       description="Biscui.Tech Home page"
+      og={useOpenGraph()}
     >
       <About />
     </Layout>

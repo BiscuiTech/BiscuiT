@@ -10,6 +10,7 @@ import {
 } from "../../../context/LanguageContext";
 import { getAllPosts, getPostBySlug } from "../../../lib/api";
 import ErrorPage from "next/error";
+import useOpenGraph from "../../../lib/useOpenGraph";
 
 const BlogPostPage = ({ localization, post, morePosts, preview }) => {
   const router = useRouter();
@@ -23,6 +24,7 @@ const BlogPostPage = ({ localization, post, morePosts, preview }) => {
         description="Biscui.Tech Home page"
         //TODO: add og:image prop
         preview={preview}
+        og={useOpenGraph()}
       >
         <BlogPost pid={router.query.pid} post={post} morePosts={morePosts} />
       </Layout>

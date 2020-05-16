@@ -5,12 +5,13 @@ import Contact from '../../components/Contact'
 import { GetStaticProps, GetStaticPaths, NextPage } from 'next';
 import { Localization } from '../../translations/types';
 import { LanguageProvider, getLocalizationProps } from '../../context/LanguageContext';
+import useOpenGraph from '../../lib/useOpenGraph';
 
 const ContactPage: NextPage<{ localization: Localization }> = ({ localization }) => (
   <LanguageProvider localization={localization}>
     <Layout
       title="Biscui.Tech"
-      description="Biscui.Tech Home page">
+      description="Biscui.Tech Home page" og={useOpenGraph()}>
       <Contact />
     </Layout>
   </LanguageProvider>

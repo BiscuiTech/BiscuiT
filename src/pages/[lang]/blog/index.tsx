@@ -8,6 +8,7 @@ import {
 } from "../../../context/LanguageContext";
 
 import { getAllPosts } from "../../../lib/api";
+import useOpenGraph from "../../../lib/useOpenGraph";
 
 const BlogIndexPage = ({ localization, posts, preview = false }) => {
   /**
@@ -17,7 +18,7 @@ const BlogIndexPage = ({ localization, posts, preview = false }) => {
     arr.filter((el) => el.frontmatter.published == "true");
   return (
     <LanguageProvider localization={localization}>
-      <Layout title="Biscui.Tech" description="Biscui.Tech Home page">
+      <Layout title="Biscui.Tech" description="Biscui.Tech Home page" og={useOpenGraph()}>
         <BlogList posts={posts} />
       </Layout>
     </LanguageProvider>
