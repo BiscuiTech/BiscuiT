@@ -1,7 +1,6 @@
 import React from "react";
 import PageHeader, { SubHeader } from "./styles/PageHeader";
 import useTranslation from "../hooks/useTranslation";
-import { Image, Transformation } from "cloudinary-react";
 
 const About = () => {
   const { t } = useTranslation();
@@ -13,14 +12,32 @@ const About = () => {
         <div className="relative max-w-screen-xl mx-auto pt-20 pb-12 px-4 sm:px-6 lg:px-8 lg:py-20">
           <div className="relative lg:flex lg:items-center">
             <div className="hidden lg:block lg:flex-shrink-0 lg:self-start">
-              <Image
-                publicId="biscui.tech/biscuitech-portrait.webp"
-                cloudName="biscuitech"
-                alt="Mug shot of Jean-Cédric Huet, also known as BiscuiTech"
+              <img
                 className="h-64 w-64 rounded-full xl:h-80 xl:w-80 object-cover"
-              >
-                <Transformation width="400" quality="auto" crop="fit" />
-              </Image>
+                sizes="(max-width: 1400px) 100vw, 1400px"
+                srcSet="
+                  /images/profile/biscuitech-profile_en4wcw_c_scale,w_200.png 200w,
+                  /images/profile/biscuitech-profile_en4wcw_c_scale,w_371.png 371w,
+                  /images/profile/biscuitech-profile_en4wcw_c_scale,w_501.png 501w,
+                  /images/profile/biscuitech-profile_en4wcw_c_scale,w_602.png 602w,
+                  /images/profile/biscuitech-profile_en4wcw_c_scale,w_685.png 685w,
+                  /images/profile/biscuitech-profile_en4wcw_c_scale,w_759.png 759w,
+                  /images/profile/biscuitech-profile_en4wcw_c_scale,w_831.png 831w,
+                  /images/profile/biscuitech-profile_en4wcw_c_scale,w_901.png 901w,
+                  /images/profile/biscuitech-profile_en4wcw_c_scale,w_955.png 955w,
+                  /images/profile/biscuitech-profile_en4wcw_c_scale,w_1011.png 1011w,
+                  /images/profile/biscuitech-profile_en4wcw_c_scale,w_1061.png 1061w,
+                  /images/profile/biscuitech-profile_en4wcw_c_scale,w_1110.png 1110w,
+                  /images/profile/biscuitech-profile_en4wcw_c_scale,w_1167.png 1167w,
+                  /images/profile/biscuitech-profile_en4wcw_c_scale,w_1216.png 1216w,
+                  /images/profile/biscuitech-profile_en4wcw_c_scale,w_1265.png 1265w,
+                  /images/profile/biscuitech-profile_en4wcw_c_scale,w_1314.png 1314w,
+                  /images/profile/biscuitech-profile_en4wcw_c_scale,w_1363.png 1363w,
+                  /images/profile/biscuitech-profile_en4wcw_c_scale,w_1397.png 1397w,
+                  /images/profile/biscuitech-profile_en4wcw_c_scale,w_1400.png 1400w"
+                src="biscuitech-profile_en4wcw_c_scale,w_1400.png"
+                alt=""
+              />
             </div>
 
             <div className="relative lg:ml-10">
@@ -42,18 +59,32 @@ const About = () => {
                 <footer className="mt-8">
                   <div className="flex">
                     <div className="flex-shrink-0 lg:hidden">
-                      <Image
-                        publicId="biscui.tech/biscuitech-portrait.webp"
-                        cloudName="biscuitech"
-                        alt="Mug shot of Jean-Cédric Huet, also known as BiscuiTech"
+                      <img
                         className="h-12 w-12 rounded-full"
-                      >
-                        <Transformation
-                          width="400"
-                          quality="auto"
-                          crop="scale"
-                        />
-                      </Image>
+                        sizes="(max-width: 1400px) 100vw, 1400px"
+                        srcSet="
+                  /images/profile/biscuitech-profile_en4wcw_c_scale,w_200.png 200w,
+                  /images/profile/biscuitech-profile_en4wcw_c_scale,w_371.png 371w,
+                  /images/profile/biscuitech-profile_en4wcw_c_scale,w_501.png 501w,
+                  /images/profile/biscuitech-profile_en4wcw_c_scale,w_602.png 602w,
+                  /images/profile/biscuitech-profile_en4wcw_c_scale,w_685.png 685w,
+                  /images/profile/biscuitech-profile_en4wcw_c_scale,w_759.png 759w,
+                  /images/profile/biscuitech-profile_en4wcw_c_scale,w_831.png 831w,
+                  /images/profile/biscuitech-profile_en4wcw_c_scale,w_901.png 901w,
+                  /images/profile/biscuitech-profile_en4wcw_c_scale,w_955.png 955w,
+                  /images/profile/biscuitech-profile_en4wcw_c_scale,w_1011.png 1011w,
+                  /images/profile/biscuitech-profile_en4wcw_c_scale,w_1061.png 1061w,
+                  /images/profile/biscuitech-profile_en4wcw_c_scale,w_1110.png 1110w,
+                  /images/profile/biscuitech-profile_en4wcw_c_scale,w_1167.png 1167w,
+                  /images/profile/biscuitech-profile_en4wcw_c_scale,w_1216.png 1216w,
+                  /images/profile/biscuitech-profile_en4wcw_c_scale,w_1265.png 1265w,
+                  /images/profile/biscuitech-profile_en4wcw_c_scale,w_1314.png 1314w,
+                  /images/profile/biscuitech-profile_en4wcw_c_scale,w_1363.png 1363w,
+                  /images/profile/biscuitech-profile_en4wcw_c_scale,w_1397.png 1397w,
+                  /images/profile/biscuitech-profile_en4wcw_c_scale,w_1400.png 1400w"
+                        src="biscuitech-profile_en4wcw_c_scale,w_1400.png"
+                        alt="Mug shot of Jean-Cédric Huet, also known as BiscuiTech"
+                      />
                     </div>
 
                     <div className="ml-4 lg:ml-0">
