@@ -1,24 +1,33 @@
-import React from 'react';
-import Layout from '../../components/Layout';
+import React from "react";
+import Layout from "../../components/Layout";
 // import Contact from '../../components/Contact';
-import Contact from '../../components/Contact'
-import { GetStaticProps, GetStaticPaths, NextPage } from 'next';
-import { Localization } from '../../translations/types';
-import { LanguageProvider, getLocalizationProps } from '../../context/LanguageContext';
-import useOpenGraph from '../../lib/useOpenGraph';
-
-const ContactPage: NextPage<{ localization: Localization }> = ({ localization }) => (
+import Contact from "../../components/Contact";
+import { GetStaticProps, GetStaticPaths, NextPage } from "next";
+import { Localization } from "../../translations/types";
+import {
+  LanguageProvider,
+  getLocalizationProps,
+} from "../../context/LanguageContext";
+import useOpenGraph from "../../lib/useOpenGraph";
+/**
+ * TODO: add an email receipt
+ */
+const ContactPage: NextPage<{ localization: Localization }> = ({
+  localization,
+}) => (
   <LanguageProvider localization={localization}>
     <Layout
       title="Biscui.Tech"
-      description="Biscui.Tech Home page" og={useOpenGraph()}>
+      description="Biscui.Tech Home page"
+      og={useOpenGraph()}
+    >
       <Contact />
     </Layout>
   </LanguageProvider>
 );
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
-  const localization = getLocalizationProps(ctx, 'contact');
+  const localization = getLocalizationProps(ctx, "contact");
   return {
     props: {
       localization,

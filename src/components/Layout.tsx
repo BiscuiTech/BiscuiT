@@ -128,7 +128,7 @@ const Layout = ({
     // space between each line
     var lineSpacing = 30;
 
-    var lineColor = "rgba(255, 255, 255, 1)"; // RGBA supported, last value = alpha (between 0 and 1)
+    var lineColor = "rgba(120, 120, 120, 1)"; // RGBA supported, last value = alpha (between 0 and 1)
 
     // line length is calculated based on distance between mouse position and the position of a point
     // min and max are taken into account so the length of the line does not go below or above these values
@@ -150,7 +150,7 @@ const Layout = ({
     var mouseX;
     var mouseY;
 
-    var onResize = function () {
+    const onResize = function () {
       width = canvas.clientWidth;
       height = canvas.clientHeight;
       linesX = Math.floor((width - lineSpacing / 2) / lineSpacing);
@@ -159,7 +159,7 @@ const Layout = ({
       canvas.height = height;
     };
 
-    var draw = function () {
+    const draw = function () {
       requestAnimationFrame(draw);
 
       if (mouseX == void 0 || mouseY == void 0) {
@@ -212,7 +212,7 @@ const Layout = ({
       debounce(function (ev) {
         mouseX = ev.clientX;
         mouseY = ev.clientY;
-      }, 0.1)
+      }, 10)
     );
 
     onResize();
