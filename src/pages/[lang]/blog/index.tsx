@@ -18,7 +18,11 @@ const BlogIndexPage = ({ localization, posts, preview = false }) => {
     arr.filter((el) => el.frontmatter.published == "true");
   return (
     <LanguageProvider localization={localization}>
-      <Layout title="Biscui.Tech" description="Biscui.Tech Home page" og={useOpenGraph()}>
+      <Layout
+        title="Biscui.Tech"
+        description="Biscui.Tech Home page"
+        og={useOpenGraph()}
+      >
         <BlogList posts={posts} />
       </Layout>
     </LanguageProvider>
@@ -27,13 +31,12 @@ const BlogIndexPage = ({ localization, posts, preview = false }) => {
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
   const posts = getAllPosts([
-    'title',
-    'date',
-    'slug',
-    'author',
-    'coverImage',
-    'excerpt',
-  ])
+    "title",
+    "date",
+    "slug",
+    "excerpt_fr",
+    "excerpt_en",
+  ]);
   const localization = getLocalizationProps(ctx, "blog");
   return {
     props: {
