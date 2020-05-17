@@ -1,17 +1,18 @@
 export default function CoverImage({ title, src, slug, accreditation }) {
   return (
-    <>
-      <div className="flex justify-center flex-col">
-        <img
-          src={src}
-          alt={`Cover Image for ${title}`}
-          loading="lazy"
-          className="shadow-small hover:shadow-medium transition-shadow duration-200"
-        />
-        <em className="text-base">
-          Photo by <span className="underline">{accreditation}</span> on Unplash
-        </em>
-      </div>
-    </>
+    <div
+      className="flex justify-center flex-col"
+      style={{ backgroundColor: "hsl(200,100%,4%)" }}
+    >
+      <img
+        src={src}
+        alt={`Cover Image for ${title}`}
+        loading="lazy"
+        className="p-4 pb-0"
+      />
+      <em className="text-base ml-4 text-gray-400">
+        Photo by <span className="underline">{accreditation}</span> on Unplash
+      </em>
+    </div>
   );
 }

@@ -6,7 +6,7 @@ import MDX from "@mdx-js/runtime";
 import { Code, H1, H2, H3, Img } from "./md/renderers";
 import styled from "styled-components";
 
-const Main = styled.main`
+const BlogContent = styled.div`
   code {
     padding: 0 4px;
     margin: 0 2px;
@@ -17,7 +17,7 @@ const Main = styled.main`
     font-size: 1em;
   }
   p {
-    margin: 2em 0px;
+    margin: 0 0 2em 0px;
   }
 `;
 
@@ -28,19 +28,17 @@ const BlogPost = ({ pid, post, morePosts }) => {
   }
   return (
     <article className="relative">
-      <div className="mb-8 -mx-5 sm:mx-0">
-        <CoverImage
-          title={post.title}
-          src={post.coverImage}
-          slug={post.slug}
-          accreditation={post.imageAccreditation}
-        />
-      </div>
-      <Main className="text-lg">
+      <CoverImage
+        title={post.title}
+        src={post.coverImage}
+        slug={post.slug}
+        accreditation={post.imageAccreditation}
+      />
+      <BlogContent className="text-lg">
         <MDX components={{ code: Code, h1: H1, h2: H2, h3: H3, img: Img }}>
           {post.content}
         </MDX>
-      </Main>
+      </BlogContent>
     </article>
   );
 };

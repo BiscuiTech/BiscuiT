@@ -38,7 +38,7 @@ const Content = styled(motion.main)`
   width: 80%;
   margin: auto;
   margin-bottom: 60px;
-  padding-top: 96px;
+  padding-top: 60px;
   @media (min-width: 820px) {
     width: 800px;
   }
