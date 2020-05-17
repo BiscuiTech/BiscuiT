@@ -5,8 +5,14 @@ import CoverImage from "./md/CoverImage";
 import MDX from "@mdx-js/runtime";
 import { Code, H1, H2, H3, Img } from "./md/renderers";
 import styled from "styled-components";
+import useTranslation from "../hooks/useTranslation";
+import DateFormater from "./DateFormat";
 
-const BlogContent = styled.div`
+const BlogHeader = styled.header`
+  background-color: hsl(200,100%,4%);
+`;
+
+const BlogContent = styled.section`
   code {
     padding: 0 4px;
     margin: 0 2px;
@@ -26,14 +32,21 @@ const BlogPost = ({ pid, post, morePosts }) => {
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />;
   }
+  const { t } = useTranslation()
   return (
     <article className="relative">
-      <CoverImage
-        title={post.title}
-        src={post.coverImage}
-        slug={post.slug}
-        accreditation={post.imageAccreditation}
-      />
+      <BlogHeader className="border-b border-yellow-400 p-4">
+        <CoverImage
+          title={post.title}
+          src={post.coverImage}
+          slug={post.slug}
+          accreditation={post.imageAccreditation}
+        />
+        <H1>{post.title}</H1>
+        <div className="text-base text-gray-300 -mt-2">
+          {`${t('blogBy')} ${post.author} | `}{DateFormater({ dateString: post.date })}
+        </div>
+      </BlogHeader>
       <BlogContent className="text-lg">
         <MDX components={{ code: Code, h1: H1, h2: H2, h3: H3, img: Img }}>
           {post.content}

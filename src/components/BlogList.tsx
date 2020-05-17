@@ -4,7 +4,7 @@ import useTranslation from "../hooks/useTranslation";
 import Link from "next/link";
 
 const ListItem = ({ title, date, excerpt, locale, path, t }) => (
-  <div className="mt-8 blogItem hover:border-gray-700 border-4 border-transparent py-2 px-4 rounded transition ease-in-out duration-150">
+  <div className="mt-8 blogItem hover:bg-gray-900 py-2 px-4 rounded transition ease-in-out duration-150">
     <Link href={`/[lang]/blog/${path}`} as={`/${locale}/blog/${path}`}>
       <a className="block">
         <h3 className="mt-2 text-2xl leading-7 tracking-normal font-semibold text-indigo-400 blogItem-hover">

@@ -1,4 +1,5 @@
 const blogPost = {
+  blogBy: "Blog written by"
 
 }
 

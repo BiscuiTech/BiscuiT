@@ -2,8 +2,7 @@ import React from "react";
 
 export const H1 = ({ children }) => (
   <h1
-    className="text-4xl font-medium px-0 py-6 pl-4 border-b border-yellow-400"
-    style={{ backgroundColor: "hsl(200,100%,4%)" }}
+    className="text-4xl font-medium px-0 pt-6 pb-0"
   >
     {children}
   </h1>

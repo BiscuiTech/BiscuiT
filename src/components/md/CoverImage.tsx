@@ -8,9 +8,9 @@ export default function CoverImage({ title, src, slug, accreditation }) {
         src={src}
         alt={`Cover Image for ${title}`}
         loading="lazy"
-        className="p-4 pb-0"
+        className="pb-0"
       />
-      <em className="text-base ml-4 text-gray-400">
+      <em className="text-base text-gray-400">
         Photo by <span className="underline">{accreditation}</span> on Unplash
       </em>
     </div>
