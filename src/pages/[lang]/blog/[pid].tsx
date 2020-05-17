@@ -17,7 +17,6 @@ const BlogPostPage = ({ localization, post, morePosts, preview }) => {
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />;
   }
-  console.log(post);
   return (
     <LanguageProvider localization={localization}>
       <Layout

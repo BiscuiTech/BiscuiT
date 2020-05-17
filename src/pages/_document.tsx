@@ -6,7 +6,6 @@ export default class MyDocument extends Document {
   static async getInitialProps(ctx) {
     const sheet = new ServerStyleSheet();
     const originalRenderPage = ctx.renderPage;
-    /*     console.log(ctx.query.lang) */
     try {
       ctx.renderPage = () =>
         originalRenderPage({

@@ -18,7 +18,6 @@ const analytics = Analytics({
 });
 
 export default async function (req, res) {
-  //console.log(`Profiling data received: ${new Date()}`);
   const { body } = req;
   try {
     analytics.track(body.name, {

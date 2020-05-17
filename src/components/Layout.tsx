@@ -1,4 +1,4 @@
-import React, { Profiler, useEffect } from "react";
+import React, { Profiler, useEffect, useState } from "react";
 import styled from "styled-components";
 import Head from "./Head";
 import Header from "./Header";
@@ -7,7 +7,8 @@ import GlobalStyle from "./styles/GlobalStyle";
 import { onRenderCallback } from "../lib/onRenderCallback";
 import Navigation from "./Navgitation";
 import { motion } from "framer-motion";
-
+import Alerts from './Alerts'
+import useAlert from "../hooks/useAlert";
 const Page = styled.div`
   min-height: 100vh;
   padding: 0;
@@ -178,7 +179,7 @@ const Layout = ({
           var angle = Math.atan2(screenY - mouseY, screenX - mouseX);
           var distance = Math.sqrt(
             (mouseX - screenX) * (mouseX - screenX) +
-              (mouseY - screenY) * (mouseY - screenY)
+            (mouseY - screenY) * (mouseY - screenY)
           );
 
           var length = Math.min(
@@ -275,6 +276,7 @@ const Layout = ({
       }, 400)
     );
   }
+  const { alert } = useAlert()
   return (
     <>
       <GlobalStyle />
@@ -299,6 +301,7 @@ const Layout = ({
         >
           {" "}
           {children}
+          <Alerts />
         </Content>
         {/* </Profiler> */}
       </Page>

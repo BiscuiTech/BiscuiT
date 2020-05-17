@@ -3,6 +3,8 @@ import useTranslation from "../hooks/useTranslation";
 import PageHeader, { SubHeader } from "./styles/PageHeader";
 import { email as emailRegEx } from "../lib/regEx";
 import { LoadingSpinner } from "./styles/LoadingSpinner";
+import { Alerts } from "./Alerts";
+import useAlert, { EAlert } from "../hooks/useAlert";
 
 interface IStatus {
   submitted: boolean;
@@ -15,6 +17,7 @@ interface IStatus {
 
 const Contact = () => {
   const { t, locale } = useTranslation();
+  const { setAlert } = useAlert();
   const [validate, setValidate] = useState({
     target: null,
   });
@@ -42,11 +45,15 @@ const Contact = () => {
         email: "",
         message: "",
       });
+      setAlert({ type: EAlert.SUCCESS, isOpen: true, message: msg })
+
     } else {
       setStatus({
         ...status,
         info: { error: true, msg: msg },
       });
+      console.log('send-message error')
+      setAlert({ type: EAlert.ERROR, isOpen: true, message: msg })
     }
   };
   const checkValidity = () => {
@@ -79,6 +86,7 @@ const Contact = () => {
       submitting: true,
       info: { error: false, msg: "" },
     });
+
     if (!checkValidity()) {
       setStatus({
         ...status,
@@ -87,6 +95,7 @@ const Contact = () => {
           msg: t("common")["error_InvalidForm"],
         },
       });
+      setAlert({ type: EAlert.ERROR, isOpen: true, message: t("common")["error_InvalidForm"] })
       return;
     } else {
       const res = await fetch("/api/send-message", {
@@ -103,7 +112,6 @@ const Contact = () => {
   };
   const handleChange = (e) => {
     e.preventDefault();
-    console.log(e.target.value);
     const { name, type, value } = e.target;
     const val = type === "number" ? parseFloat(value) : value;
     setMessageProps({ ...messageProps, [name]: val });
@@ -177,14 +185,6 @@ const Contact = () => {
                 fill="url(#85737c0e-0916-41d7-917f-596dc7edfa27)"
               />
             </svg>
-            {/* <div className="text-center">
-              <h2 className="text-3xl leading-9 font-extrabold tracking-tight text-gray-900 sm:text-4xl sm:leading-10">
-                Contact sales
-      </h2>
-              <p className="mt-4 text-lg leading-6 text-gray-500">
-                Nullam risus blandit ac aliquam justo ipsum. Quam mauris volutpat massa dictumst amet. Sapien tortor lacus arcu.
-      </p>
-            </div> */}
             <PageHeader>{t("header")}</PageHeader>
             <SubHeader>
               {t("subHeaderOne")}
@@ -274,8 +274,8 @@ const Contact = () => {
                       {status.submitting ? (
                         <LoadingSpinner />
                       ) : (
-                        t("contactFormButton")
-                      )}
+                          t("contactFormButton")
+                        )}
                     </button>
                   </span>
                 </div>
