@@ -37,6 +37,7 @@ export const getStaticProps: GetStaticProps = async ({ ...ctx }) => {
   const localization = getLocalizationProps(ctx, "blogPost");
 
   const post = getPostBySlug(ctx.params.pid, [
+    "slug",
     "published",
     "title",
     "author",
@@ -44,6 +45,7 @@ export const getStaticProps: GetStaticProps = async ({ ...ctx }) => {
     "excerpt",
     "coverImage",
     "imageAccreditation",
+    "content",
   ]);
 
   return {

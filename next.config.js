@@ -1,9 +1,9 @@
+const withPlugins = require('next-compose-plugins');
 const withSourceMaps = require('@zeit/next-source-maps')();
 const TerserPlugin = require('terser-webpack-plugin');
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 });
-const withPlugins = require('next-compose-plugins');
 const withMDX = require('@next/mdx')({
   extension: /\.mdx?$/,
 });
