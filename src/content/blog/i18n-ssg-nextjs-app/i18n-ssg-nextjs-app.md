@@ -5,6 +5,7 @@ author: "BiscuiTech"
 date: "2020-05-06"
 excerpt: "Illo sint voluptas. Error voluptates culpa eligendi. Hic vel totam vitae illo. Non aliquid explicabo necessitatibus unde. Sed exercitationem placeat consectetur nulla deserunt vel. Iusto corrupti dicta."
 coverImage: "https://images.unsplash.com/photo-1508633069371-a735f885a1c7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=80"
+imageAccreditation: "Matthew Brodeur"
 ---
 
 # i18n with Next.js and full SSG support

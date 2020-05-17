@@ -28,8 +28,13 @@ const BlogPost = ({ pid, post, morePosts }) => {
   }
   return (
     <article className="relative">
-      <div className="mb-8 md:mb-16 -mx-5 sm:mx-0">
-        <CoverImage title={post.title} src={post.coverImage} slug={post.slug} />
+      <div className="mb-8 -mx-5 sm:mx-0">
+        <CoverImage
+          title={post.title}
+          src={post.coverImage}
+          slug={post.slug}
+          accreditation={post.imageAccreditation}
+        />
       </div>
       <Main className="text-lg">
         <MDX components={{ code: Code, h1: H1, h2: H2, h3: H3, img: Img }}>

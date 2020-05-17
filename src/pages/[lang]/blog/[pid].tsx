@@ -17,6 +17,7 @@ const BlogPostPage = ({ localization, post, morePosts, preview }) => {
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />;
   }
+  console.log(post);
   return (
     <LanguageProvider localization={localization}>
       <Layout
@@ -36,13 +37,13 @@ export const getStaticProps: GetStaticProps = async ({ ...ctx }) => {
   const localization = getLocalizationProps(ctx, "blogPost");
 
   const post = getPostBySlug(ctx.params.pid, [
+    "published",
     "title",
-    "date",
-    "slug",
     "author",
-    "content",
-    "ogImage",
+    "date",
+    "excerpt",
     "coverImage",
+    "imageAccreditation",
   ]);
 
   return {
