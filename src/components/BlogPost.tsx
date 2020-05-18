@@ -13,17 +13,21 @@ const BlogHeader = styled.header`
 `;
 
 const BlogContent = styled.section`
+  font-family: Inter;
+
   code {
-    padding: 0 4px;
+    padding: 2px 4px;
     margin: 0 2px;
     background: hsl(0, 0%, 20%);
     color: hsl(0, 0%, 90%);
+    color: hsl(42,93.2%, 46.1%);
     border-radius: 2px;
-    font-family: monospace;
+    font-family: "Lucida Console", Monaco, monospace;
     font-size: 1em;
+    line-height: 1em;
   }
   p {
-    margin: 0 0 2em 0px;
+    margin: 0 0 1.2em 0px;
   }
 `;
 

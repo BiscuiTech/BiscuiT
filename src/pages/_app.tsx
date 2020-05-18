@@ -12,14 +12,15 @@ import "../styles/index.css";
  * */
 import * as gtag from "../lib/gtag";
 import Router from "next/router";
+import { AlertProvider } from "../context/AlertContext";
 process.env.NODE_ENV === "production"
   ? Router.events.on("routeChangeComplete", (url) => gtag.pageview(url))
   : null;
 
 process.env.NODE_ENV === "production"
   ? Sentry.init({
-      dsn: "https://c0e5b834500d45b88fb648ccf7c489bf@sentry.io/1838052",
-    })
+    dsn: "https://c0e5b834500d45b88fb648ccf7c489bf@sentry.io/1838052",
+  })
   : null;
 
 function handleExitComplete() {
@@ -55,9 +56,11 @@ class MyApp extends App {
 
     return (
       <ThemeProvider theme={theme}>
-        <AnimatePresence exitBeforeEnter onExitComplete={handleExitComplete}>
-          <Component {...modifiedPageProps} key={router.route} />
-        </AnimatePresence>
+        <AlertProvider>
+          <AnimatePresence exitBeforeEnter onExitComplete={handleExitComplete}>
+            <Component {...modifiedPageProps} key={router.route} />
+          </AnimatePresence>
+        </AlertProvider>
       </ThemeProvider>
     );
   }

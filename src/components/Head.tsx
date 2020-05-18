@@ -71,6 +71,9 @@ const Head = ({ title, description, og }) => (
       rel="stylesheet"
       crossOrigin="anonymous"
     />
+    <link href="/static/inter.css"
+      rel="stylesheet"
+    />
   </NextHead>
 );
 

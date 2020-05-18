@@ -43,7 +43,7 @@ export const LanguageProvider: React.FC<{ localization: Localization }> = ({
   const [getStoredLocale, setStoredLocale] = useLocalStorage("locale");
   const { query } = useRouter();
   React.useEffect(() => {
-    if (localizationState !== getStoredLocale) {
+    if (localizationState.locale !== getStoredLocale) {
       setStoredLocale(localizationState.locale);
     }
   }, [localizationState]);

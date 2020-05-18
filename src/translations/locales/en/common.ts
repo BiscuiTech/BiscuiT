@@ -12,7 +12,11 @@ const common = {
   userMsg_Success: 'Success!',
   error_InvalidForm: 'Make sure to fill up the form',
   error_noBlogs: "No blogs could be loaded for now. Come back later!",
-  success_messageSent: "Message sent successfully!"
+  success_messageSent: "Message sent successfully!",
+  alertWarningHeader: 'Attention needed',
+  alertInfoHeader: 'Attention needed',
+  alertErrorHeader: 'Attention needed',
+  alertSuccessHeader: 'Attention needed',
 }
 
 export default common

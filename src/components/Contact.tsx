@@ -3,8 +3,8 @@ import useTranslation from "../hooks/useTranslation";
 import PageHeader, { SubHeader } from "./styles/PageHeader";
 import { email as emailRegEx } from "../lib/regEx";
 import { LoadingSpinner } from "./styles/LoadingSpinner";
-import { Alerts } from "./Alerts";
-import useAlert, { EAlert } from "../hooks/useAlert";
+import { useAlertDispatch, useAlertState, AlertType } from "../context/AlertContext";
+// import useAlert, { EAlert } from "../hooks/useAlert";
 
 interface IStatus {
   submitted: boolean;
@@ -16,8 +16,9 @@ interface IStatus {
 }
 
 const Contact = () => {
+  const dispatch = useAlertDispatch()
+  const alertState = useAlertState()
   const { t, locale } = useTranslation();
-  const { setAlert } = useAlert();
   const [validate, setValidate] = useState({
     target: null,
   });
@@ -45,15 +46,26 @@ const Contact = () => {
         email: "",
         message: "",
       });
-      setAlert({ type: EAlert.SUCCESS, isOpen: true, message: msg })
-
+      // setAlert({ type: EAlert.SUCCESS, isOpen: true, message: msg })
+      dispatch({
+        type: 'open', alert: {
+          message: msg,
+          type: AlertType.Success
+        }
+      })
     } else {
       setStatus({
         ...status,
         info: { error: true, msg: msg },
       });
       console.log('send-message error')
-      setAlert({ type: EAlert.ERROR, isOpen: true, message: msg })
+      // setAlert({ type: EAlert.ERROR, isOpen: true, message: msg })
+      dispatch({
+        type: 'open', alert: {
+          message: msg,
+          type: AlertType.Error
+        }
+      })
     }
   };
   const checkValidity = () => {
@@ -95,7 +107,12 @@ const Contact = () => {
           msg: t("common")["error_InvalidForm"],
         },
       });
-      setAlert({ type: EAlert.ERROR, isOpen: true, message: t("common")["error_InvalidForm"] })
+      dispatch({
+        type: 'open', alert: {
+          message: t("common")["error_InvalidForm"],
+          type: AlertType.Error
+        }
+      })
       return;
     } else {
       const res = await fetch("/api/send-message", {

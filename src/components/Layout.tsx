@@ -8,7 +8,6 @@ import { onRenderCallback } from "../lib/onRenderCallback";
 import Navigation from "./Navgitation";
 import { motion } from "framer-motion";
 import Alerts from './Alerts'
-import useAlert from "../hooks/useAlert";
 const Page = styled.div`
   min-height: 100vh;
   padding: 0;
@@ -276,7 +275,6 @@ const Layout = ({
       }, 400)
     );
   }
-  const { alert } = useAlert()
   return (
     <>
       <GlobalStyle />
