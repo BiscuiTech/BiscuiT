@@ -14,7 +14,7 @@ const WarningAlert = ({ message }) => (
       </div>
       <div className="ml-3">
         <h3 className="text-sm leading-5 font-medium text-yellow-800">
-          {t('common')['alertWarningHeader']}
+          {/* {t('common')['alertWarningHeader']} */}
         </h3>
         <div className="mt-2 text-sm leading-5 text-yellow-700">
           <p>
