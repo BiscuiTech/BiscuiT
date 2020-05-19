@@ -7,7 +7,7 @@ import { Localization } from '../../translations/types';
 import useOpenGraph from '../../lib/useOpenGraph';
 import { getAllPosts } from '../../lib/api';
 
-const IndexPage: NextPage<{ localization: Localization, post: any, preview: boolean }> = ({ localization, post, preview = false }) => {
+const IndexPage: NextPage<{ localization: Localization, posts: any, preview: boolean }> = ({ localization, posts, preview = false }) => {
   const publishedPost = (arr) =>
     arr.filter((el) => el.published == "true");
   return (
@@ -17,7 +17,7 @@ const IndexPage: NextPage<{ localization: Localization, post: any, preview: bool
         description="Biscui.Tech Home page"
         og={useOpenGraph()}
       >
-        <Home post={preview ? post : publishedPost(post)} />
+        <Home post={preview ? posts[0] : publishedPost(posts)[0]} />
       </Layout>
     </LanguageProvider>
   );
@@ -36,7 +36,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
   const localization = getLocalizationProps(ctx, "home");
   return {
     props: {
-      post: posts[0],
+      posts: posts,
       localization,
     },
   };
