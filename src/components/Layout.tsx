@@ -299,7 +299,7 @@ const Layout = ({
         >
           {" "}
           {children}
-          <Alerts />
+          {/* <Alerts /> */}
         </Content>
         {/* </Profiler> */}
       </Page>

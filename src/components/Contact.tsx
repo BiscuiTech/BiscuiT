@@ -3,8 +3,9 @@ import useTranslation from "../hooks/useTranslation";
 import PageHeader, { SubHeader } from "./styles/PageHeader";
 import { email as emailRegEx } from "../lib/regEx";
 import { LoadingSpinner } from "./styles/LoadingSpinner";
-import { useAlertDispatch, useAlertState, AlertType } from "../context/AlertContext";
+// import { useAlertDispatch, useAlertState, AlertType } from "../context/AlertContext";
 // import useAlert, { EAlert } from "../hooks/useAlert";
+import cn from 'classnames'
 
 interface IStatus {
   submitted: boolean;
@@ -16,8 +17,8 @@ interface IStatus {
 }
 
 const Contact = () => {
-  const dispatch = useAlertDispatch()
-  const alertState = useAlertState()
+  // const dispatch = useAlertDispatch()
+  // const alertState = useAlertState()
   const { t, locale } = useTranslation();
   const [validate, setValidate] = useState({
     target: null,
@@ -47,12 +48,12 @@ const Contact = () => {
         message: "",
       });
       // setAlert({ type: EAlert.SUCCESS, isOpen: true, message: msg })
-      dispatch({
-        type: 'open', alert: {
-          message: msg,
-          type: AlertType.Success
-        }
-      })
+      // dispatch({
+      //   type: 'open', alert: {
+      //     message: msg,
+      //     type: AlertType.Success
+      //   }
+      // })
     } else {
       setStatus({
         ...status,
@@ -60,12 +61,12 @@ const Contact = () => {
       });
       console.log('send-message error')
       // setAlert({ type: EAlert.ERROR, isOpen: true, message: msg })
-      dispatch({
-        type: 'open', alert: {
-          message: msg,
-          type: AlertType.Error
-        }
-      })
+      // dispatch({
+      //   type: 'open', alert: {
+      //     message: msg,
+      //     type: AlertType.Error
+      //   }
+      // })
     }
   };
   const checkValidity = () => {
@@ -107,12 +108,12 @@ const Contact = () => {
           msg: t("common")["error_InvalidForm"],
         },
       });
-      dispatch({
-        type: 'open', alert: {
-          message: t("common")["error_InvalidForm"],
-          type: AlertType.Error
-        }
-      })
+      // dispatch({
+      //   type: 'open', alert: {
+      //     message: t("common")["error_InvalidForm"],
+      //     type: AlertType.Error
+      //   }
+      // })
       return;
     } else {
       const res = await fetch("/api/send-message", {
@@ -225,7 +226,10 @@ const Contact = () => {
                     <input
                       id="firstName"
                       name="firstName"
-                      className="form-input py-3 px-4 block w-full transition ease-in-out duration-150 bg-gray-900 border-gray-900"
+                      className={cn("form-input py-3 px-4 block w-full transition ease-in-out duration-150 bg-gray-900", {
+                        'input-error': status.info.error,
+                        'border-gray-900': !status.info.error
+                      })}
                       onChange={handleChange}
                     />
                   </div>
@@ -241,7 +245,10 @@ const Contact = () => {
                     <input
                       id="lastName"
                       name="lastName"
-                      className="form-input py-3 px-4 block w-full transition ease-in-out duration-150 bg-gray-900 border-gray-900"
+                      className={cn("form-input py-3 px-4 block w-full transition ease-in-out duration-150 bg-gray-900", {
+                        'input-error': status.info.error,
+                        'border-gray-900': !status.info.error
+                      })}
                       onChange={handleChange}
                     />
                   </div>
@@ -258,7 +265,10 @@ const Contact = () => {
                       id="email"
                       name="email"
                       type="email"
-                      className="form-input py-3 px-4 block w-full transition ease-in-out duration-150 bg-gray-900 border-gray-900"
+                      className={cn("form-input py-3 px-4 block w-full transition ease-in-out duration-150 bg-gray-900", {
+                        'input-error': status.info.error,
+                        'border-gray-900': !status.info.error
+                      })}
                       onChange={handleChange}
                     />
                   </div>
@@ -276,22 +286,29 @@ const Contact = () => {
                       id="message"
                       name="message"
                       rows={4}
-                      className="form-textarea py-3 px-4 block w-full transition ease-in-out duration-150 bg-gray-900 border-gray-900"
+                      className={cn("form-textarea py-3 px-4 block w-full transition ease-in-out duration-150 bg-gray-900", {
+                        'input-error': status.info.error,
+                        'border-gray-900': !status.info.error
+                      })}
                       onChange={handleChange}
                     ></textarea>
                   </div>
                 </div>
-                <div className="sm:col-span-2">
+                <div className="sm:col-span-2 mb-4">
                   <span className="w-full inline-flex rounded-md shadow-sm">
                     <button
                       type="button"
-                      className="w-full inline-flex items-center justify-center px-6 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-indigo-600 hover:bg-yellow-400 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150 bg-gray-900 border-gray-900"
+                      className={cn("w-full inline-flex items-center justify-center px-6 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white   focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150 border-gray-900", {
+                        'bg-red-700 hover:bg-red-500': status.info.error,
+                        'bg-indigo-600 hover:bg-yellow-400': !status.info.error,
+
+                      })}
                       onClick={handleSubmit}
                     >
                       {status.submitting ? (
                         <LoadingSpinner />
                       ) : (
-                          t("contactFormButton")
+                          status.info.msg || t("contactFormButton")
                         )}
                     </button>
                   </span>

@@ -20,6 +20,10 @@
   @apply text-yellow-300;
 
 }
+.input-error {
+  @apply border border-red-500;
+}
+
 @import "tailwindcss/utilities";
 
 
