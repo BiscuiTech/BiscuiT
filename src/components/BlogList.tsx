@@ -27,7 +27,7 @@ export const ListItem = ({ title, date, excerpt, locale, path, t }) => (
   </div>
 );
 
-const BlogList = ({ posts }) => {
+const BlogList = ({ posts = [] }) => {
   const { t, locale } = useTranslation();
   return (
     <>
