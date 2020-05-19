@@ -30,7 +30,7 @@ export function onRenderCallback<IRenderCallback>(
     baseDuration,
     startTime,
     commitTime,
-    interactions
+    interactions,
   });
 }
 
@@ -44,12 +44,12 @@ async function sendProfileQueue() {
   // here's where we'd actually make the server call to send the queueToSend
   // data to our backend...
   //console.info("sending profile queue", queueToSend);
-  const result = await fetch("/api/monitoring", {
+  const result = await fetch("/api/profiler-monitoring", {
     method: "POST",
     headers: {
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
     },
-    body: JSON.stringify(queueToSend)
+    body: JSON.stringify(queueToSend),
   });
   //console.log("user-land result", result);
   return Promise.resolve();

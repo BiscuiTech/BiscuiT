@@ -1,36 +1,48 @@
-import React from 'react'
-import Layout from '../../../components/Layout'
-import Blog from '../../../components/Blog'
-import { GetStaticProps, GetStaticPaths } from 'next'
-import locales from '../../../translations/locales'
+import React from "react";
+import Layout from "../../../components/Layout";
+import BlogList from "../../../components/BlogList";
+import { GetStaticProps, GetStaticPaths, NextPage } from "next";
+import {
+  getLocalizationProps,
+  LanguageProvider,
+} from "../../../context/LanguageContext";
 
-const BlogIndexPage = () => {
+import { getAllPosts } from "../../../lib/api";
+import useOpenGraph from "../../../lib/useOpenGraph";
+import { Localization } from "../../../translations/types";
+
+const BlogIndexPage: NextPage<{ localization: Localization, posts: any, preview: boolean }> = ({ localization, posts, preview = false }) => {
+  /**
+   * TODO: Preview mode
+   */
+  const publishedPosts = (arr) =>
+    arr.filter((el) => el.published == "true");
   return (
-    <Layout
-      title="Biscui.Tech"
-      description="Biscui.Tech Home page"
-    >
-      <Blog />
-    </Layout>
-  )
-}
+    <LanguageProvider localization={localization}>
+      <Layout
+        title="Biscui.Tech"
+        description="Biscui.Tech Home page"
+        og={useOpenGraph()}
+      >
+        <BlogList posts={preview ? posts || [] : publishedPosts(posts)} />
+      </Layout>
+    </LanguageProvider>
+  );
+};
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
-  const lang: any = ctx.params?.lang || "fr";
-  const namespace = "blog";
-  const locale: any = locales[lang] || {};
-  const strings: any = locale[namespace] || {};
-  const translations = {
-    common: locales[lang].common,
-    ...strings,
-  };
+  const posts = getAllPosts([
+    "title",
+    "date",
+    "slug",
+    "excerpt_fr",
+    "excerpt_en",
+  ]);
+  const localization = getLocalizationProps(ctx, "blog");
   return {
     props: {
-      localization: {
-        locale: ctx.params?.lang || "en",
-        translations: translations,
-        namespace: namespace,
-      },
+      posts,
+      localization,
     },
   };
 };
@@ -42,4 +54,4 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export default BlogIndexPage
+export default BlogIndexPage;

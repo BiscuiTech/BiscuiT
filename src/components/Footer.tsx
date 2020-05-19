@@ -1,23 +1,27 @@
 import React from "react";
 import styled from "styled-components";
 import Link from "next/link";
-import { Image, Transformation } from "cloudinary-react";
 import useTranslation from "../hooks/useTranslation";
 
 const FooterStyles = styled.div`
+  position: sticky;
+  bottom: 0;
   width: 100%;
-  height: 25vh;
+  /* height: 25vh; */
   min-height: 180px;
   background: #0c344b;
-  background: linear-gradient(330deg, hsl(200, 75%, 25%) 5%, hsl(200, 72%, 17%) 87%);
-  margin-top: 24px;
+  background: linear-gradient(
+    330deg,
+    hsl(200, 75%, 25%) 5%,
+    hsl(200, 72%, 17%) 87%
+  );
+  /* margin-top: 24px; */
   padding: 48px 0;
-  border-top: 4px solid ${props => props.theme.color.gold};
+  border-top: 4px solid ${(props) => props.theme.color.gold};
   color: white;
   font-weight: 300;
   text-align: center;
   flex-shrink: 0;
-  position: relative;
   a {
     margin: 0 6px;
   }
@@ -102,14 +106,19 @@ const Footer = () => {
           />
         </a>
         <Link href="/[lang]" as={`/${locale}`}>
-          <Image
-            publicId="biscui.tech/Biscuit.png"
-            cloudName="biscuitech"
-            alt="BiscuiTech Logo"
-            style={{ gridArea: "logo", placeSelf: "left" }}
-          >
-            <Transformation height="80" crop="scale" />
-          </Image>
+          <picture>
+            <img
+              style={{ gridArea: "logo", placeSelf: "left" }}
+              sizes="(max-width: 1076px) 100vw, 1076px"
+              srcSet="
+Biscui_rnr82d_c_scale,w_200.png 200w,
+Biscui_rnr82d_c_scale,w_422.png 422w,
+Biscui_rnr82d_c_scale,w_602.png 602w,
+Biscui_rnr82d_c_scale,w_1076.png 1076w"
+              src="Biscui_rnr82d_c_scale,w_1076.png"
+              alt=""
+            />
+          </picture>
         </Link>
         <a
           href="https://twitter.com/biscuitech"
@@ -140,12 +149,16 @@ const Footer = () => {
           />
         </a>
       </Grid>
-      <a href="https://github.com/BiscuiTech/BiscuiT">This website is open source. View the code here. 👨‍💻</a>
+      <a href="https://github.com/BiscuiTech/BiscuiT">
+        This website is open source. View the code here. 👨‍💻
+      </a>
       <div className="archives">
         {/* <Link href="/[lang]/archives" as={`/${locale}/archives`}>
           <a>To access previous version of this site, view the archives. 🔓</a>
         </Link> */}
-        <a href="https://github.com/BiscuiTech/BiscuiT">To access previous version of this site, view the archives. 🔓</a>
+        <a href="https://github.com/BiscuiTech/BiscuiT">
+          To access previous version of this site, view the archives. 🔓
+        </a>
       </div>
     </FooterStyles>
   );

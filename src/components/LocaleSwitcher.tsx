@@ -5,13 +5,19 @@ import styled from 'styled-components'
 import { LanguageContext } from '../context/LanguageContext'
 
 const LangWrapper = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  justify-content: end;
+  /* width: 100%;
+  height: 100%; */
+/*   display: flex;
+  justify-content: end; */
   font-family: 'Montserrat';
   font-size: 14px;
+  position: fixed;
+  bottom: 32px;
+  right: 12px;
+  @media (max-width: 820px) {
+    top: 0;
+    bottom: unset;
+  }
 `;
 
 const LangBtn = styled.div`
@@ -26,7 +32,7 @@ const LangBtn = styled.div`
   height: var(--height);
   transform: translateY(40%);
 
-  // Closing Animation
+  /* Closing Animation */
   transition: transform 0.17s var(--speed3);
 
   input {

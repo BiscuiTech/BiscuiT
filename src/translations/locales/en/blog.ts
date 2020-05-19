@@ -1,5 +1,7 @@
 const blog = {
-  subHeader: "May contain traces of blogs"
+  subHeader: "Tag along my adventure through JavaScript and the Web.",
+  readFullBlog: "Read full blog",
+  searchBar: 'Search'
 }
 
 export default blog

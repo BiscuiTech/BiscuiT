@@ -2,43 +2,42 @@ import React from 'react';
 import Layout from '../../components/Layout';
 import Home from '../../components/Home';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
-import locales from "../../translations/locales";
-import { LanguageProvider } from '../../context/LanguageContext';
+import { LanguageProvider, getLocalizationProps } from '../../context/LanguageContext';
 import { Localization } from '../../translations/types';
+import useOpenGraph from '../../lib/useOpenGraph';
+import { getAllPosts } from '../../lib/api';
 
-const IndexPage: NextPage<{ localization: Localization }> = ({ localization }) => {
+const IndexPage: NextPage<{ localization: Localization, posts: any, preview: boolean }> = ({ localization, posts, preview = false }) => {
+  const publishedPost = (arr) =>
+    arr.filter((el) => el.published == "true");
   return (
     <LanguageProvider localization={localization}>
       <Layout
         title="Biscui.Tech"
         description="Biscui.Tech Home page"
+        og={useOpenGraph()}
       >
-        {/*
-        TODO: add an SSG api to fetch blogposts
-        and populate `pid` with the id
-      */}
-        <Home pid={null} />
+        <Home post={preview ? posts[0] : publishedPost(posts)[0]} />
       </Layout>
     </LanguageProvider>
   );
 };
 
+
+
 export const getStaticProps: GetStaticProps = async (ctx) => {
-  const lang: any = ctx.params?.lang || "fr";
-  const namespace = "home";
-  const locale: any = locales[lang] || {};
-  const strings: any = locale[namespace] || {};
-  const translations = {
-    common: locales[lang].common,
-    ...strings,
-  };
+  const posts = getAllPosts([
+    "title",
+    "date",
+    "slug",
+    "excerpt_fr",
+    "excerpt_en",
+  ]);
+  const localization = getLocalizationProps(ctx, "home");
   return {
     props: {
-      localization: {
-        locale: ctx.params?.lang || "en",
-        translations: translations,
-        namespace: namespace,
-      },
+      posts: posts,
+      localization,
     },
   };
 };
