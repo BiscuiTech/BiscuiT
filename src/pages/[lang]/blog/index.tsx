@@ -1,7 +1,7 @@
 import React from "react";
 import Layout from "../../../components/Layout";
 import BlogList from "../../../components/BlogList";
-import { GetStaticProps, GetStaticPaths } from "next";
+import { GetStaticProps, GetStaticPaths, NextPage } from "next";
 import {
   getLocalizationProps,
   LanguageProvider,
@@ -9,13 +9,14 @@ import {
 
 import { getAllPosts } from "../../../lib/api";
 import useOpenGraph from "../../../lib/useOpenGraph";
+import { Localization } from "../../../translations/types";
 
-const BlogIndexPage = ({ localization, posts, preview = false }) => {
+const BlogIndexPage: NextPage<{ localization: Localization, posts: any, preview: boolean }> = ({ localization, posts, preview = false }) => {
   /**
    * TODO: Preview mode
    */
   const publishedPosts = (arr) =>
-    arr.filter((el) => el.frontmatter.published == "true");
+    arr.filter((el) => el.published == "true");
   return (
     <LanguageProvider localization={localization}>
       <Layout
@@ -23,7 +24,7 @@ const BlogIndexPage = ({ localization, posts, preview = false }) => {
         description="Biscui.Tech Home page"
         og={useOpenGraph()}
       >
-        <BlogList posts={posts} />
+        <BlogList posts={preview ? posts : publishedPosts} />
       </Layout>
     </LanguageProvider>
   );
