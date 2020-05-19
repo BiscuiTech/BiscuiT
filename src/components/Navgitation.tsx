@@ -18,7 +18,7 @@ const NavgitationStyles = styled.nav`
   background: black;
   position: fixed;
   bottom:0;
-  width: 80%;
+  width: 100%;
   max-width: 1000px;
   display:flex;
   border-top: 1px solid ${(props) => props.theme.color.accent};

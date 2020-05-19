@@ -1,7 +1,7 @@
 import React, { Profiler, useEffect, useState } from "react";
 import styled from "styled-components";
 import Head from "./Head";
-import Header from "./Header";
+import LocaleSwitcher from "./LocaleSwitcher";
 import Footer from "./Footer";
 import GlobalStyle from "./styles/GlobalStyle";
 import { onRenderCallback } from "../lib/onRenderCallback";
@@ -287,7 +287,7 @@ const Layout = ({
         </a>
         <Navigation />
         {/* <Profiler id="Header" onRender={onRenderCallback}> */}
-        <Header />
+        <LocaleSwitcher />
         {/* </Profiler> */}
         {/* <Profiler id="Content" onRender={onRenderCallback}> */}
         <Content
