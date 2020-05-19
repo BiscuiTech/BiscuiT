@@ -5,6 +5,7 @@ const home = {
     "Je crée d'excellents sites web basés sur des outils modernes tels que React et GraphQL.",
   latestBlog: "Dernier Blog",
   viewBlog: "Lire cet article",
+  readFullBlog: "Lire blog complet",
 };
 
 export default home;

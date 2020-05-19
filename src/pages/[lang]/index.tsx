@@ -5,8 +5,9 @@ import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import { LanguageProvider, getLocalizationProps } from '../../context/LanguageContext';
 import { Localization } from '../../translations/types';
 import useOpenGraph from '../../lib/useOpenGraph';
+import { getAllPosts, getLatestPost } from '../../lib/api';
 
-const IndexPage: NextPage<{ localization: Localization }> = ({ localization }) => {
+const IndexPage: NextPage<{ localization: Localization, post: any }> = ({ localization, post }) => {
   return (
     <LanguageProvider localization={localization}>
       <Layout
@@ -14,20 +15,26 @@ const IndexPage: NextPage<{ localization: Localization }> = ({ localization }) =
         description="Biscui.Tech Home page"
         og={useOpenGraph()}
       >
-        {/*
-        TODO: add an SSG api to fetch blogposts
-        and populate `pid` with the id
-      */}
-        <Home pid={null} />
+        <Home post={post} />
       </Layout>
     </LanguageProvider>
   );
 };
 
+
+
 export const getStaticProps: GetStaticProps = async (ctx) => {
-  const localization = getLocalizationProps(ctx, 'home');
+  const posts = getLatestPost([
+    "title",
+    "date",
+    "slug",
+    "excerpt_fr",
+    "excerpt_en",
+  ]);
+  const localization = getLocalizationProps(ctx, "home");
   return {
     props: {
+      post: posts[0],
       localization,
     },
   };

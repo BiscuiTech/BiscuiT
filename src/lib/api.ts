@@ -37,3 +37,9 @@ export function getAllPosts(fields = []) {
   const slugs = getPostSlugs();
   return slugs.map((slug) => getPostBySlug(slug, fields));
 }
+
+
+export function getLatestPost(fields = ["date"]) {
+  const slugs = getPostSlugs();
+  return slugs.map((slug) => getPostBySlug(slug, fields)).sort((a: any, b: any) => b.date - a.date);
+}

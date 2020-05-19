@@ -3,7 +3,7 @@ import PageHeader, { SubHeader } from "./styles/PageHeader";
 import useTranslation from "../hooks/useTranslation";
 import Link from "next/link";
 
-const ListItem = ({ title, date, excerpt, locale, path, t }) => (
+export const ListItem = ({ title, date, excerpt, locale, path, t }) => (
   <div className="mt-8 blogItem hover:bg-gray-900 py-2 px-4 rounded transition ease-in-out duration-150">
     <Link href={`/[lang]/blog/${path}`} as={`/${locale}/blog/${path}`}>
       <a className="block">
