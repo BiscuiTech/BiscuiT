@@ -24,7 +24,7 @@ const BlogIndexPage: NextPage<{ localization: Localization, posts: any, preview:
         description="Biscui.Tech Home page"
         og={useOpenGraph()}
       >
-        <BlogList posts={preview ? posts : publishedPosts} />
+        <BlogList posts={preview ? posts || [] : publishedPosts(posts)} />
       </Layout>
     </LanguageProvider>
   );

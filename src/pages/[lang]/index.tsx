@@ -17,7 +17,7 @@ const IndexPage: NextPage<{ localization: Localization, post: any, preview: bool
         description="Biscui.Tech Home page"
         og={useOpenGraph()}
       >
-        <Home post={preview ? post : publishedPost} />
+        <Home post={preview ? post : publishedPost(post)} />
       </Layout>
     </LanguageProvider>
   );
