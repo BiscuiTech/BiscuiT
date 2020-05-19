@@ -16,7 +16,7 @@ export const LatestBlog = ({ post }) => {
   return (
     <LatestBlogStyles>
       <h2>{t('latestBlog')}</h2>
-      {post.slug
+      {post?.slug
         ?
         <ListItem date={post.date} excerpt={post[`excerpt_${locale}`]} locale={locale} path={post.slug} t={t} title={post.title} />
 
