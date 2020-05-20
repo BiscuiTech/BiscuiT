@@ -5,7 +5,7 @@ import { email as emailRegEx } from "../lib/regEx";
 import { LoadingSpinner } from "./styles/LoadingSpinner";
 // import { useAlertDispatch, useAlertState, AlertType } from "../context/AlertContext";
 // import useAlert, { EAlert } from "../hooks/useAlert";
-import cn from 'classnames'
+import cn from "classnames";
 
 interface IStatus {
   submitted: boolean;
@@ -59,7 +59,7 @@ const Contact = () => {
         ...status,
         info: { error: true, msg: msg },
       });
-      console.log('send-message error')
+      console.log("send-message error");
       // setAlert({ type: EAlert.ERROR, isOpen: true, message: msg })
       // dispatch({
       //   type: 'open', alert: {
@@ -220,16 +220,19 @@ const Contact = () => {
                     htmlFor="firstName"
                     className="block text-sm font-medium leading-5 text-gray-200"
                   >
-                    First name
+                    {t("contactFormFirstName")}
                   </label>
                   <div className="mt-1 relative rounded-md shadow-sm">
                     <input
                       id="firstName"
                       name="firstName"
-                      className={cn("form-input py-3 px-4 block w-full transition ease-in-out duration-150 bg-gray-900", {
-                        'input-error': status.info.error,
-                        'border-gray-900': !status.info.error
-                      })}
+                      className={cn(
+                        "form-input py-3 px-4 block w-full transition ease-in-out duration-150 bg-gray-900",
+                        {
+                          "input-error": status.info.error,
+                          "border-gray-900": !status.info.error,
+                        }
+                      )}
                       onChange={handleChange}
                     />
                   </div>
@@ -239,16 +242,19 @@ const Contact = () => {
                     htmlFor="lastName"
                     className="block text-sm font-medium leading-5 text-gray-200"
                   >
-                    Last name
+                    {t("contactFormLastName")}
                   </label>
                   <div className="mt-1 relative rounded-md shadow-sm">
                     <input
                       id="lastName"
                       name="lastName"
-                      className={cn("form-input py-3 px-4 block w-full transition ease-in-out duration-150 bg-gray-900", {
-                        'input-error': status.info.error,
-                        'border-gray-900': !status.info.error
-                      })}
+                      className={cn(
+                        "form-input py-3 px-4 block w-full transition ease-in-out duration-150 bg-gray-900",
+                        {
+                          "input-error": status.info.error,
+                          "border-gray-900": !status.info.error,
+                        }
+                      )}
                       onChange={handleChange}
                     />
                   </div>
@@ -258,17 +264,20 @@ const Contact = () => {
                     htmlFor="email"
                     className="block text-sm font-medium leading-5 text-gray-200"
                   >
-                    Email
+                    {t("contactFormEmail")}
                   </label>
                   <div className="mt-1 relative rounded-md shadow-sm">
                     <input
                       id="email"
                       name="email"
                       type="email"
-                      className={cn("form-input py-3 px-4 block w-full transition ease-in-out duration-150 bg-gray-900", {
-                        'input-error': status.info.error,
-                        'border-gray-900': !status.info.error
-                      })}
+                      className={cn(
+                        "form-input py-3 px-4 block w-full transition ease-in-out duration-150 bg-gray-900",
+                        {
+                          "input-error": status.info.error,
+                          "border-gray-900": !status.info.error,
+                        }
+                      )}
                       onChange={handleChange}
                     />
                   </div>
@@ -279,17 +288,20 @@ const Contact = () => {
                     htmlFor="message"
                     className="block text-sm font-medium leading-5 text-gray-200"
                   >
-                    Message
+                    {t("contactFormMessage")}
                   </label>
                   <div className="mt-1 relative rounded-md shadow-sm">
                     <textarea
                       id="message"
                       name="message"
                       rows={4}
-                      className={cn("form-textarea py-3 px-4 block w-full transition ease-in-out duration-150 bg-gray-900", {
-                        'input-error': status.info.error,
-                        'border-gray-900': !status.info.error
-                      })}
+                      className={cn(
+                        "form-textarea py-3 px-4 block w-full transition ease-in-out duration-150 bg-gray-900",
+                        {
+                          "input-error": status.info.error,
+                          "border-gray-900": !status.info.error,
+                        }
+                      )}
                       onChange={handleChange}
                     ></textarea>
                   </div>
@@ -298,18 +310,21 @@ const Contact = () => {
                   <span className="w-full inline-flex rounded-md shadow-sm">
                     <button
                       type="button"
-                      className={cn("w-full inline-flex items-center justify-center px-6 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white   focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150 border-gray-900", {
-                        'bg-red-700 hover:bg-red-500': status.info.error,
-                        'bg-indigo-600 hover:bg-yellow-400': !status.info.error,
-
-                      })}
+                      className={cn(
+                        "w-full inline-flex items-center justify-center px-6 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white   focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150 border-gray-900",
+                        {
+                          "bg-red-700 hover:bg-red-500": status.info.error,
+                          "bg-indigo-600 hover:bg-yellow-400": !status.info
+                            .error,
+                        }
+                      )}
                       onClick={handleSubmit}
                     >
                       {status.submitting ? (
                         <LoadingSpinner />
                       ) : (
-                          status.info.msg || t("contactFormButton")
-                        )}
+                        status.info.msg || t("contactFormButton")
+                      )}
                     </button>
                   </span>
                 </div>
