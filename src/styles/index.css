@@ -1,0 +1,50 @@
+/* purgecss start ignore */
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+/* purgecss end ignore */
+.blogItem:hover a {
+  @apply text-yellow-300;
+};
+.blogItem:hover h3 {
+  @apply text-yellow-300;
+}
+.blogItem:hover .blogItem-hover {
+  @apply text-yellow-300;
+}
+.colored-list li::before {
+  content: "\2022";
+  font-weight: bold;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
+  @apply text-yellow-300;
+
+}
+.input-error {
+  @apply border border-red-500;
+}
+
+@import "tailwindcss/utilities";
+
+
+.hero {
+  width: 100%;
+  color: #333;
+}
+
+.title {
+  margin: 0;
+  width: 100%;
+  padding-top: 80px;
+  line-height: 1.15;
+  font-size: 48px;
+}
+
+.title,
+.description {
+  text-align: center;
+}
+
+.family-inter {
+  font-family: Inter;
+}
