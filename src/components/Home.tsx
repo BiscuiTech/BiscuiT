@@ -1,9 +1,9 @@
-import React from 'react';
-import styled from 'styled-components';
-import useTranslation from '../hooks/useTranslation'
-import Link from 'next/link';
-import StyledAnchor from './styles/StyledAnchor';
-import { LatestBlog } from './LatestBlog';
+import React from "react";
+import styled from "styled-components";
+import useTranslation from "../hooks/useTranslation";
+import Link from "next/link";
+import StyledAnchor from "./styles/StyledAnchor";
+import { LatestBlog } from "./LatestBlog";
 
 const Welcome = styled.div`
   text-align: center;
@@ -12,9 +12,10 @@ const Welcome = styled.div`
   flex-direction: column;
   width: 100%;
   text-align: left;
+  margin-top: 24px;
   margin-bottom: 64px;
-  padding: 0;
-  font-family: 'Montserrat';
+  padding: 0;
+  font-family: "Montserrat";
   font-weight: 200;
   * {
     padding: 0;
@@ -37,7 +38,7 @@ const Welcome = styled.div`
     margin: 0;
     word-wrap: break-word;
   }
-`
+`;
 
 const ShortIntro = styled.div`
   width: 100%;
@@ -56,21 +57,23 @@ const ShortIntro = styled.div`
 `;
 
 const Home = ({ post }) => {
-  const { locale, t } = useTranslation()
+  const { locale, t } = useTranslation();
   return (
     <>
       <Welcome>
         <h1 className="welcome--hello">
-          {t('welcome_msg')}
+          {t("welcome_msg")}
           <br />
           <span className="welcome--my-name">Jean-Cédric Huet</span>
         </h1>
-        <p className="welcome--from">{t('i_am')}</p>
+        <p className="welcome--from">{t("i_am")}</p>
       </Welcome>
       <ShortIntro>
-        <p>{t('short_intro')}</p>
-        <Link href="/[lang]/about" as={`/${locale}/about`} >
-          <StyledAnchor className="toRight">{t('common')['aboutMe']}</StyledAnchor>
+        <p>{t("short_intro")}</p>
+        <Link href="/[lang]/about" as={`/${locale}/about`}>
+          <StyledAnchor className="toRight">
+            {t("common")["aboutMe"]}
+          </StyledAnchor>
         </Link>
       </ShortIntro>
       <LatestBlog post={post} />

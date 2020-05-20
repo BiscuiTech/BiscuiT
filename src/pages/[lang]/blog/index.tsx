@@ -11,12 +11,15 @@ import { getAllPosts } from "../../../lib/api";
 import useOpenGraph from "../../../lib/useOpenGraph";
 import { Localization } from "../../../translations/types";
 
-const BlogIndexPage: NextPage<{ localization: Localization, posts: any, preview: boolean }> = ({ localization, posts, preview = false }) => {
+const BlogIndexPage: NextPage<{
+  localization: Localization;
+  posts: any;
+  preview: boolean;
+}> = ({ localization, posts, preview = false }) => {
   /**
    * TODO: Preview mode
    */
-  const publishedPosts = (arr) =>
-    arr.filter((el) => el.published == "true");
+  const publishedPosts = (arr) => arr.filter((el) => el.published == "true");
   return (
     <LanguageProvider localization={localization}>
       <Layout
@@ -43,6 +46,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
     props: {
       posts,
       localization,
+      preview: process.env.NODE_ENV === "development",
     },
   };
 };
