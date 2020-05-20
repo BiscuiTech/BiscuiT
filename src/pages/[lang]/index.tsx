@@ -1,15 +1,21 @@
-import React from 'react';
-import Layout from '../../components/Layout';
-import Home from '../../components/Home';
-import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
-import { LanguageProvider, getLocalizationProps } from '../../context/LanguageContext';
-import { Localization } from '../../translations/types';
-import useOpenGraph from '../../lib/useOpenGraph';
-import { getAllPosts } from '../../lib/api';
+import React from "react";
+import Layout from "../../components/Layout";
+import Home from "../../components/Home";
+import { GetStaticPaths, GetStaticProps, NextPage } from "next";
+import {
+  LanguageProvider,
+  getLocalizationProps,
+} from "../../context/LanguageContext";
+import { Localization } from "../../translations/types";
+import useOpenGraph from "../../lib/useOpenGraph";
+import { getAllPosts } from "../../lib/api";
 
-const IndexPage: NextPage<{ localization: Localization, posts: any, preview: boolean }> = ({ localization, posts, preview = false }) => {
-  const publishedPost = (arr) =>
-    arr.filter((el) => el.published == "true");
+const IndexPage: NextPage<{
+  localization: Localization;
+  posts: any;
+  preview: boolean;
+}> = ({ localization, posts, preview = false }) => {
+  const publishedPost = (arr) => arr.filter((el) => el.published == "true");
   return (
     <LanguageProvider localization={localization}>
       <Layout
@@ -22,8 +28,6 @@ const IndexPage: NextPage<{ localization: Localization, posts: any, preview: boo
     </LanguageProvider>
   );
 };
-
-
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
   const posts = getAllPosts([
@@ -38,6 +42,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
     props: {
       posts: posts,
       localization,
+      preview: process.env.NODE_ENV === "development",
     },
   };
 };

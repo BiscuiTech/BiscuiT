@@ -7,7 +7,7 @@ import { motion, AnimateSharedLayout } from "framer-motion";
 
 const ActiveLinks = [
   { tKey: "navigation_Home", path: "" },
-  { tKey: 'navigation_Blog', path: 'blog' },
+  { tKey: "navigation_Blog", path: "blog" },
   { tKey: "navigation_About", path: "about" },
   { tKey: "navigation_Uses", path: "uses" },
   // { tKey: 'navigation_Projects', path: 'projects' },
@@ -29,9 +29,9 @@ const NavgitationStyles = styled.nav`
     bottom: unset;
     top:0;
     width: 800px;
-    background: ${props => props.theme.background};
+    background: ${(props) => props.theme.background};
     border-top: none;
-    border-bottom: 1px solid ${props => props.theme.color.accent};
+    border-bottom: 1px solid ${(props) => props.theme.color.accent};
     margin:auto;
     left: 50%;
     transform: translateX(-400px);
@@ -64,7 +64,12 @@ const Navigation = () => {
   const { pathname } = useRouter();
   // TODO: add a regex match for /blog/:pid
   const isCurrentPath = (path) => {
-    return pathname === `/[lang]${path}` || pathname === `/[lang]/${path}`;
+    const adjustedPath = path ? path : `/`;
+    return pathname.startsWith(
+      pathname.endsWith("/")
+        ? `/[lang]${adjustedPath}`
+        : `/[lang]/${adjustedPath}`
+    );
   };
 
   return (
