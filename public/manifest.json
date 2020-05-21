@@ -3,7 +3,7 @@
   "short_name": "Biscui.Tech",
   "theme_color": "#00111a",
   "background_color": "#00111a",
-  "display": "browser",
+  "display": "minimal-ui",
   "Scope": "/",
   "start_url": "/",
   "icons": [
