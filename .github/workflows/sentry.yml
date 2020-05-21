@@ -24,24 +24,19 @@ jobs:
       SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    - uses: actions/checkout@v2
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+      # Runs a set of commands using the runners shell
+      - name: Create new Sentry release and deploy
+        run: |
+          # Install Sentry CLI
+          curl -sL https://sentry.io/get-cli/ | bash
 
-    # Runs a single command using the runners shell
-    - name: Run a one-line script
-      run: echo Hello, world!
+          # Create new Sentry release
+          export SENTRY_RELEASE=$(sentry-cli releases propose-version)
+          sentry-cli releases new -p $SENTRY_PROJECT $SENTRY_RELEASE
+          sentry-cli releases set-commits --auto $SENTRY_RELEASE
+          sentry-cli releases finalize $SENTRY_RELEASE
 
-    # Runs a set of commands using the runners shell
-    - name: Run a multi-line script
-      run: |
-        # Install Sentry CLI
-        curl -sL https://sentry.io/get-cli/ | bash
-
-        # Create new Sentry release
-        export SENTRY_RELEASE=$(sentry-cli releases propose-version)
-        sentry-cli releases new -p $SENTRY_PROJECT $SENTRY_RELEASE
-        sentry-cli releases set-commits --auto $SENTRY_RELEASE
-        sentry-cli releases finalize $SENTRY_RELEASE
-
-        # Create new deploy for this Sentry release
-        sentry-cli releases deploys $SENTRY_RELEASE new -e $SENTRY_DEPLOY_ENVIRONMENT
+          # Create new deploy for this Sentry release
+          sentry-cli releases deploys $SENTRY_RELEASE new -e $SENTRY_DEPLOY_ENVIRONMENT
