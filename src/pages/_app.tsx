@@ -19,8 +19,8 @@ process.env.NODE_ENV === "production"
 
 process.env.NODE_ENV === "production"
   ? Sentry.init({
-    dsn: "https://c0e5b834500d45b88fb648ccf7c489bf@sentry.io/1838052",
-  })
+      dsn: "https://c0e5b834500d45b88fb648ccf7c489bf@sentry.io/1838052",
+    })
   : null;
 
 function handleExitComplete() {
