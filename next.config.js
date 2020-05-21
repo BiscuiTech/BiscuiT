@@ -19,7 +19,12 @@ const {
 process.env.SENTRY_DSN = SENTRY_DSN;
 
 module.exports = withPlugins(
-  [[SentryWebpackPlugin], [withBundleAnalyzer], [withSourceMaps], [withMDX]],
+  [
+    [new SentryWebpackPlugin()],
+    [withBundleAnalyzer],
+    [withSourceMaps],
+    [withMDX],
+  ],
   {
     target: 'serverless',
     webpack: (config, options) => {
