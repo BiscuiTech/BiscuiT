@@ -34,7 +34,7 @@ jobs:
 
           # Create new Sentry release
           export SENTRY_RELEASE=$(sentry-cli releases propose-version)
-          sentry-cli releases new -o $SENTRY_ORG -p $SENTRY_PROJECT new $SENTRY_RELEASE
+          sentry-cli releases -o biscuitech -p biscuitech new $SENTRY_RELEASE
           sentry-cli releases set-commits --auto $SENTRY_RELEASE
           sentry-cli releases finalize $SENTRY_RELEASE
 
