@@ -1,4 +1,3 @@
-const { execSync } = require('child_process');
 const withPlugins = require('next-compose-plugins');
 const withSourceMaps = require('@zeit/next-source-maps')();
 const TerserPlugin = require('terser-webpack-plugin');
