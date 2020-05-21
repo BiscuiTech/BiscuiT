@@ -33,8 +33,8 @@ jobs:
           curl -sL https://sentry.io/get-cli/ | bash
 
           # Create new Sentry release
-          export SENTRY_RELEASE=$(git rev-parse HEAD)
-          sentry-cli releases new -p $SENTRY_PROJECT $SENTRY_RELEASE
+          export SENTRY_RELEASE=$(sentry-cli releases propose-version)
+          sentry-cli releases -o $SENTRY_ORG -p $SENTRY_PROJECT new $SENTRY_RELEASE
           sentry-cli releases set-commits --auto $SENTRY_RELEASE
           sentry-cli releases finalize $SENTRY_RELEASE
 
