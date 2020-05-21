@@ -17,7 +17,7 @@ So let's dive in using Next.js 9.3 Server-Side Generation (SSG) and 100% serverl
 
 ## The Setup
 
-First, create a folder to work with. Then, initialize your app with next's cra.
+First, create a folder to work with, then initialize your app with next's create app.
 
 ```shell
 npm init next-app --example with-typescript with-typescript-app
@@ -100,7 +100,7 @@ export const LanguageContext = React.createContext<ContextProps>({
 
 The context will hold an object called `localization` with the keys `locale`, `translations`and `namespace`.
 
-- `locale` is the will the active language of the site. As a default, we're using 'en' for english.
+- `locale` is the active language of the site. As a default, we're using 'en' for english.
 
 - `translations` will hold all the text strings. As a default we're using the _common_ strings. Those will make sense later.
 
@@ -168,22 +168,22 @@ export const LanguageProvider: React.FC<{ localization: Localiztion }> = ({
 };
 ```
 
-This is the declaration and rendering portion. `React.FC` is the react's Type for Functional Component, to which we add `localization` as a type, previously created in our types.ts file. Next, let's add the `useState`.
+This is the declaration and rendering portion. `React.FC` is the react's Type for Functional Component, to which we add `localization` as a type, previously created in our types.ts file. Next, let's add `useState`.
 
 ```typescript
 export const LanguageProvider: React.FC<{ localization: Localiztion }> = ({
   localization,
   children,
-}) =>
-const [localizationState, setLocalizationState] = React.useState({
-    locale: localization?.locale,
-    translations: localization?.translations,
-    namespace: localization?.namespace,
-  });
-{
+}) =>{
+  const [localizationState, setLocalizationState] = React.useState({
+      locale: localization?.locale,
+      translations: localization?.translations,
+      namespace: localization?.namespace,
+    });
     return (
     <LanguageContext.Provider
-      value={{ localization, setLocale: setLocalizationState }}
+      value={{ localization,
+      setLocale: setLocalizationState }}
     >
       {children}
     </LanguageContext.Provider>
