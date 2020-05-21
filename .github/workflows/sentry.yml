@@ -37,9 +37,9 @@ jobs:
           echo new variable created: $SENTRY_RELEASE
           sentry-cli releases -o biscuitech -p biscuitech new $SENTRY_RELEASE
           echo sentry release created
-          sentry-cli releases set-commits --auto $SENTRY_RELEASE
+          sentry-cli releases -o biscuitech -p biscuitech set-commits --auto $SENTRY_RELEASE
           echo commits set
-          sentry-cli releases finalize $SENTRY_RELEASE
+          sentry-cli releases -o biscuitech -p biscuitech finalize $SENTRY_RELEASE
           echo release finalized
 
           # Create new deploy for this Sentry release
