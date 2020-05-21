@@ -93,9 +93,5 @@ module.exports = withPlugins(
       NOW_URL: process.env.NOW_URL,
       GA_TRACKING_ID: process.env.GA_TRACKING_ID,
       EMAIL_PASSWORD: process.env.EMAIL_PASSWORD,
-    },
-    generateBuildId: async () =>
-      // You can, for example, get the latest git commit hash here
-      execSync('git rev-parse HEAD').toString().trim(),
-  }
+    }
 );
