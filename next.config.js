@@ -8,6 +8,7 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 const withMDX = require('@next/mdx')({
   extension: /\.mdx?$/,
 });
+const withPWA = require('next-pwa');
 
 const {
   NEXT_PUBLIC_SENTRY_DSN: SENTRY_DSN,
@@ -20,6 +21,7 @@ process.env.SENTRY_DSN = SENTRY_DSN;
 
 module.exports = withPlugins(
   [
+    [withPWA, { pwa: { dest: 'public' } }],
     [new SentryWebpackPlugin()],
     [withBundleAnalyzer],
     [withSourceMaps],

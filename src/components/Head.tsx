@@ -9,9 +9,15 @@ const defaultOGImage = "";
 const Head = ({ title, description, og }) => (
   <NextHead>
     <meta charSet="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=5"
+    />
+    <meta name="keywords" content="Keywords" />
+    {/* TODO: keywords here */}
     <title>{title || "Biscui.Tech"}</title>
     <meta name="description" content={description || defaultDescription} />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png" />
     <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png" />
     <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png" />
@@ -71,9 +77,7 @@ const Head = ({ title, description, og }) => (
       rel="stylesheet"
       crossOrigin="anonymous"
     />
-    <link href="/static/inter.css"
-      rel="stylesheet"
-    />
+    <link href="/static/inter.css" rel="stylesheet" />
   </NextHead>
 );
 
