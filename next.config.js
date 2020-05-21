@@ -1,3 +1,4 @@
+const { execSync } = require('child_process');
 const withPlugins = require('next-compose-plugins');
 const withSourceMaps = require('@zeit/next-source-maps')();
 const TerserPlugin = require('terser-webpack-plugin');
@@ -93,5 +94,8 @@ module.exports = withPlugins(
       GA_TRACKING_ID: process.env.GA_TRACKING_ID,
       EMAIL_PASSWORD: process.env.EMAIL_PASSWORD,
     },
+    generateBuildId: async () =>
+      // You can, for example, get the latest git commit hash here
+      execSync('git rev-parse HEAD').toString().trim(),
   }
 );
