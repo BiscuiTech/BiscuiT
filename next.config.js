@@ -1,4 +1,3 @@
-const { execSync } = require('child_process');
 const withPlugins = require('next-compose-plugins');
 const withSourceMaps = require('@zeit/next-source-maps')();
 const TerserPlugin = require('terser-webpack-plugin');
@@ -93,5 +92,6 @@ module.exports = withPlugins(
       NOW_URL: process.env.NOW_URL,
       GA_TRACKING_ID: process.env.GA_TRACKING_ID,
       EMAIL_PASSWORD: process.env.EMAIL_PASSWORD,
-    }
+    },
+  }
 );
