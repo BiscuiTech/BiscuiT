@@ -43,4 +43,4 @@ jobs:
           echo release finalized
 
           # Create new deploy for this Sentry release
-          sentry-cli releases deploys $SENTRY_RELEASE new -e $SENTRY_DEPLOY_ENVIRONMENT
+          sentry-cli releases deploys $SENTRY_RELEASE new
