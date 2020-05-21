@@ -34,13 +34,10 @@ jobs:
 
           # Create new Sentry release
           export SENTRY_RELEASE=$(sentry-cli releases propose-version)
-          echo new variable created: $SENTRY_RELEASE
+          echo $SENTRY_ORG $SENTRY_PROJECT $SENTRY_DEPLOY_ENVIRONMENT
           sentry-cli releases -o biscuitech -p biscuitech new $SENTRY_RELEASE
-          echo sentry release created
           sentry-cli releases -o biscuitech -p biscuitech set-commits --auto $SENTRY_RELEASE
-          echo commits set
           sentry-cli releases -o biscuitech -p biscuitech finalize $SENTRY_RELEASE
-          echo release finalized
 
           # Create new deploy for this Sentry release
           sentry-cli releases -o biscuitech -p biscuitech deploys $SENTRY_RELEASE new --env production
