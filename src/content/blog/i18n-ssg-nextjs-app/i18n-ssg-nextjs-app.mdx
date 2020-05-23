@@ -180,7 +180,7 @@ export const LanguageProvider: React.FC<{ localization: Localiztion }> = ({
       translations: localization?.translations,
       namespace: localization?.namespace,
     });
-    return (
+  return (
     <LanguageContext.Provider
       value={{ localization,
       setLocale: setLocalizationState }}
@@ -190,7 +190,199 @@ export const LanguageProvider: React.FC<{ localization: Localiztion }> = ({
   );
 };
 ```
+Here we add the state to the context. We will play with this state throughout the app!
+
+
+```typescript
+// ../src/context/LanguageContext.tsx
+export const LanguageProvider: React.FC<{ localization: Localization }> = ({
+  localization,
+  children,
+}) => {
+  const [localizationState, setLocalizationState] = React.useState({
+    locale: localization?.locale,
+    translations: localization?.translations,
+    namespace: localization?.namespace,
+  });
+  const [getStoredLocale, setStoredLocale] = useLocalStorage("locale");
+  const { query } = useRouter();
+  React.useEffect(() => {
+    if (localizationState !== getStoredLocale) {
+      setStoredLocale(localizationState);
+    }
+  }, [localizationState]);
+
+  React.useEffect(() => {
+    if (
+      typeof query.lang === "string" &&
+      isLocale(query.lang) &&
+      localization?.locale !== query.lang
+    ) {
+      setLocalizationState({
+        locale: localization?.locale,
+        translations: localization?.translations,
+        namespace: localization?.namespace,
+      });
+    }
+  }, [query.lang, localizationState]);
+
+  return (
+    <LanguageContext.Provider
+      value={{ localization, setLocale: setLocalizationState }}
+    >
+      {children}
+    </LanguageContext.Provider>
+  );
+};
+```
+
+And finally, we set and get a LocalStorage key of "locale". This will mainly serve as a lower level mechanism to know which locale the user is in. By setting a LocaleStorage, we can also write it to memory for future visits by our users.
+
+You'll also note there's two useEffects. The first one syncs our LocaleStorage from our state each time the state mutates. The second one writes to state the localized strings and mutates every time it changes. It also checks for errors by making sure the query from `router` is in fact a supported language. Note: if it's not a supported language, it'll simply revert to `en`.
 
 ## getStaticPaths & getStaticProps
 
+So, now we have the Provider setup. How in the hell do we get localized strings?!
+
+Well I'm glad you asked! We load it simply by calling a sort of API. And in Next.js, how do we call an API? On a per-page basis in `getStaticProps`!
+
+```typescript
+// ./src/pages/whatever-page-want.tsx
+export const getStaticProps: GetStaticProps = async (ctx) => {
+  const lang: Locale = ctx.params?.lang || "en";
+  const locale: any = locales[lang];
+  const strings: any = locale[namespace];
+  const translations = {
+    common: locales[lang].common,
+    ...strings,
+  };
+  return {
+    props: {
+      localization: {
+        locale: ctx.params?.lang,
+        translations,
+        namespace,
+      },
+    },
+  };
+};
+
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  return {
+    paths: ["en", "fr"].map((lang) => ({ params: { lang } })),
+    fallback: false,
+  };
+};
+
+```
+
+Easy as 1,2,3! As a side note, you also need to tell next.js to build all the pages of your locales. You can do that in getStaticPaths. You can read more on getStaticPaths here: [nextjs.org/docs](https://nextjs.org/docs/basic-features/data-fetching#getstaticpaths-static-generation)
+
+This is all working thanks to dynamic imports in your locale files structure. It looks a bit like this:
+
+```typescript
+//../src/translations/locales/en/index.ts
+import contact from './contact'
+import common from './common'
+import home from './home'
+import blog from './blog'
+import blogPost from './blogPost'
+import about from './about'
+import uses from './uses'
+
+export default {
+  contact,
+  common,
+  home,
+  blog,
+  about,
+  blogPost,
+  uses
+}
+
+// ../src/translations/locales/en/home.ts
+const home = {
+  firstString: 'Hi, my name is',
+  i_am: 'I am a Web Developer from Montréal.',
+  short_intro:
+  "I make excellent website experiences basedon modern tools such as React and GraphQL.",
+  latestBlog: "Latest Blog",
+  viewBlog: "Read this article",
+  readFullBlog: "Read full blog",
+}
+
+export default home
+```
+
+I highly suggest you inspect the repo of my website [here](https://github.com/BiscuiTech/BiscuiT). You'll get a better grip of how all the files work together.
+
+
+Getting back to our pages/page.ts, we need to adjust one more thing. Add the Provider and pass the translations objet down.
+
+```typescript
+const IndexPage: NextPage<{
+  localization: Localization;
+  preview: boolean;
+}> = ({ localization, posts, preview = false }) => {
+  return (
+    <LanguageProvider localization={localization}>
+      <Layout>
+        <Home />
+      </Layout>
+    </LanguageProvider>
+  );
+};
+export default IndexPage
+```
+Simple, isn't it!
+
+With this method, the only code actually changing your app (besides the translations portions itself) is the page file.
+
 ## useTranslate
+
+Now that we have the props passed down and ready to grab, we simply need to use them inside our components.
+
+```typescript
+// ../src/components/SomeComponent.tsx
+export const Home = ({ post }) => {
+  const { locale, t } = useTranslation();
+  return (
+    <div>
+      <h1 className="welcome--hello">
+        {t("welcome_msg")}
+        <br />
+        <span className="welcome--my-name">Jean-Cédric Huet</span>
+      </h1>
+      <p className="welcome--from">{t("i_am")}</p>
+    </div>
+  );
+};
+```
+
+We're going to create a hook that fetches the translations props and make them available to us. If you understand how Context works, this is a piece of cake.
+
+```typescript
+// ..src/hooks/useTranslation.ts
+import { useContext } from "react";
+import { LanguageContext } from "../context/LanguageContext";
+
+export default function useTranslation() {
+  const { localization } = useContext(LanguageContext);
+  function t(key: string) {
+    if (!localization.translations[key]) {
+      console.warn(
+        `Translation '${key}' for locale '${localization.locale}' not found.`
+      );
+    }
+    return localization.translations[key] || "";
+  }
+
+  return {
+    t,
+    locale: localization.locale,
+  };
+}
+```
+
+And now we're finally done - for real!
