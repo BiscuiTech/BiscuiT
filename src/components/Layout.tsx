@@ -7,7 +7,7 @@ import GlobalStyle from "./styles/GlobalStyle";
 import { onRenderCallback } from "../lib/onRenderCallback";
 import Navigation from "./Navgitation";
 import { motion } from "framer-motion";
-import Alerts from './Alerts'
+import Alerts from "./Alerts";
 const Page = styled.div`
   min-height: 100vh;
   padding: 0;
@@ -45,13 +45,13 @@ const Content = styled(motion.main)`
 `;
 
 const Canvas = styled.canvas`
-  position: absolute;
-  top: 0;
+  position: fixed;
+  /* top: 0;
   left: 0;
   bottom: 0;
-  right: 0;
-  width: 100%;
-  height: 100%;
+  right: 0; */
+  width: 100vw;
+  height: 100vh;
   pointer-events: none;
 `;
 
@@ -178,7 +178,7 @@ const Layout = ({
           var angle = Math.atan2(screenY - mouseY, screenX - mouseX);
           var distance = Math.sqrt(
             (mouseX - screenX) * (mouseX - screenX) +
-            (mouseY - screenY) * (mouseY - screenY)
+              (mouseY - screenY) * (mouseY - screenY)
           );
 
           var length = Math.min(

@@ -77,7 +77,7 @@ const About = () => {
                       <div className="text-large leading-6 font-medium text-gray-200">
                         Jean-Cédric Huet
                       </div>
-                      <div className="text-base leading-6 font-medium text-indigo-600">
+                      <div className="text-base leading-6 font-medium text-indigo-400">
                         {t("position")}
                       </div>
                     </div>
