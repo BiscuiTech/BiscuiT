@@ -1,5 +1,5 @@
-import React from "react";
-import { useWindupString, WindupChildren, Pace, useSkip } from "windups";
+import React, { useRef } from "react";
+import { useWindupString, WindupChildren, Pace, useSkip, Pause } from "windups";
 // import * as content from "../content/cv";
 import styled, { keyframes } from "styled-components";
 import { SubHeader } from "./styles/PageHeader";
@@ -8,6 +8,7 @@ import MDX from "@mdx-js/runtime";
 // import CVen from "../content/cv/en.mdx";
 import { H1, H2, H3, H4, HR, UL, LI } from "./styles/CVRenderers";
 import useTranslation from "../hooks/useTranslation";
+import useIntersectionObserver from "../hooks/useIntersectionObserver";
 const ScrollDownKeyframes = keyframes`
   0% {
     opacity: 1;
@@ -54,6 +55,28 @@ const StyledCV = styled.div`
   }
 `;
 
+const CursorBlinking = keyframes`
+  0% {
+    background: none;
+  }
+  35% {
+    background: yellow;
+  }
+  65%{
+    background: yellow;
+  }
+  100% {
+    none;
+  }
+`;
+
+const PendingCursor = styled.div`
+  height: 0.5em;
+  width: 1em;
+  animation: ${CursorBlinking} .8s infinite;
+
+`;
+
 const SkipButton = () => {
   const skip = useSkip();
   const { t } = useTranslation();
@@ -90,6 +113,8 @@ const DownloadButton = () => {
 };
 
 const CurriculumVitae = ({ cv }) => {
+  const ref = useRef();
+  const onScreen = false;/* useIntersectionObserver(ref, '-250px'); */
   return (
     <>
       <ScrollDown>
@@ -97,12 +122,13 @@ const CurriculumVitae = ({ cv }) => {
       </ScrollDown>
       <SubHeader>Curriculum Vitae</SubHeader>
       {/* <div className="min-h-screen"> */}
-      <StyledCV className="font-mono text-lg bg-black border-yellow-500 border-2 border-dashed p-4 relative text-gray-300 leading-snug text-justify min-h-screen">
-        <WindupChildren>
-          <div className="flex flex-end justify-end">
-            <SkipButton />
-            <DownloadButton />
-          </div>
+      <StyledCV className="font-mono text-lg bg-black border-yellow-500 border-2 border-dashed p-4 relative text-gray-300 leading-snug text-justify min-h-screen" ref={ref}>
+        <div className="flex flex-end justify-end">
+          <SkipButton />
+          <DownloadButton />
+        </div>
+        {onScreen ? <WindupChildren>
+          <Pause ms={1000} />
           <Pace ms={6}>
             <MDX
               components={{
@@ -119,6 +145,8 @@ const CurriculumVitae = ({ cv }) => {
             </MDX>
           </Pace>
         </WindupChildren>
+          : <PendingCursor />
+        }
       </StyledCV>
       {/* </div> */}
     </>
