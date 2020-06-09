@@ -38,7 +38,7 @@
     "@sentry/webpack-plugin": "^1.11.1",
     "@tailwindcss/ui": "^0.3.0",
     "@zeit/next-source-maps": "0.0.4-canary.1",
-    "analytics": "^0.4.0",
+    "analytics": "^0.5.0",
     "classnames": "^2.2.6",
     "cross-env": "^7.0.2",
     "date-fns": "^2.14.0",
