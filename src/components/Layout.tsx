@@ -14,6 +14,8 @@ const Page = styled.div`
   position: relative;
   margin: 0;
   background: ${(props) => props.theme.background};
+  /* background: linear-gradient(127deg, hsl(203, 100%, 5%) 0%, hsl(203, 100%, 10%) 100%); */
+
   overflow: hidden;
   overflow-y: auto;
   z-index: 1;
@@ -39,6 +41,7 @@ const Content = styled(motion.main)`
   margin: auto;
   margin-bottom: 60px;
   padding-top: 60px;
+  /* position: relative; */
   @media (min-width: 820px) {
     width: 800px;
   }
@@ -120,7 +123,7 @@ const Layout = ({
   children,
   preview = false,
 }: ILayout) => {
-  useEffect(() => {
+  /* useEffect(() => {
     var canvas = document.querySelector("canvas");
     var ctx = canvas.getContext("2d");
 
@@ -243,24 +246,24 @@ const Layout = ({
 
   if (process.browser) {
     // @ts-ignore
-    /* if (Sentry !== undefined) {
-      LogRocket.init('7agr7w/biscuitech');
-      // @ts-ignore
-      Sentry.init({
-        dsn: 'https://c0e5b834500d45b88fb648ccf7c489bf@sentry.io/1838052',
-        beforeSend(event, hint) {
-          // Check if it is an exception, and if so, show the report dialog
-          if (event.exception) {
-            // plugins should also only be initialized when in the browser
-            setupLogRocketReact(LogRocket);
-            // @ts-ignore
-            Sentry.showReportDialog({ eventId: event.event_id });
-          }
-          return event;
-        },
-      });
+    // if (Sentry !== undefined) {
+    //   LogRocket.init('7agr7w/biscuitech');
+    //   // @ts-ignore
+    //   Sentry.init({
+    //     dsn: 'https://c0e5b834500d45b88fb648ccf7c489bf@sentry.io/1838052',
+    //     beforeSend(event, hint) {
+    //       // Check if it is an exception, and if so, show the report dialog
+    //       if (event.exception) {
+    //         // plugins should also only be initialized when in the browser
+    //         setupLogRocketReact(LogRocket);
+    //         // @ts-ignore
+    //         Sentry.showReportDialog({ eventId: event.event_id });
+    //       }
+    //       return event;
+    //     },
+    //   });
 
-    } */
+    // }
     // First we get the viewport height and we multiple it by 1% to get a value for a vh unit
     const vh = window.innerHeight * 0.01;
     // Then we set the value in the --vh custom property to the root of the document
@@ -274,20 +277,19 @@ const Layout = ({
         document.documentElement.style.setProperty("--vh", `${Number(vh)}px`);
       }, 400)
     );
-  }
+  } */
   return (
     <>
       <GlobalStyle />
       {/* <Profiler id="Page" onRender={onRenderCallback}> */}
       <Page>
-        <Canvas />
+        {/* <Canvas /> */}
         <Head title={title} description={description} og={og} />
         <a className="skip-link" href="#maincontent">
           Skip to main
         </a>
         <Navigation />
         {/* <Profiler id="Header" onRender={onRenderCallback}> */}
-        <LocaleSwitcher />
         {/* </Profiler> */}
         {/* <Profiler id="Content" onRender={onRenderCallback}> */}
         <Content
@@ -300,10 +302,11 @@ const Layout = ({
           {" "}
           {children}
           {/* <Alerts /> */}
+          <LocaleSwitcher />
         </Content>
         {/* </Profiler> */}
       </Page>
-      {/* <Footer /> */}
+      <Footer />
       {/* </Profiler> */}
     </>
   );

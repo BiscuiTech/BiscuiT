@@ -1,12 +1,8 @@
 import React from "react";
 import { useRouter } from "next/router";
 import { useLocalStorage } from "../hooks/useLocalStorage";
-import {
-  isLocale,
-  Localization,
-  Locale,
-} from "../translations/types";
-import strings from "../translations/locales/en";
+import { isLocale, Localization, Locale } from "../translations/types";
+import defaultStrings from "../translations/locales/en";
 import locales from "../translations/locales";
 
 /**
@@ -21,7 +17,7 @@ interface ContextProps {
 export const LanguageContext = React.createContext<ContextProps>({
   localization: {
     locale: "en", // default lang
-    translations: strings.common, // default translations TODO: what to do here?
+    translations: defaultStrings.common, // default translations TODO: what to do here?
     namespace: "common", // default namespace TODO: could we null this? 'common' might be misleading
   },
   setLocale: () => null,
@@ -72,7 +68,7 @@ export const LanguageProvider: React.FC<{ localization: Localization }> = ({
 };
 
 export const getLocalizationProps = (ctx, namespace) => {
-  const lang: Locale = ctx.params?.lang || "fr";
+  const lang: Locale = (ctx.params?.lang as Locale) || "fr";
   const locale: any = locales[lang];
   const strings: any = locale[namespace];
   const translations = {
@@ -83,5 +79,5 @@ export const getLocalizationProps = (ctx, namespace) => {
     locale: ctx.params?.lang || "en",
     translations,
     namespace,
-  }
-}
+  };
+};

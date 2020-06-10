@@ -1,8 +1,8 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from "styled-components";
 
 const GlobaStyle = createGlobalStyle`
---gold: ${props => props.theme.color.gold};
---blue: ${props => props.theme.color.blue};
+--gold: ${(props) => props.theme.color.gold};
+--blue: ${(props) => props.theme.color.blue};
   html {
     --scrollbarBG: #CFD8DC;
     --thumbBG: #90A4AE;
@@ -18,9 +18,9 @@ const GlobaStyle = createGlobalStyle`
     height: calc(var(--vh, 1vh) * 100);
     scrollbar-width: thin;
     scrollbar-color: var(--thumbBG) var(--scrollbarBG);
-    font-family: ${props => props.theme.font};
+    font-family: ${(props) => props.theme.font};
     color: white;
-    font-size: max(18px,min(2vw, 24px))
+    font-size: max(18px,min(2vw, 24px));
   }
   body::-webkit-scrollbar {
     width: 11px;
@@ -55,5 +55,4 @@ const GlobaStyle = createGlobalStyle`
   }
 `;
 
-export default GlobaStyle
-
+export default GlobaStyle;

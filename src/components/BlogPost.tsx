@@ -3,7 +3,7 @@ import ErrorPage from "next/error";
 import { useRouter } from "next/router";
 import CoverImage from "./md/CoverImage";
 import MDX from "@mdx-js/runtime";
-import { Code, H1, H2, H3, Img } from "./md/renderers";
+import { Code, H1, H2, H3, Img, UL, LI } from "./md/renderers";
 import styled from "styled-components";
 import useTranslation from "../hooks/useTranslation";
 import DateFormater from "./DateFormat";
@@ -27,6 +27,23 @@ const BlogContent = styled.section`
   }
   p {
     margin: 0 0 1.2em 0px;
+  }
+  a {
+    color: #fbb03b;
+  }
+  a:after {
+    content: "🠖";
+    transition: all 0.25s;
+    opacity: 0;
+    margin-left: -0.2em;
+    color: #fbb03b;
+  }
+  a:hover:after {
+    opacity: 1;
+    margin-left: 0.4em;
+  }
+  li > p {
+    display: inline;
   }
 `;
 
@@ -52,7 +69,17 @@ const BlogPost = ({ pid, post, morePosts }) => {
         </div>
       </BlogHeader>
       <BlogContent className="text-lg">
-        <MDX components={{ code: Code, h1: H1, h2: H2, h3: H3, img: Img }}>
+        <MDX
+          components={{
+            code: Code,
+            h1: H1,
+            h2: H2,
+            h3: H3,
+            img: Img,
+            ul: UL,
+            li: LI,
+          }}
+        >
           {post.content}
         </MDX>
       </BlogContent>
