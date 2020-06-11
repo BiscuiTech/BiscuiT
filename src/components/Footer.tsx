@@ -3,62 +3,25 @@ import styled from "styled-components";
 import Link from "next/link";
 import useTranslation from "../hooks/useTranslation";
 
+const links = [
+  { tKey: "footer_about", path: "about" },
+  { tKey: "footer_blog", path: "blog" },
+  { tKey: "footer_uses", path: "uses" },
+  // { tKey: "footer_projects", path: "projects" },
+  { tKey: "footer_contact", path: "contact" },
+];
+
 const FooterStyles = styled.div`
   position: sticky;
   bottom: 0;
   width: 100%;
-  /* height: 25vh; */
-  /* min-height: 180px; */
   background: hsl(203, 100%, 10%);
-  /* margin-top: 24px; */
   padding: 48px 0;
   border-top: 4px solid ${(props) => props.theme.color.gold};
   color: white;
   font-weight: 300;
   text-align: center;
   flex-shrink: 0;
-  a {
-    margin: 0 6px;
-  }
-  img {
-    margin: 0 6px;
-    cursor: pointer;
-  }
-  a {
-    font-size: 14px;
-    margin: 6px;
-  }
-  .social-logo {
-    height: auto;
-    width: 40px;
-  }
-  .archives {
-    position: absolute;
-    bottom: 2px;
-    width: 100%;
-    text-align: center;
-    color: hsl(0, 0%, 100%, 70%);
-    font-size: 12px;
-  }
-`;
-
-const Grid = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  @media (max-width: 420px) {
-    display: grid;
-    grid-template: 1fr 1fr / 10% 1fr 1fr 1.5fr 10%;
-    grid-template-areas:
-      ". logo facebook linkedin  ."
-      ". logo twitter github  .";
-    & > a:nth-child(1) {
-      justify-self: right;
-    }
-    & > a:nth-child(4) {
-      justify-self: right;
-    }
-  }
 `;
 
 /*
@@ -67,47 +30,26 @@ TODO: scroll to top button
 */
 
 const Footer = () => {
-  const { t } = useTranslation();
+  const { t, locale } = useTranslation();
 
   return (
     <FooterStyles>
       <div className="max-w-screen-xl mx-auto py-2 px-4 overflow-hidden sm:px-6 lg:px-8">
         <nav className="-mx-5 -my-2 flex flex-wrap justify-center">
-          <div className="px-5 py-2">
-            <Link href="#">
-              <a className="text-base leading-6 text-gray-400 hover:text-yellow-400">
-                {t("common")["footer_about"]}
-              </a>
-            </Link>
-          </div>
-          <div className="px-5 py-2">
-            <Link href="#">
-              <a className="text-base leading-6 text-gray-400 hover:text-yellow-400">
-                {t("common")["footer_blog"]}
-              </a>
-            </Link>
-          </div>
-          <div className="px-5 py-2">
-            <Link href="#">
-              <a className="text-base leading-6 text-gray-400 hover:text-yellow-400">
-                {t("common")["footer_uses"]}
-              </a>
-            </Link>
-          </div>
-          <div className="px-5 py-2">
-            <Link href="#">
-              <a className="text-base leading-6 text-gray-400 hover:text-yellow-400">
-                {t("common")["footer_projects"]}
-              </a>
-            </Link>
-          </div>
-          <div className="px-5 py-2">
-            <Link href="#">
-              <a className="text-base leading-6 text-gray-400 hover:text-yellow-400">
-                {t("common")["footer_contact"]}
-              </a>
-            </Link>
-          </div>
+          {links.map((el, i) => (
+            <div className="px-5 py-2">
+              <Link
+                key={`${i}-${el.path}`}
+                href={`/[lang]/${el.path}`}
+                as={`/${locale}/${el.path}`}
+                passHref={true}
+              >
+                <a className="text-base leading-6 text-gray-400 hover:text-yellow-400">
+                  {t("common")[el.tKey]}
+                </a>
+              </Link>
+            </div>
+          ))}
         </nav>
         <div className="mt-8 flex justify-center">
           <a
@@ -158,16 +100,6 @@ const Footer = () => {
               />
             </svg>
           </a>
-          {/* <a href="#" className="ml-6 text-gray-400 hover:text-yellow-400">
-            <span className="sr-only">Dribbble</span>
-            <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-              <path
-                fill-rule="evenodd"
-                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c5.51 0 10-4.48 10-10S17.51 2 12 2zm6.605 4.61a8.502 8.502 0 011.93 5.314c-.281-.054-3.101-.629-5.943-.271-.065-.141-.12-.293-.184-.445a25.416 25.416 0 00-.564-1.236c3.145-1.28 4.577-3.124 4.761-3.362zM12 3.475c2.17 0 4.154.813 5.662 2.148-.152.216-1.443 1.941-4.48 3.08-1.399-2.57-2.95-4.675-3.189-5A8.687 8.687 0 0112 3.475zm-3.633.803a53.896 53.896 0 013.167 4.935c-3.992 1.063-7.517 1.04-7.896 1.04a8.581 8.581 0 014.729-5.975zM3.453 12.01v-.26c.37.01 4.512.065 8.775-1.215.25.477.477.965.694 1.453-.109.033-.228.065-.336.098-4.404 1.42-6.747 5.303-6.942 5.629a8.522 8.522 0 01-2.19-5.705zM12 20.547a8.482 8.482 0 01-5.239-1.8c.152-.315 1.888-3.656 6.703-5.337.022-.01.033-.01.054-.022a35.318 35.318 0 011.823 6.475 8.4 8.4 0 01-3.341.684zm4.761-1.465c-.086-.52-.542-3.015-1.659-6.084 2.679-.423 5.022.271 5.314.369a8.468 8.468 0 01-3.655 5.715z"
-                clipRule="evenodd"
-              />
-            </svg>
-          </a> */}
         </div>
         <div className="mt-8">
           <p className="text-center text-base leading-6 text-gray-400">

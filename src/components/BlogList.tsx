@@ -15,14 +15,9 @@ export const ListItem = ({ title, date, excerpt, locale, path, t }) => (
         </p>
         <p className="text-base leading-6 text-gray-100">{excerpt}</p>
         <span className="text-base leading-6 font-medium text-indigo-400 transition ease-in-out duration-150 blogItem-hover">
-          {t("readFullBlog")} →
+          {t("readFullBlog")}
         </span>
       </a>
-      {/* </Link>
-    <Link href={`/[lang]/blog/${path}`} as={`/${locale}/blog/${path}`}> */}
-      {/* <a className="text-base leading-6 font-medium text-indigo-500 transition ease-in-out duration-150">
-        {t('readFullBlog')} →
-              </a> */}
     </Link>
   </div>
 );

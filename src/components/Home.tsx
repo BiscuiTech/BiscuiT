@@ -38,36 +38,15 @@ const Welcome = styled.div`
     margin: 0;
     word-wrap: break-word;
   }
-  .welcome-hello {
-    font-size: 28px;
-    font-size: max(30px, min(3vh, 38px));
-  }
-  .welcome--my-name {
-    font-size: 42px;
-    font-size: max(40px, min(6vh, 72px));
-    font-weight: 800;
-    line-height: 100%;
-  }
-  .welcome--from {
-    font-size: 20px;
-    font-size: max(18px, min(4vh, 24px));
-    width: 70%;
-    min-width: 230px;
-    margin: 0;
-    word-wrap: break-word;
-  }
-`
+`;
 
 const ShortIntro = styled.div`
   width: 100%;
-  max-width: 600px;
-  /* margin: auto; */
   text-align: left;
   font-size: 20px;
   font-size: max(18px, min(4vh, 24px));
   text-justify: auto;
   overflow: auto;
-  /* max-width: 600px; */
   .toRight {
     margin-right: 6px;
     float: right;
@@ -77,7 +56,7 @@ const ShortIntro = styled.div`
 const Home = ({ post }) => {
   const { locale, t } = useTranslation();
   return (
-    <>
+    <div className="w-4/5 mx-auto">
       <Welcome>
         <h1 className="welcome--hello">
           {t("welcome_msg")}
@@ -88,14 +67,14 @@ const Home = ({ post }) => {
       </Welcome>
       <ShortIntro>
         <p>{t("short_intro")}</p>
-        <Link href="/[lang]/about" as={`/${locale}/about`}>
+        <Link href="/[lang]/about" as={`/${locale}/about`} passHref>
           <StyledAnchor className="toRight">
             {t("common")["aboutMe"]}
           </StyledAnchor>
         </Link>
       </ShortIntro>
       <LatestBlog post={post} />
-    </>
+    </div>
   );
 };
 

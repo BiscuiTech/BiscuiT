@@ -2,9 +2,22 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 /* purgecss end ignore */
+.blogItem a:after {
+  @apply text-yellow-300;
+  @apply text-base;
+  content: "🠖";
+  transition: all 0.25s;
+  opacity: 0;
+  margin-left: -0.2em;
+  color: #fbb03b;
+}
 .blogItem:hover a {
   @apply text-yellow-300;
-};
+}
+.blogItem:hover a:after {
+  opacity: 1;
+  margin-left: 0.4em;
+}
 .blogItem:hover h3 {
   @apply text-yellow-300;
 }
@@ -12,20 +25,18 @@
   @apply text-yellow-300;
 }
 .colored-list li::before {
+  @apply text-yellow-300;
   content: "\2022";
   font-weight: bold;
   display: inline-block;
   width: 1em;
   margin-left: -1em;
-  @apply text-yellow-300;
-
 }
 .input-error {
   @apply border border-red-500;
 }
 
 @import "tailwindcss/utilities";
-
 
 .hero {
   width: 100%;

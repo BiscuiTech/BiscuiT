@@ -1,11 +1,13 @@
 import { createGlobalStyle } from "styled-components";
 
 const GlobaStyle = createGlobalStyle`
---gold: ${(props) => props.theme.color.gold};
---blue: ${(props) => props.theme.color.blue};
+
   html {
     --scrollbarBG: #CFD8DC;
     --thumbBG: #90A4AE;
+    --gold: ${(props) => props.theme.color.gold};
+    --blue: ${(props) => props.theme.color.blue};
+    --contentWidth: ${(props) => `${props.theme.layout.contentWidth}px`};
     scroll-behavior: smooth;
     height: 100%;
     overflow-x: hidden;

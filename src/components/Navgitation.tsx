@@ -17,32 +17,30 @@ const ActiveLinks = [
 const NavgitationStyles = styled.nav`
   background: black;
   position: fixed;
-  bottom:0;
+  bottom: 0;
   width: 100%;
   max-width: 1000px;
-  display:flex;
+  display: flex;
   border-top: 1px solid ${(props) => props.theme.color.accent};
   border-bottom: none;
   z-index: 5;
 
-  @media (min-width: 820px) {
+  @media (min-width: 880px) {
     bottom: unset;
-    top:0;
-    width: 800px;
+    top: 0;
     background: ${(props) => props.theme.background};
     border-top: none;
     border-bottom: 1px solid ${(props) => props.theme.color.accent};
-    margin:auto;
+    margin: auto;
     left: 50%;
-    transform: translateX(-400px);
+    transform: translateX(-50%);
   }
   .nav-selected {
-    /* background: ${(props) => props.theme.color.accent}; */
     background: black;
     height: 100%;
     width: 100%;
     position: absolute;
-    bottom:0;
+    bottom: 0;
     z-index: -1;
   }
 `;
@@ -62,7 +60,6 @@ const StyledMenuLink = styled(motion.a)`
 const Navigation = () => {
   const { locale, t } = useTranslation();
   const { pathname } = useRouter();
-  // TODO: add a regex match for /blog/:pid
   const isCurrentPath = (path) => {
     const adjustedPath = path ? path : `/`;
     return pathname.startsWith(
@@ -76,7 +73,12 @@ const Navigation = () => {
     <AnimateSharedLayout>
       <NavgitationStyles>
         {ActiveLinks.map(({ tKey, path }, i) => (
-          <Link href={`/[lang]/${path}`} as={`/${locale}/${path}`} key={i}>
+          <Link
+            href={`/[lang]/${path}`}
+            as={`/${locale}/${path}`}
+            key={i}
+            passHref={true}
+          >
             <StyledMenuLink current={isCurrentPath(path)} animate key={i}>
               {isCurrentPath(path) && (
                 <motion.div

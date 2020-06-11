@@ -1,6 +1,7 @@
 const common = {
   contactMe: "Contactez-Moi",
   aboutMe: "À propos de moi",
+  skipToMain: "Sauter au contenu",
   navigation_Home: "Accueil",
   navigation_Contact: "Contact",
   navigation_About: "À Propos",

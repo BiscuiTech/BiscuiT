@@ -35,7 +35,7 @@ const TechStackStyles = styled.div`
   }
 `;
 
-export const TechPill = styled.li`
+export const TechPill = styled.span`
   background: ${(props) => `${props.styles.background}`};
   color: ${(props) => `${props.styles.color}`};
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.35);
