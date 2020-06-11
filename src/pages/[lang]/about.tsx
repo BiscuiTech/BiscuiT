@@ -23,7 +23,7 @@ const AboutPage: NextPage<{ localization: Localization; cv: any }> = ({
       og={useOpenGraph()}
     >
       <About />
-      <CurriculumVitae cv={cv} />
+      {/* <CurriculumVitae cv={cv} /> */}
     </Layout>
   </LanguageProvider>
 );
