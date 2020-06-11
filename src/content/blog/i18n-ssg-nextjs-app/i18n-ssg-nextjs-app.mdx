@@ -1,12 +1,21 @@
 ---
 published: "false"
-title: "i18n with Next.js and full SSG support"
+title:
+  fr: "i18n avec Next.js et suport pour SSG complet"
+  en: "i18n with Next.js and full SSG support"
 author: "BiscuiTech"
-date: "2020-05-06"
-excerpt_en: "Having a React app with localization in multiple languages is really, really hard. But is there a better way?"
-excerpt_fr: "Avoir une app React localisé en plusieurs langues est très, très difficile. Mais est-ce qu'il y aurait une meilleure façon?"
-coverImage: "https://images.unsplash.com/photo-1508633069371-a735f885a1c7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=80"
-imageAccreditation: "Matthew Brodeur"
+date: "2020-06-15"
+excerpt:
+  fr: "Avoir une app React localisé en plusieurs langues est très, très difficile. Mais est-ce qu'il y aurait une meilleure façon?"
+  en: "Having a React app with localization in multiple languages is really, really hard. But is there a better way?"
+coverImage:
+  coverUrl: "https://images.unsplash.com/photo-1508633069371-a735f885a1c7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=80"
+  url: "https://images.unsplash.com/photo-1508633069371-a735f885a1c7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=80"
+  accreditation: "Matthew Brodeur"
+localizedSlugs:
+
+cannonicalLinks:
+  devTo: ""
 ---
 
 ## The Issue
@@ -31,18 +40,12 @@ We're using TypeScript in this example because it's a nicer approach when workin
 
 Now that we have a barebones app up and running, let's dig into the meat of the subject.
 
-<!--
-Move pages to [lang]
-
-
- -->
-
 ### Translations Types & Config
 
 Create a folder in /src called translations. In it, create a types.ts file.
 
 ```typescript
-// ../src/translations/types.ts
+// ./src/translations/types.ts
 import { locales } from "./config";
 
 export type Locale = typeof locales[number];
@@ -69,7 +72,7 @@ export function isLocale(tested: string): tested is Locale {
 Then, create a config.ts.
 
 ```typescript
-// ../src/translations/config.ts
+// ./src/translations/config.ts
 export const defaultLocale = "en" as const;
 
 export const locales = ["en", "fr"] as const;
@@ -97,6 +100,7 @@ Let's add those types to the global compiler:
 Next add a getInitialLocale.ts
 
 ```typescript
+// ./src/translations/getInitialLocale.ts
 import { defaultLocale } from "./config";
 import { Locale, isLocale } from "./types";
 
@@ -118,7 +122,7 @@ export function getInitialLocale(): Locale {
 Finally, add your localized strings here:
 
 ```typescript
-// ../src/translations/locales/index.ts
+// ./src/translations/locales/index.ts
 import en from "./en";
 import fr from "./fr";
 
@@ -127,7 +131,7 @@ export default {
   en,
 };
 
-//../src/translations/locales/en/index.ts
+//./src/translations/locales/en/index.ts
 import contact from "./contact";
 import common from "./common";
 import home from "./home";
@@ -146,7 +150,7 @@ export default {
   uses,
 };
 
-// ../src/translations/locales/en/home.ts
+// ./src/translations/locales/en/home.ts
 const home = {
   firstString: "Hi, my name is",
   i_am: "I am a Web Developer from Montréal.",
@@ -160,7 +164,7 @@ const home = {
 export default home;
 ```
 
-Before proceeding, add those files in another language while keeping the same structure. If you're looking for a quick copy-paste, take <a href="https://github.com/BiscuiTech/i18n-typescript-app/tree/master/src/translations/locales">these</a>
+Before proceeding, add those files in another language while keeping the same structure. If you're looking for a quick copy-paste, take <a href="https://github.com/BiscuiTech/i18n-typescript-app/tree/master/src/translations/locales">these</a>.
 
 ### The Context
 
@@ -169,7 +173,7 @@ Next up, we need to create a react context. This will server as the focal point 
 Inside your /src folder, create a context folder and a LanguageContext.tsx file.
 
 ```tsx
-// ../src/context/LanguageContext.tsx
+// ./src/context/LanguageContext.tsx
 import React from "react";
 import { useRouter } from "next/router";
 import { useLocalStorage } from "../hooks/useLocalStorage";
@@ -256,10 +260,12 @@ export const getLocalizationProps = (ctx, namespace) => {
 };
 ```
 
-<em>
-  Some of this will feel hard to understand, but let's keep going and you'll
-  catch on on what's going here.
-</em>
+<div className="bubble bubble-question">
+  <p>
+    Some of this will feel hard to understand, but let's keep going and you'll
+    catch on on what's going here.
+  </p>
+</div>
 
 Alright, this is a big file. Let's break it down.
 The context will hold an object called `localization` with the keys `locale`, `translations`and `namespace`.
@@ -310,7 +316,7 @@ export const LanguageProvider: React.FC<{ localization: Localiztion }> = ({
 Here we add the state to the context. We will play with this state throughout the app!
 
 ```tsx
-// ../src/context/LanguageContext.tsx
+// ./src/context/LanguageContext.tsx
 export const LanguageProvider: React.FC<{ localization: Localization }> = ({
   localization,
   children,
@@ -498,7 +504,7 @@ I highly suggest you inspect the repo of my website [here](https://github.com/Bi
 
 Getting back to our pages/page.ts, we need to adjust one more thing. Add the Provider and pass the translations objet down.
 
-```tsx
+```tsx {2-3,5,14}
 const IndexPage: NextPage<{
   localization: Localization;
 }> = ({ localization }) => {
@@ -527,7 +533,7 @@ With this method, the only code actually modifying your app (besides the setup i
 Now that we have the props ready to go, we simply need to use them inside our components. We're going to use the hook that fetches the translations props and make them available to us. If you understand how Context works, this is a piece of cake.
 
 ```tsx
-// ../src/pages/[lang]/index.tsx
+// ./src/pages/[lang]/index.tsx
 const IndexPage: NextPage<{
   localization: Localization;
 }> = ({ localization }) => {
@@ -540,7 +546,7 @@ const IndexPage: NextPage<{
   );
 };
 
-// ../src/components/Home.tsx
+// ./src/components/Home.tsx
 import React from "react";
 import useTranslation from "../hooks/useTranslation";
 import Link from "next/link";

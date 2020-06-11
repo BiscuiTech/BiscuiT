@@ -34,13 +34,7 @@ const BlogIndexPage: NextPage<{
 };
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
-  const posts = getAllPosts([
-    "title",
-    "date",
-    "slug",
-    "excerpt_fr",
-    "excerpt_en",
-  ]);
+  const posts = getAllPosts(["title", "date", "slug", "excerpt"]);
   const localization = getLocalizationProps(ctx, "blog");
   return {
     props: {

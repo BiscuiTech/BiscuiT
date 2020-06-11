@@ -34,7 +34,6 @@ const BlogPostPage = ({ localization, post, morePosts, preview }) => {
 
 export const getStaticProps: GetStaticProps = async ({ ...ctx }) => {
   const localization = getLocalizationProps(ctx, "blogPost");
-
   const post = getPostBySlug(ctx.params.pid, [
     "slug",
     "published",
@@ -43,8 +42,8 @@ export const getStaticProps: GetStaticProps = async ({ ...ctx }) => {
     "date",
     "excerpt",
     "coverImage",
-    "imageAccreditation",
     "content",
+    "cannonical",
   ]);
 
   return {
@@ -57,7 +56,6 @@ export const getStaticProps: GetStaticProps = async ({ ...ctx }) => {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const posts = getAllPosts(["slug"]);
-
   const paths = posts.flatMap((el: { slug: string }) => {
     return locales.flatMap((locale) => {
       return { params: { lang: locale, pid: el.slug } };

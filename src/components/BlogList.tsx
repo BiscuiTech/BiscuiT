@@ -38,11 +38,11 @@ const BlogList = ({ posts = [] }) => {
               posts.map((post, i) => (
                 <ListItem
                   date={post.date}
-                  excerpt={post[`excerpt_${locale}`]}
+                  excerpt={post.excerpt[locale]}
                   path={post.slug}
                   locale={locale}
                   t={t}
-                  title={post.title}
+                  title={post.title[locale]}
                   key={i}
                 />
               ))}

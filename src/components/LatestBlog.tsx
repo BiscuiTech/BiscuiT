@@ -18,7 +18,7 @@ export const LatestBlog = ({ post }) => {
       {post?.slug ? (
         <ListItem
           date={post.date}
-          excerpt={post[`excerpt_${locale}`]}
+          excerpt={post.excerpt[locale]}
           locale={locale}
           path={post.slug}
           t={t}
