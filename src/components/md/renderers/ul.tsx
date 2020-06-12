@@ -5,6 +5,7 @@ const UL = ({ children }) => (
 );
 
 const StyledLI = styled.li`
+  margin-left: 1em;
   &:before {
     content: "•";
     color: #fbb03b;

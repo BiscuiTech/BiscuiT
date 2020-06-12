@@ -17,17 +17,16 @@ const FooterStyles = styled.div`
   width: 100%;
   background: hsl(203, 100%, 10%);
   padding: 48px 0;
-  border-top: 4px solid ${(props) => props.theme.color.gold};
+  /* border-top: 4px solid ${(props) => props.theme.color.gold}; */
   color: white;
   font-weight: 300;
   text-align: center;
   flex-shrink: 0;
 `;
 
-/*
-TODO: scroll to top button
-
-*/
+/**
+ * TODO: scroll to top button
+ */
 
 const Footer = () => {
   const { t, locale } = useTranslation();

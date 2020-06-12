@@ -7,18 +7,25 @@ import { LanguageContext } from "../context/LanguageContext";
 const Wrapper = styled.div`
   font-family: "Montserrat";
   font-size: 14px;
-  position: fixed;
+  position: absolute;
+  float: left;
   top: 0;
   bottom: unset;
+  margin-left: 1.5em;
+  margin-top: 0.5em;
   @media (min-width: 820px) {
     top: unset;
     bottom: 32px;
     right: 6px;
+    position: fixed;
+    margin-left: 0;
   }
   @media (min-width: 1880px) {
     top: unset;
     bottom: 32px;
     right: 25%;
+    position: fixed;
+    margin-left: 0;
   }
 `;
 

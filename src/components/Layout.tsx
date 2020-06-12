@@ -17,6 +17,7 @@ const Page = styled.div`
   background: ${(props) => props.theme.background};
   background-image: url("/images/topography.svg");
   background-color: ${(props) => props.theme.background};
+  border-bottom: 3px solid ${(props) => props.theme.color.gold};
 
   overflow: hidden;
   overflow-y: auto;
@@ -36,12 +37,12 @@ const Page = styled.div`
 
 const Content = styled(motion.main)`
   max-width: 1000px;
-  width: 80%;
+  width: 100%;
   margin: auto;
   margin-bottom: 60px;
-  padding-top: 60px;
   @media (min-width: var(--contentWidth)) {
     width: calc(var(--contentWidth) - 20px);
+    padding-top: 60px;
   }
 `;
 

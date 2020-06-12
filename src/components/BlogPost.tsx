@@ -3,17 +3,20 @@ import ErrorPage from "next/error";
 import { useRouter } from "next/router";
 import CoverImage from "./md/CoverImage";
 import MDX from "@mdx-js/runtime";
+// import mdx from '@mdx-js/react'
+// import mdx from '@mdx-js/mdx'
 import { Code, H1, H2, H3, Img, UL, LI } from "./md/renderers";
 import styled from "styled-components";
 import useTranslation from "../hooks/useTranslation";
 import DateFormater from "./DateFormat";
+
 const BlogHeader = styled.header`
   background-color: hsl(200, 100%, 4%);
 `;
 
 const BlogContent = styled.section`
   font-family: Inter;
-
+  padding: 0 1em;
   code {
     padding: 0.1em 0.5em;
     margin: 0 2px;
@@ -25,7 +28,7 @@ const BlogContent = styled.section`
     line-height: 1em;
   }
   p {
-    margin: 0 0 1.2em 0px;
+    margin: 1.2em 0px;
     padding-left: 1em;
     padding-right: 1em;
   }
@@ -44,6 +47,7 @@ const BlogContent = styled.section`
     left: 0;
     background: #fbb03b;
   }
+  a:focus:after,
   a:hover:after {
     opacity: 1;
     width: 100%;
@@ -84,6 +88,18 @@ const BlogContent = styled.section`
     text-shadow: -1px -1px 0 #fbb03b, 1px -1px 0 #fbb03b, -1px 1px 0 #fbb03b,
       1px 1px 0 #fbb03b;
   }
+  .bubble-exclamation:before {
+    content: "!";
+    color: hsl(231, 33%, 30%);
+    align-self: start;
+    padding: 4px;
+    margin: auto 6px;
+    opacity: 0.6;
+    font-size: 3.5em;
+    line-height: 1em;
+    text-shadow: -1px -1px 0 #fbb03b, 1px -1px 0 #fbb03b, -1px 1px 0 #fbb03b,
+      1px 1px 0 #fbb03b;
+  }
 `;
 
 const BlogPost = ({ pid, post, morePosts }) => {
@@ -102,7 +118,7 @@ const BlogPost = ({ pid, post, morePosts }) => {
           accreditation={post.coverImage.accreditation}
         />
         <H1>{post.title[locale]}</H1>
-        <div className="text-base text-gray-300 -mt-2">
+        <div className="text-base text-gray-300 mt-2">
           {`${t("blogBy")} ${post.author} | `}
           {DateFormater({ dateString: post.date })}
         </div>

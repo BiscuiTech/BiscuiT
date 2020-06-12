@@ -43,6 +43,7 @@ export default ({ children, className, metastring, ...props }) => {
                 padding: "4px 0px",
                 fontSize: "14px",
                 borderRadius: "4px",
+                overflowX: 'auto',
               }}
             >
               {tokens.map((line, i) => {

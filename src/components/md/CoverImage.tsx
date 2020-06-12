@@ -11,7 +11,7 @@ export default function CoverImage({ title, src, slug, accreditation }) {
         className="pb-0"
       />
       <em className="text-base text-gray-400">
-        Photo by <span className="underline">{accreditation}</span> on Unplash
+        Photo by <span className="underline">{accreditation}</span> on <a href={src}>Unplash</a>
       </em>
     </div>
   );

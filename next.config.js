@@ -25,7 +25,7 @@ module.exports = withPlugins(
     [new SentryWebpackPlugin()],
     [withBundleAnalyzer],
     [withSourceMaps],
-    [withMDX],
+    [withMDX, { pageExtensions: ['ts', 'tsx', 'md', 'mdx'] }],
   ],
   {
     target: 'serverless',
