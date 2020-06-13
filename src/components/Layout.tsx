@@ -41,7 +41,7 @@ const Content = styled(motion.main)`
   margin: auto;
   margin-bottom: 60px;
   @media (min-width: ${(props) => `${props.theme.layout.contentWidth}px`}) {
-    width: 100%;
+    /*     width: 100%; */
     padding-top: 60px;
   }
 `;
