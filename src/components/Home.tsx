@@ -33,7 +33,7 @@ const Welcome = styled.div`
   .welcome--from {
     font-size: 20px;
     font-size: max(18px, min(4vh, 24px));
-    width: 70%;
+    width: 100%;
     min-width: 230px;
     margin: 0;
     word-wrap: break-word;
@@ -56,7 +56,7 @@ const ShortIntro = styled.div`
 const Home = ({ post }) => {
   const { locale, t } = useTranslation();
   return (
-    <div className="mx-auto w-full md:w-4/5 lg:w-4/5">
+    <div className="mx-auto w-full md:w-4/5 lg:w-4/5 pt-20">
       <Welcome>
         <h1 className="welcome--hello">
           {t("welcome_msg")}

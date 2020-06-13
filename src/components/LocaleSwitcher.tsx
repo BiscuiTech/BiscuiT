@@ -5,6 +5,8 @@ import styled from "styled-components";
 import { LanguageContext } from "../context/LanguageContext";
 
 const Wrapper = styled.div`
+  --contentWidth: ${(props) => `${props.theme.layout.contentWidth}px`};
+
   font-family: "Montserrat";
   font-size: 14px;
   position: absolute;
@@ -13,7 +15,7 @@ const Wrapper = styled.div`
   bottom: unset;
   margin-left: 1.5em;
   margin-top: 0.5em;
-  @media (min-width: 820px) {
+  @media (min-width: ${(props) => `${props.theme.layout.contentWidth}px`}) {
     top: unset;
     bottom: 32px;
     right: 6px;

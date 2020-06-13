@@ -36,12 +36,12 @@ const Page = styled.div`
 `;
 
 const Content = styled(motion.main)`
+  width: ${(props) => (props.fullPage ? "100%" : "80%")};
   max-width: 1000px;
-  width: 100%;
   margin: auto;
   margin-bottom: 60px;
-  @media (min-width: var(--contentWidth)) {
-    width: calc(var(--contentWidth) - 20px);
+  @media (min-width: ${(props) => `${props.theme.layout.contentWidth}px`}) {
+    width: 100%;
     padding-top: 60px;
   }
 `;
@@ -80,6 +80,8 @@ interface ILayout {
   og: IOpenGraph;
   children?: any;
   preview?: any;
+  sizing?: any;
+  fullPage?: boolean;
 }
 
 const Layout = ({
@@ -88,6 +90,8 @@ const Layout = ({
   og,
   children,
   preview = false,
+  sizing = { width: "80%", contentPaddingTop: "60px" },
+  fullPage = false,
 }: ILayout) => {
   const { t } = useTranslation();
   return (
@@ -98,13 +102,15 @@ const Layout = ({
         <a className="skip-link" href="#maincontent">
           {t("common")["skipToMain"]}
         </a>
-        <Navigation />
+        <Navigation sizing={sizing} />
         <Content
           id="maincontent"
           initial="initial"
           animate="enter"
           exit="exit"
           variants={variants}
+          sizing={sizing}
+          fullPage={fullPage}
         >
           {" "}
           {children}

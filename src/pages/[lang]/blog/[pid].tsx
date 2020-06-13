@@ -25,6 +25,7 @@ const BlogPostPage = ({ localization, post, morePosts, preview }) => {
         //TODO: add og:image prop
         preview={preview}
         og={useOpenGraph()}
+        fullPage
       >
         <BlogPost pid={router.query.pid} post={post} morePosts={morePosts} />
       </Layout>

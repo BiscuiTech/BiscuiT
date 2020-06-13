@@ -15,6 +15,8 @@ const ActiveLinks = [
 ];
 
 const NavgitationStyles = styled.nav`
+  --contentWidth: ${(props) => `${props.theme.layout.contentWidth}px`};
+
   background: black;
   position: fixed;
   bottom: 0;
@@ -25,7 +27,7 @@ const NavgitationStyles = styled.nav`
   border-bottom: none;
   z-index: 5;
 
-  @media (min-width: 880px) {
+  @media (min-width: ${(props) => `${props.theme.layout.contentWidth}px`}) {
     bottom: unset;
     top: 0;
     background: ${(props) => props.theme.background};
@@ -57,7 +59,7 @@ const StyledMenuLink = styled(motion.a)`
   position: relative;
 `;
 
-const Navigation = () => {
+const Navigation = ({ sizing = { width: "100%" } }) => {
   const { locale, t } = useTranslation();
   const { pathname } = useRouter();
   const isCurrentPath = (path) => {
@@ -71,7 +73,7 @@ const Navigation = () => {
 
   return (
     <AnimateSharedLayout>
-      <NavgitationStyles>
+      <NavgitationStyles sizing={sizing}>
         {ActiveLinks.map(({ tKey, path }, i) => (
           <Link
             href={`/[lang]/${path}`}
