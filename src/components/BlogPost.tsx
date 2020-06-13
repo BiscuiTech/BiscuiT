@@ -117,7 +117,7 @@ const BlogPost = ({ pid, post, morePosts }) => {
           slug={post.slug}
           accreditation={post.coverImage.accreditation}
         />
-        <H1>{post.title[locale]}</H1>
+        <H1>{post.title}</H1>
         <div className="text-base text-gray-300 mt-2">
           {`${t("blogBy")} ${post.author} | `}
           {DateFormater({ dateString: post.date })}

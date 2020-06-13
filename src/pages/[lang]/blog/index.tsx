@@ -9,7 +9,7 @@ import {
 
 import { getAllPosts } from "../../../lib/api";
 import useOpenGraph from "../../../lib/useOpenGraph";
-import { Localization } from "../../../translations/types";
+import { Localization, Locale } from "../../../translations/types";
 
 const BlogIndexPage: NextPage<{
   localization: Localization;
@@ -34,7 +34,10 @@ const BlogIndexPage: NextPage<{
 };
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
-  const posts = getAllPosts(["title", "date", "slug", "excerpt"]);
+  const posts = getAllPosts(
+    ["title", "date", "slug", "excerpt"],
+    [ctx.params?.lang as Locale]
+  );
   const localization = getLocalizationProps(ctx, "blog");
   return {
     props: {

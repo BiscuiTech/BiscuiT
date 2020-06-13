@@ -8,7 +8,7 @@ export const ListItem = ({ title, date, excerpt, locale, path, t }) => (
     <Link href={`/[lang]/blog/${path}`} as={`/${locale}/blog/${path}`}>
       <a className="block">
         <h3 className="mt-2 text-2xl leading-7 tracking-normal font-semibold text-indigo-400 blogItem-hover">
-          {title[locale]}
+          {title}
         </h3>
         <p className="mt-3 text-sm leading-5 text-indigo-500">
           <time dateTime={date}>{date}</time>
@@ -20,7 +20,7 @@ export const ListItem = ({ title, date, excerpt, locale, path, t }) => (
       </a>
     </Link>
   </div>
-)
+);
 
 const BlogList = ({ posts = [] }) => {
   const { t, locale } = useTranslation();
@@ -42,7 +42,7 @@ const BlogList = ({ posts = [] }) => {
                   path={post.slug}
                   locale={locale}
                   t={t}
-                  title={post.title[locale]}
+                  title={post.title}
                   key={i}
                 />
               ))}

@@ -11,6 +11,8 @@ import {
 import { getAllPosts, getPostBySlug } from "../../../lib/api";
 import ErrorPage from "next/error";
 import useOpenGraph from "../../../lib/useOpenGraph";
+import Head from "next/head";
+import { Locale } from "../../../translations/types";
 
 const BlogPostPage = ({ localization, post, morePosts, preview }) => {
   const router = useRouter();
@@ -27,6 +29,9 @@ const BlogPostPage = ({ localization, post, morePosts, preview }) => {
         og={useOpenGraph()}
         fullPage
       >
+        <Head>
+          <meta name="monetization" content="$ilp.uphold.com/dhwUDqyeRbeN" />
+        </Head>
         <BlogPost pid={router.query.pid} post={post} morePosts={morePosts} />
       </Layout>
     </LanguageProvider>
@@ -35,17 +40,21 @@ const BlogPostPage = ({ localization, post, morePosts, preview }) => {
 
 export const getStaticProps: GetStaticProps = async ({ ...ctx }) => {
   const localization = getLocalizationProps(ctx, "blogPost");
-  const post = getPostBySlug(ctx.params.pid, [
-    "slug",
-    "published",
-    "title",
-    "author",
-    "date",
-    "excerpt",
-    "coverImage",
-    "content",
-    "cannonical",
-  ]);
+  const post = getPostBySlug(
+    ctx.params.pid,
+    [
+      "slug",
+      "published",
+      "title",
+      "author",
+      "date",
+      "excerpt",
+      "coverImage",
+      "content",
+      "cannonical",
+    ],
+    [ctx.params?.lang as Locale]
+  );
 
   return {
     props: {
@@ -56,7 +65,7 @@ export const getStaticProps: GetStaticProps = async ({ ...ctx }) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const posts = getAllPosts(["slug"]);
+  const posts = getAllPosts(["slug"], ["en", "fr"]);
   const paths = posts.flatMap((el: { slug: string }) => {
     return locales.flatMap((locale) => {
       return { params: { lang: locale, pid: el.slug } };
@@ -69,3 +78,12 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export default BlogPostPage;
+
+/**
+ * Localized selector for blogPosts:
+ * If a slug is in english, and the locale is in en, return post.
+ * if a slug is in english and the locale is in fr,
+ * return the fr post **if it exists**.
+ * if it doesnt exist, return en post and display alert.
+ *
+ */
