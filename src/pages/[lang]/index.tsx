@@ -6,7 +6,7 @@ import {
   LanguageProvider,
   getLocalizationProps,
 } from "../../context/LanguageContext";
-import { Localization } from "../../translations/types";
+import { Localization, Locale } from "../../translations/types";
 import useOpenGraph from "../../lib/useOpenGraph";
 import { getAllPosts } from "../../lib/api";
 
@@ -31,6 +31,7 @@ const IndexPage: NextPage<{
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
   const posts = getAllPosts(["title", "date", "slug", "excerpt"]);
+  console.log(posts)
   const localization = getLocalizationProps(ctx, "home");
   return {
     props: {

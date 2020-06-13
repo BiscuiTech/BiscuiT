@@ -107,7 +107,7 @@ const BlogPost = ({ pid, post, morePosts }) => {
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />;
   }
-  const { t, locale } = useTranslation();
+  const { t } = useTranslation();
   return (
     <article className="relative">
       <BlogHeader className="border-b border-yellow-400 p-4">

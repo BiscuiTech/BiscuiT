@@ -52,10 +52,7 @@ export const getStaticProps: GetStaticProps = async ({ ...ctx }) => {
       "coverImage",
       "content",
       "cannonical",
-    ],
-    [ctx.params?.lang as Locale]
-  );
-
+    ]);
   return {
     props: {
       localization,

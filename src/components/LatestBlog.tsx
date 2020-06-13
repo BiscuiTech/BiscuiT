@@ -2,6 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import useTranslation from "../hooks/useTranslation";
 import { ListItem } from "./BlogList";
+import { locales } from "../translations/config";
+import { Locale } from "../translations/types";
 
 const LatestBlogStyles = styled.div`
   margin-top: 60px;
@@ -12,21 +14,29 @@ const LatestBlogStyles = styled.div`
 
 export const LatestBlog = ({ post }) => {
   const { locale, t } = useTranslation();
+  const otherLocales = locales.filter((lang) => lang != locale)
+  const filteredKeys = Object.keys(post)
+  const filteredPost = filteredKeys
+    .filter((el: Locale) => otherLocales.includes(el))
+    .filter((el) => el !== null)
+  const currentPost = post[locale]
+  console.log(post)
   return (
     <LatestBlogStyles>
       <h2>{t("latestBlog")}</h2>
       {post?.slug ? (
         <ListItem
-          date={post.date}
-          excerpt={post.excerpt[locale]}
+          date={currentPost.date}
+          excerpt={currentPost.excerpt[locale]}
           locale={locale}
-          path={post.slug}
+          path={currentPost.slug}
           t={t}
-          title={post.title}
+          title={currentPost.title}
+          otherLocales={filteredPost}
         />
       ) : (
-        <em>{t("common")["error_noBlogs"]}</em>
-      )}
+          <em>{t("common")["error_noBlogs"]}</em>
+        )}
     </LatestBlogStyles>
   );
 };
