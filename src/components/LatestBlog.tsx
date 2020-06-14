@@ -4,6 +4,7 @@ import useTranslation from "../hooks/useTranslation";
 import { ListItem } from "./BlogList";
 import { locales } from "../translations/config";
 import { Locale } from "../translations/types";
+import { cl } from "../../utils";
 
 const LatestBlogStyles = styled.div`
   margin-top: 60px;
@@ -20,13 +21,15 @@ export const LatestBlog = ({ post }) => {
     .filter((el: Locale) => otherLocales.includes(el))
     .filter((el) => el !== null)
   const currentPost = post[locale]
-  console.log(post)
+  console.log('post: ', post)
+  console.log(filteredPost)
+  console.log(currentPost)
   return (
     <LatestBlogStyles>
       <h2>{t("latestBlog")}</h2>
-      {post?.slug ? (
+      {currentPost?.slug ? (
         <ListItem
-          date={currentPost.date}
+          date={currentPost.publishedOn}
           excerpt={currentPost.excerpt[locale]}
           locale={locale}
           path={currentPost.slug}
