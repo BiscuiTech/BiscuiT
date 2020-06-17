@@ -66,3 +66,21 @@ export function getCV(fields = [], lang = "en") {
 
   return items;
 }
+
+export const getCurrentPost = (post, locale) => {
+  if (post[locale]?.slug) {
+    return post[locale];
+  } else {
+    const filteredLocales = locales.filter((lang) => lang != locale);
+    const filteredPost = filteredLocales.reduce((acc, el) => {
+      if (post[el]?.slug) {
+        return {
+          ...acc,
+          ...post[el],
+        };
+      }
+      return acc;
+    }, {});
+    return filteredPost;
+  }
+};

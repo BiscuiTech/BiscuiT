@@ -35,7 +35,7 @@ export default ({ children, className, metastring, ...props }) => {
       {({ className, style, tokens, getLineProps, getTokenProps }) => {
         tokens.pop(); //This might reveal to be a bug later on.
         return (
-          <div className="my-4">
+          <div className="my-6">
             <pre
               className={className}
               style={{
@@ -43,7 +43,7 @@ export default ({ children, className, metastring, ...props }) => {
                 padding: "4px 0px",
                 fontSize: "14px",
                 borderRadius: "4px",
-                overflowX: 'auto',
+                overflowX: "auto",
               }}
             >
               {tokens.map((line, i) => {

@@ -8,15 +8,17 @@ import {
   getLocalizationProps,
   LanguageProvider,
 } from "../../../context/LanguageContext";
-import { getAllPosts, getPostBySlug } from "../../../lib/api";
+import { getAllPosts, getPostBySlug, getCurrentPost } from "../../../lib/api";
 import ErrorPage from "next/error";
 import useOpenGraph from "../../../lib/useOpenGraph";
 import Head from "next/head";
-import { Locale } from "../../../translations/types";
+import useTranslation from "../../../hooks/useTranslation";
 
 const BlogPostPage = ({ localization, post, morePosts, preview }) => {
+  const { locale } = useTranslation();
   const router = useRouter();
-  if (!router.isFallback && !post?.slug) {
+  const currentPost = getCurrentPost(post, locale);
+  if (!router.isFallback && !currentPost?.slug) {
     return <ErrorPage statusCode={404} />;
   }
   return (
@@ -32,7 +34,11 @@ const BlogPostPage = ({ localization, post, morePosts, preview }) => {
         <Head>
           <meta name="monetization" content="$ilp.uphold.com/dhwUDqyeRbeN" />
         </Head>
-        <BlogPost pid={router.query.pid} post={post} morePosts={morePosts} />
+        <BlogPost
+          pid={router.query.pid}
+          post={currentPost}
+          morePosts={morePosts}
+        />
       </Layout>
     </LanguageProvider>
   );
@@ -40,19 +46,18 @@ const BlogPostPage = ({ localization, post, morePosts, preview }) => {
 
 export const getStaticProps: GetStaticProps = async ({ ...ctx }) => {
   const localization = getLocalizationProps(ctx, "blogPost");
-  const post = getPostBySlug(
-    ctx.params.pid,
-    [
-      "slug",
-      "published",
-      "title",
-      "author",
-      "date",
-      "excerpt",
-      "coverImage",
-      "content",
-      "cannonical",
-    ]);
+  const post = getPostBySlug(ctx.params.pid, [
+    "slug",
+    "published",
+    "publishedOn",
+    "lastModifiedOn",
+    "title",
+    "author",
+    "excerpt",
+    "coverImage",
+    "content",
+    "cannonicalLinks",
+  ]);
   return {
     props: {
       localization,
@@ -62,12 +67,16 @@ export const getStaticProps: GetStaticProps = async ({ ...ctx }) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const posts = getAllPosts(["slug"], ["en", "fr"]);
-  const paths = posts.flatMap((el: { slug: string }) => {
+  const posts = getAllPosts(["slug"]);
+  const paths = posts.flatMap((post: { slug: string }) => {
+    console.log(post);
     return locales.flatMap((locale) => {
-      return { params: { lang: locale, pid: el.slug } };
+      return Object.keys(post).map((postLang) => {
+        return { params: { lang: locale, pid: post[postLang].slug } };
+      });
     });
   });
+  console.log(paths);
   return {
     paths,
     fallback: false,

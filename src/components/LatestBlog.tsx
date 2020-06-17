@@ -2,9 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import useTranslation from "../hooks/useTranslation";
 import { ListItem } from "./BlogList";
-import { locales } from "../translations/config";
-import { Locale } from "../translations/types";
-import { cl } from "../../utils";
+import { getCurrentPost } from "../lib/api";
 
 const LatestBlogStyles = styled.div`
   margin-top: 60px;
@@ -15,31 +13,16 @@ const LatestBlogStyles = styled.div`
 
 export const LatestBlog = ({ post }) => {
   const { locale, t } = useTranslation();
-  const otherLocales = locales.filter((lang) => lang != locale)
-  const filteredKeys = Object.keys(post)
-  const filteredPost = filteredKeys
-    .filter((el: Locale) => otherLocales.includes(el))
-    .filter((el) => el !== null)
-  const currentPost = post[locale]
-  console.log('post: ', post)
-  console.log(filteredPost)
-  console.log(currentPost)
+  const currentPost = getCurrentPost(post, locale);
+
   return (
     <LatestBlogStyles>
       <h2>{t("latestBlog")}</h2>
       {currentPost?.slug ? (
-        <ListItem
-          date={currentPost.publishedOn}
-          excerpt={currentPost.excerpt[locale]}
-          locale={locale}
-          path={currentPost.slug}
-          t={t}
-          title={currentPost.title}
-          otherLocales={filteredPost}
-        />
+        <ListItem post={post} />
       ) : (
-          <em>{t("common")["error_noBlogs"]}</em>
-        )}
+        <em>{t("common")["error_noBlogs"]}</em>
+      )}
     </LatestBlogStyles>
   );
 };

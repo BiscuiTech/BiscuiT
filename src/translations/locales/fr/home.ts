@@ -6,6 +6,9 @@ const home = {
   latestBlog: "Dernier Blog",
   viewBlog: "Lire cet article",
   readFullBlog: "Lire blog complet",
+  blogListItemNotAvailable: "Non disponible en",
+  blogListItemOnlyAvailable: "Seulement disponible en",
+  blogListItemAlsoAvailable: "Aussi disponible en",
 };
 
 export default home;

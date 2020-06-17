@@ -28,9 +28,10 @@ const BlogContent = styled.section`
     line-height: 1em;
   }
   p {
-    margin: 1.2em 0px;
-    padding-left: 1em;
-    padding-right: 1em;
+    margin: 1.5em 1em;
+  }
+  p + p {
+    margin-top: -0.5em;
   }
   a {
     color: #fbb03b;
@@ -103,10 +104,6 @@ const BlogContent = styled.section`
 `;
 
 const BlogPost = ({ pid, post, morePosts }) => {
-  const router = useRouter();
-  if (!router.isFallback && !post?.slug) {
-    return <ErrorPage statusCode={404} />;
-  }
   const { t } = useTranslation();
   return (
     <article className="relative">
@@ -120,7 +117,7 @@ const BlogPost = ({ pid, post, morePosts }) => {
         <H1>{post.title}</H1>
         <div className="text-base text-gray-300 mt-2">
           {`${t("blogBy")} ${post.author} | `}
-          {DateFormater({ dateString: post.date })}
+          {DateFormater({ dateString: post.publishedOn })}
         </div>
       </BlogHeader>
       <BlogContent className="text-lg">
