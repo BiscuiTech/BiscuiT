@@ -12,12 +12,10 @@ const LatestBlogStyles = styled.div`
 
 export const LatestBlog = ({ post }) => {
   const { t } = useTranslation();
-  console.log("post in latestblog", post);
-
   return (
     <LatestBlogStyles>
       <h2>{t("latestBlog")}</h2>
-      {Object.keys(post).length > 0 ? (
+      {post && Object.keys(post).length > 0 ? (
         <ListItem post={post} />
       ) : (
         <em>{t("common")["error_noBlogs"]}</em>
