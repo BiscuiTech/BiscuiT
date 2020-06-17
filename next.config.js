@@ -20,7 +20,7 @@ process.env.SENTRY_DSN = SENTRY_DSN;
 
 module.exports = withPlugins(
   [
-    // [withPWA, { pwa: { dest: 'public' } }],
+    [withPWA, { pwa: { dest: 'public' } }],
     [new SentryWebpackPlugin()],
     [withBundleAnalyzer],
     [withSourceMaps],
