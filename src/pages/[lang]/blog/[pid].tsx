@@ -32,7 +32,7 @@ const BlogPostPage = ({ localization, post, morePosts, preview }) => {
         fullPage
       >
         <Head>
-          <meta name="monetization" content="$ilp.uphold.com/dhwUDqyeRbeN" />
+          <meta name="monetization" content="$ilp.uphold.com/nQ6Bd32j9dUR" />
         </Head>
         <BlogPost
           pid={router.query.pid}

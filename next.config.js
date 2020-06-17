@@ -1,6 +1,5 @@
 const withPlugins = require('next-compose-plugins');
 const withSourceMaps = require('@zeit/next-source-maps')();
-const TerserPlugin = require('terser-webpack-plugin');
 const SentryWebpackPlugin = require('@sentry/webpack-plugin');
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
@@ -21,11 +20,11 @@ process.env.SENTRY_DSN = SENTRY_DSN;
 
 module.exports = withPlugins(
   [
-    [withPWA, { pwa: { dest: 'public' } }],
+    // [withPWA, { pwa: { dest: 'public' } }],
     [new SentryWebpackPlugin()],
     [withBundleAnalyzer],
     [withSourceMaps],
-    [withMDX, { pageExtensions: ['ts', 'tsx', 'md', 'mdx'] }],
+    [withMDX, { pageExtensions: ['md', 'mdx'] }],
   ],
   {
     target: 'serverless',
