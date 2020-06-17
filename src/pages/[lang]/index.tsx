@@ -31,7 +31,6 @@ const IndexPage: NextPage<{
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
   const posts = getAllPosts(["title", "publishedOn", "slug", "excerpt"]);
-  console.log(posts)
   const localization = getLocalizationProps(ctx, "home");
   return {
     props: {

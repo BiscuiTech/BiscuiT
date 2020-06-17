@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import useTranslation from "../hooks/useTranslation";
 import { ListItem } from "./BlogList";
-import { getCurrentPost } from "../lib/api";
 
 const LatestBlogStyles = styled.div`
   margin-top: 60px;
@@ -12,13 +11,13 @@ const LatestBlogStyles = styled.div`
 `;
 
 export const LatestBlog = ({ post }) => {
-  const { locale, t } = useTranslation();
-  const currentPost = getCurrentPost(post, locale);
+  const { t } = useTranslation();
+  console.log("post in latestblog", post);
 
   return (
     <LatestBlogStyles>
       <h2>{t("latestBlog")}</h2>
-      {currentPost?.slug ? (
+      {Object.keys(post).length > 0 ? (
         <ListItem post={post} />
       ) : (
         <em>{t("common")["error_noBlogs"]}</em>
