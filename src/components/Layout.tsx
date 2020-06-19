@@ -36,10 +36,11 @@ const Page = styled.div`
 `;
 
 const Content = styled(motion.main)`
-  width: ${(props) => (props.fullPage ? "100%" : "80%")};
+  width: ${(props) => (props.fullPage ? "100%" : "90%")};
   max-width: 1000px;
   margin: auto;
   margin-bottom: 60px;
+  margin-top: 60px;
   @media (min-width: ${(props) => `${props.theme.layout.contentWidth}px`}) {
     /*     width: 100%; */
     padding-top: 60px;
@@ -112,7 +113,6 @@ const Layout = ({
           sizing={sizing}
           fullPage={fullPage}
         >
-          {" "}
           {children}
           {/* <Alerts /> */}
           <LocaleSwitcher />
