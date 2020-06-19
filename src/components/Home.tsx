@@ -13,7 +13,7 @@ const Welcome = styled.div`
   flex-direction: column;
   width: 100%;
   text-align: left;
-  margin-top: 24px;
+  /* margin-top: 24px; */
   margin-bottom: 64px;
   padding: 0;
   font-family: "Montserrat";

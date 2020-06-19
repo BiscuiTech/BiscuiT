@@ -13,6 +13,7 @@ const links = [
 
 const FooterStyles = styled.div`
   position: sticky;
+  z-index: 0;
   bottom: 0;
   width: 100%;
   background: hsl(203, 100%, 10%);
