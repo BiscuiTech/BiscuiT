@@ -6,29 +6,19 @@ import { getLocalizationProps } from "../../context/LanguageContext";
 import { Localization, Locale } from "../../translations/types";
 import useOpenGraph from "../../lib/useOpenGraph";
 import { getAllPosts } from "../../lib/api";
-
+import publishedPosts from "../../lib/publishedPosts";
 const IndexPage: NextPage<{
   localization: Localization;
   posts: any;
   preview: boolean;
 }> = ({ localization, posts, preview = false }) => {
-  const publishedPost = (arr) => {
-    return arr.filter((el) => {
-      const keys = Object.keys(el);
-      const check = keys.flatMap((key) => {
-        return el[key].published;
-      });
-      return check.reduce((tally, bool) => (bool == true ? true : false));
-    });
-  };
-
   return (
     <Layout
       title="Biscui.Tech"
       description="Biscui.Tech Home page"
       og={useOpenGraph()}
     >
-      <Home post={preview ? posts[0] : publishedPost(posts)[0]} />
+      <Home post={preview ? posts[0] : publishedPosts(posts)[0]} />
     </Layout>
   );
 };
