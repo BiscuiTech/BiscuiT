@@ -22,7 +22,7 @@ const BlogIndexPage: NextPage<{
       description="Biscui.Tech Home page"
       og={useOpenGraph()}
     >
-      <BlogList posts={preview ? posts || [] : publishedPosts(posts)} />
+      <BlogList posts={preview ? posts : publishedPosts(posts)} />
     </Layout>
   );
 };
