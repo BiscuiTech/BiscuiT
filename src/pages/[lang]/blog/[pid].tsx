@@ -34,6 +34,9 @@ const BlogPostPage = ({ localization, post, morePosts, preview }) => {
           {process.env.NODE_ENV === "production" && (
             <meta name="monetization" content="$ilp.uphold.com/nQ6Bd32j9dUR" />
           )}
+          {post.canonicalLinks?.map((el) => (
+            <link rel="canonical" href={el} />
+          ))}
         </Head>
         <BlogPost
           pid={router.query.pid}
@@ -57,7 +60,7 @@ export const getStaticProps: GetStaticProps = async ({ ...ctx }) => {
     "excerpt",
     "coverImage",
     "content",
-    "cannonicalLinks",
+    "canonicalLinks",
   ]);
   return {
     props: {
