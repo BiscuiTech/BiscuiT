@@ -6,20 +6,16 @@ import {
   getLocalizationProps,
   LanguageProvider,
 } from "../../../context/LanguageContext";
-
 import { getAllPosts } from "../../../lib/api";
 import useOpenGraph from "../../../lib/useOpenGraph";
 import { Localization, Locale } from "../../../translations/types";
+import publishedPosts from "../../../lib/publishedPosts";
 
 const BlogIndexPage: NextPage<{
   localization: Localization;
   posts: any;
   preview: boolean;
 }> = ({ localization, posts, preview = false }) => {
-  /**
-   * TODO: Preview mode
-   */
-  const publishedPosts = (arr) => arr.filter((el) => el.published == "true");
   return (
     <Layout
       title="Biscui.Tech"
