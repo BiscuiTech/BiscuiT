@@ -1,5 +1,10 @@
 import nodemailer from "nodemailer";
 import { email as emailRegEx } from "../../lib/regEx";
+import postmark from "postmark";
+
+const postmarkClient = new postmark.ServerClient(
+  process.env.POSTMARK_SERVER_API_TOKEN
+);
 
 var transporter = nodemailer.createTransport({
   service: "Outlook365",
@@ -27,6 +32,17 @@ export default async function (req, res) {
     return res.status(400).send("Your email is not an email.");
   }
   try {
+    await postmarkClient.sendEmail({
+      From: email,
+      To: "tech@biscui.tech",
+      Subject: "New message from your website",
+      TextBody: `${message}\n\n---------------------\nSent by: ${lastName}, ${firstName}\n${email}`,
+    });
+  } catch (error) {
+    console.log("ERROR", error);
+    return res.status(400).send("Message not sent.");
+  }
+  /* try {
     const mailOptions = {
       from: {
         address: "tech@biscui.tech",
@@ -53,5 +69,5 @@ export default async function (req, res) {
   } catch (error) {
     console.log("ERROR", error);
     return res.status(400).send("Message not sent.");
-  }
+  } */
 }
