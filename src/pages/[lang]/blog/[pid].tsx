@@ -71,14 +71,12 @@ export const getStaticProps: GetStaticProps = async ({ ...ctx }) => {
 export const getStaticPaths: GetStaticPaths = async () => {
   const posts = getAllPosts(["slug"]);
   const paths = posts.flatMap((post: { slug: string }) => {
-    console.log(post);
     return locales.flatMap((locale) => {
       return Object.keys(post).map((postLang) => {
         return { params: { lang: locale, pid: post[postLang].slug } };
       });
     });
   });
-  console.log(paths);
   return {
     paths,
     fallback: false,

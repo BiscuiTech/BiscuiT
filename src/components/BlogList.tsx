@@ -19,7 +19,6 @@ export const ListItem = ({ post }) => {
     .filter((el) => el !== null)
     .map((el) => translateLanguageNames(locale, el));
   const currentPost = getCurrentPost(post, locale);
-  console.log("currentPost", currentPost);
 
   return (
     <div className="mt-8 blogItem hover:bg-gray-900 py-2 px-4 rounded transition ease-in-out duration-150">
