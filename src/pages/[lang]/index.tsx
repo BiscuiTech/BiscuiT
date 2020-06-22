@@ -2,10 +2,7 @@ import React from "react";
 import Layout from "../../components/Layout";
 import Home from "../../components/Home";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
-import {
-  LanguageProvider,
-  getLocalizationProps,
-} from "../../context/LanguageContext";
+import { getLocalizationProps } from "../../context/LanguageContext";
 import { Localization, Locale } from "../../translations/types";
 import useOpenGraph from "../../lib/useOpenGraph";
 import { getAllPosts } from "../../lib/api";
@@ -15,7 +12,16 @@ const IndexPage: NextPage<{
   posts: any;
   preview: boolean;
 }> = ({ localization, posts, preview = false }) => {
-  const publishedPost = (arr) => arr.filter((el) => el.published == "true");
+  const publishedPost = (arr) => {
+    return arr.filter((el) => {
+      const keys = Object.keys(el);
+      const check = keys.flatMap((key) => {
+        return el[key].published;
+      });
+      return check.reduce((tally, bool) => (bool == true ? true : false));
+    });
+  };
+
   return (
     <Layout
       title="Biscui.Tech"
@@ -28,7 +34,13 @@ const IndexPage: NextPage<{
 };
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
-  const posts = getAllPosts(["title", "publishedOn", "slug", "excerpt"]);
+  const posts = getAllPosts([
+    "title",
+    "publishedOn",
+    "published",
+    "slug",
+    "excerpt",
+  ]);
   const localization = getLocalizationProps(ctx, "home");
   return {
     props: {

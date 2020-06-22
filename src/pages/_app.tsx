@@ -54,7 +54,6 @@ class MyApp extends App {
     // @ts-ignore
     const { err } = this.props;
     const modifiedPageProps = { ...pageProps, err };
-    console.log(pageProps.localization);
 
     return (
       <ThemeProvider theme={theme}>

@@ -56,6 +56,8 @@ const ShortIntro = styled.div`
 
 const Home = ({ post }) => {
   const { locale, t } = useTranslation();
+  console.log(post);
+
   return (
     <div className="mx-auto w-full md:w-4/5 lg:w-4/5 pt-20">
       <Welcome>

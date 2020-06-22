@@ -62,20 +62,18 @@ const StyledMenuLink = styled(motion.a)`
 const Navigation = ({ sizing = { width: "100%" } }) => {
   const { locale, t } = useTranslation();
   const router = useRouter();
-  const { pathname } = router
+  const { pathname } = router;
   const isCurrentPath = (path) => {
     const filteredPathname = pathname
-      .replace(/(\/\[lang\]\/?)/g, '')
-      .replace(/\/.*/g, '')
-    return filteredPathname === path
-
+      .replace(/(\/\[lang\]\/?)/g, "")
+      .replace(/\/.*/g, "");
+    return filteredPathname === path;
   };
 
   return (
     <AnimateSharedLayout>
       <NavgitationStyles sizing={sizing}>
         {ActiveLinks.map(({ tKey, path }, i) => {
-          // console.log(path, pathname, isCurrentPath(path))
           return (
             <Link
               href={`/[lang]/${path}`}
@@ -94,14 +92,13 @@ const Navigation = ({ sizing = { width: "100%" } }) => {
                 {t("common")[tKey]}
               </StyledMenuLink>
             </Link>
-          )
+          );
         })}
       </NavgitationStyles>
     </AnimateSharedLayout>
   );
 };
 export default Navigation;
-
 
 /*
 
