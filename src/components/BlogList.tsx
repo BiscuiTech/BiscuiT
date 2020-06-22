@@ -70,7 +70,7 @@ export const ListItem = ({ post }) => {
   );
 };
 
-const BlogList = ({ posts = [] }) => {
+const BlogList = ({ posts }) => {
   const { t } = useTranslation();
   return (
     <>
