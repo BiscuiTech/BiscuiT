@@ -57,6 +57,7 @@ const Contact = () => {
     } else {
       setStatus({
         ...status,
+        submitted: true,
         info: { error: true, msg: msg },
       });
       console.log("send-message error");
@@ -306,7 +307,7 @@ const Contact = () => {
                     ></textarea>
                   </div>
                 </div>
-                <div className="sm:col-span-2 mb-4">
+                <div className="sm:col-span-2 mb-4 text-center">
                   <span className="w-full inline-flex rounded-md shadow-sm">
                     <button
                       type="button"
@@ -327,6 +328,14 @@ const Contact = () => {
                       )}
                     </button>
                   </span>
+                  {status.submitted && status.info.error && (
+                    <a
+                      className="mx-auto border-indigo-600 border-b-2 text-lg"
+                      href="mailto:tech@biscui.tech"
+                    >
+                      {t("contactFormSubmitError")}
+                    </a>
+                  )}
                 </div>
               </form>
             </div>
