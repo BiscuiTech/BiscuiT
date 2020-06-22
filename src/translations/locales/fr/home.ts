@@ -9,6 +9,15 @@ const home = {
   blogListItemNotAvailable: "Non disponible en",
   blogListItemOnlyAvailable: "Seulement disponible en",
   blogListItemAlsoAvailable: "Aussi disponible en",
+  /*   ogTitle: '',
+  ogType: '',
+  ogImage: '',
+  ogAudio: '',
+  ogDescription: '',
+  ogDeterminer: '',
+  ogLocaleAlternate: '',
+  ogSiteName: '',
+  ogVideo: '', */
 };
 
 export default home;
