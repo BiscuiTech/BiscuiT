@@ -24,15 +24,16 @@ const BlogPostPage = ({ localization, post, morePosts, preview }) => {
   return (
     <LanguageProvider localization={localization}>
       <Layout
-        title="Biscui.Tech"
+        title={currentPost.title}
         description="Biscui.Tech Home page"
-        //TODO: add og:image prop
         preview={preview}
-        og={useOpenGraph()}
+        og={useOpenGraph(currentPost)}
         fullPage
       >
         <Head>
-          {process.env.NODE_ENV === 'production' && <meta name="monetization" content="$ilp.uphold.com/nQ6Bd32j9dUR" />}
+          {process.env.NODE_ENV === "production" && (
+            <meta name="monetization" content="$ilp.uphold.com/nQ6Bd32j9dUR" />
+          )}
         </Head>
         <BlogPost
           pid={router.query.pid}
