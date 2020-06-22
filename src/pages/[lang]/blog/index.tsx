@@ -21,15 +21,13 @@ const BlogIndexPage: NextPage<{
    */
   const publishedPosts = (arr) => arr.filter((el) => el.published == "true");
   return (
-    <LanguageProvider localization={localization}>
-      <Layout
-        title="Biscui.Tech"
-        description="Biscui.Tech Home page"
-        og={useOpenGraph()}
-      >
-        <BlogList posts={preview ? posts || [] : publishedPosts(posts)} />
-      </Layout>
-    </LanguageProvider>
+    <Layout
+      title="Biscui.Tech"
+      description="Biscui.Tech Home page"
+      og={useOpenGraph()}
+    >
+      <BlogList posts={preview ? posts || [] : publishedPosts(posts)} />
+    </Layout>
   );
 };
 

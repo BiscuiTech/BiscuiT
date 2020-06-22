@@ -10,12 +10,12 @@ export default function (post?) {
     type: t("ogType"),
     image: t("ogImage"),
     url: `${process.env.NOW_URL || defaultOGURL}${router.asPath}`,
-    audio: t("ogAudio"),
+    // audio: t("ogAudio"),
     description: post?.excerpt || t("ogDescription"),
     determiner: t("ogDeterminer"),
     locale: locale,
     localeAlternate: t("ogLocaleAlternate"),
     siteName: t("ogSiteName"),
-    video: t("ogVideo"),
+    // video: t("ogVideo"),
   };
 }

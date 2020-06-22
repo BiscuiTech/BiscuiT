@@ -16,15 +16,13 @@ const UsesPage: NextPage<{ localization: Localization }> = ({
   const { t, locale } = useTranslation();
   const router = useRouter();
   return (
-    <LanguageProvider localization={localization}>
-      <Layout
-        title="Biscui.Tech"
-        description="Biscui.Tech Home page"
-        og={useOpenGraph()}
-      >
-        <Uses />
-      </Layout>
-    </LanguageProvider>
+    <Layout
+      title="Biscui.Tech"
+      description="Biscui.Tech Home page"
+      og={useOpenGraph()}
+    >
+      <Uses />
+    </Layout>
   );
 };
 

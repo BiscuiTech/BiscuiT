@@ -15,15 +15,13 @@ import useOpenGraph from "../../lib/useOpenGraph";
 const ContactPage: NextPage<{ localization: Localization }> = ({
   localization,
 }) => (
-  <LanguageProvider localization={localization}>
-    <Layout
-      title="Biscui.Tech"
-      description="Biscui.Tech Home page"
-      og={useOpenGraph()}
-    >
-      <Contact />
-    </Layout>
-  </LanguageProvider>
+  <Layout
+    title="Biscui.Tech"
+    description="Biscui.Tech Home page"
+    og={useOpenGraph()}
+  >
+    <Contact />
+  </Layout>
 );
 
 export const getStaticProps: GetStaticProps = async (ctx) => {

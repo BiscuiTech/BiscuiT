@@ -1,26 +1,30 @@
-import React from 'react';
-import Layout from '../../components/Layout';
-import Projects from '../../components/Projects';
-import { GetStaticProps, GetStaticPaths, NextPage } from 'next';
-import { LanguageProvider, getLocalizationProps } from '../../context/LanguageContext';
-import { Localization } from '../../translations/types';
-import useOpenGraph from '../../lib/useOpenGraph';
+import React from "react";
+import Layout from "../../components/Layout";
+import Projects from "../../components/Projects";
+import { GetStaticProps, GetStaticPaths, NextPage } from "next";
+import {
+  LanguageProvider,
+  getLocalizationProps,
+} from "../../context/LanguageContext";
+import { Localization } from "../../translations/types";
+import useOpenGraph from "../../lib/useOpenGraph";
 
-const ProjectsPage: NextPage<{ localization: Localization }> = ({ localization }) => {
+const ProjectsPage: NextPage<{ localization: Localization }> = ({
+  localization,
+}) => {
   return (
-    <LanguageProvider localization={localization}>
-      <Layout
-        title="Biscui.Tech"
-        description="Biscui.Tech Home page"
-        og={useOpenGraph()}      >
-        <Projects />
-      </Layout>
-    </LanguageProvider>
-  )
+    <Layout
+      title="Biscui.Tech"
+      description="Biscui.Tech Home page"
+      og={useOpenGraph()}
+    >
+      <Projects />
+    </Layout>
+  );
 };
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
-  const localization = getLocalizationProps(ctx, 'projects');
+  const localization = getLocalizationProps(ctx, "projects");
   return {
     props: {
       localization,

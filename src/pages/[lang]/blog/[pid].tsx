@@ -14,7 +14,7 @@ import useOpenGraph from "../../../lib/useOpenGraph";
 import Head from "next/head";
 import useTranslation from "../../../hooks/useTranslation";
 
-const BlogPostPage = ({ localization, post, morePosts, preview }) => {
+const BlogPostPage = ({ post, morePosts, preview }) => {
   const { locale } = useTranslation();
   const router = useRouter();
   const currentPost = getCurrentPost(post, locale);
@@ -22,29 +22,27 @@ const BlogPostPage = ({ localization, post, morePosts, preview }) => {
     return <ErrorPage statusCode={404} />;
   }
   return (
-    <LanguageProvider localization={localization}>
-      <Layout
-        title={currentPost.title}
-        description="Biscui.Tech Home page"
-        preview={preview}
-        og={useOpenGraph(currentPost)}
-        fullPage
-      >
-        <Head>
-          {process.env.NODE_ENV === "production" && (
-            <meta name="monetization" content="$ilp.uphold.com/nQ6Bd32j9dUR" />
-          )}
-          {post.canonicalLinks?.map((el) => (
-            <link rel="canonical" href={el} />
-          ))}
-        </Head>
-        <BlogPost
-          pid={router.query.pid}
-          post={currentPost}
-          morePosts={morePosts}
-        />
-      </Layout>
-    </LanguageProvider>
+    <Layout
+      title={currentPost.title}
+      description="Biscui.Tech Home page"
+      preview={preview}
+      og={useOpenGraph(currentPost)}
+      fullPage
+    >
+      <Head>
+        {process.env.NODE_ENV === "production" && (
+          <meta name="monetization" content="$ilp.uphold.com/nQ6Bd32j9dUR" />
+        )}
+        {post.canonicalLinks?.map((el) => (
+          <link rel="canonical" href={el} />
+        ))}
+      </Head>
+      <BlogPost
+        pid={router.query.pid}
+        post={currentPost}
+        morePosts={morePosts}
+      />
+    </Layout>
   );
 };
 

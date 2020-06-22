@@ -44,6 +44,7 @@ const Content = styled(motion.main)`
   @media (min-width: ${(props) => `${props.theme.layout.contentWidth}px`}) {
     /*     width: 100%; */
     padding-top: 60px;
+    margin-top: unset;
   }
 `;
 
