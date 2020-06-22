@@ -17,15 +17,13 @@ const IndexPage: NextPage<{
 }> = ({ localization, posts, preview = false }) => {
   const publishedPost = (arr) => arr.filter((el) => el.published == "true");
   return (
-    <LanguageProvider localization={localization}>
-      <Layout
-        title="Biscui.Tech"
-        description="Biscui.Tech Home page"
-        og={useOpenGraph()}
-      >
-        <Home post={preview ? posts[0] : publishedPost(posts)[0]} />
-      </Layout>
-    </LanguageProvider>
+    <Layout
+      title="Biscui.Tech"
+      description="Biscui.Tech Home page"
+      og={useOpenGraph()}
+    >
+      <Home post={preview ? posts[0] : publishedPost(posts)[0]} />
+    </Layout>
   );
 };
 

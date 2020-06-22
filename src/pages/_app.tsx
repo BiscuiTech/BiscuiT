@@ -13,6 +13,7 @@ import "../styles/index.css";
 import * as gtag from "../lib/gtag";
 import Router from "next/router";
 import { AlertProvider } from "../context/AlertContext";
+import { LanguageProvider } from "../context/LanguageContext";
 process.env.NODE_ENV === "production"
   ? Router.events.on("routeChangeComplete", (url) => gtag.pageview(url))
   : null;
@@ -53,12 +54,15 @@ class MyApp extends App {
     // @ts-ignore
     const { err } = this.props;
     const modifiedPageProps = { ...pageProps, err };
+    console.log(pageProps.localization);
 
     return (
       <ThemeProvider theme={theme}>
         <AlertProvider>
           <AnimatePresence exitBeforeEnter onExitComplete={handleExitComplete}>
-            <Component {...modifiedPageProps} key={router.route} />
+            <LanguageProvider localization={pageProps.localization}>
+              <Component {...modifiedPageProps} key={router.route} />
+            </LanguageProvider>
           </AnimatePresence>
         </AlertProvider>
       </ThemeProvider>

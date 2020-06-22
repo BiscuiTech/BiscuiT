@@ -16,16 +16,14 @@ const AboutPage: NextPage<{ localization: Localization; cv: any }> = ({
   localization,
   cv,
 }) => (
-  <LanguageProvider localization={localization}>
-    <Layout
-      title="Biscui.Tech"
-      description="Biscui.Tech Home page"
-      og={useOpenGraph()}
-    >
-      <About />
-      {/* <CurriculumVitae cv={cv} /> */}
-    </Layout>
-  </LanguageProvider>
+  <Layout
+    title="Biscui.Tech"
+    description="Biscui.Tech Home page"
+    og={useOpenGraph()}
+  >
+    <About />
+    {/* <CurriculumVitae cv={cv} /> */}
+  </Layout>
 );
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
