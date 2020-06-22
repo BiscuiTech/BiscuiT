@@ -61,40 +61,55 @@ const StyledMenuLink = styled(motion.a)`
 
 const Navigation = ({ sizing = { width: "100%" } }) => {
   const { locale, t } = useTranslation();
-  const { pathname } = useRouter();
+  const router = useRouter();
+  const { pathname } = router
   const isCurrentPath = (path) => {
-    const adjustedPath = path ? path : `/`;
-    return pathname.startsWith(
-      pathname.endsWith("/")
-        ? `/[lang]${adjustedPath}`
-        : `/[lang]/${adjustedPath}`
-    );
+    const filteredPathname = pathname
+      .replace(/(\/\[lang\]\/?)/g, '')
+      .replace(/\/.*/g, '')
+    return filteredPathname === path
+
   };
 
   return (
     <AnimateSharedLayout>
       <NavgitationStyles sizing={sizing}>
-        {ActiveLinks.map(({ tKey, path }, i) => (
-          <Link
-            href={`/[lang]/${path}`}
-            as={`/${locale}/${path}`}
-            key={i}
-            passHref={true}
-          >
-            <StyledMenuLink current={isCurrentPath(path)} animate key={i}>
-              {isCurrentPath(path) && (
-                <motion.div
-                  layoutId="nav-selected"
-                  className="nav-selected"
-                  style={{ backgroundColor: "#FBB03B" }}
-                />
-              )}
-              {t("common")[tKey]}
-            </StyledMenuLink>
-          </Link>
-        ))}
+        {ActiveLinks.map(({ tKey, path }, i) => {
+          // console.log(path, pathname, isCurrentPath(path))
+          return (
+            <Link
+              href={`/[lang]/${path}`}
+              as={`/${locale}/${path}`}
+              key={i}
+              passHref={true}
+            >
+              <StyledMenuLink current={isCurrentPath(path)} animate key={i}>
+                {isCurrentPath(path) && (
+                  <motion.div
+                    layoutId="nav-selected"
+                    className="nav-selected"
+                    style={{ backgroundColor: "#FBB03B" }}
+                  />
+                )}
+                {t("common")[tKey]}
+              </StyledMenuLink>
+            </Link>
+          )
+        })}
       </NavgitationStyles>
     </AnimateSharedLayout>
   );
 };
 export default Navigation;
+
+
+/*
+
+/[lang] *
+/[lang]/
+/[lang]/blog
+/[lang]/blog/
+/[lang]/blog/abc
+
+
+*/
