@@ -18,6 +18,7 @@ canonicalLinks:
 If you tried to look around for _simple_ i18n integrations of `next.js`, you'd soon realized that it just doesn't exist. The reference in the next.js example directory managed by Vercel (formely known as Zeit) points to an integration using a _custom server_. Although it's a nice display of next's different capabilities, we want to statically generate the html on the server - Server Side Generation. Using a custom server makes all serverless and static optimizations impossible.
 
 So let's dive in using Next.js 9.3 Server-Side Generation (SSG) and 100% serverless.
+You can also jump straight into code by heading into [this repo.](https://github.com/BiscuiTech/i18n-typescript-app)
 
 ## The Setup
 
@@ -36,7 +37,7 @@ We're using TypeScript in this example because it's a nicer approach when workin
   alt="What the app generated from npm looks like"
 />
 
-Now that we have a barebones app up and running, let's dig into the meat of the subject.
+Now that we have a barebones app up and running, let's dig into the meat of the subject. And for good mesure, move your files inside your src folder.
 
 ### Translations Types & Config
 
@@ -130,36 +131,30 @@ export default {
 };
 
 //./src/translations/locales/en/index.ts
-import contact from "./contact";
 import common from "./common";
 import home from "./home";
-import blog from "./blog";
-import blogPost from "./blogPost";
-import about from "./about";
-import uses from "./uses";
 
 export default {
-  contact,
   common,
   home,
-  blog,
-  about,
-  blogPost,
-  uses,
 };
 
 // ./src/translations/locales/en/home.ts
 const home = {
-  firstString: "Hi, my name is",
-  i_am: "I am a Web Developer from Montréal.",
-  short_intro:
-    "I make excellent website experiences basedon modern tools such as React and GraphQL.",
-  latestBlog: "Latest Blog",
-  viewBlog: "Read this article",
-  readFullBlog: "Read full blog",
+  hello: "Hello Next.js 👋",
 };
 
 export default home;
+
+// ./src/translations/locales/en/common.ts
+const common = {
+  navHome: "Home",
+  navAbout: "About",
+  navUsersList: "Users List",
+  navUsersAPI: "Users API",
+};
+
+export default common;
 ```
 
 Before proceeding, add those files in another language while keeping the same structure. If you're looking for a quick copy-paste, take <a href="https://github.com/BiscuiTech/i18n-typescript-app/tree/master/src/translations/locales">these</a>.
@@ -176,9 +171,8 @@ import React from "react";
 import { useRouter } from "next/router";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 import { isLocale, Localization, Locale } from "../translations/types";
-import strings from "../translations/locales/en";
+import defaultStrings from "../translations/locales/en";
 import locales from "../translations/locales";
-import { NextPageContext } from "next";
 
 /**
  * Language Context
@@ -192,8 +186,8 @@ interface ContextProps {
 export const LanguageContext = React.createContext<ContextProps>({
   localization: {
     locale: "en", // default lang
-    translations: strings.common, // default translations
-    namespace: "common", // default namespace
+    translations: defaultStrings.common, // default translations TODO: what to do here?
+    namespace: "common", // default namespace TODO: could we null this? 'common' might be misleading
   },
   setLocale: () => null,
 });
@@ -327,8 +321,8 @@ export const LanguageProvider: React.FC<{ localization: Localization }> = ({
   const [getStoredLocale, setStoredLocale] = useLocalStorage("locale");
   const { query } = useRouter();
   React.useEffect(() => {
-    if (localizationState !== getStoredLocale) {
-      setStoredLocale(localizationState);
+    if (localizationState.locale !== getStoredLocale) {
+      setStoredLocale(localizationState.locale);
     }
   }, [localizationState]);
 
@@ -459,31 +453,37 @@ So, now we have all this setup, how in the hell do we get localized strings?!
 
 Well I'm glad you asked! We load it simply by calling a sort of API. And in Next.js, how do we call an API? On a per-page basis in `getStaticProps`!
 
-```tsx
+```tsx {4-9,14,23,26-33,35-42}
 // ./src/pages/index.tsx
 import Link from "next/link";
 import Layout from "../../components/Layout";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
-import { LanguageProvider } from "../../context/LanguageContext";
-import { Localization, Locale } from "../../translations/types";
-import locales from "../../translations/locales";
+import {
+  getLocalizationProps,
+  LanguageProvider,
+} from "../../context/LanguageContext";
+import { Localization } from "../../translations/types";
+
+const IndexPage: NextPage<{
+  localization: Localization;
+}> = ({ localization }) => (
+  <LanguageProvider localization={localization}>
+    <Layout title="Home | Next.js + TypeScript Example">
+      <h1>Hello Next.js 👋</h1>
+      <p>
+        <Link href="/about">
+          <a>About</a>
+        </Link>
+      </p>
+    </Layout>
+  </LanguageProvider>
+);
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
-  const namespace = "home";
-  const lang: Locale = (ctx.params?.lang as Locale) || "en";
-  const locale: any = locales[lang];
-  const strings: any = locale[namespace];
-  const translations = {
-    common: locales[lang].common,
-    ...strings,
-  };
+  const localization = getLocalizationProps(ctx, "home");
   return {
     props: {
-      localization: {
-        locale: ctx.params?.lang,
-        translations,
-        namespace,
-      },
+      localization,
     },
   };
 };
@@ -494,43 +494,23 @@ export const getStaticPaths: GetStaticPaths = async () => {
     fallback: false,
   };
 };
+
+export default IndexPage;
 ```
 
 Easy as 1,2,3! As a side note, you also need to tell next.js to build all the pages of your locales. You can do that in getStaticPaths. You can read more on getStaticPaths here: [nextjs.org/docs](https://nextjs.org/docs/basic-features/data-fetching#getstaticpaths-static-generation)
 
 I highly suggest you inspect the repo of my website [here](https://github.com/BiscuiTech/BiscuiT). You'll get a better grip of how all the files work together.
 
-Getting back to our pages/page.ts, we need to adjust one more thing. Add the Provider and pass the translations objet down.
+Getting back to our pages/index.ts, you'll notice we also modified the page function. We added the Provider and passed the translations objet down. This is the last setup needed. The following steps are simply how to call the hook to fetch the strings.
 
-```tsx {2-3,5,14}
-const IndexPage: NextPage<{
-  localization: Localization;
-}> = ({ localization }) => {
-  return (
-    <LanguageProvider localization={localization}>
-      <Layout title="Home | Next.js + TypeScript Example">
-        <h1>Hello Next.js 👋</h1>
-        <p>
-          <Link href="/about">
-            <a>About</a>
-          </Link>
-        </p>
-      </Layout>
-    </LanguageProvider>
-  );
-};
-export default IndexPage;
-```
-
-Simple, isn't it?
-
-With this method, the only code actually modifying your app (besides the setup itself) is the page file.
+Simple, isn't it? With this method, the only code actually modifying your app (besides the setup itself) is the page file.
 
 ## useTranslate
 
-Now that we have the props ready to go, we simply need to use them inside our components. We're going to use the hook that fetches the translations props and make them available to us. If you understand how Context works, this is a piece of cake.
+Now that we have the props ready to go, we simply need to use them inside our components. We're going to use the hook that fetches the translations props and make them available to us. If you understand how Context works, this is a piece of cake. Note that we need to move our rendering to a components because direct children cannot access the Context.
 
-```tsx
+```tsx {8,20,23}
 // ./src/pages/[lang]/index.tsx
 const IndexPage: NextPage<{
   localization: Localization;
@@ -566,6 +546,62 @@ const Home = () => {
 export default Home;
 ```
 
+## LocaleSwitcher
+
+Everything works and the correct strings render, but switching locale by manually punching the letters in url is tedious at best. We need to create a locale swticher component. It's really easy. Let's do it!
+
+```tsx
+import React from "react";
+import { useRouter } from "next/router";
+import { locales } from "../translations/config";
+import useTranslation from "../hooks/useTranslation";
+
+const LocaleSwitcher: React.FC = () => {
+  const router = useRouter();
+  const handleLocaleChange = React.useCallback(
+    (e: React.ChangeEvent<HTMLSelectElement>) => {
+      const targetLang = e.target.value;
+      const regex = new RegExp(`^/(${locales.join("|")})`);
+      router.push(
+        router.pathname,
+        router.asPath.replace(regex, `/${targetLang}`)
+      );
+    },
+    [router]
+  );
+  const { t, locale } = useTranslation();
+  return (
+    <div>
+      <label className="language-switcher">
+        {t("common")["localeSwitcher"]}
+        <select onChange={handleLocaleChange} defaultValue={locale}>
+          {locales.map((el) => (
+            <option value={el}>{el}</option>
+          ))}
+        </select>
+      </label>
+    </div>
+  );
+};
+
+export default LocaleSwitcher;
+```
+
+Let's also add the new string we used here to ours files in `translations/locales/[lang]/common.ts`
+
+```typescript {7}
+// ./src/translations/locales/en/common.ts
+const common = {
+  navHome: "Home",
+  navAbout: "About",
+  navUsersList: "Users List",
+  navUsersAPI: "Users API",
+  localeSwitcher: "Language",
+};
+
+export default common;
+```
+
 And now we're finally done - for real! Feel free to add strings in your locales directory and replace the rest of the text in the app.
 
 <em>
@@ -575,7 +611,8 @@ And now we're finally done - for real! Feel free to add strings in your locales 
   You can find his blog <a href="https://w11i.me/how-to-build-multilingual-website-in-next-js">here.</a>
 </em>
 
-## The future
+## Looking forward
 
-One caveat of this method is that your useTranslate hook needs to be called inside a component and not inside the page directly.
-There are talks of a native **next.js** i18n implementation, so the future of localized apps is looking bright!
+One caveat of this method is that your useTranslate hook needs to be called inside a component and not inside the page directly. You could simply move the ContextProvider up the chain and into your \_app if you so desire.
+
+There are talks of a native **next.js** i18n implementation, so the future of localized apps is looking bright! In the meantime, take a look at this PR: https://github.com/vercel/next.js/pull/14454
