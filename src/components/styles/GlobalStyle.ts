@@ -1,6 +1,7 @@
 import { createGlobalStyle } from "styled-components";
+import Theme from "../Theme";
 
-const GlobaStyle = createGlobalStyle`
+const GlobaStyle = createGlobalStyle<{ theme: typeof Theme }>`
 
   html {
     --scrollbarBG: #CFD8DC;
