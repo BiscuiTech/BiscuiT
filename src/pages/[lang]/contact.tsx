@@ -1,17 +1,11 @@
 import React from "react";
 import Layout from "../../components/Layout";
-// import Contact from '../../components/Contact';
 import Contact from "../../components/Contact";
 import { GetStaticProps, GetStaticPaths, NextPage } from "next";
 import { Localization } from "../../translations/types";
-import {
-  LanguageProvider,
-  getLocalizationProps,
-} from "../../context/LanguageContext";
+import { getLocalizationProps } from "../../context/LanguageContext";
 import useOpenGraph from "../../lib/useOpenGraph";
-/**
- * TODO: add an email receipt
- */
+
 const ContactPage: NextPage<{ localization: Localization }> = ({
   localization,
 }) => (

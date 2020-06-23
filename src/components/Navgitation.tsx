@@ -48,7 +48,7 @@ const NavgitationStyles = styled.nav`
   }
 `;
 
-const StyledMenuLink = styled(motion.a)`
+const StyledMenuLink = styled(motion.a)<{ current: boolean }>`
   font-size: 20px;
   font-size: max(18px, min(2vw, 22px));
   padding: 12px 0;
@@ -60,7 +60,7 @@ const StyledMenuLink = styled(motion.a)`
   position: relative;
 `;
 
-const Navigation = ({ sizing = { width: "100%" } }) => {
+const Navigation = () => {
   const { locale, t } = useTranslation();
   const router = useRouter();
   const { pathname } = router;
@@ -73,7 +73,7 @@ const Navigation = ({ sizing = { width: "100%" } }) => {
 
   return (
     <AnimateSharedLayout>
-      <NavgitationStyles sizing={sizing}>
+      <NavgitationStyles>
         {ActiveLinks.map(({ tKey, path }, i) => {
           return (
             <Link
@@ -100,14 +100,3 @@ const Navigation = ({ sizing = { width: "100%" } }) => {
   );
 };
 export default Navigation;
-
-/*
-
-/[lang] *
-/[lang]/
-/[lang]/blog
-/[lang]/blog/
-/[lang]/blog/abc
-
-
-*/

@@ -2,10 +2,7 @@ import React from "react";
 import Layout from "../../../components/Layout";
 import BlogList from "../../../components/BlogList";
 import { GetStaticProps, GetStaticPaths, NextPage } from "next";
-import {
-  getLocalizationProps,
-  LanguageProvider,
-} from "../../../context/LanguageContext";
+import { getLocalizationProps } from "../../../context/LanguageContext";
 import { getAllPosts } from "../../../lib/api";
 import useOpenGraph from "../../../lib/useOpenGraph";
 import { Localization, Locale } from "../../../translations/types";
