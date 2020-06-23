@@ -3,10 +3,7 @@ import Layout from "../../components/Layout";
 import PageHeader, { SubHeader } from "../../components/styles/PageHeader";
 import { GetStaticProps, GetStaticPaths, NextPage } from "next";
 import { Localization } from "../../translations/types";
-import {
-  LanguageProvider,
-  getLocalizationProps,
-} from "../../context/LanguageContext";
+import { getLocalizationProps } from "../../context/LanguageContext";
 import useOpenGraph from "../../lib/useOpenGraph";
 
 const ArchivesPage: NextPage<{ localization: Localization }> = ({

@@ -3,10 +3,7 @@ import { useRouter } from "next/router";
 import Layout from "../../components/Layout";
 import Uses from "../../components/Uses";
 import { GetStaticProps, GetStaticPaths, NextPage } from "next";
-import {
-  LanguageProvider,
-  getLocalizationProps,
-} from "../../context/LanguageContext";
+import { getLocalizationProps } from "../../context/LanguageContext";
 import { Localization } from "../../translations/types";
 import useOpenGraph from "../../lib/useOpenGraph";
 import useTranslation from "../../hooks/useTranslation";

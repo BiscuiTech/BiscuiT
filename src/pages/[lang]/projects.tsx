@@ -2,10 +2,7 @@ import React from "react";
 import Layout from "../../components/Layout";
 import Projects from "../../components/Projects";
 import { GetStaticProps, GetStaticPaths, NextPage } from "next";
-import {
-  LanguageProvider,
-  getLocalizationProps,
-} from "../../context/LanguageContext";
+import { getLocalizationProps } from "../../context/LanguageContext";
 import { Localization } from "../../translations/types";
 import useOpenGraph from "../../lib/useOpenGraph";
 

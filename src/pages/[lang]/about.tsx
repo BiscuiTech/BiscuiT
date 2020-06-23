@@ -2,12 +2,8 @@ import React from "react";
 import Layout from "../../components/Layout";
 import About from "../../components/About";
 import { GetStaticProps, GetStaticPaths, NextPage } from "next";
-import {
-  LanguageProvider,
-  getLocalizationProps,
-} from "../../context/LanguageContext";
+import { getLocalizationProps } from "../../context/LanguageContext";
 import { Localization } from "../../translations/types";
-import Uses from "../../components/Uses";
 import useOpenGraph from "../../lib/useOpenGraph";
 import CurriculumVitae from "../../components/CurriculumVitae";
 import { getCV } from "../../lib/api";
