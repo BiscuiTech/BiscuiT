@@ -1,53 +1,52 @@
-import React, { useEffect } from 'react'
-import styled, { keyframes } from 'styled-components';
-import TechStack from './TechStack';
+import React, { useEffect } from "react";
+// import styled, { keyframes } from 'styled-components';
+// import TechStack from './TechStack';
 
-const ProjectWrapper = styled.div`
-  position: relative;
-  display: ${props => props.active !== null && props.active === props.index ? 'block' : 'none'};
-  width: 100%;
-  height: ${props => `calc(100% - ${props.imageHeight}px)`};
-  max-width: 500px;
-  /* max-height: ${props => `calc(26px + ${props.imageHeight}px)`}; */
-  margin: 36px auto;
-  margin-bottom: ${props => - props.imageHeight + 'px'};
-`;
+// const ProjectWrapper = styled.div<{active: boolean}>`
+//   position: relative;
+//   display: ${props => props.active !== null && props.active === props.index ? 'block' : 'none'};
+//   width: 100%;
+//   height: ${props => `calc(100% - ${props.imageHeight}px)`};
+//   max-width: 500px;
+//   /* max-height: ${props => `calc(26px + ${props.imageHeight}px)`}; */
+//   margin: 36px auto;
+//   margin-bottom: ${props => - props.imageHeight + 'px'};
+// `;
 
-const ProjectHeader = styled.div`
-  display: inline-block;
-  position: relative;
-`;
+// const ProjectHeader = styled.div`
+//   display: inline-block;
+//   position: relative;
+// `;
 
-const TitleStyles = styled.h3`
-  position: relative;
-  display: block;
-  font-size: ${props => props.selected ? '28px' : '18px'};
-  font-weight: 400;
-  font-family: 'Montserrat';
-  /* text-transform: uppercase; */
-  width: 100%;
-  padding: 0;
-  margin: 0 12px;
-  /* margin-left: ${props => props.selected ? '0' : '10%'}; */
-  margin-left: 10%;
-`;
+// const TitleStyles = styled.h3`
+//   position: relative;
+//   display: block;
+//   font-size: ${props => props.selected ? '28px' : '18px'};
+//   font-weight: 400;
+//   font-family: 'Montserrat';
+//   /* text-transform: uppercase; */
+//   width: 100%;
+//   padding: 0;
+//   margin: 0 12px;
+//   /* margin-left: ${props => props.selected ? '0' : '10%'}; */
+//   margin-left: 10%;
+// `;
 
-const arrowMovement = keyframes`
-  0% {
-    opacity: 0;
-    left: 10%;
-  }
-  70% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-`
+// const arrowMovement = keyframes`
+//   0% {
+//     opacity: 0;
+//     left: 10%;
+//   }
+//   70% {
+//     opacity: 1;
+//   }
+//   100% {
+//     opacity: 0;
+//   }
+// `
 
-
-const GoBack = styled.div`
-  /* position:relative;
+/* const GoBack = styled.div`
+  position:relative;
   .arrow {
     opacity: 0;
     position: absolute;
@@ -82,10 +81,10 @@ const GoBack = styled.div`
   .arrow:after {
     transform: rotate(-45deg) translateY(-10%);
     transform-origin: top right;
-  } */
-`;
+  }
+`;*/
 
-const DescriptionStyles = styled.div`
+/* const DescriptionStyles = styled.div`
   position: relative;
   padding: 12px;
   margin: 0 12px;
@@ -137,20 +136,18 @@ const ImageBackground = styled.div`
     width: calc(70% + 30px);
     min-width: unset;
   }
-`;
+`; */
 
 const Project = ({ height, width, index, info, onClick, active, selected }) => {
   const imageHeight = height * 0.35;
   const imageWidth = width * 0.35;
-  useEffect(() => {
-  }, [height, width])
-  return (
-    <ProjectWrapper imageHeight={imageHeight} active={active} index={index}>
+  useEffect(() => {}, [height, width]);
+  return {
+    /* <ProjectWrapper imageHeight={imageHeight} active={active} index={index}>
       <ProjectHeader>
 
         <GoBack>
-          {/* <div className="arrow arrow-first"></div>
-          <div className="arrow arrow-second"></div> */}
+
           <span>Go Back</span>
         </GoBack>
         <TitleStyles selected={selected}>
@@ -171,8 +168,8 @@ const Project = ({ height, width, index, info, onClick, active, selected }) => {
           <TechStack imageHeight={imageHeight} info={info.techStack} />
         </>
       }
-    </ProjectWrapper>
-  )
-}
+    </ProjectWrapper> */
+  };
+};
 
-export default Project
+export default Project;

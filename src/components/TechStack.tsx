@@ -15,7 +15,7 @@ export const ConfiguredTech = [
   { name: "next.js", id: "nextjs", background: "#000000", color: "#FFFFFF" },
 ];
 
-const TechStackStyles = styled.div`
+const TechStackStyles = styled.div<{ imageHeight: number }>`
   transform: ${(props) => `translate3d(0,-${props.imageHeight + "px"},0)`};
   width: 100%;
   height: 100%;
@@ -35,7 +35,9 @@ const TechStackStyles = styled.div`
   }
 `;
 
-export const TechPill = styled.span`
+export const TechPill = styled.span<{
+  styles: { background: string; color: string };
+}>`
   background: ${(props) => `${props.styles.background}`};
   color: ${(props) => `${props.styles.color}`};
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.35);

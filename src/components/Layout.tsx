@@ -35,7 +35,7 @@ const Page = styled.div`
   }
 `;
 
-const Content = styled(motion.main)<{ fullPage: string }>`
+const Content = styled(motion.main)<{ fullPage: boolean }>`
   ${({ theme, fullPage }) => css`
     width: ${fullPage ? "100%" : "90%"};
     max-width: 1000px;
@@ -106,14 +106,14 @@ const Layout = ({
         <a className="skip-link" href="#maincontent">
           {t("common")["skipToMain"]}
         </a>
-        <Navigation sizing={sizing} />
+        <Navigation />
         <Content
           id="maincontent"
           initial="initial"
           animate="enter"
           exit="exit"
           variants={variants}
-          sizing={sizing}
+          /* sizing={sizing} */
           fullPage={fullPage}
         >
           {children}
