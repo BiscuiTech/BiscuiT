@@ -1,17 +1,17 @@
 # This is a basic workflow to help you get started with Actions
 
-name: New Sentry Release and Deploy to Heroku
+name: Sentry Release & Deploy
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
 on:
   push:
-    branches: 
-      - master
+    branches:
+      - trunk
       - feature/*
   pull_request:
-    branches: 
-      - master
+    branches:
+      - trunk
       - feature/*
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
@@ -22,8 +22,8 @@ jobs:
     runs-on: ubuntu-latest
     env:
       SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
-      SENTRY_ORG:  ${{ secrets.SENTRY_ORG }}
-      SENTRY_PROJECT:  ${{ secrets.SENTRY_PROJECT }}
+      SENTRY_ORG: ${{ secrets.SENTRY_ORG }}
+      SENTRY_PROJECT: ${{ secrets.SENTRY_PROJECT }}
       SENTRY_DEPLOY_ENVIRONMENT: ${{ secrets.SENTRY_DEPLOY_ENVIRONMENT }}
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:

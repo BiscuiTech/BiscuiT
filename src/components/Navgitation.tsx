@@ -15,34 +15,35 @@ const ActiveLinks = [
 ];
 
 const NavgitationStyles = styled.nav`
+  --contentWidth: ${(props) => `${props.theme.layout.contentWidth}px`};
+
   background: black;
   position: fixed;
-  bottom:0;
+  bottom: 0;
   width: 100%;
   max-width: 1000px;
-  display:flex;
+  display: flex;
   border-top: 1px solid ${(props) => props.theme.color.accent};
   border-bottom: none;
   z-index: 5;
 
-  @media (min-width: 820px) {
+  @media (min-width: ${(props) => `${props.theme.layout.contentWidth}px`}) {
     bottom: unset;
-    top:0;
-    width: 800px;
+    height: 60px;
+    top: 0;
     background: ${(props) => props.theme.background};
     border-top: none;
     border-bottom: 1px solid ${(props) => props.theme.color.accent};
-    margin:auto;
+    margin: auto;
     left: 50%;
-    transform: translateX(-400px);
+    transform: translateX(-50%);
   }
   .nav-selected {
-    /* background: ${(props) => props.theme.color.accent}; */
     background: black;
     height: 100%;
     width: 100%;
     position: absolute;
-    bottom:0;
+    bottom: 0;
     z-index: -1;
   }
 `;
@@ -59,38 +60,54 @@ const StyledMenuLink = styled(motion.a)`
   position: relative;
 `;
 
-const Navigation = () => {
+const Navigation = ({ sizing = { width: "100%" } }) => {
   const { locale, t } = useTranslation();
-  const { pathname } = useRouter();
-  // TODO: add a regex match for /blog/:pid
+  const router = useRouter();
+  const { pathname } = router;
   const isCurrentPath = (path) => {
-    const adjustedPath = path ? path : `/`;
-    return pathname.startsWith(
-      pathname.endsWith("/")
-        ? `/[lang]${adjustedPath}`
-        : `/[lang]/${adjustedPath}`
-    );
+    const filteredPathname = pathname
+      .replace(/(\/\[lang\]\/?)/g, "")
+      .replace(/\/.*/g, "");
+    return filteredPathname === path;
   };
 
   return (
     <AnimateSharedLayout>
-      <NavgitationStyles>
-        {ActiveLinks.map(({ tKey, path }, i) => (
-          <Link href={`/[lang]/${path}`} as={`/${locale}/${path}`} key={i}>
-            <StyledMenuLink current={isCurrentPath(path)} animate key={i}>
-              {isCurrentPath(path) && (
-                <motion.div
-                  layoutId="nav-selected"
-                  className="nav-selected"
-                  style={{ backgroundColor: "#FBB03B" }}
-                />
-              )}
-              {t("common")[tKey]}
-            </StyledMenuLink>
-          </Link>
-        ))}
+      <NavgitationStyles sizing={sizing}>
+        {ActiveLinks.map(({ tKey, path }, i) => {
+          return (
+            <Link
+              href={`/[lang]/${path}`}
+              as={`/${locale}/${path}`}
+              key={i}
+              passHref={true}
+            >
+              <StyledMenuLink current={isCurrentPath(path)} animate key={i}>
+                {isCurrentPath(path) && (
+                  <motion.div
+                    layoutId="nav-selected"
+                    className="nav-selected"
+                    style={{ backgroundColor: "#FBB03B" }}
+                  />
+                )}
+                {t("common")[tKey]}
+              </StyledMenuLink>
+            </Link>
+          );
+        })}
       </NavgitationStyles>
     </AnimateSharedLayout>
   );
 };
 export default Navigation;
+
+/*
+
+/[lang] *
+/[lang]/
+/[lang]/blog
+/[lang]/blog/
+/[lang]/blog/abc
+
+
+*/

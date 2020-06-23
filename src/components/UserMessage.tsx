@@ -1,7 +1,6 @@
-import React from 'react';
-import styled from 'styled-components';
-import PropTypes from 'prop-types';
-import useTranslation from '../hooks/useTranslation';
+import React from "react";
+import styled from "styled-components";
+import useTranslation from "../hooks/useTranslation";
 
 const ErrorStyles = styled.div`
   color: black;
@@ -20,7 +19,7 @@ const ErrorStyles = styled.div`
   }
   .error-message--code {
     font-size: 14px;
-    font-family: 'Consolas', 'monospace';
+    font-family: "Consolas", "monospace";
     line-height: 1;
     margin: 0;
     padding: 24px;
@@ -29,7 +28,7 @@ const ErrorStyles = styled.div`
     text-align: left;
   }
   .error-message--code::before {
-    content: '>';
+    content: ">";
   }
   .error-message--sorry {
     font-size: 18px;
@@ -37,7 +36,7 @@ const ErrorStyles = styled.div`
 `;
 
 export const DisplayError = ({ error }) => {
-  const { t } = useTranslation()
+  const { t } = useTranslation();
   if (!error || !error.message) return null;
   if (
     error.networkError &&
@@ -48,7 +47,7 @@ export const DisplayError = ({ error }) => {
       <ErrorStyles key={i}>
         <p data-test="graphql-error">
           <strong>Error!</strong>
-          {error.message.replace('GraphQL error: ', '')}
+          {error.message.replace("GraphQL error: ", "")}
         </p>
       </ErrorStyles>
     ));
@@ -60,32 +59,24 @@ export const DisplayError = ({ error }) => {
         {console.log(
           error.message.replace(
             /[\u001b\u009b][[()#;?]*(?:[0-9]{1,4}(?:;[0-9]{0,4})*)?[0-9A-ORZcf-nqry=><]/g,
-            ''
+            ""
           )
         )}
-        <strong>{t('common')['userMsg_Error']}</strong>
+        <strong>{t("common")["userMsg_Error"]}</strong>
         Une erreur s'est produite.
         <br />
         <div className="error-message--code">
           {error.message
             .replace(
               /[\u001b\u009b][[()#;?]*(?:[0-9]{1,4}(?:;[0-9]{0,4})*)?[0-9A-ORZcf-nqry=><]/g,
-              ''
+              ""
             )
-            .replace(/\n\s*\n/g, '\n')
-            .replace('GraphQL error: ', '')}
+            .replace(/\n\s*\n/g, "\n")
+            .replace("GraphQL error: ", "")}
         </div>
       </div>
     </ErrorStyles>
   );
-};
-
-DisplayError.defaultProps = {
-  error: {},
-};
-
-DisplayError.propTypes = {
-  error: PropTypes.object,
 };
 
 const SuccessStyles = styled.div`
@@ -106,23 +97,15 @@ const SuccessStyles = styled.div`
 `;
 
 export const DisplaySuccess = ({ message }) => {
-  const { t } = useTranslation()
+  const { t } = useTranslation();
   return (
     <SuccessStyles>
       <p>
-        <strong>{t('common')['userMsg_Success']}</strong>
+        <strong>{t("common")["userMsg_Success"]}</strong>
         {message}
       </p>
     </SuccessStyles>
-  )
-};
-
-DisplaySuccess.defaultProps = {
-  message: '',
-};
-
-DisplaySuccess.propTypes = {
-  message: PropTypes.string,
+  );
 };
 
 const WarnStyles = styled.div`
@@ -144,18 +127,9 @@ const WarnStyles = styled.div`
 
 export const DisplayWarn = ({ message }) => (
   <WarnStyles>
-    <p >
+    <p>
       <strong>Important,</strong>
       {message}
     </p>
   </WarnStyles>
 );
-
-DisplayWarn.defaultProps = {
-  message: {},
-};
-
-DisplayWarn.propTypes = {
-  message: PropTypes.string,
-};
-

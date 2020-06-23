@@ -1,8 +1,3 @@
-// import { Client } from "@elastic/elasticsearch";
-// const client = new Client({
-//   node: "https://elasticsearch.dashboard.biscuitech.dev/",
-// });
-
 import Analytics from "analytics";
 import googleAnalytics from "@analytics/google-analytics";
 
@@ -12,7 +7,7 @@ const analytics = Analytics({
   app: "biscui.tech",
   plugins: [
     googleAnalytics({
-      trackingId: process.env.GA_TRACKING_ID,
+      trackingId: "UA-126319394-1",
     }),
   ],
 });

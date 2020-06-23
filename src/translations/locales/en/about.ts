@@ -6,6 +6,8 @@ const about = {
   position: "Web Developer",
   contactMe: "Get in touch right here.",
   profilePictureAlt: "Profile picture of Jean-Cédric Huet",
+  skipButton: "Skip to the end",
+  downloadButton: "Download PDF",
 };
 
 export default about;

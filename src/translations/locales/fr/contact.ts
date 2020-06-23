@@ -11,6 +11,7 @@ const contact = {
   contactFormEmail: "Courriel",
   contactFormMessage: "Message",
   contactFormButton: "Parlons-nous",
+  contactFormSubmitError: "Cliquez ici pour envoyer manuellement",
 };
 
 export default contact;
