@@ -1,7 +1,6 @@
 import fs from "fs";
 import { join } from "path";
 import matter from "gray-matter";
-import { Locale } from "../translations/types";
 import { locales } from "../translations/config";
 
 const postsDirectory = join(process.cwd(), "src/content/blog");

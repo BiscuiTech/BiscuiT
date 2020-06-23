@@ -4,9 +4,9 @@ const SentryWebpackPlugin = require('@sentry/webpack-plugin');
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 });
-const withMDX = require('@next/mdx')({
-  extension: /\.mdx?$/,
-});
+// const withMDX = require('@next/mdx')({
+//   extension: /\.mdx?$/,
+// });
 const withPWA = require('next-pwa');
 
 const {
@@ -24,7 +24,7 @@ module.exports = withPlugins(
     [new SentryWebpackPlugin()],
     [withBundleAnalyzer],
     [withSourceMaps],
-    [withMDX, { pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'] }],
+    // [withMDX, { pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'] }],
   ],
   {
     target: 'serverless',

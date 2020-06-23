@@ -1,11 +1,6 @@
 import React from "react";
-import ErrorPage from "next/error";
-import { useRouter } from "next/router";
 import CoverImage from "./md/CoverImage";
-import MDX from "@mdx-js/runtime";
-// import mdx from '@mdx-js/react'
-// import mdx from '@mdx-js/mdx'
-import { Code, H1, H2, H3, Img, UL, LI } from "./md/renderers";
+import { H1 } from "./md/renderers";
 import styled from "styled-components";
 import useTranslation from "../hooks/useTranslation";
 import DateFormater from "./DateFormat";
@@ -121,19 +116,7 @@ const BlogPost = ({ pid, post, morePosts }) => {
         </div>
       </BlogHeader>
       <BlogContent className="text-lg">
-        <MDX
-          components={{
-            code: Code,
-            h1: H1,
-            h2: H2,
-            h3: H3,
-            img: Img,
-            ul: UL,
-            li: LI,
-          }}
-        >
-          {post.content}
-        </MDX>
+        <div dangerouslySetInnerHTML={{ __html: post.content }} />
       </BlogContent>
     </article>
   );
