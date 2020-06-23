@@ -29,6 +29,7 @@ const NavgitationStyles = styled.nav`
 
   @media (min-width: ${(props) => `${props.theme.layout.contentWidth}px`}) {
     bottom: unset;
+    height: 60px;
     top: 0;
     background: ${(props) => props.theme.background};
     border-top: none;
