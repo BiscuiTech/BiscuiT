@@ -3,10 +3,11 @@ import Layout from "../../components/Layout";
 import Home from "../../components/Home";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { getLocalizationProps } from "../../context/LanguageContext";
-import { Localization, Locale } from "../../translations/types";
+import { Localization } from "../../translations/types";
 import useOpenGraph from "../../lib/useOpenGraph";
 import { getAllPosts } from "../../lib/api";
 import publishedPosts from "../../lib/publishedPosts";
+
 const IndexPage: NextPage<{
   localization: Localization;
   posts: any;
