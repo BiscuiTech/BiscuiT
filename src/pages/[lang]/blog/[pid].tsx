@@ -4,16 +4,12 @@ import BlogPost from "../../../components/BlogPost";
 import { useRouter } from "next/router";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { locales } from "../../../translations/config";
-import {
-  getLocalizationProps,
-  LanguageProvider,
-} from "../../../context/LanguageContext";
+import { getLocalizationProps } from "../../../context/LanguageContext";
 import { getAllPosts, getPostBySlug, getCurrentPost } from "../../../lib/api";
 import ErrorPage from "next/error";
 import useOpenGraph from "../../../lib/useOpenGraph";
 import Head from "next/head";
 import useTranslation from "../../../hooks/useTranslation";
-// import markdownToHtml from "../../../lib/markdownToHtml";
 import MDX from "@mdx-js/runtime";
 import { renderToString } from "react-dom/server";
 import {

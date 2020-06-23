@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { css, StyledComponent } from "styled-components";
 import Head from "./Head";
 import LocaleSwitcher from "./LocaleSwitcher";
 import Footer from "./Footer";
@@ -35,17 +35,19 @@ const Page = styled.div`
   }
 `;
 
-const Content = styled(motion.main)`
-  width: ${(props) => (props.fullPage ? "100%" : "90%")};
-  max-width: 1000px;
-  margin: auto;
-  margin-bottom: 60px;
-  margin-top: 60px;
-  @media (min-width: ${(props) => `${props.theme.layout.contentWidth}px`}) {
-    /*     width: 100%; */
-    padding-top: 60px;
-    margin-top: unset;
-  }
+const Content = styled(motion.main)<{ fullPage: boolean }>`
+  ${({ theme, fullPage }) => css`
+    width: ${fullPage ? "100%" : "90%"};
+    max-width: 1000px;
+    margin: auto;
+    margin-bottom: 60px;
+    margin-top: 60px;
+    @media (min-width: ${theme.layout.contentWidth}px {
+      /*     width: 100%; */
+      padding-top: 60px;
+      margin-top: unset;
+    }
+  `}
 `;
 
 let easing = [0.175, 0.85, 0.42, 0.96];
@@ -104,14 +106,14 @@ const Layout = ({
         <a className="skip-link" href="#maincontent">
           {t("common")["skipToMain"]}
         </a>
-        <Navigation sizing={sizing} />
+        <Navigation />
         <Content
           id="maincontent"
           initial="initial"
           animate="enter"
           exit="exit"
           variants={variants}
-          sizing={sizing}
+          /* sizing={sizing} */
           fullPage={fullPage}
         >
           {children}
