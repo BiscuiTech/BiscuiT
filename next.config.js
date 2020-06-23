@@ -1,13 +1,12 @@
 const withPlugins = require('next-compose-plugins');
 const withSourceMaps = require('@zeit/next-source-maps')();
-const TerserPlugin = require('terser-webpack-plugin');
 const SentryWebpackPlugin = require('@sentry/webpack-plugin');
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 });
-const withMDX = require('@next/mdx')({
-  extension: /\.mdx?$/,
-});
+// const withMDX = require('@next/mdx')({
+//   extension: /\.mdx?$/,
+// });
 const withPWA = require('next-pwa');
 
 const {
@@ -25,7 +24,7 @@ module.exports = withPlugins(
     [new SentryWebpackPlugin()],
     [withBundleAnalyzer],
     [withSourceMaps],
-    [withMDX],
+    // [withMDX, { pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'] }],
   ],
   {
     target: 'serverless',

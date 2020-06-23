@@ -1,9 +1,10 @@
 import React from "react";
-export default ({ src }) => {
-  return (
-    <img
-      src={src}
-      className="my-2 shadow-small hover:shadow-medium transition-shadow duration-200"
-    />
-  );
-};
+
+export default ({ src, alt }) => (
+  <img
+    src={src}
+    alt={alt}
+    className="my-2 w-full shadow-small hover:shadow-medium transition-shadow duration-200"
+    loading="lazy"
+  />
+);

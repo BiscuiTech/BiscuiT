@@ -5,7 +5,7 @@ import { email as emailRegEx } from "../lib/regEx";
 import { LoadingSpinner } from "./styles/LoadingSpinner";
 // import { useAlertDispatch, useAlertState, AlertType } from "../context/AlertContext";
 // import useAlert, { EAlert } from "../hooks/useAlert";
-import cn from 'classnames'
+import cn from "classnames";
 
 interface IStatus {
   submitted: boolean;
@@ -57,9 +57,10 @@ const Contact = () => {
     } else {
       setStatus({
         ...status,
+        submitted: true,
         info: { error: true, msg: msg },
       });
-      console.log('send-message error')
+      console.log("send-message error");
       // setAlert({ type: EAlert.ERROR, isOpen: true, message: msg })
       // dispatch({
       //   type: 'open', alert: {
@@ -140,7 +141,7 @@ const Contact = () => {
         <div className="px-4 overflow-hidden sm:px-6 lg:px-8">
           <div className="relative max-w-xl mx-auto">
             <svg
-              className="absolute left-full transform translate-x-1/2"
+              className="absolute left-full transform translate-x-1/4"
               width="404"
               height="404"
               fill="none"
@@ -160,7 +161,7 @@ const Contact = () => {
                     y="0"
                     width="4"
                     height="4"
-                    className="text-gray-200"
+                    className="text-gray-800"
                     fill="currentColor"
                   />
                 </pattern>
@@ -172,7 +173,7 @@ const Contact = () => {
               />
             </svg>
             <svg
-              className="absolute right-full bottom-0 transform -translate-x-1/2"
+              className="absolute right-full bottom-0 transform -translate-x-1/4"
               width="404"
               height="404"
               fill="none"
@@ -192,7 +193,7 @@ const Contact = () => {
                     y="0"
                     width="4"
                     height="4"
-                    className="text-gray-200"
+                    className="text-gray-800"
                     fill="currentColor"
                   />
                 </pattern>
@@ -220,16 +221,19 @@ const Contact = () => {
                     htmlFor="firstName"
                     className="block text-sm font-medium leading-5 text-gray-200"
                   >
-                    {t('contactFormFirstName')}
+                    {t("contactFormFirstName")}
                   </label>
                   <div className="mt-1 relative rounded-md shadow-sm">
                     <input
                       id="firstName"
                       name="firstName"
-                      className={cn("form-input py-3 px-4 block w-full transition ease-in-out duration-150 bg-gray-900", {
-                        'input-error': status.info.error,
-                        'border-gray-900': !status.info.error
-                      })}
+                      className={cn(
+                        "form-input py-3 px-4 block w-full transition ease-in-out duration-150 bg-gray-900",
+                        {
+                          "input-error": status.info.error,
+                          "border-gray-900": !status.info.error,
+                        }
+                      )}
                       onChange={handleChange}
                     />
                   </div>
@@ -303,7 +307,7 @@ const Contact = () => {
                     ></textarea>
                   </div>
                 </div>
-                <div className="sm:col-span-2 mb-4">
+                <div className="sm:col-span-2 mb-4 text-center">
                   <span className="w-full inline-flex rounded-md shadow-sm">
                     <button
                       type="button"
@@ -324,6 +328,14 @@ const Contact = () => {
                       )}
                     </button>
                   </span>
+                  {status.submitted && status.info.error && (
+                    <a
+                      className="mx-auto border-indigo-600 border-b-2 text-lg"
+                      href="mailto:tech@biscui.tech"
+                    >
+                      {t("contactFormSubmitError")}
+                    </a>
+                  )}
                 </div>
               </form>
             </div>
