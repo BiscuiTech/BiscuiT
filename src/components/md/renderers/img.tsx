@@ -5,6 +5,6 @@ export default ({ src, alt }) => (
     src={src}
     alt={alt}
     className="my-2 w-full shadow-small hover:shadow-medium transition-shadow duration-200"
+    loading="lazy"
   />
 );
-
