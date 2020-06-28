@@ -34,6 +34,12 @@ export default async function (req, res) {
     return res.status(400).send("Your email is not an email.");
   }
   try {
+    await postmarkClient.sendEmail({
+      From: `Website Contact Form <${process.env.EMAIL_USERNAME}>`,
+      To: process.env.EMAIL_USERNAME,
+      Subject: "New message from your website",
+      TextBody: `${lastName}, ${firstName}\n${email}\n\n${message}`,
+    });
     const mailOptions = {
       from: `BiscuiTech <${process.env.EMAIL_USERNAME}>`,
       to: `BiscuiTech <${process.env.EMAIL_USERNAME}>`,
@@ -47,12 +53,6 @@ export default async function (req, res) {
       subject: confirmationSubject[req.headers["content-language"]],
       text: confirmationText[req.headers["content-language"]],
     });
-    /* await postmarkClient.sendEmail({
-      From: `Website Contact Form <${process.env.EMAIL_USERNAME}>`,
-      To: process.env.EMAIL_USERNAME,
-      Subject: "New message from your website",
-      TextBody: `${lastName}, ${firstName}\n${email}\n\n${message}`,
-    }); */
 
     return res.status(200).send("Message sent successfully.");
   } catch (error) {
