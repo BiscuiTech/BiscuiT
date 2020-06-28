@@ -33,21 +33,44 @@ export default async function (req, res) {
   if (!isEmailOkay) {
     return res.status(400).send("Your email is not an email.");
   }
-  try {
-    await postmarkClient.sendEmail({
+  const mailOptions = {
+    from: `BiscuiTech <${process.env.EMAIL_USERNAME}>`,
+    to: `BiscuiTech <${process.env.EMAIL_USERNAME}>`,
+    subject: `New message from your website`,
+    text: `${lastName}, ${firstName}\n${email}\n\n${message}`,
+  };
+  Promise.any([
+    postmarkClient.sendEmail({
+      From: `Website Contact Form <${process.env.EMAIL_USERNAME}>`,
+      To: process.env.EMAIL_USERNAME,
+      Subject: "New message from your website",
+      TextBody: `${lastName}, ${firstName}\n${email}\n\n${message}`,
+    }),
+    transporter.sendMail(mailOptions),
+    transporter.sendMail({
+      from: `BiscuiTech <${process.env.EMAIL_USERNAME}>`,
+      to: email,
+      subject: confirmationSubject[req.headers["content-language"]],
+      text: confirmationText[req.headers["content-language"]],
+    }),
+  ])
+    .then(() => {
+      return res.status(200).send("Message sent successfully.");
+    })
+    .catch((error) => {
+      console.log("ERROR", error);
+      return res.status(400).send("Message not sent.");
+    });
+  /*try {
+     await postmarkClient.sendEmail({
       From: `Website Contact Form <${process.env.EMAIL_USERNAME}>`,
       To: process.env.EMAIL_USERNAME,
       Subject: "New message from your website",
       TextBody: `${lastName}, ${firstName}\n${email}\n\n${message}`,
     });
-    const mailOptions = {
-      from: `BiscuiTech <${process.env.EMAIL_USERNAME}>`,
-      to: `BiscuiTech <${process.env.EMAIL_USERNAME}>`,
-      subject: `New message from your website`,
-      text: `${lastName}, ${firstName}\n${email}\n\n${message}`,
-    };
-    await transporter.sendMail(mailOptions);
-    await transporter.sendMail({
+
+    // await transporter.sendMail(mailOptions);
+    /* await transporter.sendMail({
       from: `BiscuiTech <${process.env.EMAIL_USERNAME}>`,
       to: email,
       subject: confirmationSubject[req.headers["content-language"]],
@@ -58,5 +81,5 @@ export default async function (req, res) {
   } catch (error) {
     console.log("ERROR", error);
     return res.status(400).send("Message not sent.");
-  }
+  }*/
 }
