@@ -29,6 +29,7 @@ const BlogPostPage = ({ post, morePosts, preview }) => {
   if (!router.isFallback && !currentPost?.slug) {
     return <ErrorPage statusCode={404} />;
   }
+  console.log(post);
 
   return (
     <Layout
@@ -42,8 +43,8 @@ const BlogPostPage = ({ post, morePosts, preview }) => {
         {process.env.NODE_ENV === "production" && (
           <meta name="monetization" content="$ilp.uphold.com/nQ6Bd32j9dUR" />
         )}
-        {post.canonicalLinks?.map((el) => (
-          <link rel="canonical" href={el} />
+        {currentPost.canonicalLinks?.map((el, i) => (
+          <link rel="canonical" href={el} key={`link-${i}`} />
         ))}
       </Head>
       <BlogPost

@@ -19,7 +19,7 @@ if (!self.define) {
     }
     let promise = Promise.resolve();
     if (!registry[name]) {
-
+      
         promise = new Promise(async resolve => {
           if ("document" in self) {
             const script = document.createElement("script");
@@ -31,7 +31,7 @@ if (!self.define) {
             resolve();
           }
         });
-
+      
     }
     return promise.then(() => {
       if (!registry[name]) {
@@ -45,7 +45,7 @@ if (!self.define) {
     Promise.all(names.map(singleRequire))
       .then(modules => resolve(modules.length === 1 ? modules[0] : modules));
   };
-
+  
   const registry = {
     require: Promise.resolve(require)
   };
@@ -106,10 +106,10 @@ define("./sw.js",['./workbox-b90066a8'], function (workbox) { 'use strict';
 
   workbox.precacheAndRoute([{
     "url": "/_next/static/runtime/amp.js",
-    "revision": "7050e0b9df992796261e7893f2a168e6"
+    "revision": "090fba14e5f3b40c5594c759da2f67f4"
   }, {
     "url": "/_next/static/runtime/main.js",
-    "revision": "8e4f864265fe66583a69508a650c20e3"
+    "revision": "0bac7c2e3e84d122cf25de1024d4a1d7"
   }, {
     "url": "/_next/static/runtime/polyfills.js",
     "revision": "516c3d4deeff70783126396a5a14d34e"
@@ -118,7 +118,7 @@ define("./sw.js",['./workbox-b90066a8'], function (workbox) { 'use strict';
     "revision": "9d11ea7095b60a828f2db49ed1004ade"
   }, {
     "url": "/_next/static/runtime/webpack.js",
-    "revision": "be77e1fe0d95a8726172b4a2e5e423f3"
+    "revision": "c1079f335b3b3b617678020732ef0b36"
   }], {
     "ignoreURLParametersMatching": [/ts/]
   });
