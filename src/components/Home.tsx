@@ -5,6 +5,7 @@ import Link from "next/link";
 import StyledAnchor from "./styles/StyledAnchor";
 import { LatestBlog } from "./LatestBlog";
 import { locales } from "../translations/config";
+import LocaleLink from './LocaleLink';
 
 const Welcome = styled.div`
   text-align: center;
@@ -68,11 +69,11 @@ const Home = ({ post }) => {
       </Welcome>
       <ShortIntro>
         <p>{t("short_intro")}</p>
-        <Link href="/[lang]/about" as={`/${locale}/about`} passHref>
+        <LocaleLink href="/about" as={`/about`} passHref>
           <StyledAnchor className="toRight">
             {t("common")["aboutMe"]}
           </StyledAnchor>
-        </Link>
+        </LocaleLink>
       </ShortIntro>
       <LatestBlog post={post} />
     </div>
