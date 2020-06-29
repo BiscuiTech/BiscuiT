@@ -29,8 +29,6 @@ const BlogPostPage = ({ post, morePosts, preview }) => {
   if (!router.isFallback && !currentPost?.slug) {
     return <ErrorPage statusCode={404} />;
   }
-  console.log(post);
-
   return (
     <Layout
       title={currentPost.title}
