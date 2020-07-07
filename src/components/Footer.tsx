@@ -50,6 +50,14 @@ const Footer = () => {
               </LocaleLink>
             </div>
           ))}
+          <div className="px-5 py-2" >
+            <a
+              href="https://notes.biscui.tech"
+              className="text-base leading-6 text-gray-400 hover:text-yellow-400"
+            >
+              {t("common")["footer_notes"]}
+            </a>
+          </div>
         </nav>
         <div className="mt-8 flex justify-center">
           <a
