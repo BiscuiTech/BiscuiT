@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Link from "next/link";
 import useTranslation from "../hooks/useTranslation";
+import LocaleLink from './LocaleLink';
 
 const links = [
   { tKey: "footer_about", path: "about" },
@@ -38,17 +39,25 @@ const Footer = () => {
         <nav className="-mx-5 -my-2 flex flex-wrap justify-center">
           {links.map((el, i) => (
             <div className="px-5 py-2" key={`${i}-${el.path}`}>
-              <Link
-                href={`/[lang]/${el.path}`}
-                as={`/${locale}/${el.path}`}
+              <LocaleLink
+                href={`/${el.path}`}
+                as={`/${el.path}`}
                 passHref={true}
               >
                 <a className="text-base leading-6 text-gray-400 hover:text-yellow-400">
                   {t("common")[el.tKey]}
                 </a>
-              </Link>
+              </LocaleLink>
             </div>
           ))}
+          <div className="px-5 py-2" >
+            <a
+              href="https://notes.biscui.tech"
+              className="text-base leading-6 text-gray-400 hover:text-yellow-400"
+            >
+              {t("common")["footer_notes"]}
+            </a>
+          </div>
         </nav>
         <div className="mt-8 flex justify-center">
           <a

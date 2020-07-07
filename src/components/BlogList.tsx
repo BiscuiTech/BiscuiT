@@ -1,7 +1,6 @@
 import React from "react";
 import PageHeader, { SubHeader } from "./styles/PageHeader";
 import useTranslation from "../hooks/useTranslation";
-import Link from "next/link";
 import {
   languageNames,
   translateLanguageNames,
@@ -9,6 +8,7 @@ import {
 } from "../translations/config";
 import { Locale } from "../translations/types";
 import { getCurrentPost } from "../lib/api";
+import LocaleLink from './LocaleLink';
 
 export const ListItem = ({ post }) => {
   const { locale, t } = useTranslation();
@@ -22,9 +22,9 @@ export const ListItem = ({ post }) => {
 
   return (
     <div className="mt-8 blogItem hover:bg-gray-900 py-2 px-4 rounded transition ease-in-out duration-150">
-      <Link
-        href={`/[lang]/blog/${currentPost.slug}`}
-        as={`/${locale}/blog/${currentPost.slug}`}
+      <LocaleLink
+        href={`/blog/${currentPost.slug}`}
+        as={`/blog/${currentPost.slug}`}
       >
         <a className="block arrow-link">
           <h3 className="mt-2 text-2xl leading-7 tracking-normal font-semibold text-indigo-400 blogItem-hover">
@@ -47,12 +47,12 @@ export const ListItem = ({ post }) => {
                 )} ${otherLocales}`}</a>
               </span>
             ) : (
-              <span className="float-right text-base leading-6 font-medium text-indigo-400">
-                <a className="yellow-link">{`${t(
-                  "blogListItemOnlyAvailable"
-                )} ${languageNames[locale]}`}</a>
-              </span>
-            )
+                <span className="float-right text-base leading-6 font-medium text-indigo-400">
+                  <a className="yellow-link">{`${t(
+                    "blogListItemOnlyAvailable"
+                  )} ${languageNames[locale]}`}</a>
+                </span>
+              )
           ) : otherLocales.length > 0 ? (
             <span className="float-right text-base leading-6 font-medium text-indigo-400">
               <a className="yellow-link">{`${t(
@@ -60,12 +60,12 @@ export const ListItem = ({ post }) => {
               )} ${otherLocales}`}</a>
             </span>
           ) : (
-            <span className="float-right text-base leading-6 font-medium text-indigo-400">
-              {`${t("blogListItemNotAvailable")} ${languageNames[locale]}`}
-            </span>
-          )}
+                <span className="float-right text-base leading-6 font-medium text-indigo-400">
+                  {`${t("blogListItemNotAvailable")} ${languageNames[locale]}`}
+                </span>
+              )}
         </a>
-      </Link>
+      </LocaleLink>
     </div>
   );
 };

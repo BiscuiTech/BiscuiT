@@ -4,6 +4,7 @@ import Link from "next/link";
 import useTranslation from "../hooks/useTranslation";
 import { useRouter } from "next/router";
 import { motion, AnimateSharedLayout } from "framer-motion";
+import LocaleLink from './LocaleLink';
 
 const ActiveLinks = [
   { tKey: "navigation_Home", path: "" },
@@ -48,7 +49,7 @@ const NavgitationStyles = styled.nav`
   }
 `;
 
-const StyledMenuLink = styled(motion.a)<{ current: boolean }>`
+const StyledMenuLink = styled(motion.a) <{ current: boolean }>`
   font-size: 20px;
   font-size: max(18px, min(2vw, 22px));
   padding: 12px 0;
@@ -76,9 +77,9 @@ const Navigation = () => {
       <NavgitationStyles>
         {ActiveLinks.map(({ tKey, path }, i) => {
           return (
-            <Link
-              href={`/[lang]/${path}`}
-              as={`/${locale}/${path}`}
+            <LocaleLink
+              href={`/${path}`}
+              as={`/${path}`}
               key={i}
               passHref={true}
             >
@@ -92,7 +93,7 @@ const Navigation = () => {
                 )}
                 {t("common")[tKey]}
               </StyledMenuLink>
-            </Link>
+            </LocaleLink>
           );
         })}
       </NavgitationStyles>

@@ -20,6 +20,7 @@ const common = {
   footer_blog: "Blog",
   footer_uses: "Tech",
   footer_projects: "Projets",
+  footer_notes: "Notes",
   footer_contact: "Contact",
   footer_copyright: "Tous droits réservés",
 };
