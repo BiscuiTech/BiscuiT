@@ -37,6 +37,21 @@ module.exports = {
         medium: '0 8px 30px rgba(0, 0, 0, 0.12)',
       },
     },
+    typography: (theme) => ({
+      default: {
+        css: {
+          color: theme('colors.gray.800'),
+        }
+      },
+      '3xl': {
+        css: {
+          fontSize: '1.875rem',
+          h1: {
+            fontSize: '4rem',
+          },
+        },
+      }
+    })
   },
   variants: {
     borderStyle: ['responsive', 'hover', 'focus'],
@@ -44,5 +59,6 @@ module.exports = {
     borderColor: ['responsive', 'hover', 'focus'],
     border: ['responsive', 'hover', 'focus'],
   },
-  plugins: [require('@tailwindcss/ui')],
+  plugins: [
+    require('@tailwindcss/typography'),require('@tailwindcss/ui')],
 };
