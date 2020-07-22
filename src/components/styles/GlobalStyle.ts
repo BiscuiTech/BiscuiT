@@ -1,5 +1,5 @@
-import { createGlobalStyle } from "styled-components";
-import Theme from "../Theme";
+import { createGlobalStyle } from 'styled-components'
+import Theme from '../Theme'
 
 const GlobaStyle = createGlobalStyle<{ theme: typeof Theme }>`
 
@@ -56,6 +56,6 @@ const GlobaStyle = createGlobalStyle<{ theme: typeof Theme }>`
     font-size: min(max(20px,3vw),24px);
 
   }
-`;
+`
 
-export default GlobaStyle;
+export default GlobaStyle

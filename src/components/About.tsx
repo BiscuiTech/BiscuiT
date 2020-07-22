@@ -1,13 +1,13 @@
-import React from "react";
-import PageHeader, { SubHeader } from "./styles/PageHeader";
-import useTranslation from "../hooks/useTranslation";
+import React from 'react'
+import PageHeader, { SubHeader } from './styles/PageHeader'
+import useTranslation from '../hooks/useTranslation'
 
 const About = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation()
   return (
     <>
-      <PageHeader>{t("pageHeader")}</PageHeader>
-      <SubHeader>{t("subHeader")}</SubHeader>
+      <PageHeader>{t('pageHeader')}</PageHeader>
+      <SubHeader>{t('subHeader')}</SubHeader>
       <section className="overflow-hidden">
         <div className="relative max-w-screen-xl mx-auto pt-20 pb-12 px-4 sm:px-6 lg:px-8 lg:py-20">
           <div className="relative lg:flex lg:items-center">
@@ -22,7 +22,7 @@ const About = () => {
                   /images/profile/biscuitech-profile_en4wcw_c_scale,w_1011.png 1011w,
                   /images/profile/biscuitech-profile_en4wcw_c_scale,w_1400.png 1400w"
                 src="/images/profile/biscuitech-profile_en4wcw_c_scale,w_1400.png"
-                alt={t("profilePictureAlt")}
+                alt={t('profilePictureAlt')}
               />
             </div>
 
@@ -40,7 +40,7 @@ const About = () => {
               </svg>
               <blockquote>
                 <div className="text-xl leading-9 font-medium text-gray-200">
-                  <p>{t("aboutMe")}</p>
+                  <p>{t('aboutMe')}</p>
                 </div>
                 <footer className="mt-8">
                   <div className="flex">
@@ -64,7 +64,7 @@ const About = () => {
                         Jean-Cédric Huet
                       </div>
                       <div className="text-base leading-6 font-medium text-indigo-400">
-                        {t("position")}
+                        {t('position')}
                       </div>
                     </div>
                   </div>
@@ -75,7 +75,7 @@ const About = () => {
         </div>
       </section>
     </>
-  );
-};
+  )
+}
 
-export default About;
+export default About

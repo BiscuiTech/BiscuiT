@@ -14,6 +14,7 @@
     "type-check": "tsc --pretty --noEmit",
     "format": "prettier --write \"**/*.{js,ts,tsx}\"",
     "lint": "eslint . --ext ts --ext tsx --ext js",
+    "lint-fix": "eslint . --ext ts --ext tsx --ext js --fix",
     "test": "jest",
     "test-all": "yarn lint && yarn type-check && yarn test"
   },

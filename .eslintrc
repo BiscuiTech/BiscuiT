@@ -1,4 +1,11 @@
 {
+  "settings": {
+    "react": {
+      "createClass": "createReactClass",
+      "pragma": "React",
+      "version": "detect"
+    }
+  },
   "extends": [
     "eslint:recommended",
     "prettier",
@@ -27,19 +34,14 @@
     "no-alert": 0,
     "no-await-in-loop": 0,
     "no-return-assign": ["error", "except-parens"],
+    "no-control-regex": "off",
     "no-restricted-syntax": [
       2,
       "ForInStatement",
       "LabeledStatement",
       "WithStatement"
     ],
-    "no-unused-vars": [
-      1,
-      {
-        "ignoreSiblings": true,
-        "argsIgnorePattern": "res|next|^err"
-      }
-    ],
+    "no-unused-vars": ["warn"],
     "prefer-const": [
       "error",
       {
@@ -74,12 +76,6 @@
     "react/no-unescaped-entities": 0,
     "jsx-a11y/accessible-emoji": 0,
     "react/require-default-props": 0,
-    "react/jsx-filename-extension": [
-      1,
-      {
-        "extensions": [".js", ".jsx"]
-      }
-    ],
     "radix": 0,
     "no-shadow": [
       2,
@@ -105,12 +101,12 @@
       }
     ],
     "jsx-a11y/href-no-hash": "off",
-    "jsx-a11y/anchor-is-valid": [
+    /* "jsx-a11y/anchor-is-valid": [
       "warn",
       {
         "aspects": ["invalidHref"]
       }
-    ],
+    ], */
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
     "react/react-in-jsx-scope": 0,
@@ -123,19 +119,12 @@
     "@typescript-eslint/no-explicit-any": 0,
     "@typescript-eslint/no-var-requires": 0,
     "@typescript-eslint/no-use-before-define": 0,
-    "@typescript-eslint/no-unused-vars": [
-      2,
-      {
-        "argsIgnorePattern": "^_"
-      }
-    ],
     "no-console": [
       2,
       {
         "allow": ["warn", "error"]
       }
     ]
-  }
   },
   "plugins": ["html", "prettier", "react-hooks", "@typescript-eslint"]
 }

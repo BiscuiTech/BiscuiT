@@ -1,13 +1,13 @@
-import React from "react";
-import CoverImage from "./md/CoverImage";
-import { H1 } from "./md/renderers";
-import styled from "styled-components";
-import useTranslation from "../hooks/useTranslation";
-import DateFormater from "./DateFormat";
+import React from 'react'
+import CoverImage from './md/CoverImage'
+import { H1 } from './md/renderers'
+import styled from 'styled-components'
+import useTranslation from '../hooks/useTranslation'
+import DateFormater from './DateFormat'
 
 const BlogHeader = styled.header`
   background-color: hsl(200, 100%, 4%);
-`;
+`
 
 const BlogContent = styled.section`
   font-family: Inter;
@@ -33,7 +33,7 @@ const BlogContent = styled.section`
     position: relative;
   }
   a:after {
-    content: "";
+    content: '';
     position: absolute;
     transition: all 0.25s;
     opacity: 0;
@@ -55,7 +55,7 @@ const BlogContent = styled.section`
     background-color: hsl(231, 30%, 25%);
     border-left: 2px solid #fbb03b;
   }
-  .bubble   {
+  .bubble {
     display: flex;
     background: hsl(231, 33%, 30%);
     width: 80%;
@@ -73,7 +73,7 @@ const BlogContent = styled.section`
     }
   }
   .bubble-question:before {
-    content: "?";
+    content: '?';
     color: hsl(231, 33%, 30%);
     align-self: start;
     padding: 4px;
@@ -85,7 +85,7 @@ const BlogContent = styled.section`
       1px 1px 0 #fbb03b;
   }
   .bubble-exclamation:before {
-    content: "!";
+    content: '!';
     color: hsl(231, 33%, 30%);
     align-self: start;
     padding: 4px;
@@ -96,10 +96,10 @@ const BlogContent = styled.section`
     text-shadow: -1px -1px 0 #fbb03b, 1px -1px 0 #fbb03b, -1px 1px 0 #fbb03b,
       1px 1px 0 #fbb03b;
   }
-`;
+`
 
 const BlogPost = ({ pid, post, morePosts }) => {
-  const { t } = useTranslation();
+  const { t } = useTranslation()
   return (
     <article className="relative">
       <BlogHeader className="border-b border-yellow-400 p-4">
@@ -111,7 +111,7 @@ const BlogPost = ({ pid, post, morePosts }) => {
         />
         <H1>{post.title}</H1>
         <div className="text-base text-gray-300 mt-2">
-          {`${t("blogBy")} ${post.author} | `}
+          {`${t('blogBy')} ${post.author} | `}
           {DateFormater({ dateString: post.publishedOn })}
         </div>
       </BlogHeader>
@@ -119,7 +119,7 @@ const BlogPost = ({ pid, post, morePosts }) => {
         <div dangerouslySetInnerHTML={{ __html: post.content }} />
       </BlogContent>
     </article>
-  );
-};
+  )
+}
 
-export default BlogPost;
+export default BlogPost

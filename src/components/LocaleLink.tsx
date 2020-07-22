@@ -7,7 +7,7 @@ const LocaleLink: React.FC<LinkProps> = (props) => {
   const { locale } = useTranslation()
   const localized = Object.assign({}, props, {
     href: `/[lang]${props.href}`,
-    as: props.as ? `/${locale}${props.as}` : `/${locale}${props.href}`
+    as: props.as ? `/${locale}${props.as}` : `/${locale}${props.href}`,
   })
   return <Link {...localized} />
 }

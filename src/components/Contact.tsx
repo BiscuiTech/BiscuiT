@@ -1,52 +1,52 @@
-import React, { useState } from "react";
-import useTranslation from "../hooks/useTranslation";
-import PageHeader, { SubHeader } from "./styles/PageHeader";
-import { email as emailRegEx } from "../lib/regEx";
-import { LoadingSpinner } from "./styles/LoadingSpinner";
+import React, { useState } from 'react'
+import useTranslation from '../hooks/useTranslation'
+import PageHeader, { SubHeader } from './styles/PageHeader'
+import { email as emailRegEx } from '../lib/regEx'
+import { LoadingSpinner } from './styles/LoadingSpinner'
 // import { useAlertDispatch, useAlertState, AlertType } from "../context/AlertContext";
 // import useAlert, { EAlert } from "../hooks/useAlert";
-import cn from "classnames";
+import cn from 'classnames'
 
 interface IStatus {
-  submitted: boolean;
-  submitting: boolean;
+  submitted: boolean
+  submitting: boolean
   info: {
-    error: boolean;
-    msg: string;
-  };
+    error: boolean
+    msg: string
+  }
 }
 
 const Contact = () => {
   // const dispatch = useAlertDispatch()
   // const alertState = useAlertState()
-  const { t, locale } = useTranslation();
+  const { t, locale } = useTranslation()
   const [validate, setValidate] = useState({
     target: null,
-  });
+  })
   const [status, setStatus] = useState<IStatus>({
     submitted: false,
     submitting: false,
     info: { error: false, msg: null },
-  });
+  })
   const [messageProps, setMessageProps] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    message: "",
-  });
-  const handleResponse = (status, msg) => {
-    if (status === 200) {
+    firstName: '',
+    lastName: '',
+    email: '',
+    message: '',
+  })
+  const handleResponse = (responseStatus, msg) => {
+    if (responseStatus === 200) {
       setStatus({
         submitted: true,
         submitting: false,
         info: { error: false, msg: msg },
-      });
+      })
       setMessageProps({
-        firstName: "",
-        lastName: "",
-        email: "",
-        message: "",
-      });
+        firstName: '',
+        lastName: '',
+        email: '',
+        message: '',
+      })
       // setAlert({ type: EAlert.SUCCESS, isOpen: true, message: msg })
       // dispatch({
       //   type: 'open', alert: {
@@ -56,11 +56,11 @@ const Contact = () => {
       // })
     } else {
       setStatus({
-        ...status,
+        ...responseStatus,
         submitted: true,
         info: { error: true, msg: msg },
-      });
-      console.log("send-message error");
+      })
+      console.error('send-message error')
       // setAlert({ type: EAlert.ERROR, isOpen: true, message: msg })
       // dispatch({
       //   type: 'open', alert: {
@@ -69,72 +69,72 @@ const Contact = () => {
       //   }
       // })
     }
-  };
+  }
   const checkValidity = () => {
     if (!emailRegEx.test(messageProps.email)) {
       setStatus({
         ...status,
         info: {
           error: true,
-          msg: t("common")["error_InvalidEmail"],
+          msg: t('common')['error_InvalidEmail'],
         },
-      });
-      setValidate({ target: "email" });
-      return false;
+      })
+      setValidate({ target: 'email' })
+      return false
     }
-    if (messageProps.firstName == "" || messageProps.lastName == "") {
-      setValidate({ target: "name" });
-      return false;
+    if (messageProps.firstName == '' || messageProps.lastName == '') {
+      setValidate({ target: 'name' })
+      return false
     }
-    if (messageProps.message == "") {
-      setValidate({ target: "message" });
-      return false;
+    if (messageProps.message == '') {
+      setValidate({ target: 'message' })
+      return false
     } else {
-      return true;
+      return true
     }
-  };
+  }
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
     setStatus({
       submitted: false,
       submitting: true,
-      info: { error: false, msg: "" },
-    });
+      info: { error: false, msg: '' },
+    })
 
     if (!checkValidity()) {
       setStatus({
         ...status,
         info: {
           error: true,
-          msg: t("common")["error_InvalidForm"],
+          msg: t('common')['error_InvalidForm'],
         },
-      });
+      })
       // dispatch({
       //   type: 'open', alert: {
       //     message: t("common")["error_InvalidForm"],
       //     type: AlertType.Error
       //   }
       // })
-      return;
+      return
     } else {
-      const res = await fetch("/api/send-message", {
-        method: "POST",
+      const res = await fetch('/api/send-message', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
-          "Content-Language": locale,
+          'Content-Type': 'application/json',
+          'Content-Language': locale,
         },
         body: JSON.stringify(messageProps),
-      });
-      const text = await res.text();
-      handleResponse(res.status, text);
+      })
+      const text = await res.text()
+      handleResponse(res.status, text)
     }
-  };
+  }
   const handleChange = (e) => {
-    e.preventDefault();
-    const { name, type, value } = e.target;
-    const val = type === "number" ? parseFloat(value) : value;
-    setMessageProps({ ...messageProps, [name]: val });
-  };
+    e.preventDefault()
+    const { name, type, value } = e.target
+    const val = type === 'number' ? parseFloat(value) : value
+    setMessageProps({ ...messageProps, [name]: val })
+  }
   return (
     <>
       <div className="my-12 overflow-hidden">
@@ -204,11 +204,11 @@ const Contact = () => {
                 fill="url(#85737c0e-0916-41d7-917f-596dc7edfa27)"
               />
             </svg>
-            <PageHeader>{t("header")}</PageHeader>
+            <PageHeader>{t('header')}</PageHeader>
             <SubHeader>
-              {t("subHeaderOne")}
+              {t('subHeaderOne')}
               <br />
-              <b>{t("subHeaderTwo")}</b>
+              <b>{t('subHeaderTwo')}</b>
             </SubHeader>
             <div className="mt-12">
               <form
@@ -221,17 +221,17 @@ const Contact = () => {
                     htmlFor="firstName"
                     className="block text-sm font-medium leading-5 text-gray-200"
                   >
-                    {t("contactFormFirstName")}
+                    {t('contactFormFirstName')}
                   </label>
                   <div className="mt-1 relative rounded-md shadow-sm">
                     <input
                       id="firstName"
                       name="firstName"
                       className={cn(
-                        "form-input py-3 px-4 block w-full transition ease-in-out duration-150 bg-gray-900",
+                        'form-input py-3 px-4 block w-full transition ease-in-out duration-150 bg-gray-900',
                         {
-                          "input-error": status.info.error,
-                          "border-gray-900": !status.info.error,
+                          'input-error': status.info.error,
+                          'border-gray-900': !status.info.error,
                         }
                       )}
                       onChange={handleChange}
@@ -243,17 +243,17 @@ const Contact = () => {
                     htmlFor="lastName"
                     className="block text-sm font-medium leading-5 text-gray-200"
                   >
-                    {t("contactFormLastName")}
+                    {t('contactFormLastName')}
                   </label>
                   <div className="mt-1 relative rounded-md shadow-sm">
                     <input
                       id="lastName"
                       name="lastName"
                       className={cn(
-                        "form-input py-3 px-4 block w-full transition ease-in-out duration-150 bg-gray-900",
+                        'form-input py-3 px-4 block w-full transition ease-in-out duration-150 bg-gray-900',
                         {
-                          "input-error": status.info.error,
-                          "border-gray-900": !status.info.error,
+                          'input-error': status.info.error,
+                          'border-gray-900': !status.info.error,
                         }
                       )}
                       onChange={handleChange}
@@ -265,7 +265,7 @@ const Contact = () => {
                     htmlFor="email"
                     className="block text-sm font-medium leading-5 text-gray-200"
                   >
-                    {t("contactFormEmail")}
+                    {t('contactFormEmail')}
                   </label>
                   <div className="mt-1 relative rounded-md shadow-sm">
                     <input
@@ -273,10 +273,10 @@ const Contact = () => {
                       name="email"
                       type="email"
                       className={cn(
-                        "form-input py-3 px-4 block w-full transition ease-in-out duration-150 bg-gray-900",
+                        'form-input py-3 px-4 block w-full transition ease-in-out duration-150 bg-gray-900',
                         {
-                          "input-error": status.info.error,
-                          "border-gray-900": !status.info.error,
+                          'input-error': status.info.error,
+                          'border-gray-900': !status.info.error,
                         }
                       )}
                       onChange={handleChange}
@@ -289,7 +289,7 @@ const Contact = () => {
                     htmlFor="message"
                     className="block text-sm font-medium leading-5 text-gray-200"
                   >
-                    {t("contactFormMessage")}
+                    {t('contactFormMessage')}
                   </label>
                   <div className="mt-1 relative rounded-md shadow-sm">
                     <textarea
@@ -297,10 +297,10 @@ const Contact = () => {
                       name="message"
                       rows={4}
                       className={cn(
-                        "form-textarea py-3 px-4 block w-full transition ease-in-out duration-150 bg-gray-900",
+                        'form-textarea py-3 px-4 block w-full transition ease-in-out duration-150 bg-gray-900',
                         {
-                          "input-error": status.info.error,
-                          "border-gray-900": !status.info.error,
+                          'input-error': status.info.error,
+                          'border-gray-900': !status.info.error,
                         }
                       )}
                       onChange={handleChange}
@@ -312,10 +312,10 @@ const Contact = () => {
                     <button
                       type="button"
                       className={cn(
-                        "w-full inline-flex items-center justify-center px-6 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white   focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150 border-gray-900",
+                        'w-full inline-flex items-center justify-center px-6 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white   focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150 border-gray-900',
                         {
-                          "bg-red-700 hover:bg-red-500": status.info.error,
-                          "bg-indigo-600 hover:bg-yellow-400": !status.info
+                          'bg-red-700 hover:bg-red-500': status.info.error,
+                          'bg-indigo-600 hover:bg-yellow-400': !status.info
                             .error,
                         }
                       )}
@@ -324,7 +324,7 @@ const Contact = () => {
                       {status.submitting ? (
                         <LoadingSpinner />
                       ) : (
-                        status.info.msg || t("contactFormButton")
+                        status.info.msg || t('contactFormButton')
                       )}
                     </button>
                   </span>
@@ -333,7 +333,7 @@ const Contact = () => {
                       className="mx-auto border-indigo-600 border-b-2 text-lg"
                       href="mailto:tech@biscui.tech"
                     >
-                      {t("contactFormSubmitError")}
+                      {t('contactFormSubmitError')}
                     </a>
                   )}
                 </div>
@@ -343,7 +343,7 @@ const Contact = () => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default Contact;
+export default Contact

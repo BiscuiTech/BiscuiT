@@ -1,14 +1,14 @@
-import { Client } from "@elastic/elasticsearch";
+import { Client } from '@elastic/elasticsearch'
 const client = new Client({
-  node: "https://elasticsearch.dashboard.biscuitech.dev/",
-});
+  node: 'https://elasticsearch.dashboard.biscuitech.dev/',
+})
 
-const indexName = "biscuitech-profiler";
+const indexName = 'biscuitech-profiler'
 
 export default async function (req, res) {
   //console.log(`Profiling data received: ${new Date()}`);
   try {
-    const { body } = req;
+    const { body } = req
     body.map(async (el) => {
       await client.index({
         index: indexName,
@@ -22,11 +22,11 @@ export default async function (req, res) {
           commitTime: el.commitTime,
           // interactions: el.interactions
         },
-      });
-    });
-    return res.status(200).send("Profile sent successfully.");
+      })
+    })
+    return res.status(200).send('Profile sent successfully.')
   } catch (error) {
-    console.log("ERROR", error);
-    return res.status(400).send("Profile not sent.");
+    // console.log('ERROR', error)
+    return res.status(400).send('Profile not sent.')
   }
 }

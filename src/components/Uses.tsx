@@ -1,8 +1,8 @@
-import React from "react";
-import PageHeader, { SubHeader } from "./styles/PageHeader";
-import useTranslation from "../hooks/useTranslation";
-import { ConfiguredTech, TechPill, getTechStyles } from "./TechStack";
-import styled from "styled-components";
+import React from 'react'
+import PageHeader, { SubHeader } from './styles/PageHeader'
+import useTranslation from '../hooks/useTranslation'
+import { ConfiguredTech, TechPill, getTechStyles } from './TechStack'
+import styled from 'styled-components'
 
 const TechPillWrapper = styled.li`
   background-color: hsl(200, 100%, 4%);
@@ -19,21 +19,21 @@ const TechPillWrapper = styled.li`
     box-shadow: 4px 4px 1px #fbb03b;
     transform: translate3d(-4px, -4px, 0px);
   }
-`;
+`
 
 const Uses = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation()
   return (
     <>
-      <PageHeader>{t("pageHeader")}</PageHeader>
-      <SubHeader>{t("subHeader")}</SubHeader>
+      <PageHeader>{t('pageHeader')}</PageHeader>
+      <SubHeader>{t('subHeader')}</SubHeader>
       <div className="container">
-        <p>{t("forCoding")}</p>
+        <p>{t('forCoding')}</p>
         <ul className="list-inside mx-4 flex flex-row flex-wrap items-start justify-start">
           {ConfiguredTech.map((el, i) => {
-            const styles = getTechStyles(el.id);
+            const styles = getTechStyles(el.id)
             return (
-              <TechPillWrapper>
+              <TechPillWrapper key={i}>
                 <TechPill
                   key={i}
                   styles={styles}
@@ -43,11 +43,11 @@ const Uses = () => {
                 </TechPill>
                 <p className="text-lg">{t(`techDescription_${el.id}`)}</p>
               </TechPillWrapper>
-            );
+            )
           })}
         </ul>
       </div>
     </>
-  );
-};
-export default Uses;
+  )
+}
+export default Uses

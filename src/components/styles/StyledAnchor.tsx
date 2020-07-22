@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 const AnchorTag = styled.a`
   --backgroundColor: ${(props) => props.theme.color.gold};
@@ -6,7 +6,7 @@ const AnchorTag = styled.a`
   text-decoration: none;
   color: white;
   font-weight: 400;
-  font-family: "Montserrat";
+  font-family: 'Montserrat';
   text-transform: lowercase;
   cursor: pointer;
 
@@ -29,6 +29,6 @@ const AnchorTag = styled.a`
     background-size: 4px 50px;
     border-radius: 5px;
   }
-`;
+`
 
-export default AnchorTag;
+export default AnchorTag

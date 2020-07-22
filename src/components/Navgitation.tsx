@@ -1,19 +1,19 @@
-import React from "react";
-import styled from "styled-components";
-import Link from "next/link";
-import useTranslation from "../hooks/useTranslation";
-import { useRouter } from "next/router";
-import { motion, AnimateSharedLayout } from "framer-motion";
-import LocaleLink from './LocaleLink';
+import React from 'react'
+import styled from 'styled-components'
+import Link from 'next/link'
+import useTranslation from '../hooks/useTranslation'
+import { useRouter } from 'next/router'
+import { motion, AnimateSharedLayout } from 'framer-motion'
+import LocaleLink from './LocaleLink'
 
 const ActiveLinks = [
-  { tKey: "navigation_Home", path: "" },
-  { tKey: "navigation_Blog", path: "blog" },
-  { tKey: "navigation_About", path: "about" },
-  { tKey: "navigation_Uses", path: "uses" },
+  { tKey: 'navigation_Home', path: '' },
+  { tKey: 'navigation_Blog', path: 'blog' },
+  { tKey: 'navigation_About', path: 'about' },
+  { tKey: 'navigation_Uses', path: 'uses' },
   // { tKey: 'navigation_Projects', path: 'projects' },
-  { tKey: "navigation_Contact", path: "contact" },
-];
+  { tKey: 'navigation_Contact', path: 'contact' },
+]
 
 const NavgitationStyles = styled.nav`
   --contentWidth: ${(props) => `${props.theme.layout.contentWidth}px`};
@@ -47,57 +47,54 @@ const NavgitationStyles = styled.nav`
     bottom: 0;
     z-index: -1;
   }
-`;
+`
 
-const StyledMenuLink = styled(motion.a) <{ current: boolean }>`
+const StyledMenuLink = styled(motion.a)<{ current: boolean }>`
   font-size: 20px;
   font-size: max(18px, min(2vw, 22px));
   padding: 12px 0;
-  color: ${(props) => (props.current ? "black" : "white")};
+  color: ${(props) => (props.current ? 'black' : 'white')};
   cursor: pointer;
   flex-grow: 2;
   text-align: center;
-  font-weight: ${(props) => (props.current ? "600" : "400")};
+  font-weight: ${(props) => (props.current ? '600' : '400')};
   position: relative;
-`;
+  tab-index: 0;
+  &:focus {
+    border: solid 1px ${(props) => props.theme.color.accent};
+  }
+`
 
 const Navigation = () => {
-  const { locale, t } = useTranslation();
-  const router = useRouter();
-  const { pathname } = router;
+  const { locale, t } = useTranslation()
+  const router = useRouter()
+  const { pathname } = router
   const isCurrentPath = (path) => {
     const filteredPathname = pathname
-      .replace(/(\/\[lang\]\/?)/g, "")
-      .replace(/\/.*/g, "");
-    return filteredPathname === path;
-  };
+      .replace(/(\/\[lang\]\/?)/g, '')
+      .replace(/\/.*/g, '')
+    return filteredPathname === path
+  }
 
   return (
     <AnimateSharedLayout>
       <NavgitationStyles>
-        {ActiveLinks.map(({ tKey, path }, i) => {
-          return (
-            <LocaleLink
-              href={`/${path}`}
-              as={`/${path}`}
-              key={i}
-              passHref={true}
-            >
-              <StyledMenuLink current={isCurrentPath(path)} animate key={i}>
-                {isCurrentPath(path) && (
-                  <motion.div
-                    layoutId="nav-selected"
-                    className="nav-selected"
-                    style={{ backgroundColor: "#FBB03B" }}
-                  />
-                )}
-                {t("common")[tKey]}
-              </StyledMenuLink>
-            </LocaleLink>
-          );
-        })}
+        {ActiveLinks.map(({ tKey, path }, i) => (
+          <LocaleLink href={`/${path}`} as={`/${path}`} key={i} passHref={true}>
+            <StyledMenuLink current={isCurrentPath(path)} animate key={i}>
+              {isCurrentPath(path) && (
+                <motion.div
+                  layoutId="nav-selected"
+                  className="nav-selected"
+                  style={{ backgroundColor: '#FBB03B' }}
+                />
+              )}
+              {t('common')[tKey]}
+            </StyledMenuLink>
+          </LocaleLink>
+        ))}
       </NavgitationStyles>
     </AnimateSharedLayout>
-  );
-};
-export default Navigation;
+  )
+}
+export default Navigation

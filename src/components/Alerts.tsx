@@ -1,8 +1,8 @@
-import React from "react";
-import { useAlertState, AlertType } from "../context/AlertContext";
-import styled from "styled-components";
+import React from 'react'
+import { useAlertState, AlertType } from '../context/AlertContext'
+import styled from 'styled-components'
 
-const BaseAlertStyles = styled.div``;
+const BaseAlertStyles = styled.div``
 
 const WarningAlert = ({ message }) => (
   <div className="rounded-md bg-yellow-50 p-4">
@@ -33,7 +33,7 @@ const WarningAlert = ({ message }) => (
       </div>
     </div>
   </div>
-);
+)
 
 const ErrorAlert = () => (
   <div className="rounded-md bg-red-50 p-4">
@@ -68,13 +68,13 @@ const ErrorAlert = () => (
       </div>
     </div>
   </div>
-);
+)
 
 const Alerts = () => {
-  const state = useAlertState();
+  const state = useAlertState()
   switch (state.type) {
     case AlertType.Error:
-      return <ErrorAlert />;
+      return <ErrorAlert />
     /*     case AlertType.Sucess:
           return <SucessAlert />
         case AlertType.Warning:
@@ -82,9 +82,9 @@ const Alerts = () => {
         case AlertType.Info:
           return <InfoAlert /> */
     default: {
-      throw new Error(`Unhandled alert type: ${state.type}`);
+      throw new Error(`Unhandled alert type: ${state.type}`)
     }
   }
-};
+}
 
-export default Alerts;
+export default Alerts

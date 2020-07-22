@@ -23,7 +23,7 @@ module.exports = {
         : false,
     ],
   ],
-};
+}
 /*
 module.exports = {
   plugins: ['tailwindcss', 'postcss-preset-env'],

@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import styled from "styled-components";
-import PageHeader, { SubHeader } from "./styles/PageHeader";
+import React, { useState } from 'react'
+import styled from 'styled-components'
+import PageHeader, { SubHeader } from './styles/PageHeader'
 // import Project from "./Project";
-import useWindowDimensions from "../lib/useWindowDimension";
-import projects from "../lib/projects";
+import useWindowDimensions from '../lib/useWindowDimension'
+import projects from '../lib/projects'
 
 const Projects = styled.div`
   margin: 80px 0;
@@ -11,11 +11,11 @@ const Projects = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-`;
+`
 
 const ProjectList = () => {
-  const { height, width } = useWindowDimensions();
-  const [active, setActive] = useState(0);
+  const { height, width } = useWindowDimensions()
+  const [active, setActive] = useState(0)
   return (
     <>
       {/* <PageHeader>Past Projects</PageHeader>
@@ -38,7 +38,7 @@ const ProjectList = () => {
         )}
       </Projects> */}
     </>
-  );
-};
+  )
+}
 
-export default ProjectList;
+export default ProjectList

@@ -1,11 +1,11 @@
-import React from "react";
-import styled from "styled-components";
-import useTranslation from "../hooks/useTranslation";
-import Link from "next/link";
-import StyledAnchor from "./styles/StyledAnchor";
-import { LatestBlog } from "./LatestBlog";
-import { locales } from "../translations/config";
-import LocaleLink from './LocaleLink';
+import React from 'react'
+import styled from 'styled-components'
+import useTranslation from '../hooks/useTranslation'
+import Link from 'next/link'
+import StyledAnchor from './styles/StyledAnchor'
+import { LatestBlog } from './LatestBlog'
+import { locales } from '../translations/config'
+import LocaleLink from './LocaleLink'
 
 const Welcome = styled.div`
   text-align: center;
@@ -17,7 +17,7 @@ const Welcome = styled.div`
   /* margin-top: 24px; */
   margin-bottom: 64px;
   padding: 0;
-  font-family: "Montserrat";
+  font-family: 'Montserrat';
   font-weight: 200;
   * {
     padding: 0;
@@ -40,7 +40,7 @@ const Welcome = styled.div`
     margin: 0;
     word-wrap: break-word;
   }
-`;
+`
 
 const ShortIntro = styled.div`
   width: 100%;
@@ -53,31 +53,31 @@ const ShortIntro = styled.div`
     margin-right: 6px;
     float: right;
   }
-`;
+`
 
 const Home = ({ post }) => {
-  const { locale, t } = useTranslation();
+  const { locale, t } = useTranslation()
   return (
     <div className="mx-auto w-full md:w-4/5 lg:w-4/5 pt-20">
       <Welcome>
         <h1 className="welcome--hello">
-          {t("welcome_msg")}
+          {t('welcome_msg')}
           <br />
           <span className="welcome--my-name">Jean-Cédric Huet</span>
         </h1>
-        <p className="welcome--from">{t("i_am")}</p>
+        <p className="welcome--from">{t('i_am')}</p>
       </Welcome>
       <ShortIntro>
-        <p>{t("short_intro")}</p>
+        <p>{t('short_intro')}</p>
         <LocaleLink href="/about" as={`/about`} passHref>
           <StyledAnchor className="toRight">
-            {t("common")["aboutMe"]}
+            {t('common')['aboutMe']}
           </StyledAnchor>
         </LocaleLink>
       </ShortIntro>
       <LatestBlog post={post} />
     </div>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home

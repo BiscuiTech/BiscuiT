@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect } from 'react'
 // import styled, { keyframes } from 'styled-components';
 // import TechStack from './TechStack';
 
@@ -139,9 +139,9 @@ const ImageBackground = styled.div`
 `; */
 
 const Project = ({ height, width, index, info, onClick, active, selected }) => {
-  const imageHeight = height * 0.35;
-  const imageWidth = width * 0.35;
-  useEffect(() => {}, [height, width]);
+  const imageHeight = height * 0.35
+  const imageWidth = width * 0.35
+  // useEffect(() => {}, [height, width])
   return {
     /* <ProjectWrapper imageHeight={imageHeight} active={active} index={index}>
       <ProjectHeader>
@@ -169,7 +169,7 @@ const Project = ({ height, width, index, info, onClick, active, selected }) => {
         </>
       }
     </ProjectWrapper> */
-  };
-};
+  }
+}
 
-export default Project;
+export default Project

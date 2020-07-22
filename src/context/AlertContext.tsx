@@ -1,13 +1,15 @@
 import React from 'react'
 
-type Action = { type: 'open', alert: { message: string, type: AlertType } } | { type: 'close' }
+type Action =
+  | { type: 'open'; alert: { message: string; type: AlertType } }
+  | { type: 'close' }
 type Dispatch = (action: Action) => void
 type State = {
-  isOpen: boolean,
-  type: AlertType,
-  header?: string,
-  message: string,
-  links?: [string],
+  isOpen: boolean
+  type: AlertType
+  header?: string
+  message: string
+  links?: [string]
   accent?: boolean
   dismissible?: boolean
 }
@@ -16,25 +18,34 @@ type AlertProviderProps = { children: React.ReactNode }
 export enum AlertType {
   Success = 'SUCCESS',
   Info = 'INFO',
-  Error = "ERROR",
-  Warning = "WARNING"
+  Error = 'ERROR',
+  Warning = 'WARNING',
 }
 
 const AlertStateContext = React.createContext<State | undefined>(undefined)
-const AlertDispatchContext = React.createContext<Dispatch | undefined>(undefined)
+const AlertDispatchContext = React.createContext<Dispatch | undefined>(
+  undefined
+)
 
 function alertReducer(state, action) {
   switch (action.type) {
     case 'open':
       return {
-        ...state, isOpen: true, message: action.message, accent: action.accent,
+        ...state,
+        isOpen: true,
+        message: action.message,
+        accent: action.accent,
         dismissible: action.dismissable,
-        links: action.links, header: action.header,
-        type: action.type
+        links: action.links,
+        header: action.header,
+        type: action.type,
       }
     case 'close':
       return {
-        type: '', message: '', isOpen: false, dismissible: false,
+        type: '',
+        message: '',
+        isOpen: false,
+        dismissible: false,
         accent: false,
         header: undefined,
         links: undefined,
@@ -66,13 +77,11 @@ export const AlertProvider: React.FC = ({ children }: AlertProviderProps) => {
     type: '',
     message: '',
     dismissible: false,
-    accent: false
+    accent: false,
   })
   return (
-    <AlertStateContext.Provider
-      value={state}
-    ><AlertDispatchContext.Provider
-      value={dispatch}>
+    <AlertStateContext.Provider value={state}>
+      <AlertDispatchContext.Provider value={dispatch}>
         {children}
       </AlertDispatchContext.Provider>
     </AlertStateContext.Provider>
