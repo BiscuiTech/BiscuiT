@@ -2,7 +2,7 @@ import { useRouter } from 'next/router'
 import useTranslation from '../hooks/useTranslation'
 import { defaultDescription, defaultOGImage, defaultOGURL } from '../../config'
 
-export default function (post?) {
+function useOpenGraph(post?) {
   const router = useRouter()
   const { t, locale } = useTranslation()
   return {
@@ -19,3 +19,5 @@ export default function (post?) {
     // video: t("ogVideo"),
   }
 }
+
+export default useOpenGraph

@@ -12,13 +12,16 @@ const BlogHeader = styled.header`
 const BlogContent = styled.section`
   font-family: Inter;
   padding: 0 1em;
+  pre,
+  code {
+    font-family: MonoLisa, Consolas, Monaco, monospace;
+  }
   code {
     padding: 0.1em 0.5em;
     margin: 0 2px;
     background: hsl(0, 0%, 20%);
     color: hsl(42, 93.2%, 46.1%);
     border-radius: 2px;
-    font-family: Consolas, Monaco, monospace;
     font-size: 0.9em;
     line-height: 1em;
   }

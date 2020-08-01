@@ -15,12 +15,20 @@ const {
   SENTRY_PROJECT,
   SENTRY_AUTH_TOKEN,
   NODE_ENV,
+  VERCEL_GITHUB_COMMIT_SHA,
+  VERCEL_GITLAB_COMMIT_SHA,
+  VERCEL_BITBUCKET_COMMIT_SHA,
 } = process.env
+const COMMIT_SHA =
+  VERCEL_GITHUB_COMMIT_SHA ||
+  VERCEL_GITLAB_COMMIT_SHA ||
+  VERCEL_BITBUCKET_COMMIT_SHA
+
 process.env.SENTRY_DSN = SENTRY_DSN
 
 module.exports = withPlugins(
   [
-    [withPWA, { pwa: { dest: 'public' } }],
+    // [withPWA, { pwa: { dest: 'public' } }],
     [new SentryWebpackPlugin()],
     [withBundleAnalyzer],
     [withSourceMaps],
@@ -49,9 +57,9 @@ module.exports = withPlugins(
       // building the browser's withBundleAnalyzer
       if (!options.isServer) {
         config.resolve.alias['@sentry/node'] = '@sentry/browser'
-        config.resolve.alias['react-dom$'] = 'react-dom/profiling'
+        /*         config.resolve.alias['react-dom$'] = 'react-dom/profiling'
         config.resolve.alias['scheduler/tracing'] =
-          'scheduler/tracing-profiling'
+          'scheduler/tracing-profiling' */
         // config.optimization.minimizer = [
         //   new TerserPlugin({
         //     terserOptions: {
@@ -66,6 +74,7 @@ module.exports = withPlugins(
         SENTRY_ORG &&
         SENTRY_PROJECT &&
         SENTRY_AUTH_TOKEN &&
+        COMMIT_SHA &&
         NODE_ENV === 'production'
       ) {
         config.plugins.push(
@@ -73,6 +82,7 @@ module.exports = withPlugins(
             include: '.next',
             ignore: ['node_modules'],
             urlPrefix: '~/_next',
+            release: COMMIT_SHA,
           })
         )
       }
@@ -80,7 +90,18 @@ module.exports = withPlugins(
         test: /\.mdx?$/,
         use: 'raw-loader',
       })
-
+      /* config.module.rules.push({
+        test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              // outputPath: 'src/fonts/',
+            },
+          },
+        ],
+      }) */
       return config
     },
     async rewrites() {

@@ -18,6 +18,7 @@ import { LanguageProvider } from '../context/LanguageContext'
 if (process.env.NODE_ENV === 'production') {
   Router.events.on('routeChangeComplete', (url) => gtag.pageview(url))
   Sentry.init({
+    enabled: process.env.NODE_ENV === 'production',
     dsn: 'https://c0e5b834500d45b88fb648ccf7c489bf@sentry.io/1838052',
   })
 }

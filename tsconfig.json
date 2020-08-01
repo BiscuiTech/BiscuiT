@@ -17,5 +17,11 @@
     "removeComments": true
   },
   "exclude": ["node_modules", "./src/components/Alerts.tsx", ".next", "out"],
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "jest.config.js"]
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "jest.config.js",
+    "src/pages/404.js"
+  ]
 }
