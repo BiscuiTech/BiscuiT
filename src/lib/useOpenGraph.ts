@@ -9,7 +9,7 @@ function useOpenGraph(post?) {
     title: post?.title || t('ogTitle'),
     type: t('ogType'),
     image: t('ogImage'),
-    url: `${process.env.NOW_URL || defaultOGURL}${router.asPath}`,
+    url: `${process.env.NOW_URL || defaultOGURL}${router?.asPath}`,
     // audio: t("ogAudio"),
     description: post?.excerpt || t('ogDescription'),
     determiner: t('ogDeterminer'),
