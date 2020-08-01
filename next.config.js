@@ -83,11 +83,8 @@ module.exports = withPlugins(
 
       return config
     },
-    experimental: {
-      async rewrites() {
-        return [{ source: '/sitemap.xml', destination: '/api/sitemap.xml' }]
-      },
-      catchAllRouting: true,
+    async rewrites() {
+      return [{ source: '/sitemap.xml', destination: '/api/sitemap.xml' }]
     },
     env: {
       NOW_URL: process.env.NOW_URL,
