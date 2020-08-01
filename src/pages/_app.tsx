@@ -40,6 +40,7 @@ export async function reportWebVitals(metric) {
 }
 
 class MyApp extends App {
+  err: any
   componentDidCatch(error, errorInfo) {
     // console.log('CUSTOM ERROR HANDLING', error)
     // This is needed to render errors correctly in development / production

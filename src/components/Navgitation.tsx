@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import Link from 'next/link'
 import useTranslation from '../hooks/useTranslation'
 import { useRouter } from 'next/router'
 import { motion, AnimateSharedLayout } from 'framer-motion'
