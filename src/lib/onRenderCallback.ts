@@ -1,17 +1,17 @@
-let queue = [];
+let queue = []
 
 // sendProfileQueue every 5 seconds
 
-setInterval(sendProfileQueue, 5000);
+setInterval(sendProfileQueue, 5000)
 
 interface IRenderCallback {
-  id: string;
-  phase: string;
-  actualDuration: number;
-  baseDuration: number;
-  startTime: number;
-  commitTime: number;
-  interactions: [];
+  id: string
+  phase: string
+  actualDuration: number
+  baseDuration: number
+  startTime: number
+  commitTime: number
+  interactions: []
 }
 
 export function onRenderCallback<IRenderCallback>(
@@ -31,26 +31,26 @@ export function onRenderCallback<IRenderCallback>(
     startTime,
     commitTime,
     interactions,
-  });
+  })
 }
 
 async function sendProfileQueue() {
   if (!queue.length) {
-    return Promise.resolve();
+    return Promise.resolve()
   }
-  const queueToSend = [...queue];
-  queue = [];
+  const queueToSend = [...queue]
+  queue = []
 
   // here's where we'd actually make the server call to send the queueToSend
   // data to our backend...
   //console.info("sending profile queue", queueToSend);
-  const result = await fetch("/api/profiler-monitoring", {
-    method: "POST",
+  const result = await fetch('/api/profiler-monitoring', {
+    method: 'POST',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
     body: JSON.stringify(queueToSend),
-  });
+  })
   //console.log("user-land result", result);
-  return Promise.resolve();
+  return Promise.resolve()
 }

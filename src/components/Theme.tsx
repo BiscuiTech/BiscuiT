@@ -1,23 +1,23 @@
 const theme = {
   menu: {
-    font: "Inter",
+    font: 'Inter',
   },
   color: {
-    gold: "#FBB03B",
-    accent: "#FBB03B",
-    blue: "#0071bc",
+    gold: '#FBB03B',
+    accent: '#FBB03B',
+    blue: '#0071bc',
   },
   layout: {
-    contentWidth: "880",
+    contentWidth: '880',
   },
-  font: "Inter",
+  font: 'Inter',
   button: {
-    background: "#0071bc",
+    background: '#0071bc',
   },
   home: {
-    slantedBackgroundHeight: "40vh",
+    slantedBackgroundHeight: '40vh',
   },
-  background: "hsl(200, 100%, 5%)",
-};
+  background: 'hsl(200, 100%, 5%)',
+}
 
-export default theme;
+export default theme

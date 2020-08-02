@@ -1,5 +1,5 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from 'react'
+import styled from 'styled-components'
 
 const ContactButtonStyles = styled.div`
   text-align: center;
@@ -7,7 +7,7 @@ const ContactButtonStyles = styled.div`
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  color:white;
+  color: white;
   cursor: pointer;
   font-size: 24px;
   font-weight: 400;
@@ -61,29 +61,27 @@ const ContactButtonStyles = styled.div`
   @media (max-width: 780px) {
     margin: auto;
   }
-`;
+`
 
 interface IContactButton {
   children: any
   onClick?: any
 }
 
-const ContactButton = ({ children, onClick }: IContactButton) => {
-  return (
-    <ContactButtonStyles onClick={onClick}>
-      <svg>
-        <defs>
-          <linearGradient id="myGradient">
-            <stop offset="0%" stopColor="hsl(209, 100%, 49%)" />
-            <stop offset="50%" stopColor="hsl(187, 71%, 50%)" />
-            <stop offset="100%" stopColor="hsl(34, 100%, 50%)" />
-          </linearGradient>
-        </defs>
-        <rect x="0" y="0" fill="none" width="100%" height="100%" />
-      </svg>
-      <button>{children}</button>
-    </ContactButtonStyles >
-  )
-};
+const ContactButton = ({ children, onClick }: IContactButton) => (
+  <ContactButtonStyles onClick={onClick}>
+    <svg>
+      <defs>
+        <linearGradient id="myGradient">
+          <stop offset="0%" stopColor="hsl(209, 100%, 49%)" />
+          <stop offset="50%" stopColor="hsl(187, 71%, 50%)" />
+          <stop offset="100%" stopColor="hsl(34, 100%, 50%)" />
+        </linearGradient>
+      </defs>
+      <rect x="0" y="0" fill="none" width="100%" height="100%" />
+    </svg>
+    <button>{children}</button>
+  </ContactButtonStyles>
+)
 
-export default ContactButton;
+export default ContactButton

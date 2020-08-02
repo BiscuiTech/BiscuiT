@@ -1,22 +1,22 @@
-export const defaultLocale = "en" as const;
+export const defaultLocale = 'en' as const
 
-export const locales = ["en", "fr"] as const;
+export const locales = ['en', 'fr'] as const
 
 export const languageNames = {
-  en: "English",
-  fr: "Français",
-};
+  en: 'English',
+  fr: 'Français',
+}
 
 export const translateLanguageNames = (currentLocale, language) => {
   const dict = {
     en: {
-      en: "English",
-      fr: "French",
+      en: 'English',
+      fr: 'French',
     },
     fr: {
-      en: "Anglais",
-      fr: "Français",
+      en: 'Anglais',
+      fr: 'Français',
     },
-  };
-  return dict[currentLocale][language];
-};
+  }
+  return dict[currentLocale][language]
+}

@@ -1,5 +1,5 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react'
+import styled from 'styled-components'
 
 const LoadingSpinnerStyles = styled.div`
   width: 26px;
@@ -13,7 +13,7 @@ const LoadingSpinnerStyles = styled.div`
   animation: spHydro 0.6s infinite linear;
   &:before,
   &:after {
-    content: "";
+    content: '';
     position: absolute;
     width: 10px;
     height: 10px;
@@ -44,8 +44,6 @@ const LoadingSpinnerStyles = styled.div`
       transform: rotate(359deg);
     }
   }
-`;
+`
 
-export const LoadingSpinner = () => {
-  return <LoadingSpinnerStyles />;
-};
+export const LoadingSpinner = () => <LoadingSpinnerStyles />

@@ -1,28 +1,31 @@
-import { useState, useEffect } from 'react';
-const globalAny: any = global;
+import { useState, useEffect } from 'react'
+const globalAny: any = global
 
 function getWindowDimensions() {
   if (!process.browser) {
     globalAny.window = {}
   }
-  const width = globalAny.window?.innerWidth;
-  const height = globalAny.window?.innerHeight;
+  const width = globalAny.window?.innerWidth
+  const height = globalAny.window?.innerHeight
   return {
     width,
-    height
-  };
+    height,
+  }
 }
 
 export default function useWindowDimensions() {
-  const [windowDimensions, setWindowDimensions] = useState({ height: null, width: null });
+  const [windowDimensions, setWindowDimensions] = useState({
+    height: null,
+    width: null,
+  })
   useEffect(() => {
-    setWindowDimensions(getWindowDimensions());
+    setWindowDimensions(getWindowDimensions())
 
     function handleResize() {
-      setWindowDimensions(getWindowDimensions());
+      setWindowDimensions(getWindowDimensions())
     }
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-  return windowDimensions;
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+  return windowDimensions
 }

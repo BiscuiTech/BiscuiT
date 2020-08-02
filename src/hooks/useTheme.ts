@@ -8,7 +8,7 @@ const useTheme = (user: any) => {
     } else {
       document.body.className = ''
     }
-    return () => { }
+    return
   }, [user, user?.settings?.theme])
 }
 

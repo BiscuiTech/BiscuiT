@@ -1,16 +1,16 @@
-import React from "react";
-import styled from "styled-components";
-import Link from "next/link";
-import useTranslation from "../hooks/useTranslation";
-import LocaleLink from './LocaleLink';
+import React from 'react'
+import styled from 'styled-components'
+import Link from 'next/link'
+import useTranslation from '../hooks/useTranslation'
+import LocaleLink from './LocaleLink'
 
 const links = [
-  { tKey: "footer_about", path: "about" },
-  { tKey: "footer_blog", path: "blog" },
-  { tKey: "footer_uses", path: "uses" },
+  { tKey: 'footer_about', path: 'about' },
+  { tKey: 'footer_blog', path: 'blog' },
+  { tKey: 'footer_uses', path: 'uses' },
   // { tKey: "footer_projects", path: "projects" },
-  { tKey: "footer_contact", path: "contact" },
-];
+  { tKey: 'footer_contact', path: 'contact' },
+]
 
 const FooterStyles = styled.div`
   position: sticky;
@@ -24,14 +24,14 @@ const FooterStyles = styled.div`
   font-weight: 300;
   text-align: center;
   flex-shrink: 0;
-`;
+`
 
 /**
  * TODO: scroll to top button
  */
 
 const Footer = () => {
-  const { t, locale } = useTranslation();
+  const { t, locale } = useTranslation()
 
   return (
     <FooterStyles>
@@ -45,17 +45,17 @@ const Footer = () => {
                 passHref={true}
               >
                 <a className="text-base leading-6 text-gray-400 hover:text-yellow-400">
-                  {t("common")[el.tKey]}
+                  {t('common')[el.tKey]}
                 </a>
               </LocaleLink>
             </div>
           ))}
-          <div className="px-5 py-2" >
+          <div className="px-5 py-2">
             <a
               href="https://notes.biscui.tech"
               className="text-base leading-6 text-gray-400 hover:text-yellow-400"
             >
-              {t("common")["footer_notes"]}
+              {t('common')['footer_notes']}
             </a>
           </div>
         </nav>
@@ -111,12 +111,12 @@ const Footer = () => {
         </div>
         <div className="mt-8">
           <p className="text-center text-base leading-6 text-gray-400">
-            &copy; 2020 BiscuiTech. {t("common")["footer_copyright"]}.
+            &copy; 2020 BiscuiTech. {t('common')['footer_copyright']}.
           </p>
         </div>
       </div>
     </FooterStyles>
-  );
-};
+  )
+}
 
-export default Footer;
+export default Footer

@@ -1,19 +1,19 @@
-import React from "react";
-import Head from "next/head";
-import { getInitialLocale } from "../translations/getInitialLocale";
-import { useRouter } from "next/router";
+import React from 'react'
+import Head from 'next/head'
+import { getInitialLocale } from '../translations/getInitialLocale'
+import { useRouter } from 'next/router'
 
 const RootProjectsPage: React.FC = () => {
-  const router = useRouter();
+  const router = useRouter()
   React.useEffect(() => {
-    window.location.replace(`/${getInitialLocale()}${router.asPath}`);
-  });
+    window.location.replace(`/${getInitialLocale()}${router.asPath}`)
+  })
 
   return (
     <Head>
       <meta name="robots" content="noindex, nofollow" />
     </Head>
-  );
-};
+  )
+}
 
-export default RootProjectsPage;
+export default RootProjectsPage

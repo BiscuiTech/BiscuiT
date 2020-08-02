@@ -1,13 +1,13 @@
-const withPlugins = require('next-compose-plugins');
-const withSourceMaps = require('@zeit/next-source-maps')();
-const SentryWebpackPlugin = require('@sentry/webpack-plugin');
+const withPlugins = require('next-compose-plugins')
+const withSourceMaps = require('@zeit/next-source-maps')()
+const SentryWebpackPlugin = require('@sentry/webpack-plugin')
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
-});
+})
 // const withMDX = require('@next/mdx')({
 //   extension: /\.mdx?$/,
 // });
-const withPWA = require('next-pwa');
+const withPWA = require('next-pwa')
 
 const {
   NEXT_PUBLIC_SENTRY_DSN: SENTRY_DSN,
@@ -15,12 +15,20 @@ const {
   SENTRY_PROJECT,
   SENTRY_AUTH_TOKEN,
   NODE_ENV,
-} = process.env;
-process.env.SENTRY_DSN = SENTRY_DSN;
+  VERCEL_GITHUB_COMMIT_SHA,
+  VERCEL_GITLAB_COMMIT_SHA,
+  VERCEL_BITBUCKET_COMMIT_SHA,
+} = process.env
+const COMMIT_SHA =
+  VERCEL_GITHUB_COMMIT_SHA ||
+  VERCEL_GITLAB_COMMIT_SHA ||
+  VERCEL_BITBUCKET_COMMIT_SHA
+
+process.env.SENTRY_DSN = SENTRY_DSN
 
 module.exports = withPlugins(
   [
-    [withPWA, { pwa: { dest: 'public' } }],
+    // [withPWA, { pwa: { dest: 'public' } }],
     [new SentryWebpackPlugin()],
     [withBundleAnalyzer],
     [withSourceMaps],
@@ -32,7 +40,7 @@ module.exports = withPlugins(
       // Fixes npm packages that depend on `fs` module
       config.node = {
         fs: 'empty',
-      };
+      }
       // In `pages/_app.js`, Sentry is imported from @sentry/node. While
       // @sentry/browser will run in a Node.js environment, @sentry/node will use
       // Node.js-only APIs to catch even more unhandled exceptions.
@@ -48,10 +56,10 @@ module.exports = withPlugins(
       // So ask Webpack to replace @sentry/node imports with @sentry/browser when
       // building the browser's withBundleAnalyzer
       if (!options.isServer) {
-        config.resolve.alias['@sentry/node'] = '@sentry/browser';
-        config.resolve.alias['react-dom$'] = 'react-dom/profiling';
+        config.resolve.alias['@sentry/node'] = '@sentry/browser'
+        /*         config.resolve.alias['react-dom$'] = 'react-dom/profiling'
         config.resolve.alias['scheduler/tracing'] =
-          'scheduler/tracing-profiling';
+          'scheduler/tracing-profiling' */
         // config.optimization.minimizer = [
         //   new TerserPlugin({
         //     terserOptions: {
@@ -66,6 +74,7 @@ module.exports = withPlugins(
         SENTRY_ORG &&
         SENTRY_PROJECT &&
         SENTRY_AUTH_TOKEN &&
+        COMMIT_SHA &&
         NODE_ENV === 'production'
       ) {
         config.plugins.push(
@@ -73,21 +82,31 @@ module.exports = withPlugins(
             include: '.next',
             ignore: ['node_modules'],
             urlPrefix: '~/_next',
+            release: COMMIT_SHA,
           })
-        );
+        )
       }
       config.module.rules.push({
         test: /\.mdx?$/,
         use: 'raw-loader',
-      });
-
-      return config;
+      })
+      /* config.module.rules.push({
+        test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              // outputPath: 'src/fonts/',
+            },
+          },
+        ],
+      }) */
+      config.plugins.push()
+      return config
     },
-    experimental: {
-      async rewrites() {
-        return [{ source: '/sitemap.xml', destination: '/api/sitemap.xml' }];
-      },
-      catchAllRouting: true,
+    async rewrites() {
+      return [{ source: '/sitemap.xml', destination: '/api/sitemap.xml' }]
     },
     env: {
       NOW_URL: process.env.NOW_URL,
@@ -95,4 +114,4 @@ module.exports = withPlugins(
       EMAIL_PASSWORD: process.env.EMAIL_PASSWORD,
     },
   }
-);
+)

@@ -1,13 +1,13 @@
-import React from "react";
-import { useRouter } from "next/router";
-import { locales } from "../translations/config";
-import styled from "styled-components";
-import { LanguageContext } from "../context/LanguageContext";
+import React from 'react'
+import { useRouter } from 'next/router'
+import { locales } from '../translations/config'
+import styled from 'styled-components'
+import { LanguageContext } from '../context/LanguageContext'
 
 const Wrapper = styled.div`
   --contentWidth: ${(props) => `${props.theme.layout.contentWidth}px`};
 
-  font-family: "Montserrat";
+  font-family: 'Montserrat';
   font-size: 14px;
   position: absolute;
   float: left;
@@ -29,7 +29,7 @@ const Wrapper = styled.div`
     position: fixed;
     margin-left: 0;
   }
-`;
+`
 
 const Button = styled.div`
   --gold: ${(props) => props.theme.color.gold};
@@ -60,11 +60,11 @@ const Button = styled.div`
     }
     .select-fr {
       left: calc(var(--height) / 3.5);
-      color: ${(props) => (props.lang === "fr" ? "#000" : null)};
+      color: ${(props) => (props.lang === 'fr' ? '#000' : null)};
     }
     .select-en {
       right: calc(var(--height) / 4);
-      color: ${(props) => (props.lang === "en" ? "#000" : null)};
+      color: ${(props) => (props.lang === 'en' ? '#000' : null)};
     }
   }
 
@@ -83,7 +83,7 @@ const Button = styled.div`
 
   .slider:before {
     position: absolute;
-    content: "";
+    content: '';
     height: var(--height);
     width: var(--height);
     left: 0;
@@ -113,22 +113,22 @@ const Button = styled.div`
   .slider.round:before {
     border-radius: 50%;
   }
-`;
+`
 
 const LocaleSwitcher: React.FC = () => {
-  const router = useRouter();
-  const { localization } = React.useContext(LanguageContext);
+  const router = useRouter()
+  const { localization } = React.useContext(LanguageContext)
   const handleLocaleChange = React.useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
-      const targetLang = e.target.checked ? "en" : "fr";
-      const regex = new RegExp(`^/(${locales.join("|")})`);
+      const targetLang = e.target.checked ? 'en' : 'fr'
+      const regex = new RegExp(`^/(${locales.join('|')})`)
       router.push(
         router.pathname,
         router.asPath.replace(regex, `/${targetLang}`)
-      );
+      )
     },
     [router]
-  );
+  )
 
   return (
     <Wrapper>
@@ -137,7 +137,7 @@ const LocaleSwitcher: React.FC = () => {
           <input
             type="checkbox"
             onChange={handleLocaleChange}
-            checked={localization.locale === "en" ? true : false}
+            checked={localization.locale === 'en' ? true : false}
           />
           <span className="slider round"></span>
           <span className="select-fr">FR</span>
@@ -145,7 +145,7 @@ const LocaleSwitcher: React.FC = () => {
         </label>
       </Button>
     </Wrapper>
-  );
-};
+  )
+}
 
-export default LocaleSwitcher;
+export default LocaleSwitcher
