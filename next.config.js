@@ -108,6 +108,7 @@ module.exports = withPlugins(
     async rewrites() {
       return [{ source: '/sitemap.xml', destination: '/api/sitemap.xml' }]
     },
+    trailingSlash: false,
     env: {
       NOW_URL: process.env.NOW_URL,
       GA_TRACKING_ID: process.env.GA_TRACKING_ID,
