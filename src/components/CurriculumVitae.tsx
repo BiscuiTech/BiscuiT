@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import { useWindupString, WindupChildren, Pace, useSkip, Pause } from 'windups'
 // import * as content from "../content/cv";
 import styled, { keyframes } from 'styled-components'
@@ -43,13 +43,8 @@ const ScrollDown = styled.div`
   }
 `
 const StyledCV = styled.div`
-  /* width: 100%;
-  margin: auto; */
-  /*  margin-bottom: 10%; */
-  * {
-    font-family: Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New',
-      monospace;
-  }
+  font-family: MonoLisa, Menlo, Monaco, Consolas, 'Liberation Mono',
+    'Courier New', monospace;
   p:not(:last-child) {
     margin: 0.5em 0;
   }
@@ -96,24 +91,30 @@ const DownloadButton = () => {
   const { t, locale } = useTranslation()
   const download = (e) => {
     e.preventDefault()
-    // console.info(`Downloading ${locale} version`)
+    window.open(`/content/cv/${locale}.mdx`)
   }
   return (
     <span className=" rounded-md shadow-sm justify-end mx-2">
-      <button
+      <a
         onClick={download}
         type="button"
         className="inline-flex items-center px-2.5 py-1.5 border border-yellow-400 text-xs leading-4 font-medium rounded text-yellow-400 hover:text-black hover:bg-yellow-400 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50 transition ease-in-out duration-150"
       >
         {t('downloadButton')}
-      </button>
+      </a>
     </span>
   )
 }
 
 const CurriculumVitae = ({ cv }) => {
+  const [hasReachedScreen, setHasReachedScreen] = useState(false)
   const ref = useRef()
-  const onScreen = false /* useIntersectionObserver(ref, '-250px'); */
+  const onScreen = useIntersectionObserver(ref, '-250px')
+  useEffect(() => {
+    if (onScreen) {
+      setHasReachedScreen(true)
+    }
+  }, [onScreen])
   return (
     <>
       <ScrollDown>
@@ -125,32 +126,34 @@ const CurriculumVitae = ({ cv }) => {
         className="font-mono text-lg bg-black border-yellow-500 border-2 border-dashed p-4 relative text-gray-300 leading-snug text-justify min-h-screen"
         ref={ref}
       >
-        <div className="flex flex-end justify-end">
-          <SkipButton />
-          <DownloadButton />
-        </div>
-        {onScreen ? (
-          <WindupChildren>
-            <Pause ms={1000} />
-            <Pace ms={6}>
-              <MDX
-                components={{
-                  h1: H1,
-                  h2: H2,
-                  h3: H3,
-                  h4: H4,
-                  hr: HR,
-                  ul: UL,
-                  li: LI,
-                }}
-              >
-                {cv.content}
-              </MDX>
-            </Pace>
-          </WindupChildren>
-        ) : (
-          <PendingCursor />
-        )}
+        <WindupChildren>
+          <div className="flex flex-end justify-end">
+            <SkipButton />
+            <DownloadButton />
+          </div>
+          {hasReachedScreen ? (
+            <>
+              <Pause ms={1000} />
+              <Pace ms={6}>
+                <MDX
+                  components={{
+                    h1: H1,
+                    h2: H2,
+                    h3: H3,
+                    h4: H4,
+                    hr: HR,
+                    ul: UL,
+                    li: LI,
+                  }}
+                >
+                  {cv.content}
+                </MDX>
+              </Pace>
+            </>
+          ) : (
+            <PendingCursor />
+          )}
+        </WindupChildren>
       </StyledCV>
       {/* </div> */}
     </>

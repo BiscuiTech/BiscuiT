@@ -3,13 +3,13 @@ import { useWindupString, WindupChildren } from 'windups'
 
 export const H1 = ({ children }) => (
   /* const [windup] = useWindupString(children); */
-  <h1 className="text-2xl font-bold p-0 mt-10 font-mono uppercase border-t border-white">
+  <h1 className="text-2xl text-yellow-400 font-bold p-0 mt-10 font-mono uppercase border-t border-white">
     {children}
   </h1>
 )
 
 export const H2 = ({ children }) => (
-  <h2 className="text-2xl mt-6 font-medium tracking-wide font-mono text-left">
+  <h2 className="text-2xl text-yellow-300 mt-6 font-medium tracking-wide font-mono text-left">
     {children}
   </h2>
 )

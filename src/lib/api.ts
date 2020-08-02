@@ -46,10 +46,9 @@ export function getAllPosts(fields = []) {
 }
 
 export function getCV(fields = [], lang = 'en') {
-  const fullPath = join(process.cwd(), 'src/content/cv', `${lang}.mdx`)
+  const fullPath = join(process.cwd(), 'public/content/cv', `${lang}.mdx`)
   const fileContents = fs.readFileSync(fullPath, 'utf8')
   const { data, content } = matter(fileContents)
-
   const items = {}
 
   // Ensure only the minimal needed data is exposed

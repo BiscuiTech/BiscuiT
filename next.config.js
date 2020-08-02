@@ -102,6 +102,7 @@ module.exports = withPlugins(
           },
         ],
       }) */
+      config.plugins.push()
       return config
     },
     async rewrites() {
