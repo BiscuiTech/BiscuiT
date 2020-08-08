@@ -13,8 +13,8 @@
     "start-debug": "NODE_OPTIONS='--inspect' next start",
     "type-check": "tsc --pretty --noEmit",
     "format": "prettier --write \"**/*.{js,ts,tsx}\"",
-    "lint": "eslint . --ext ts --ext tsx --ext js",
-    "lint-fix": "eslint . --ext ts --ext tsx --ext js --fix",
+    "lint": "eslint . --ext ts --ext tsx --ext js --ignore-path .gitignore",
+    "lint-fix": "eslint . --ext ts --ext tsx --ext js --fix --ignore-path .gitignore",
     "test": "jest",
     "test-all": "yarn lint && yarn type-check && yarn test"
   },
