@@ -16,7 +16,7 @@
     "lint": "eslint . --ext .js,.ts,.tsx --ignore-path .gitignore",
     "lint-fix": "eslint . --ext .js,.ts,.tsx --fix --ignore-path .gitignore",
     "test": "jest",
-    "test-all": "yarn lint && yarn type-check && yarn test"
+    "test-all": "npm run lint && npm run type-check && npm run test"
   },
   "repository": {
     "type": "git",
