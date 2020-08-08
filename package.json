@@ -2,7 +2,7 @@
   "name": "biscuit",
   "version": "3.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "next.config.js",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -22,7 +22,7 @@
     "type": "git",
     "url": "git+https://github.com/BiscuiTech/BiscuiT.git"
   },
-  "author": "",
+  "author": "Jean-Cédric Huet (BiscuiTech) https://biscui.tech",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/BiscuiTech/BiscuiT/issues"
