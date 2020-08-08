@@ -8,20 +8,21 @@
   },
   "extends": [
     "eslint:recommended",
-    "prettier",
-    "prettier/react",
-    "plugin:react/recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended",
-    "prettier/@typescript-eslint"
+    "eslint-config-prettier",
+    "eslint-config-prettier/@typescript-eslint"
+  ],
+  "plugins": [
+    "html",
+    "prettier",
+    "react-hooks",
+    "@typescript-eslint",
+    "@typescript-eslint/eslint-plugin"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "ecmaVersion": 2020,
-    // Can I remove these now?
-    "ecmaFeatures": {
-      "impliedStrict": true,
-      "classes": true
-    }
+    "ecmaVersion": 2020
   },
   "env": {
     "es6": true,
@@ -101,12 +102,6 @@
       }
     ],
     "jsx-a11y/href-no-hash": "off",
-    /* "jsx-a11y/anchor-is-valid": [
-      "warn",
-      {
-        "aspects": ["invalidHref"]
-      }
-    ], */
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
     "react/react-in-jsx-scope": 0,
@@ -125,6 +120,5 @@
         "allow": ["warn", "error"]
       }
     ]
-  },
-  "plugins": ["html", "prettier", "react-hooks", "@typescript-eslint"]
+  }
 }
