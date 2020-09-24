@@ -21,7 +21,7 @@ function calculateLinesToHighlight(meta) {
   }
 }
 
-export default ({
+const Code = ({
   children,
   className: hightlightClassName,
   metastring,
@@ -89,3 +89,5 @@ export default ({
     </Highlight>
   )
 }
+
+export default Code
