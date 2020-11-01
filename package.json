@@ -46,7 +46,7 @@
     "@sentry/node": "^5.20.1",
     "@sentry/webpack-plugin": "^1.12.0",
     "@tailwindcss/typography": "^0.2.0",
-    "@tailwindcss/ui": "^0.5.0",
+    "@tailwindcss/ui": "^0.7.0",
     "@types/styled-components": "^5.1.2",
     "@zeit/next-source-maps": "0.0.4-canary.1",
     "analytics": "^0.5.5",
