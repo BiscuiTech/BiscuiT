@@ -70,7 +70,7 @@
     "react-waypoint": "^9.0.3",
     "sitemap": "^6.2.0",
     "styled-components": "^5.1.1",
-    "tailwindcss": "^1.6.0",
+    "tailwindcss": "^2.0.0",
     "windups": "^1.0.2"
   },
   "devDependencies": {
