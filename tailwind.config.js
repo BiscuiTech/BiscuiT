@@ -1,10 +1,5 @@
 module.exports = {
-  purge: [
-    './src/**/*.html',
-    './src/**/*.vue',
-    './src/**/*.jsx',
-    './src/**/*.tsx',
-  ],
+  purge: ['./src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
       colors: {
@@ -59,5 +54,5 @@ module.exports = {
     borderColor: ['responsive', 'hover', 'focus'],
     border: ['responsive', 'hover', 'focus'],
   },
-  plugins: [require('@tailwindcss/typography'), require('@tailwindcss/ui')],
+  // plugins: [require('@tailwindcss/typography'), require('@tailwindcss/ui')],
 }

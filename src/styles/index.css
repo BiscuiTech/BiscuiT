@@ -1,11 +1,11 @@
 /* purgecss start ignore */
-@import "tailwindcss/base";
-@import "tailwindcss/components";
+@tailwind base;
+@tailwind components;
 /* purgecss end ignore */
 .blogItem .arrow-link:after {
   @apply text-yellow-300;
   @apply text-base;
-  content: "🠖";
+  content: '🠖';
   transition: all 0.25s;
   opacity: 0;
   margin-left: -0.2em;
@@ -26,7 +26,7 @@
 }
 .colored-list li::before {
   @apply text-yellow-300;
-  content: "\2022";
+  content: '\2022';
   font-weight: bold;
   display: inline-block;
   width: 1em;
@@ -40,7 +40,7 @@
   position: relative;
 }
 .yellow-link:after {
-  content: "";
+  content: '';
   position: absolute;
   transition: all 0.25s;
   opacity: 0;
@@ -56,7 +56,7 @@
   width: 100%;
 }
 
-@import "tailwindcss/utilities";
+@tailwind utilities;
 
 .hero {
   width: 100%;
