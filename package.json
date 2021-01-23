@@ -89,7 +89,7 @@
     "babel-jest": "^26.2.2",
     "babel-plugin-styled-components": "^1.11.1",
     "eslint": "^7.6.0",
-    "eslint-config-prettier": "^6.11.0",
+    "eslint-config-prettier": "^7.0.0",
     "eslint-plugin-html": "^6.0.2",
     "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-jsx-a11y": "^6.3.1",
