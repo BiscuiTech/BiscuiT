@@ -49,7 +49,7 @@
     "@tailwindcss/ui": "^0.7.2",
     "@types/styled-components": "^5.1.7",
     "@zeit/next-source-maps": "0.0.4-canary.1",
-    "analytics": "^0.6.7",
+    "analytics": "^0.7.0",
     "classnames": "^2.2.6",
     "cross-env": "^7.0.3",
     "date-fns": "^2.16.1",
