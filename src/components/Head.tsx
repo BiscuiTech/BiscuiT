@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react'
 import NextHead from 'next/head'
-import useOpenGraph from '../lib/useOpenGraph'
+import React from 'react'
 import { defaultDescription, defaultOGImage, defaultOGURL } from '../../config'
 
 const Head = ({ title, description, og }) => (

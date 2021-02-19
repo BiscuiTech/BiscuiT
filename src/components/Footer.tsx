@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import Link from 'next/link'
 import useTranslation from '../hooks/useTranslation'
 import LocaleLink from './LocaleLink'
 
@@ -31,7 +30,7 @@ const FooterStyles = styled.div`
  */
 
 const Footer = () => {
-  const { t, locale } = useTranslation()
+  const { t } = useTranslation()
 
   return (
     <FooterStyles>

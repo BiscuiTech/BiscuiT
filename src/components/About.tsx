@@ -1,6 +1,6 @@
 import React from 'react'
-import PageHeader, { SubHeader } from './styles/PageHeader'
 import useTranslation from '../hooks/useTranslation'
+import PageHeader, { SubHeader } from './styles/PageHeader'
 
 const About = () => {
   const { t } = useTranslation()
@@ -22,7 +22,7 @@ const About = () => {
                   /images/profile/biscuitech-profile_en4wcw_c_scale,w_1011.png 1011w,
                   /images/profile/biscuitech-profile_en4wcw_c_scale,w_1400.png 1400w"
                 src="/images/profile/biscuitech-profile_en4wcw_c_scale,w_1400.png"
-                alt={t('profilePictureAlt')}
+                alt={t('profilePictureAlt') as string}
               />
             </div>
 

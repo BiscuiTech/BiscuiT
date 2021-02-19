@@ -1,18 +1,19 @@
-import React, { useState } from 'react'
-import useTranslation from '../hooks/useTranslation'
-import PageHeader, { SubHeader } from './styles/PageHeader'
-import { email as emailRegEx } from '../lib/regEx'
-import { LoadingSpinner } from './styles/LoadingSpinner'
 // import { useAlertDispatch, useAlertState, AlertType } from "../context/AlertContext";
 // import useAlert, { EAlert } from "../hooks/useAlert";
 import cn from 'classnames'
+import React, { useState } from 'react'
+import useTranslation from '../hooks/useTranslation'
+import { email as emailRegEx } from '../lib/regEx'
+import { Translations } from '../translations/types'
+import { LoadingSpinner } from './styles/LoadingSpinner'
+import PageHeader, { SubHeader } from './styles/PageHeader'
 
 interface IStatus {
   submitted: boolean
   submitting: boolean
   info: {
     error: boolean
-    msg: string
+    msg: string | null
   }
 }
 
@@ -20,9 +21,7 @@ const Contact = () => {
   // const dispatch = useAlertDispatch()
   // const alertState = useAlertState()
   const { t, locale } = useTranslation()
-  const [validate, setValidate] = useState({
-    target: null,
-  })
+  const tCommon = t('common') as Translations
   const [status, setStatus] = useState<IStatus>({
     submitted: false,
     submitting: false,
@@ -34,7 +33,7 @@ const Contact = () => {
     email: '',
     message: '',
   })
-  const handleResponse = (responseStatus, msg) => {
+  const handleResponse = (responseStatus: number, msg: string) => {
     if (responseStatus === 200) {
       setStatus({
         submitted: true,
@@ -47,27 +46,12 @@ const Contact = () => {
         email: '',
         message: '',
       })
-      // setAlert({ type: EAlert.SUCCESS, isOpen: true, message: msg })
-      // dispatch({
-      //   type: 'open', alert: {
-      //     message: msg,
-      //     type: AlertType.Success
-      //   }
-      // })
     } else {
       setStatus({
-        ...responseStatus,
+        submitting: false,
         submitted: true,
         info: { error: true, msg: msg },
       })
-      console.error('send-message error')
-      // setAlert({ type: EAlert.ERROR, isOpen: true, message: msg })
-      // dispatch({
-      //   type: 'open', alert: {
-      //     message: msg,
-      //     type: AlertType.Error
-      //   }
-      // })
     }
   }
   const checkValidity = () => {
@@ -76,18 +60,15 @@ const Contact = () => {
         ...status,
         info: {
           error: true,
-          msg: t('common')['error_InvalidEmail'],
+          msg: tCommon.error_InvalidEmail,
         },
       })
-      setValidate({ target: 'email' })
       return false
     }
     if (messageProps.firstName == '' || messageProps.lastName == '') {
-      setValidate({ target: 'name' })
       return false
     }
     if (messageProps.message == '') {
-      setValidate({ target: 'message' })
       return false
     } else {
       return true
@@ -109,12 +90,6 @@ const Contact = () => {
           msg: t('common')['error_InvalidForm'],
         },
       })
-      // dispatch({
-      //   type: 'open', alert: {
-      //     message: t("common")["error_InvalidForm"],
-      //     type: AlertType.Error
-      //   }
-      // })
       return
     } else {
       const res = await fetch('/api/send-message', {

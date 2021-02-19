@@ -1,15 +1,13 @@
-import React from 'react'
-import Layout from '../../components/Layout'
+import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import About from '../../components/About'
-import { GetStaticProps, GetStaticPaths, NextPage } from 'next'
-import { getLocalizationProps } from '../../context/LanguageContext'
-import { Localization } from '../../translations/types'
-import useOpenGraph from '../../lib/useOpenGraph'
 import CurriculumVitae from '../../components/CurriculumVitae'
+import Layout from '../../components/Layout'
+import { getLocalizationProps } from '../../context/LanguageContext'
 import { getCV } from '../../lib/api'
+import useOpenGraph from '../../lib/useOpenGraph'
+import { Localization } from '../../translations/types'
 
 const AboutPage: NextPage<{ localization: Localization; cv: any }> = ({
-  localization,
   cv,
 }) => (
   <Layout

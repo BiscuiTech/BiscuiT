@@ -1,18 +1,17 @@
-import React from 'react'
-import Layout from '../../../components/Layout'
+import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import BlogList from '../../../components/BlogList'
-import { GetStaticProps, GetStaticPaths, NextPage } from 'next'
+import Layout from '../../../components/Layout'
 import { getLocalizationProps } from '../../../context/LanguageContext'
 import { getAllPosts } from '../../../lib/api'
-import useOpenGraph from '../../../lib/useOpenGraph'
-import { Localization, Locale } from '../../../translations/types'
 import publishedPosts from '../../../lib/publishedPosts'
+import useOpenGraph from '../../../lib/useOpenGraph'
+import { Localization } from '../../../translations/types'
 
 const BlogIndexPage: NextPage<{
   localization: Localization
   posts: any
   preview: boolean
-}> = ({ localization, posts, preview = false }) => (
+}> = ({ posts, preview = false }) => (
   <Layout
     title="Biscui.Tech"
     description="Biscui.Tech Home page"

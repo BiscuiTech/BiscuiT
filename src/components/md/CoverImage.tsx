@@ -1,6 +1,13 @@
 import useTranslation from '../../hooks/useTranslation'
 
-export default function CoverImage({ title, src, slug, accreditation }) {
+interface ICoverImage {
+  title: string
+  src: string
+  accreditation: string
+  slug: string
+}
+
+const CoverImage: React.FC<ICoverImage> = ({ title, src, accreditation }) => {
   const { t } = useTranslation()
   return (
     <div
@@ -26,3 +33,4 @@ export default function CoverImage({ title, src, slug, accreditation }) {
     </div>
   )
 }
+export default CoverImage

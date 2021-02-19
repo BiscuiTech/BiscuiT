@@ -63,7 +63,7 @@ export const DisplayError = ({ error }) => {
           )
         )}
         <strong>{t('common')['userMsg_Error']}</strong>
-        Une erreur s'est produite.
+        {"Une erreur s'est produite."}
         <br />
         <div className="error-message--code">
           {error.message

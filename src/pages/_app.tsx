@@ -1,19 +1,19 @@
-import App from 'next/app'
+import * as Sentry from '@sentry/node'
+import { AnimatePresence } from 'framer-motion'
+import Router from 'next/router'
 import React from 'react'
 import { ThemeProvider } from 'styled-components'
-import * as Sentry from '@sentry/node'
 import theme from '../components/Theme'
-import { AnimatePresence } from 'framer-motion'
-
-import '../styles/index.css'
+import { AlertProvider } from '../context/AlertContext'
+import { LanguageProvider } from '../context/LanguageContext'
 /**
  *
  *  This is for Google Analytics
  * */
 import * as gtag from '../lib/gtag'
-import Router from 'next/router'
-import { AlertProvider } from '../context/AlertContext'
-import { LanguageProvider } from '../context/LanguageContext'
+import '../styles/index.css'
+import { init } from '../utils/sentry'
+init()
 
 if (process.env.NODE_ENV === 'production') {
   Router.events.on('routeChangeComplete', (url) => gtag.pageview(url))
@@ -40,31 +40,18 @@ export async function reportWebVitals(metric) {
   })
 }
 
-class MyApp extends App<{ err: any }> {
-  componentDidCatch(error, errorInfo) {
-    // console.log('CUSTOM ERROR HANDLING', error)
-    // This is needed to render errors correctly in development / production
-    super.componentDidCatch(error, errorInfo)
-  }
+export default function App({ Component, pageProps, err, router }) {
+  const modifiedPageProps = { ...pageProps, err }
 
-  render() {
-    const { Component, pageProps, router } = this.props
-    // Workaround for https://github.com/zeit/next.js/issues/8592
-    const { err } = this.props
-    const modifiedPageProps = { ...pageProps, err }
-
-    return (
-      <ThemeProvider theme={theme}>
-        <AlertProvider>
-          <AnimatePresence exitBeforeEnter onExitComplete={handleExitComplete}>
-            <LanguageProvider localization={pageProps.localization}>
-              <Component {...modifiedPageProps} key={router.route} />
-            </LanguageProvider>
-          </AnimatePresence>
-        </AlertProvider>
-      </ThemeProvider>
-    )
-  }
+  return (
+    <ThemeProvider theme={theme}>
+      <AlertProvider>
+        <AnimatePresence exitBeforeEnter onExitComplete={handleExitComplete}>
+          <LanguageProvider localization={pageProps.localization}>
+            <Component {...modifiedPageProps} key={router.route} />
+          </LanguageProvider>
+        </AnimatePresence>
+      </AlertProvider>
+    </ThemeProvider>
+  )
 }
-
-export default MyApp

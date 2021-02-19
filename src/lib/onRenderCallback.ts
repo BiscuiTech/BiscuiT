@@ -51,6 +51,6 @@ async function sendProfileQueue() {
     },
     body: JSON.stringify(queueToSend),
   })
-  //console.log("user-land result", result);
+  console.info('user-land result', result)
   return Promise.resolve()
 }

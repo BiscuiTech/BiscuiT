@@ -4,6 +4,7 @@ const SentryWebpackPlugin = require('@sentry/webpack-plugin')
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 })
+const runtimeCaching = require('next-pwa/cache')
 // const withMDX = require('@next/mdx')({
 //   extension: /\.mdx?$/,
 // });
@@ -25,16 +26,17 @@ const COMMIT_SHA =
   VERCEL_BITBUCKET_COMMIT_SHA
 
 process.env.SENTRY_DSN = SENTRY_DSN
-
+const basePath = ''
 module.exports = withPlugins(
   [
-    // [withPWA, { pwa: { dest: 'public' } }],
+    [withPWA, { pwa: { dest: 'public', runtimeCaching } }],
     [new SentryWebpackPlugin()],
     [withBundleAnalyzer],
     [withSourceMaps],
     // [withMDX, { pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'] }],
   ],
   {
+    productionBrowserSourceMaps: true,
     target: 'serverless',
     webpack: (config, options) => {
       // Fixes npm packages that depend on `fs` module
@@ -69,6 +71,15 @@ module.exports = withPlugins(
         //   }),
         // ];
       }
+      // Define an environment variable so source code can check whether or not
+      // it's running on the server so we can correctly initialize Sentry
+      config.plugins.push(
+        new options.webpack.DefinePlugin({
+          'process.env.NEXT_IS_SERVER': JSON.stringify(
+            options.isServer.toString()
+          ),
+        })
+      )
       if (
         SENTRY_DSN &&
         SENTRY_ORG &&
@@ -81,7 +92,8 @@ module.exports = withPlugins(
           new SentryWebpackPlugin({
             include: '.next',
             ignore: ['node_modules'],
-            urlPrefix: '~/_next',
+            stripPrefix: ['webpack://_N_E/'],
+            urlPrefix: `~${basePath}/_next`,
             release: COMMIT_SHA,
           })
         )
@@ -114,5 +126,6 @@ module.exports = withPlugins(
       GA_TRACKING_ID: process.env.GA_TRACKING_ID,
       EMAIL_PASSWORD: process.env.EMAIL_PASSWORD,
     },
-  }
+  },
+  basePath
 )

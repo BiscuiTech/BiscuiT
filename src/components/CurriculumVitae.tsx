@@ -1,14 +1,11 @@
-import React, { useRef, useState, useEffect } from 'react'
-import { useWindupString, WindupChildren, Pace, useSkip, Pause } from 'windups'
-// import * as content from "../content/cv";
-import styled, { keyframes } from 'styled-components'
-import { SubHeader } from './styles/PageHeader'
-// import useTranslation from "../hooks/useTranslation";
 import MDX from '@mdx-js/runtime'
-// import CVen from "../content/cv/en.mdx";
-import { H1, H2, H3, H4, HR, UL, LI } from './styles/CVRenderers'
-import useTranslation from '../hooks/useTranslation'
+import React, { useEffect, useRef, useState } from 'react'
+import styled, { keyframes } from 'styled-components'
+import { Pace, Pause, useSkip, WindupChildren } from 'windups'
 import useIntersectionObserver from '../hooks/useIntersectionObserver'
+import useTranslation from '../hooks/useTranslation'
+import { H1, H2, H3, H4, HR, LI, UL } from './styles/CVRenderers'
+import { SubHeader } from './styles/PageHeader'
 const ScrollDownKeyframes = keyframes`
   0% {
     opacity: 1;

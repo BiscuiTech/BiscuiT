@@ -1,13 +1,16 @@
+import { Locale } from './types'
+
 export const defaultLocale = 'en' as const
 
 export const locales = ['en', 'fr'] as const
 
 export const languageNames = {
   en: 'English',
+
   fr: 'Français',
 }
-
-export const translateLanguageNames = (currentLocale, language) => {
+// TODO: remove this
+export const translateLanguageNames = (currentLocale: Locale, language) => {
   const dict = {
     en: {
       en: 'English',

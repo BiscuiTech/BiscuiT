@@ -1,14 +1,11 @@
-import React from 'react'
-import Layout from '../../components/Layout'
+import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import Contact from '../../components/Contact'
-import { GetStaticProps, GetStaticPaths, NextPage } from 'next'
-import { Localization } from '../../translations/types'
+import Layout from '../../components/Layout'
 import { getLocalizationProps } from '../../context/LanguageContext'
 import useOpenGraph from '../../lib/useOpenGraph'
+import { Localization } from '../../translations/types'
 
-const ContactPage: NextPage<{ localization: Localization }> = ({
-  localization,
-}) => (
+const ContactPage: NextPage<{ localization: Localization }> = () => (
   <Layout
     title="Biscui.Tech"
     description="Biscui.Tech Home page"

@@ -1,6 +1,6 @@
 import nodemailer from 'nodemailer'
-import { email as emailRegEx } from '../../lib/regEx'
 import { ServerClient } from 'postmark'
+import { email as emailRegEx } from '../../lib/regEx'
 const postmarkClient = new ServerClient(process.env.POSTMARK_SERVER_API_TOKEN)
 
 const transporter = nodemailer.createTransport({
@@ -55,10 +55,9 @@ export default async function (req, res) {
     }),
   ])
     .then(() => res.status(200).send('Message sent successfully.'))
-    .catch((error) =>
-      // console.log('ERROR', error)
+    .catch(() => {
       res.status(400).send('Message not sent.')
-    )
+    })
   /*try {
      await postmarkClient.sendEmail({
       From: `Website Contact Form <${process.env.EMAIL_USERNAME}>`,

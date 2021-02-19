@@ -1,18 +1,17 @@
-import React from 'react'
-import Layout from '../../components/Layout'
-import Home from '../../components/Home'
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
+import Home from '../../components/Home'
+import Layout from '../../components/Layout'
 import { getLocalizationProps } from '../../context/LanguageContext'
-import { Localization } from '../../translations/types'
-import useOpenGraph from '../../lib/useOpenGraph'
 import { getAllPosts } from '../../lib/api'
 import publishedPosts from '../../lib/publishedPosts'
+import useOpenGraph from '../../lib/useOpenGraph'
+import { Localization } from '../../translations/types'
 
 const IndexPage: NextPage<{
   localization: Localization
   posts: any
   preview: boolean
-}> = ({ localization, posts, preview = false }) => (
+}> = ({ posts, preview = false }) => (
   <Layout
     title="Biscui.Tech"
     description="Biscui.Tech Home page"

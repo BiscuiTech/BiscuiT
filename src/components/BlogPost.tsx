@@ -1,9 +1,9 @@
 import React from 'react'
-import CoverImage from './md/CoverImage'
-import { H1 } from './md/renderers'
 import styled from 'styled-components'
 import useTranslation from '../hooks/useTranslation'
 import DateFormater from './DateFormat'
+import CoverImage from './md/CoverImage'
+import { H1 } from './md/renderers'
 
 const BlogHeader = styled.header`
   background-color: hsl(200, 100%, 4%);
@@ -101,7 +101,7 @@ const BlogContent = styled.section`
   }
 `
 
-const BlogPost = ({ pid, post, morePosts }) => {
+const BlogPost = ({ post }: { post: any }) => {
   const { t } = useTranslation()
   return (
     <article className="relative">
@@ -109,7 +109,7 @@ const BlogPost = ({ pid, post, morePosts }) => {
         <CoverImage
           title={post.title}
           src={post.coverImage.url}
-          slug={post.slug}
+          slug={post.slug as string}
           accreditation={post.coverImage.accreditation}
         />
         <H1>{post.title}</H1>

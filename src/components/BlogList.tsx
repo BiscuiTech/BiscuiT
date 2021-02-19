@@ -1,20 +1,22 @@
 import React from 'react'
-import PageHeader, { SubHeader } from './styles/PageHeader'
 import useTranslation from '../hooks/useTranslation'
+import { getCurrentPost } from '../lib/api'
 import {
   languageNames,
-  translateLanguageNames,
   locales,
+  translateLanguageNames,
 } from '../translations/config'
 import { Locale } from '../translations/types'
-import { getCurrentPost } from '../lib/api'
 import LocaleLink from './LocaleLink'
+import PageHeader, { SubHeader } from './styles/PageHeader'
 
-export const ListItem = ({ post }) => {
+export const ListItem = ({ post }: { post: any }) => {
   const { locale, t } = useTranslation()
   const isPostInCurrentLocale = Boolean(post[locale]?.slug)
   const filteredLocales = locales.filter((lang) => lang != locale)
   const otherLocales = Object.keys(post)
+    // TODO: fix this
+    // @ts-ignore
     .filter((el: Locale) => filteredLocales.includes(el))
     .filter((el) => el !== null)
     .map((el) => translateLanguageNames(locale, el))
@@ -70,7 +72,7 @@ export const ListItem = ({ post }) => {
   )
 }
 
-const BlogList = ({ posts }) => {
+const BlogList = ({ posts }: { posts: any }) => {
   const { t } = useTranslation()
   return (
     <>
@@ -80,7 +82,9 @@ const BlogList = ({ posts }) => {
         <div className="relative max-w-lg mx-auto lg:max-w-7xl">
           <div className="mt-6 border-t-2 border-yellow-400 ">
             {posts.length > 0 &&
-              posts.map((post, i) => <ListItem post={post} key={i} />)}
+              posts.map((post: any, i: number) => (
+                <ListItem post={post} key={i} />
+              ))}
           </div>
         </div>
       </div>

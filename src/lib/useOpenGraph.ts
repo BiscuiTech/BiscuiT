@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
+import { defaultOGURL } from '../../config'
 import useTranslation from '../hooks/useTranslation'
-import { defaultDescription, defaultOGImage, defaultOGURL } from '../../config'
 
 function useOpenGraph(post?) {
   const router = useRouter()

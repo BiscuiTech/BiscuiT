@@ -1,13 +1,12 @@
+import { motion } from 'framer-motion'
 import React from 'react'
-import styled, { css, StyledComponent } from 'styled-components'
+import styled, { css } from 'styled-components'
+import useTranslation from '../hooks/useTranslation'
+import Footer from './Footer'
 import Head from './Head'
 import LocaleSwitcher from './LocaleSwitcher'
-import Footer from './Footer'
-import GlobalStyle from './styles/GlobalStyle'
 import Navigation from './Navgitation'
-import { motion } from 'framer-motion'
-// import Alerts from "./Alerts";
-import useTranslation from '../hooks/useTranslation'
+import GlobalStyle from './styles/GlobalStyle'
 
 const Page = styled.div`
   min-height: 100vh;

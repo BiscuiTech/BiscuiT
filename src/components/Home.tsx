@@ -1,11 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 import useTranslation from '../hooks/useTranslation'
-import Link from 'next/link'
-import StyledAnchor from './styles/StyledAnchor'
 import { LatestBlog } from './LatestBlog'
-import { locales } from '../translations/config'
 import LocaleLink from './LocaleLink'
+import StyledAnchor from './styles/StyledAnchor'
 
 const Welcome = styled.div`
   text-align: center;

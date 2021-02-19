@@ -1,8 +1,6 @@
 import React from 'react'
-import { useWindupString, WindupChildren } from 'windups'
 
 export const H1 = ({ children }) => (
-  /* const [windup] = useWindupString(children); */
   <h1 className="text-2xl text-yellow-400 font-bold p-0 mt-10 font-mono uppercase border-t border-white">
     {children}
   </h1>
