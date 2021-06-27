@@ -1,3 +1,7 @@
+<script>
+	export let post;
+</script>
+
 <div>
 	<h2>'latestBlog'</h2>
 	<!-- {post && Object.keys(post).length > 0 ? (

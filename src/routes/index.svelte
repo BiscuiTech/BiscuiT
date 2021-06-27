@@ -1,4 +1,5 @@
 <script context="module" lang="ts">
+	import LatestBlog from '$lib/LatestBlog/index.svelte';
 	export const prerender = true;
 </script>
 
@@ -13,15 +14,13 @@
 			<br />
 			<span class="welcome--my-name">Jean-Cédric Huet</span>
 		</h1>
-		<p class="welcome--from">{t('i_am')}</p>
+		<p class="welcome--from">'i_am'</p>
 	</div>
 	<div class="short-intro">
 		<p>'short_intro'</p>
-		<LocaleLink href="/about" as={`/about`} passHref>
-			<StyledAnchor class="toRight">'aboutMe'</StyledAnchor>
-		</LocaleLink>
+		<a class="styled-anchor toRight">'aboutMe'</a>
 	</div>
-	<LatestBlog {post} />
+	<LatestBlog />
 </div>
 
 <style>
@@ -32,7 +31,6 @@
 		flex-direction: column;
 		width: 100%;
 		text-align: left;
-		/* margin-top: 24px; */
 		margin-bottom: 64px;
 		padding: 0;
 		font-family: 'Montserrat';
@@ -60,5 +58,44 @@
 		word-wrap: break-word;
 	}
 	.short-intro {
+		width: 100%;
+		text-align: left;
+		font-size: 20px;
+		font-size: max(18px, min(4vh, 24px));
+		text-justify: auto;
+		overflow: auto;
+	}
+	.toRight {
+		margin-right: 6px;
+		float: right;
+	}
+	.styled-anchor {
+		--backgroundColor: #fbb03b;
+		position: relative;
+		text-decoration: none;
+		color: white;
+		font-weight: 400;
+		font-family: 'Montserrat';
+		text-transform: lowercase;
+		cursor: pointer;
+
+		font-style: normal;
+		font-variant: small-caps;
+		color: white;
+		padding: 2px 4px;
+		background: linear-gradient(
+			125.95deg,
+			hsl(209, 100%, 49%) 0%,
+			hsl(187, 71%, 50%) 50%,
+			hsl(34, 100%, 50%) 100%
+		);
+		background-position: 0 100%;
+		background-repeat: repeat-x;
+		background-size: 4px 4px;
+		transition: background-size 0.2s, border-radius 0.2s;
+	}
+	.styled-anchor:hover {
+		background-size: 4px 50px;
+		border-radius: 5px;
 	}
 </style>
