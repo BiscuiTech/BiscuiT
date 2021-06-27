@@ -6,7 +6,7 @@ const config = {
   },
 
   "remarkPlugins": [],
-  "rehypePlugins": []
+  "rehypePlugins": [],
 };
 
 export default config;
