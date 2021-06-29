@@ -1,50 +1,83 @@
-<script context="module">
-	import { browser, dev } from '$app/env';
+<h1>'pageHeader'</h1>
+<h2>'subHeader'</h2>
+<section class="overflow-hidden">
+	<div class="relative max-w-screen-xl mx-auto pt-20 pb-12 px-4 sm:px-6 lg:px-8 lg:py-20">
+		<div class="relative lg:flex lg:items-center">
+			<div class="hidden lg:block lg:flex-shrink-0 lg:self-start">
+				<img
+					class="h-64 w-64 rounded-full xl:h-80 xl:w-80 object-cover"
+					sizes="(max-width: 1400px) 100vw, 1400px"
+					srcSet="
+                  /static/images/profile/biscuitech-profile_en4wcw_c_scale,w_371.png 371w,
+                  /static/images/profile/biscuitech-profile_en4wcw_c_scale,w_602.png 602w,
+                  /static/images/profile/biscuitech-profile_en4wcw_c_scale,w_831.png 831w,
+                  /static/images/profile/biscuitech-profile_en4wcw_c_scale,w_1011.png 1011w,
+                  /static/images/profile/biscuitech-profile_en4wcw_c_scale,w_1400.png 1400w"
+					src="/static/images/profile/biscuitech-profile_en4wcw_c_scale,w_1400.png"
+					alt="profilePictureAlt"
+				/>
+			</div>
 
-	// we don't need any JS on this page, though we'll load
-	// it in dev so that we get hot module replacement...
-	export const hydrate = dev;
+			<div class="relative lg:ml-10">
+				<svg
+					class="absolute top-0 transform -translate-x-4 -translate-y-24 left-0 h-36 w-36 text-indigo-200 opacity-50"
+					stroke="currentColor"
+					fill="none"
+					viewBox="0 0 144 144"
+				>
+					<path
+						stroke-width="2"
+						d="M41.485 15C17.753 31.753 1 59.208 1 89.455c0 24.664 14.891 39.09 32.109 39.09 16.287 0 28.386-13.03 28.386-28.387 0-15.356-10.703-26.524-24.663-26.524-2.792 0-6.515.465-7.446.93 2.327-15.821 17.218-34.435 32.11-43.742L41.485 15zm80.04 0c-23.268 16.753-40.02 44.208-40.02 74.455 0 24.664 14.891 39.09 32.109 39.09 15.822 0 28.386-13.03 28.386-28.387 0-15.356-11.168-26.524-25.129-26.524-2.792 0-6.049.465-6.98.93 2.327-15.821 16.753-34.435 31.644-43.742L121.525 15z"
+					/>
+				</svg>
+				<blockquote>
+					<div class="text-xl leading-9 font-medium text-gray-200">
+						<p>'aboutMe'</p>
+					</div>
+					<footer class="mt-8">
+						<div class="flex">
+							<div class="flex-shrink-0 lg:hidden">
+								<img
+									class="h-12 w-12 rounded-full"
+									sizes="(max-width: 1400px) 100vw, 1400px"
+									srcSet="
+                  /static/images/profile/biscuitech-profile_en4wcw_c_scale,w_371.png 371w,
+                  /static/images/profile/biscuitech-profile_en4wcw_c_scale,w_602.png 602w,
+                  /static/images/profile/biscuitech-profile_en4wcw_c_scale,w_831.png 831w,
+                  /static/images/profile/biscuitech-profile_en4wcw_c_scale,w_1011.png 1011w,
+                  /static/images/profile/biscuitech-profile_en4wcw_c_scale,w_1400.png 1400w"
+									src="biscuitech-profile_en4wcw_c_scale,w_1400.png"
+									alt="Mug shot of Jean-Cédric Huet, also known as BiscuiTech"
+								/>
+							</div>
 
-	// ...but if the client-side router is already loaded
-	// (i.e. we came here from elsewhere in the app), use it
-	export const router = browser;
-
-	// since there's no dynamic data here, we can prerender
-	// it so that it gets served as a static asset in prod
-	export const prerender = true;
-</script>
-
-<svelte:head>
-	<title>About</title>
-</svelte:head>
-
-<div class="content">
-	<h1>About this app</h1>
-
-	<p>
-		This is a <a href="https://kit.svelte.dev">SvelteKit</a> app. You can make your own by typing the
-		following into your command line and following the prompts:
-	</p>
-
-	<!-- TODO lose the @next! -->
-	<pre>npm init svelte@next</pre>
-
-	<p>
-		The page you're looking at is purely static HTML, with no client-side interactivity needed.
-		Because of that, we don't need to load any JavaScript. Try viewing the page's source, or opening
-		the devtools network panel and reloading.
-	</p>
-
-	<p>
-		The <a href="/todos">TODOs</a> page illustrates SvelteKit's data loading and form handling. Try using
-		it with JavaScript disabled!
-	</p>
-</div>
+							<div class="ml-4 lg:ml-0">
+								<div class="text-large leading-6 font-medium text-gray-200">Jean-Cédric Huet</div>
+								<div class="text-base leading-6 font-medium text-indigo-400">'position'</div>
+							</div>
+						</div>
+					</footer>
+				</blockquote>
+			</div>
+		</div>
+	</div>
+</section>
 
 <style>
-	.content {
-		width: 100%;
-		max-width: var(--column-width);
-		margin: var(--column-margin-top) auto 0 auto;
+	h1 {
+		font-family: Montserrat;
+		font-size: 36px;
+		font-size: max(36px, min(4vh, 56px));
+		margin: 24px auto 64px auto;
+		text-align: center;
+	}
+	h2 {
+		font-family: 'Montserrat';
+		font-size: 24px;
+		font-size: min(max(20px, 2vw), 26px);
+		font-weight: 200;
+		text-align: center;
+		margin-top: -64px;
+		margin-bottom: 24px;
 	}
 </style>
