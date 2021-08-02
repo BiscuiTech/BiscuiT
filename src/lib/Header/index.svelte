@@ -1,7 +1,6 @@
 <script lang="ts">
-	import { page } from '$app/stores';
 	import StyledLink from './StyledLink.svelte';
-	import logo from './svelte-logo.svg';
+
 	const links = [
 		{ tKey: 'navigation_Home', path: '/', text: 'Home' },
 		{ tKey: 'navigation_Blog', path: '/blog', text: 'Blog' },
@@ -15,7 +14,7 @@
 <header>
 	<nav>
 		<ul>
-			{#each links as link}
+			{#each links as link, i (link)}
 				<li>
 					<StyledLink path={link.path} linkText={link.text} />
 				</li>
@@ -33,6 +32,7 @@
 		bottom: 0;
 		width: 100%;
 		max-width: 1000px;
+		height: 60px;
 		display: flex;
 		border-top: 1px solid var(--color-accent);
 		border-bottom: none;
@@ -59,18 +59,15 @@
 		width: 100%;
 		padding: none;
 		margin: none;
+		height: 100%;
 	}
 	li {
 		text-decoration: none;
 		list-style: none;
-		padding-inline: 6px;
-	}
-	.nav-selected {
-		background: black;
+		position: relative;
 		height: 100%;
-		width: 100%;
-		position: absolute;
-		bottom: 0;
-		z-index: -1;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
 	}
 </style>

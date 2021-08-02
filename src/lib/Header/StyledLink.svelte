@@ -1,6 +1,5 @@
 <script>
 	import { page } from '$app/stores';
-
 	export let linkText, path;
 	const current = $page.path === path;
 </script>
@@ -19,17 +18,16 @@
 		text-align: center;
 		font-weight: 400;
 		position: relative;
+		height: 100%;
+		padding-inline: 6px;
 	}
-	/* .current {
+	.current {
 		font-weight: 600;
 		color: black;
 		background: #fbb03b;
 		height: 100%;
 		width: 100%;
-		position: absolute;
-		bottom: 0;
-		z-index: -1;
-	} */
+	}
 	a:focus {
 		border: solid 1px var(--color-accent);
 	}
