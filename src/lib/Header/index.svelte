@@ -6,8 +6,8 @@
 		{ tKey: 'navigation_Home', path: '/', text: 'Home' },
 		{ tKey: 'navigation_Blog', path: '/blog', text: 'Blog' },
 		{ tKey: 'navigation_About', path: '/about', text: 'About' },
-		{ tKey: 'navigation_Uses', path: '/uses', text: 'Uses' },
-		// { tKey: 'navigation_Projects', path: '/projects', text: "Projects },
+		// { tKey: 'navigation_Uses', path: '/uses', text: 'Uses' },
+		{ tKey: 'navigation_Projects', path: '/projects', text: 'Projects' },
 		{ tKey: 'navigation_Contact', path: '/contact', text: 'Contact' }
 	];
 </script>
