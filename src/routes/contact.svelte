@@ -4,15 +4,9 @@
 	import { writable } from 'svelte/store';
 
 	let store = writable({
-		firstName: '',
-		lastName: '',
-		email: '',
-		message: ''
+		subject: '',
+		body: ''
 	});
-
-	const handleSubmit = () => {
-		console.log($store);
-	};
 </script>
 
 <div class="my-12 overflow-hidden">
@@ -68,71 +62,37 @@
 			</SubHeader>
 			<div class="mt-12">
 				<form
-					action="#"
-					method="POST"
-					class="grid grid-cols-1 row-gap-6 sm:grid-cols-2 sm:col-gap-8"
-<!-- TODO: missing action --></form>
+					action={`mailto:tech@biscui.tech`}
+					method="get"
+					class="grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8"
 				>
-					<div>
-						<label for="firstName" class="block text-sm font-medium leading-5 text-gray-200">
-							'contactFormFirstName'
-						</label>
-						<div class="mt-1 relative rounded-md shadow-sm">
-							<input
-								id="firstName"
-								name="firstName"
-								class={`form-textarea py-3 px-4 block w-full transition ease-in-out duration-150 bg-gray-900 ${
-									status.info.error ? 'input-error' : 'border-gray-900'
-								}`}
-								bind:value={$store.firstName}
-							/>
-						</div>
-					</div>
-					<div>
-						<label for="lastName" class="block text-sm font-medium leading-5 text-gray-200">
-							'contactFormLastName'
-						</label>
-						<div class="mt-1 relative rounded-md shadow-sm">
-							<input
-								id="lastName"
-								name="lastName"
-								class={`form-textarea py-3 px-4 block w-full transition ease-in-out duration-150 bg-gray-900 ${
-									status.info.error ? 'input-error' : 'border-gray-900'
-								}`}
-								bind:value={$store.lastName}
-							/>
-						</div>
-					</div>
 					<div class="sm:col-span-2">
-						<label for="email" class="block text-sm font-medium leading-5 text-gray-200">
-							'contactFormEmail'
+						<label for="subject" class="block text-sm font-medium leading-5 text-gray-200">
+							'contactFormSubject'
 						</label>
 						<div class="mt-1 relative rounded-md shadow-sm">
 							<input
-								id="email"
-								name="email"
-								type="email"
-								class={`form-textarea py-3 px-4 block w-full transition ease-in-out duration-150 bg-gray-900 ${
-									status.info.error ? 'input-error' : 'border-gray-900'
-								}`}
-								bind:value={$store.email}
+								id="subject"
+								name="subject"
+								type="subject"
+								class={`py-3 px-4 block w-full transition ease-in-out duration-150 bg-gray-900 border-gray-900`}
+								bind:value={$store.subject}
 							/>
 						</div>
 					</div>
 
 					<div class="sm:col-span-2">
-						<label for="message" class="block text-sm font-medium leading-5 text-gray-200">
-							'contactFormMessage'
+						<label for="body" class="block text-sm font-medium leading-5 text-gray-200">
+							'contactFormBody'
 						</label>
 						<div class="mt-1 relative rounded-md shadow-sm">
 							<textarea
-								id="message"
-								name="message"
+								id="body"
+								name="body"
 								rows={4}
-								class={`form-textarea py-3 px-4 block w-full transition ease-in-out duration-150 bg-gray-900 ${
-									status.info.error ? 'input-error' : 'border-gray-900'
-								}`}
-								bind:value={$store.message}
+								class={`py-3 px-4 block w-full transition ease-in-out duration-150 bg-gray-900 border-gray-900
+								`}
+								bind:value={$store.body}
 							/>
 						</div>
 					</div>
@@ -140,27 +100,11 @@
 						<span class="w-full inline-flex rounded-md shadow-sm">
 							<button
 								type="submit"
-								class="{`w-full inline-flex items-center justify-center px-6 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white   focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150 border-gray-900 ${
-									status.info.error
-										? 'bg-red-700 hover:bg-red-500'
-										: 'bg-indigo-600 hover:bg-yellow-400'
-								}`},"
+								class="{`w-full inline-flex items-center justify-center px-6 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white   focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150 border-gray-900 bg-indigo-600 hover:bg-yellow-400`},"
 							>
-								{#if status.submitting}
-									<LoadingSpinner />
-								{:else}
-									status.info.msg || t('contactFormButton')
-								{/if}
+								$status.info.msg || t('contactFormButton')
 							</button>
 						</span>
-						{#if status.submitted && status.info.Error}
-							<a
-								class="mx-auto border-indigo-600 border-b-2 text-lg"
-								href="mailto:tech@biscui.tech"
-							>
-								'contactFormSubmitError')}
-							</a>
-						{/if}
 					</div>
 				</form>
 			</div>

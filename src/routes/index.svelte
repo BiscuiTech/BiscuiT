@@ -18,7 +18,7 @@
 	</div>
 	<div class="short-intro">
 		<p>'short_intro'</p>
-		<a class="styled-anchor toRight">'aboutMe'</a>
+		<a href="/about" class="styled-anchor toRight">'aboutMe'</a>
 	</div>
 	<LatestBlog />
 </div>

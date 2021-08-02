@@ -1,4 +1,4 @@
-<div />
+<div class="loading-spinner" />
 
 <style>
 	@-webkit-keyframes spHydro {
@@ -18,7 +18,7 @@
 		}
 	}
 
-	div {
+	.loading-spinner {
 		width: 26px;
 		height: 26px;
 		clear: both;
@@ -29,8 +29,8 @@
 		-webkit-animation: spHydro 0.6s infinite linear;
 		animation: spHydro 0.6s infinite linear;
 	}
-	div:before,
-	div:after {
+	.loading-spinner:before,
+	.loading-spinner:after {
 		content: '';
 		position: absolute;
 		width: 10px;
@@ -38,11 +38,11 @@
 		background-color: #000;
 		border-radius: 50%;
 	}
-	div:before {
+	.loading-spinner:before {
 		top: calc(50% - 5px);
 		left: calc(50% - 5px);
 	}
-	div:after {
+	.loading-spinner:after {
 		top: -1px;
 		left: -1px;
 	}
