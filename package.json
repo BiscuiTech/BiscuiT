@@ -55,7 +55,7 @@
     "date-fns": "^2.15.0",
     "framer-motion": "^2.3.0",
     "gray-matter": "^4.0.2",
-    "next": "^9.5.1",
+    "next": "^11.1.0",
     "next-compose-plugins": "^2.2.0",
     "next-pwa": "^3.1.1",
     "nodemailer": "^6.4.11",
