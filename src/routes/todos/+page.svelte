@@ -1,30 +1,33 @@
 <script context="module" lang="ts">
-	import { enhance } from '$lib/form';
-	import type { Load } from '@sveltejs/kit';
+	// import { enhance } from '$lib/form';
+	// import type { Load } from '@sveltejs/kit';
 
-	// see https://kit.svelte.dev/docs#loading
-	export const load: Load = async ({ fetch }) => {
-		const res = await fetch('/todos.json');
+	// // see https://kit.svelte.dev/docs#loading
+	// export const load: Load = async ({ fetch }) => {
+	// 	const res = await fetch('/todos.json');
 
-		if (res.ok) {
-			const todos = await res.json();
+	// 	if (res.ok) {
+	// 		const todos = await res.json();
 
-			return {
-				props: { todos }
-			};
-		}
+	// 		return {
+	// 			props: { todos }
+	// 		};
+	// 	}
 
-		const { message } = await res.json();
+	// 	const { message } = await res.json();
 
-		return {
-			error: new Error(message)
-		};
-	};
+	// 	return {
+	// 		error: new Error(message)
+	// 	};
+	// };
 </script>
 
 <script lang="ts">
+	export let data;
+
 	import { scale } from 'svelte/transition';
 	import { flip } from 'svelte/animate';
+	import { enhance } from '$lib/form';
 
 	type Todo = {
 		uid: string;
@@ -33,7 +36,7 @@
 		done: boolean;
 	};
 
-	export let todos: Todo[];
+	let todos: Todo[] = data.todos;
 
 	async function patch(res: Response) {
 		const todo = await res.json();

@@ -1,14 +1,17 @@
+
 import posts from './../_posts';
 
-export function get({ params }) {
+export function GET({ params }) {
   try {
     const post = posts.find(el => el.slug === params.slug)
-    return {
-      body: post,
-    };
+    // Suggestion (check for correctness before using):
+    // return json(post);
+    return new Response(JSON.stringify({
+      body: {
+        ...post
+      },
+    }));
   } catch (error) {
-    return {
-      status: 404,
-    }
+    return new Response(undefined, { status: 404 })
   };
 }

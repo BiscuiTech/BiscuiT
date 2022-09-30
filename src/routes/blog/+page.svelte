@@ -1,26 +1,26 @@
-<script context="module" lang="ts">
-	import ListItem from '$lib/Blog/List.svelte';
-	import type { LoadInput } from '@sveltejs/kit';
-	// export async function load() {
-	// 	const posts = import.meta.globEager('../../content/blog/**/*.mdx');
-	// 	const postsList = Object.values(posts);
-	// 	const postsMeta = postsList.map((post) => post.metadata);
-	// 	return { props: { postsMeta } };
+<!-- <script lang="ts">
+
+	// // export async function load() {
+	// // 	const posts = import.meta.globEager('../../content/blog/**/*.mdx');
+	// // 	const postsList = Object.values(posts);
+	// // 	const postsMeta = postsList.map((post) => post.metadata);
+	// // 	return { props: { postsMeta } };
+	// // }
+	// export async function load({ fetch }: LoadInput) {
+	// 	try {
+	// 		const blog = await fetch(`/blog.json`);
+	// 		const posts = await blog.json();
+
+	// 		return { props: { posts } };
+	// 	} catch (error) {
+	// 		console.error(error);
+	// 	}
 	// }
-	export async function load({ fetch }: LoadInput) {
-		try {
-			const blog = await fetch(`/blog.json`);
-			const posts = await blog.json();
-
-			return { props: { posts } };
-		} catch (error) {
-			console.error(error);
-		}
-	}
-</script>
-
+</script> -->
 <script>
-	export let posts;
+	import ListItem from '$lib/Blog/List.svelte';
+	export let data;
+	let { posts } = data;
 </script>
 
 <h1>Articles</h1>

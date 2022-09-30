@@ -1,15 +1,6 @@
-<script context="module">
-	export function load({ error, status }) {
-		return {
-			props: {
-				title: `${status}: ${error.message}`
-			}
-		};
-	}
-</script>
-
 <script>
-	export let title;
+	import { page } from '$app/stores';
+	const title = `${$page.status}: ${$page.error.message}`;
 </script>
 
 <h1>{title}</h1>

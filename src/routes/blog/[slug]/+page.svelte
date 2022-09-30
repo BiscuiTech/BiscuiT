@@ -1,25 +1,9 @@
-<script context="module" lang="ts">
-	import type { LoadInput } from '@sveltejs/kit';
-	/**
-	 * @type {import('@sveltejs/kit').Load}
-	 */
-	export async function load({ fetch, page }: LoadInput) {
-		const slug = page.params.slug;
-		const res = await fetch(`/blog/${slug}.json`);
-
-		return {
-			props: {
-				post: await res.json()
-			}
-		};
-	}
-</script>
-
 <script>
 	import H1 from '$lib/Blog/H1.svelte';
 	import CoverImage from '$lib/Blog/CoverImage.svelte';
 
-	export let post;
+	export let data;
+	let { post } = data;
 </script>
 
 <svelte:head>

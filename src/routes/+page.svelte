@@ -1,6 +1,5 @@
-<script context="module" lang="ts">
+<script lang="ts">
 	import LatestBlog from '$lib/LatestBlog/index.svelte';
-	export const prerender = true;
 </script>
 
 <svelte:head>

@@ -22,7 +22,7 @@
 		"cssnano": "^5.1.13",
 		"eslint": "^8.24.0",
 		"eslint-config-prettier": "^8.5.0",
-		"eslint-plugin-svelte3": "^4.0.0",
+		"eslint-plugin-svelte": "^2.9.0",
 		"front-matter": "^4.0.2",
 		"marked": "^4.1.0",
 		"mdsvex": "^0.10.6",

@@ -1,8 +1,3 @@
-<script context="module" lang="ts">
-	import LatestBlog from '$lib/LatestBlog/index.svelte';
-	export const prerender = true;
-</script>
-
 <svelte:head>
 	<title>Home</title>
 </svelte:head>
@@ -12,6 +7,3 @@
 		<h1 class="welcome--hello">Projects</h1>
 	</div>
 </div>
-
-<style>
-</style>
