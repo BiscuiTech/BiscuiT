@@ -1,4 +1,4 @@
-<script lang="ts">
+<!-- <script lang="ts">
 	import Header from '$lib/Header/index.svelte';
 	import Footer from '$lib/Footer/index.svelte';
 	import '../app.postcss';
@@ -51,4 +51,4 @@
 	.skip-link:focus {
 		top: 0;
 	}
-</style>
+</style> -->

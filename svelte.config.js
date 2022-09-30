@@ -22,14 +22,14 @@ const config = {
         mdsvex(mdsvexConfig)
     ],
 
-    kit: {
-        adapter: adapter(),
-        target: '#svelte',
-        vite: {
-            plugins: [imagetools({ force: true })],
-        },
-        trailingSlash: 'ignore',
-    }
+    // kit: {
+    //     adapter: adapter(),
+    //     target: '#svelte',
+    //     vite: {
+    //         plugins: [imagetools({ force: true })],
+    //     },
+    //     trailingSlash: 'ignore',
+    // }
 };
 
 export default config;

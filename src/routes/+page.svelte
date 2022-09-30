@@ -19,7 +19,7 @@
 		<p>'short_intro'</p>
 		<a href="/about" class="styled-anchor toRight">'aboutMe'</a>
 	</div>
-	<LatestBlog />
+	<!-- <LatestBlog /> -->
 </div>
 
 <style>
