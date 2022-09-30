@@ -1,5 +1,5 @@
 const config = {
-	purge: [
+	content: [
 		"./src/**/*.{html,js,svelte,ts}",
 	],
 	theme: {

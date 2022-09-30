@@ -1,14 +1,15 @@
 <script>
 	export let post;
+	import ListItem from '$lib/Blog/ListItem.svelte'
 </script>
 
 <div>
 	<h2>'latestBlog'</h2>
-	<!-- {post && Object.keys(post).length > 0 ? (
-    <ListItem post={post} />
-  ) : (
-    <em>{t('common')['error_noBlogs']}</em>
-  )} -->
+	{#if post}
+		<ListItem {post} />
+	{:else}
+		<em>{'error_noBlogs'}	</em>
+	{/if}
 </div>
 
 <style>

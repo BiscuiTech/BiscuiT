@@ -1,15 +1,32 @@
 
-import posts from './../_posts';
+import { getPosts } from '$lib/Blog/api';
+// import { evaluate } from '@mdx-js/mdx'
+// import {
+//   jsx,
+//   Fragment,
+//   jsxs
+// } from 'svelte-jsx'
 
-export function GET({ params }) {
+/**
+ * @type {import('@sveltejs/kit').RequestHandler}
+ */
+export async function GET({ params }) {
   try {
-    const post = posts.find(el => el.slug === params.slug)
+    const post = getPosts().find(el => el.slug === params.slug)
+
+    // // before returning post, compile and evaluate the code
+    // const { default: Content } = await evaluate(post.html, {
+    //   jsx,
+    //   Fragment,
+    //   jsxs,
+    // })
+    // console.log('Content', Content);
+
     // Suggestion (check for correctness before using):
-    // return json(post);
     return new Response(JSON.stringify({
       body: {
-        ...post
-      },
+        ...post,
+      }
     }));
   } catch (error) {
     return new Response(undefined, { status: 404 })

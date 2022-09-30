@@ -1,5 +1,8 @@
 <script lang="ts">
 	import LatestBlog from '$lib/LatestBlog/index.svelte';
+	export let data;
+
+	let {post} = data
 </script>
 
 <svelte:head>
@@ -19,7 +22,7 @@
 		<p>'short_intro'</p>
 		<a href="/about" class="styled-anchor toRight">'aboutMe'</a>
 	</div>
-	<!-- <LatestBlog /> -->
+	<LatestBlog {post}/>
 </div>
 
 <style>

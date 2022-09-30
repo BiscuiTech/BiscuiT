@@ -18,7 +18,7 @@
 	// }
 </script> -->
 <script>
-	import ListItem from '$lib/Blog/List.svelte';
+	import ListItem from '$lib/Blog/ListItem.svelte';
 	export let data;
 	let { posts } = data;
 </script>

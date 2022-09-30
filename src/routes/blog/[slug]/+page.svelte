@@ -1,22 +1,25 @@
 <script>
-	import H1 from '$lib/Blog/H1.svelte';
+	import H1 from '$lib/Blog/Renderers/H1.svelte';
 	import CoverImage from '$lib/Blog/CoverImage.svelte';
+	import * as Components from '$lib/Blog/Renderers';
 
+	/** @type {import('./$types').PageData} */
 	export let data;
 	let { post } = data;
+	let BlogPost = post.component;
 </script>
 
 <svelte:head>
-	<link href="/static/themes/dracula.css" rel="stylesheet" />
+	<link href="/themes/dracula.css" rel="stylesheet" />
 </svelte:head>
 <article class="relative">
 	<header class="border-b border-yellow-400 p-4">
-		<CoverImage
+		<!-- <CoverImage
 			title={post.title}
 			src={post.coverImage.url}
 			accreditation={post.coverImage.accreditation}
-		/>
-		<H1>{post.title}</H1>
+		/> -->
+		<!-- <H1>{post.title}</H1> -->
 		<div class="text-base text-gray-300 mt-2">
 			<!-- {`${t('blogBy')} ${post.author} | `} -->
 			<!-- {DateFormater({ dateString: post.publishedOn })} -->
@@ -24,7 +27,7 @@
 		</div>
 	</header>
 	<div class="blog-content text-lg">
-		{@html post.html}
+		<svelte:component this={post.component} />
 	</div>
 </article>
 

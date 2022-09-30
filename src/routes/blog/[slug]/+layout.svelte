@@ -1,15 +1,15 @@
 <slot />
 
-<style>
+<style global>
 	.blog-content {
 		font-family: 'Inter';
 		padding: 0 1em;
 	}
-	:global(pre),
-	:global(code) {
+	pre,
+	code {
 		font-family: MonoLisa, Consolas, Monaco, monospace;
 	}
-	:global(code) {
+	code {
 		padding: 0.1em 0.5em;
 		margin: 0 2px;
 		background: hsl(0, 0%, 20%);
@@ -18,17 +18,17 @@
 		font-size: 0.9em;
 		line-height: 1em;
 	}
-	:global(p) {
+	p {
 		margin-block: 1.5em;
 	}
-	p + :global(p) {
+	p + p {
 		margin-top: -0.5em;
 	}
-	p :global(a) {
+	p a {
 		color: #fbb03b;
 		position: relative;
 	}
-	p :global(a:after) {
+	p a:after {
 		content: '';
 		position: absolute;
 		transition: all 0.25s;
@@ -39,19 +39,19 @@
 		left: 0;
 		background: #fbb03b;
 	}
-	:global(a:focus:after),
-	:global(a:hover:after) {
+	a:focus:after,
+	a:hover:after {
 		opacity: 1;
 		width: 100%;
 	}
-	li > :global(p) {
+	li > p {
 		display: inline;
 	}
-	:global(.highlight-line) {
+	.highlight-line {
 		background-color: hsl(231, 30%, 25%);
 		border-left: 2px solid #fbb03b;
 	}
-	:global(.bubble) {
+	.bubble {
 		display: flex;
 		background: hsl(231, 33%, 30%);
 		width: 80%;
@@ -62,13 +62,13 @@
 		border: 2px solid #fbb03b;
 		border-radius: 8px;
 	}
-	.bubble :global(p) {
+	.bubble p {
 		padding: 0px;
 		margin: 0;
 		text-align: left;
 		align-self: center;
 	}
-	:global(.bubble-question):before {
+	.bubble-question:before {
 		content: '?';
 		color: hsl(231, 33%, 30%);
 		align-self: start;
@@ -79,7 +79,7 @@
 		line-height: 1em;
 		text-shadow: -1px -1px 0 #fbb03b, 1px -1px 0 #fbb03b, -1px 1px 0 #fbb03b, 1px 1px 0 #fbb03b;
 	}
-	:global(.bubble-exclamation):before {
+	.bubble-exclamation:before {
 		content: '!';
 		color: hsl(231, 33%, 30%);
 		align-self: start;
@@ -90,13 +90,13 @@
 		line-height: 1em;
 		text-shadow: -1px -1px 0 #fbb03b, 1px -1px 0 #fbb03b, -1px 1px 0 #fbb03b, 1px 1px 0 #fbb03b;
 	}
-	:global(h2) {
+	h2 {
 		margin-block: 1em;
 	}
-	:global(h3) {
+	h3 {
 		margin-block: 1em;
 	}
-	:global(h4) {
+	h4 {
 		margin-block: 1em;
 	}
 </style>

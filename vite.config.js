@@ -1,18 +1,18 @@
 import { sveltekit } from '@sveltejs/kit/vite';
-import * as path from 'path';
-import { imagetools } from 'vite-imagetools';
+import { imagetools } from 'vite-imagetools';/*
+import remarkFrontmatter from 'remark-frontmatter'
+import remarkMdxFrontmatter from 'remark-mdx-frontmatter';
+import mdx from '@mdx-js/rollup' */
 
 /** @type {import('vite').UserConfig} */
 const config = {
   logLevel: 'info',
-
-  plugins: [imagetools(), sveltekit()],
-
+  plugins: [imagetools(), sveltekit()/* , mdx({ jsxImportSource: 'svelte-jsx', remarkPlugins: [remarkFrontmatter, remarkMdxFrontmatter] }) */],
   server: {
     fs: {
       strict: false
     }
-  }
+  },
 };
 
 export default config;
