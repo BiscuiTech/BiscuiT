@@ -15,10 +15,10 @@ export async function GET({ params }) {
 
   try {
     const posts = getPosts();
-    console.log(posts);
+    // console.log(posts);
 
     const post = posts.find(el => el.slug === params.slug)
-    console.log(post);
+    // console.log(post);
 
     // // before returning post, compile and evaluate the code
     // const { default: Content } = await evaluate(post.html, {

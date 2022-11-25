@@ -1,14 +1,12 @@
 import 'svelte-jsx';
 import { compile } from '@mdx-js/mdx';
-import { readFileSync } from 'fs'
-import { resolve } from 'path'
 
 /** @type {import('./$types').PageServerLoad} */
 export async function load(event) {
 	const slug = event.params.slug;
 	// const postPromise = await import(`../../../content/blog/${slug}/en.md`);
 	// console.log('postPromise', postPromise);
-	// const content = readFileSync(`${resolve}./src/content/blog/${slug}/en.mdx`, {
+	// const content = readFileSync(`${resolve}./src/content/blog/${slug}/en.md`, {
 	// 	encoding: 'utf8',
 	// });
 	// const content = await fetch(`/blog/${slug}.json`).then(res => res.json());
@@ -18,19 +16,21 @@ export async function load(event) {
 	const json = await res.json();
 	// console.log(json);
 	const post = json.body;
-	console.log(res);
+	// console.log(res);
 
 	// before returning post, compile and evaluate the code
-	const Content = await compile(post, {
+	const Content = String(await compile(post, {
 		jsxImportSource: 'svelte-jsx',
-	})
+		// outputFormat: 'function-body'
+	}))
 	console.log(Content);
 
 	return {
 		post: {
 			...post,
-			html: Content.value
-		}
+			html: (Content as any).html,
+		},
+		component: Content
 	};
 }
 

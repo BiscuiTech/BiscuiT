@@ -1,5 +1,5 @@
 // export async function load() {
-// 	const posts = import.meta.globEager('../../content/blog/**/*.mdx');
+// 	const posts = import.meta.globEager('../../content/blog/**/*.md');
 // 	const postsList = Object.values(posts);
 // 	const postsMeta = postsList.map((post) => post.metadata);
 // 	return { props: { postsMeta } };
