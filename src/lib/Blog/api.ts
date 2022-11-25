@@ -23,7 +23,7 @@ export function getPosts() {
   const posts: Blog[] =
     readdirSync('./src/content/blog')
       .map((postFilename) => {
-        const postContent = readFileSync(`./src/content/blog/${postFilename}/en.mdx`, {
+        const postContent = readFileSync(`./src/content/blog/${postFilename}/en.md`, {
           encoding: 'utf8',
         });
 
