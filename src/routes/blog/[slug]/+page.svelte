@@ -1,19 +1,15 @@
 <script>
 	import CoverImage from '$lib/Blog/CoverImage.svelte';
 	import H1 from '$lib/Blog/Renderers/H1.svelte';
-	import { format, parseISO } from 'date-fns';
 	import { run } from '@mdx-js/mdx';
+	import { format, parseISO } from 'date-fns';
+	import * as jsx from 'svelte-jsx';
 	/** @type {import('./$types').PageData} */
 	export let data;
-	let { post } = data;
+	let { post, component } = data;
 	let getContent = async () => {
-		let { default: Content } = await run(post.content, {
-			components: {
-				h1: H1
-			}
-		});
-		console.log(Content);
-		return Content;
+		let { default: payload } = await run(component, { ...jsx });
+		return payload;
 	};
 </script>
 
@@ -34,9 +30,8 @@
 		</div>
 	</header>
 	<div class="blog-content text-lg">
-		<!-- {post.html()} -->
-		{#await getContent then content}
-			{@html content.default}
+		{#await getContent() then content}
+			<svelte:component this={content()} />
 		{/await}
 	</div>
 </article>
