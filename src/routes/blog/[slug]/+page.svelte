@@ -1,16 +1,20 @@
 <script>
 	import CoverImage from '$lib/Blog/CoverImage.svelte';
 	import H1 from '$lib/Blog/Renderers/H1.svelte';
-	import { run } from '@mdx-js/mdx';
+	import SvelteMarkdown from 'svelte-markdown';
+	import { marked } from 'marked';
 	import { format, parseISO } from 'date-fns';
-	import * as jsx from 'svelte-jsx';
+	import Code from '$lib/Blog/Renderers/Code.svelte';
 	/** @type {import('./$types').PageData} */
 	export let data;
-	let { post, component } = data;
-	let getContent = async () => {
-		let { default: payload } = await run(component, { ...jsx });
-		return payload;
-	};
+	let { post } = data;
+
+	const tokens = marked.lexer(post.source);
+	marked.walkTokens(tokens, (token) => {
+		if (token.type == 'code') {
+			console.log(token);
+		}
+	});
 </script>
 
 <svelte:head>
@@ -30,9 +34,12 @@
 		</div>
 	</header>
 	<div class="blog-content text-lg">
-		{#await getContent() then content}
-			<svelte:component this={content()} />
-		{/await}
+		<SvelteMarkdown
+			source={post.source}
+			renderers={{
+				code: Code
+			}}
+		/>
 	</div>
 </article>
 
@@ -42,6 +49,6 @@
 	}
 	.blog-content {
 		font-family: Inter;
-		padding: 0 1em;
+		/* padding: 0 1em; */
 	}
 </style>

@@ -3,18 +3,18 @@
 <style global lang="postcss">
 	.blog-content {
 		font-family: 'Inter';
-		padding: 0 1em;
+		/* padding: 0 1em; */
 	}
 	h1 {
 		@apply text-5xl font-medium px-0 pt-6 pb-2 sm:text-3xl md:text-3xl;
 	}
-	/* h2 {
+	h2 {
 		@apply text-3xl mt-6 mb-2 py-2 pl-4 font-semibold tracking-wide bg-gray-900 border-yellow-400 border-l-4;
-	} */
+	}
 	h3 {
 		@apply text-2xl mt-4 px-0 md:pl-4 tracking-wide bg-gray-900 border-l-2 border-yellow-400;
 	}
-	pre,
+	/* pre,
 	code {
 		font-family: MonoLisa, Consolas, Monaco, monospace;
 	}
@@ -26,12 +26,12 @@
 		border-radius: 2px;
 		font-size: 0.9em;
 		line-height: 1em;
-	}
+	} */
 	p {
 		margin-block: 1.5em;
 	}
 	p + p {
-		margin-top: -0.5em;
+		/* margin-top: -0.5em; */
 	}
 	p a {
 		color: #fbb03b;

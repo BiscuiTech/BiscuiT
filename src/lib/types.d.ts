@@ -23,7 +23,7 @@ export type BlogAttributes = {
 }
 
 export type Blog = BlogAttributes & {
-	html: string
+	source: string
 	readingTime: string
 	slug: string
 }

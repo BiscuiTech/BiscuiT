@@ -20,9 +20,9 @@ export function getPosts() {
 
         return {
           ...postFrontMatter.attributes,
-          html: postFrontMatter.body,
+          source: postFrontMatter.body,
           readingTime: readingTimeDuration,
-          slug: postFilename
+          slug: postFilename,
         };
       });
 
