@@ -5,15 +5,7 @@
 		font-family: 'Inter';
 		/* padding: 0 1em; */
 	}
-	h1 {
-		@apply text-5xl font-medium px-0 pt-6 pb-2 sm:text-3xl md:text-3xl;
-	}
-	h2 {
-		@apply text-3xl mt-6 mb-2 py-2 pl-4 font-semibold tracking-wide bg-gray-900 border-yellow-400 border-l-4;
-	}
-	h3 {
-		@apply text-2xl mt-4 px-0 md:pl-4 tracking-wide bg-gray-900 border-l-2 border-yellow-400;
-	}
+
 	/* pre,
 	code {
 		font-family: MonoLisa, Consolas, Monaco, monospace;
@@ -47,6 +39,9 @@
 		bottom: 0;
 		left: 0;
 		background: #fbb03b;
+	}
+	p + h2 {
+		margin-top: 1em;
 	}
 	a:focus:after,
 	a:hover:after {
@@ -99,13 +94,9 @@
 		line-height: 1em;
 		text-shadow: -1px -1px 0 #fbb03b, 1px -1px 0 #fbb03b, -1px 1px 0 #fbb03b, 1px 1px 0 #fbb03b;
 	}
-	h2 {
-		margin-block: 1em;
-	}
-	h3 {
-		margin-block: 1em;
-	}
-	h4 {
-		margin-block: 1em;
+	p img {
+		max-width: 60%;
+		margin-inline: auto;
+		margin-block: 2em;
 	}
 </style>
