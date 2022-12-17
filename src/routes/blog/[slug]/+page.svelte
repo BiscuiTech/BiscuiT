@@ -2,20 +2,12 @@
 	import CoverImage from '$lib/Blog/CoverImage.svelte';
 	import H1 from '$lib/Blog/Renderers/H1.svelte';
 	import SvelteMarkdown from 'svelte-markdown';
-	import { marked } from 'marked';
 	import { format, parseISO } from 'date-fns';
 	import Code from '$lib/Blog/Renderers/Code.svelte';
 	import Heading from '$lib/Blog/Renderers/Heading.svelte';
 	/** @type {import('./$types').PageData} */
 	export let data;
 	let { post } = data;
-
-	const tokens = marked.lexer(post.source);
-	marked.walkTokens(tokens, (token) => {
-		if (token.type == 'code') {
-			// console.log(token);
-		}
-	});
 </script>
 
 <svelte:head>

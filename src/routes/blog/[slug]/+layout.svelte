@@ -22,9 +22,6 @@
 	p {
 		margin-block: 1.5em;
 	}
-	p + p {
-		/* margin-top: -0.5em; */
-	}
 	p a {
 		color: #fbb03b;
 		position: relative;
@@ -50,6 +47,20 @@
 	}
 	li > p {
 		display: inline;
+	}
+	.code-line {
+		display: inline-block;
+		width: 100%;
+		margin: 0;
+		padding: 0;
+	}
+	.line-number::before {
+		content: attr(data-line-number);
+		display: inline-block;
+		width: 2em;
+		text-align: center;
+		user-select: none;
+		opacity: 0.7;
 	}
 	.highlight-line {
 		background-color: hsl(231, 30%, 25%);
