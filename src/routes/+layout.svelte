@@ -2,6 +2,16 @@
 	import Header from '$lib/Header/index.svelte';
 	import Footer from '$lib/Footer/index.svelte';
 	import '../app.postcss';
+
+	import { addMessages, init } from 'svelte-intl-precompile';
+	import en from '$locales/en';
+	import es from '$locales/es';
+	addMessages('en', en);
+	addMessages('es', es);
+	init({
+		initialLocale: 'en',
+		fallbackLocale: 'en'
+	});
 </script>
 
 <div class="page">

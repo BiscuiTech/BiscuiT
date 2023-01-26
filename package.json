@@ -11,6 +11,7 @@
 		"format": "prettier --write --plugin-search-dir=. ."
 	},
 	"devDependencies": {
+		"@rollup/plugin-json": "^6.0.0",
 		"@sveltejs/adapter-auto": "1.0.2",
 		"@sveltejs/kit": "1.2.10",
 		"@types/cookie": "^0.5.1",
@@ -49,6 +50,8 @@
 	"dependencies": {
 		"@fontsource/fira-mono": "^4.5.10",
 		"@lukeed/uuid": "^2.0.0",
-		"cookie": "^0.5.0"
+		"cookie": "^0.5.0",
+		"svelte-i18n": "^3.6.0",
+		"svelte-intl-precompile": "^0.12.0"
 	}
 }

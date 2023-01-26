@@ -1,4 +1,5 @@
 import preprocess from 'svelte-preprocess';
+import precompileIntl from "svelte-intl-precompile/sveltekit-plugin";
 import adapter from '@sveltejs/adapter-auto';
 // import { mdsvex } from 'mdsvex';
 
@@ -6,6 +7,11 @@ import adapter from '@sveltejs/adapter-auto';
 const config = {
     kit: {
         adapter: adapter(),
+        vite: {
+            plugins: [
+                precompileIntl('locales')
+            ]
+        }
     },
     extensions: [".svelte", ".svx", ".md"],
     // Consult https://github.com/sveltejs/svelte-preprocess
