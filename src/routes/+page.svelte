@@ -1,8 +1,8 @@
 <script lang="ts">
 	import LatestBlog from '$lib/LatestBlog/index.svelte';
 	export let data;
-
-	let {post} = data
+	import { _ } from 'svelte-i18n';
+	let { post } = data;
 </script>
 
 <svelte:head>
@@ -12,17 +12,17 @@
 <div class="mx-auto w-full md:w-4/5 lg:w-4/5 pt-20">
 	<div class="welcome">
 		<h1 class="welcome--hello">
-			'welcome_msg'
+			{$_('home.welcome_msg')}
 			<br />
 			<span class="welcome--my-name">Jean-Cédric Huet</span>
 		</h1>
-		<p class="welcome--from">'i_am'</p>
+		<p class="welcome--from">{$_('home.i_am')}</p>
 	</div>
 	<div class="short-intro">
-		<p>'short_intro'</p>
+		<p>{$_('home.short_intro')}</p>
 		<a href="/about" class="styled-anchor toRight">'aboutMe'</a>
 	</div>
-	<LatestBlog {post}/>
+	<LatestBlog {post} />
 </div>
 
 <style>

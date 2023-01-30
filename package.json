@@ -51,7 +51,5 @@
 		"@fontsource/fira-mono": "^4.5.10",
 		"@lukeed/uuid": "^2.0.0",
 		"cookie": "^0.5.0",
-		"svelte-i18n": "^3.6.0",
-		"svelte-intl-precompile": "^0.12.0"
-	}
+		"svelte-i18n": "^3.6.0"	}
 }
