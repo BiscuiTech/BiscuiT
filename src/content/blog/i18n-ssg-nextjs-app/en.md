@@ -604,12 +604,7 @@ export default common;
 
 And now we're finally done - for real! Feel free to add strings in your locales directory and replace the rest of the text in the app.
 
-<em>
-  Special thanks to
-  <a href="https://twitter.com/filipcodes"> Filip Wojciechowski</a> who initially
-  came up with this idea without the static generations and namespace functionalities.
-  You can find his blog <a href="https://w11i.me/how-to-build-multilingual-website-in-next-js">here.</a>
-</em>
+> Special thanks to [Filip Wojciechowski](https://twitter.com/filipcodes) who initially came up with this idea without the static generations and namespace functionalities. You can find his blog [here](https://w11i.me/how-to-build-multilingual-website-in-next-js).
 
 ## Looking forward
 

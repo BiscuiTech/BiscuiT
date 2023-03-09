@@ -1,13 +1,13 @@
-import type { Blog } from '$lib/types';
+import { getPosts } from '$lib/Blog/api';
 import 'svelte-jsx';
+
+const posts = getPosts();
 
 /** @type {import('./$types').PageServerLoad} */
 export async function load(event) {
 	const slug = event.params.slug;
 
-	const res = await event.fetch(`/blog/${slug}.json`);
-	const json = await res.json();
-	const post: Blog = json.body;
+	const post = posts.find(el => el.slug === slug)
 
 	return {
 		post,

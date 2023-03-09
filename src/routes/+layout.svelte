@@ -4,6 +4,7 @@
 	import '../app.postcss';
 </script>
 
+<div class="background" />
 <div class="page">
 	<Header />
 	<main>
@@ -15,7 +16,7 @@
 
 <style>
 	main {
-		width: 90%;
+		width: 100%;
 		max-width: 1000px;
 		margin: auto;
 		margin-bottom: 60px;
@@ -23,6 +24,7 @@
 	}
 	@media (min-width: 880px) {
 		main {
+			width: 90%;
 			padding-top: 60px;
 			margin-top: unset;
 		}
@@ -32,23 +34,12 @@
 		padding: 0;
 		position: relative;
 		margin: 0;
-		background: hsl(200, 100%, 5%);
+		background: hsl(200, 70%, 3.5%);
 		background-image: url('/images/topography.svg');
 		border-bottom: 3px solid #fbb03b;
 
 		overflow: hidden;
 		overflow-y: auto;
 		z-index: 1;
-	}
-	.skip-link {
-		position: absolute;
-		top: -40px;
-		left: 0;
-		color: white;
-		padding: 8px;
-		z-index: 100;
-	}
-	.skip-link:focus {
-		top: 0;
 	}
 </style>

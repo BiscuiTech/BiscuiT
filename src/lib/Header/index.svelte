@@ -4,9 +4,9 @@
 	const links = [
 		{ tKey: 'navigation_Home', path: '/', text: 'Home' },
 		{ tKey: 'navigation_Blog', path: '/blog', text: 'Blog' },
-		{ tKey: 'navigation_About', path: '/about', text: 'About' },
-		{ tKey: 'navigation_Projects', path: '/projects', text: 'Projects' },
-		{ tKey: 'navigation_Contact', path: '/contact', text: 'Contact' }
+		{ tKey: 'navigation_About', path: '/about', text: 'About' }
+		// { tKey: 'navigation_Projects', path: '/projects', text: 'Projects' },
+		// { tKey: 'navigation_Contact', path: '/contact', text: 'Contact' }
 	];
 </script>
 
@@ -24,7 +24,7 @@
 
 <style>
 	nav {
-		--contentWidth: 880px;
+		--contentWidth: 768px;
 		--color-accent: #fbb03b;
 		background: black;
 		position: fixed;
@@ -38,7 +38,7 @@
 		z-index: 5;
 	}
 
-	@media (min-width: 880px) {
+	@media (min-width: 768px) {
 		nav {
 			bottom: unset;
 			height: 60px;

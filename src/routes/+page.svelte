@@ -9,7 +9,7 @@
 	<title>Home</title>
 </svelte:head>
 
-<div class="mx-auto w-full md:w-4/5 lg:w-4/5 pt-20">
+<div class="mx-auto w-11/12 md:w-4/5 pt-20">
 	<div class="welcome">
 		<h1 class="welcome--hello">
 			{$_('home.welcome_msg')}

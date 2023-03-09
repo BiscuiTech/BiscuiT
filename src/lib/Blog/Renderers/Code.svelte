@@ -44,8 +44,21 @@
 		.reduce((acc, line) => `${acc ? `${acc}\n` : acc}${line}`, '');
 </script>
 
-<pre class="bg-slate-900 my-4 text-gray-50 rounded"><code>{@html html}</code>
+<pre class="bg-slate-900 py-4 px-2 my-4 text-gray-50 rounded-lg overflow-x-auto text-base">
+	<code>
+		{@html html}
+	</code>
 </pre>
 
 <style lang="postcss">
+	pre,
+	code {
+		font-family: MonoLisa, Consolas, Monaco, monospace;
+	}
+	.code-line {
+		display: inline-block;
+		width: 100%;
+		margin: 0;
+		padding: 0;
+	}
 </style>
