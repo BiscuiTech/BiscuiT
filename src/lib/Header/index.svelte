@@ -5,16 +5,14 @@
 		{ tKey: 'navigation_Home', path: '/', text: 'Home' },
 		{ tKey: 'navigation_Blog', path: '/blog', text: 'Blog' },
 		{ tKey: 'navigation_About', path: '/about', text: 'About' }
-		// { tKey: 'navigation_Projects', path: '/projects', text: 'Projects' },
-		// { tKey: 'navigation_Contact', path: '/contact', text: 'Contact' }
 	];
 </script>
 
 <header>
-	<nav>
-		<ul>
+	<nav class="max-w-lg w-full bottom-0 fixed bg-black h-14 z-10">
+		<ul class="flex flex-row justify-center w-full p-0 m-0 h-full">
 			{#each links as link, i (link)}
-				<li>
+				<li class="no-underline list-none relative h-full flex flex-row items-center">
 					<StyledLink path={link.path} linkText={link.text} />
 				</li>
 			{/each}
@@ -24,21 +22,13 @@
 
 <style>
 	nav {
-		--contentWidth: 768px;
+		--contentWidth: 512px;
 		--color-accent: #fbb03b;
-		background: black;
-		position: fixed;
-		bottom: 0;
-		width: 100%;
-		max-width: 1000px;
-		height: 60px;
-		display: flex;
 		border-top: 1px solid var(--color-accent);
 		border-bottom: none;
-		z-index: 5;
 	}
 
-	@media (min-width: 768px) {
+	@media (min-width: 512px) {
 		nav {
 			bottom: unset;
 			height: 60px;
@@ -50,23 +40,5 @@
 			left: 50%;
 			transform: translateX(-50%);
 		}
-	}
-	ul {
-		display: flex;
-		flex-direction: row;
-		justify-content: center;
-		width: 100%;
-		padding: none;
-		margin: none;
-		height: 100%;
-	}
-	li {
-		text-decoration: none;
-		list-style: none;
-		position: relative;
-		height: 100%;
-		display: flex;
-		flex-direction: row;
-		align-items: center;
 	}
 </style>
