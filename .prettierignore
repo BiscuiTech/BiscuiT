@@ -1,5 +1,4 @@
-node_modules
-.next
-yarn.lock
-package-lock.json
-public
+.svelte-kit/**
+static/**
+build/**
+node_modules/**
