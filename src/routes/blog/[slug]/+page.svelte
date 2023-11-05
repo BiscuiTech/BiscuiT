@@ -1,12 +1,11 @@
 <script>
 	import CoverImage from '$lib/Blog/CoverImage.svelte';
-	import Code from '$lib/Blog/CustomRenderers/Code.svelte'
+	import Code from '$lib/Blog/CustomRenderers/Code.svelte';
 	import BlogTitle from '$lib/Blog/BlogTitle.svelte';
 	import Heading from '$lib/Blog/CustomRenderers/Heading.svelte';
 	import { format, parseISO } from 'date-fns';
-	import SvelteMarkdown from '$lib/Blog/SvelteMarkdown/SvelteMarkdown.svelte'
+	import SvelteMarkdown from '$lib/Blog/SvelteMarkdown/SvelteMarkdown.svelte';
 
-	
 	/** @type {import('./$types').PageData} */
 	export let data;
 	let { post } = data;
@@ -39,7 +38,7 @@
 	</div>
 </article>
 
-<style lang="postcss">
+<style lang="postcss" global>
 	header {
 		background-color: hsl(200, 100%, 4%);
 	}
@@ -48,77 +47,91 @@
 		font-weight: 300;
 	}
 
-	/* CONTENT STYLES HERE */
-	:root {
-		--paragraph-padding: 5em;
+	article {
+		--paragraph-padding: 1em;
 	}
+	@media (min-width: 512px) {
+		article {
+			--paragraph-padding: 2em;
+		}
+	}
+	@media (min-width: 880px) {
+		article {
+			--paragraph-padding: 5em;
+		}
+	}
+	article {
+		pre,
+		code {
+			font-family: MonoLisa, Consolas, Monaco, monospace;
+		}
 
-	p,
-	em {
-		padding-inline: var(--paragraph-padding);
-	}
-	li {
-		list-style-type: disc;
-		margin-inline: calc(var(--paragraph-padding) + 1em);
-	}
-	p a {
-		color: #fbb03b;
-		position: relative;
-	}
-	a {
-		color: #fbb03b;
-		position: relative;
-	}
-	p a:after {
-		content: '';
-		position: absolute;
-		transition: all 0.25s;
-		opacity: 0;
-		height: 2px;
-		width: 0%;
-		bottom: 0;
-		left: 0;
-		background: #fbb03b;
-	}
-	a:after {
-		content: '';
-		position: absolute;
-		transition: all 0.25s;
-		opacity: 0;
-		height: 2px;
-		width: 0%;
-		bottom: 0;
-		left: 0;
-		background: #fbb03b;
-	}
-	p + h2 {
-		margin-top: 1em;
-	}
-	p img {
-		margin-inline: auto;
-		margin-block: 2em;
-	}
+		p {
+			padding-inline: var(--paragraph-padding);
+		}
+		li {
+			list-style-type: disc;
+			margin-inline: calc(var(--paragraph-padding) + 1em);
+		}
+		p a {
+			color: #fbb03b;
+			position: relative;
+		}
+		a {
+			color: #fbb03b;
+			position: relative;
+		}
+		p a:after {
+			content: '';
+			position: absolute;
+			transition: all 0.25s;
+			opacity: 0;
+			height: 2px;
+			width: 0%;
+			bottom: 0;
+			left: 0;
+			background: #fbb03b;
+		}
+		a:after {
+			content: '';
+			position: absolute;
+			transition: all 0.25s;
+			opacity: 0;
+			height: 2px;
+			width: 0%;
+			bottom: 0;
+			left: 0;
+			background: #fbb03b;
+		}
+		p + h2 {
+			margin-top: 1em;
+		}
+		p img {
+			margin-inline: auto;
+			margin-block: 2em;
+		}
 
-	li > code,
-	p > code {
-		background: hsl(231, 33%, 30%);
-		color: #fbb03b;
-		padding: 0.1em 0.5em;
-		margin: 0 2px;
-		border-radius: 4px;
-		font-size: 0.9em;
-		line-height: 1em;
-	}
-	a:focus:after,
-	a:hover:after {
-		opacity: 1;
-		width: 100%;
-	}
-	li > p {
-		display: inline;
-	}
-	strong {
-		font-weight: 900;
+		li > code,
+		p > code {
+			background: hsl(231, 33%, 30%);
+			color: #fbb03b;
+			padding: 0.1em 0.5em;
+			margin: 0 2px;
+			border-radius: 4px;
+			font-size: 0.9em;
+			line-height: 1em;
+		}
+		a:focus:after,
+		a:hover:after {
+			opacity: 1;
+			width: 100%;
+		}
+		li > p {
+			display: inline;
+		}
+		strong {
+			font-weight: 900;
+		}
 	}
 	.line-number::before {
 		content: attr(data-line-number);
@@ -170,5 +183,23 @@
 		font-size: 3.5em;
 		line-height: 1em;
 		text-shadow: -1px -1px 0 #fbb03b, 1px -1px 0 #fbb03b, -1px 1px 0 #fbb03b, 1px 1px 0 #fbb03b;
+	}
+	.code-line {
+		display: inline-block;
+		width: 100%;
+		margin: 0;
+		padding: 0;
+	}
+	.line-number::before {
+		content: attr(data-line-number);
+		display: inline-block;
+		width: 2em;
+		text-align: center;
+		user-select: none;
+		opacity: 0.7;
+	}
+	.highlight-line {
+		background-color: hsl(231, 30%, 25%);
+		border-left: 2px solid #fbb03b;
 	}
 </style>

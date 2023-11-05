@@ -12,7 +12,7 @@
 	<nav class="w-full bottom-0 fixed bg-black h-14 z-10">
 		<ul class="flex flex-row justify-evenly w-full p-0 m-0 h-full">
 			{#each links as link, i (link)}
-				<li class="no-underline list-none relative h-full flex flex-row items-center">
+				<li class="no-underline list-none relative h-full flex flex-row grow items-center">
 					<StyledLink path={link.path} linkText={link.text} />
 				</li>
 			{/each}
@@ -26,6 +26,8 @@
 		--color-accent: #fbb03b;
 		border-top: 1px solid var(--color-accent);
 		border-bottom: none;
+		width: 100%;
+		max-width: 1000px;
 	}
 
 	@media (min-width: 512px) {

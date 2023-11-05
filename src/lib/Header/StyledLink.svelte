@@ -1,7 +1,7 @@
 <script>
 	import { page } from '$app/stores';
 	export let linkText, path;
-	const current = $page.url.pathname === path;
+	$: current = $page.url.pathname === path;
 </script>
 
 <a tabIndex="0" class:current href={path}>{linkText}</a>
