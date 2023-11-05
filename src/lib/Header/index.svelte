@@ -9,8 +9,8 @@
 </script>
 
 <header>
-	<nav class="max-w-lg w-full bottom-0 fixed bg-black h-14 z-10">
-		<ul class="flex flex-row justify-center w-full p-0 m-0 h-full">
+	<nav class="w-full bottom-0 fixed bg-black h-14 z-10">
+		<ul class="flex flex-row justify-evenly w-full p-0 m-0 h-full">
 			{#each links as link, i (link)}
 				<li class="no-underline list-none relative h-full flex flex-row items-center">
 					<StyledLink path={link.path} linkText={link.text} />
@@ -39,6 +39,11 @@
 			margin: auto;
 			left: 50%;
 			transform: translateX(-50%);
+		}
+	}
+	@media (min-width: 880px) {
+		nav-bkp {
+			width: 90%;
 		}
 	}
 </style>

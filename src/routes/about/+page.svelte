@@ -1,16 +1,11 @@
 <script>
+	import { _ } from 'svelte-i18n'
 	import PageHeader from '$lib/PageHeaders/PageHeader.svelte';
 	import SubHeader from '$lib/PageHeaders/SubHeader.svelte';
-	import { writable } from 'svelte/store';
 
-	let store = writable({
-		subject: '',
-		body: ''
-	});
 </script>
-
-<h1>'pageHeader'</h1>
-<h2>'subHeader'</h2>
+<PageHeader>{$_('about.pageHeader')}</PageHeader>
+<SubHeader >{$_("about.subHeader")} </SubHeader>
 <section class="overflow-hidden">
 	<div class="relative max-w-screen-xl mx-auto pt-20 pb-12 px-4 sm:px-6 lg:px-8 lg:py-20">
 		<div class="relative lg:flex lg:items-center">
@@ -43,7 +38,7 @@
 				</svg>
 				<blockquote>
 					<div class="text-xl leading-9 font-medium text-gray-200">
-						<p>'aboutMe'</p>
+						<p>{$_('about.aboutMe')}</p>
 					</div>
 					<footer class="mt-8">
 						<div class="flex">
@@ -64,7 +59,7 @@
 
 							<div class="ml-4 lg:ml-0">
 								<div class="text-large leading-6 font-medium text-gray-200">Jean-Cédric Huet</div>
-								<div class="text-base leading-6 font-medium text-indigo-400">'position'</div>
+								<div class="text-base leading-6 font-medium text-indigo-400">{$_('about.position')}</div>
 							</div>
 						</div>
 					</footer>

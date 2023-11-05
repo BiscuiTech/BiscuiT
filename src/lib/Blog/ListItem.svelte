@@ -1,4 +1,6 @@
 <script>
+	import { _ } from 'svelte-i18n';
+
 	export let post;
 
 	/*   const { locale, t } = useTranslation()
@@ -26,11 +28,11 @@
 		<p class="text-base leading-6 text-gray-100">
 			{post.excerpt}
 		</p>
-		<span
-			class="text-base leading-6 font-medium text-indigo-400 transition ease-in-out duration-150 blogItem-hover"
-		>
-			'readFullBlog'
-		</span>
+			<span
+				class="text-base leading-6 font-medium text-indigo-400 transition ease-in-out duration-150 blogItem-hover"
+			>
+				{$_('home.readFullBlog')}
+			</span>
 		<!-- {isPostInCurrentLocale ? (
             otherLocales.length > 0 ? (
               <span class="float-right text-base leading-6 font-medium text-indigo-400">

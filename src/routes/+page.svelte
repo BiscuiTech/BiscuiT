@@ -20,7 +20,7 @@
 	</div>
 	<div class="short-intro">
 		<p>{$_('home.short_intro')}</p>
-		<a href="/about" class="styled-anchor toRight">'aboutMe'</a>
+		<a href="/about" class="styled-anchor toRight">{$_('aboutMe')}</a>
 	</div>
 	<LatestBlog {post} />
 </div>

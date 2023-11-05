@@ -7,7 +7,6 @@ import readingTime from 'reading-time';
 import type { BlogAttributes, Blog } from '$lib/types';
 
 export function getPosts() {
-
   const posts: Blog[] =
     readdirSync('./src/content/blog')
       .map((postFilename) => {
@@ -25,7 +24,6 @@ export function getPosts() {
           slug: postFilename,
         };
       });
-
   const modifiedPosts = posts
     .filter((post) => post.published)
     .sort((a, b) =>

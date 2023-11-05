@@ -1,10 +1,11 @@
 import { getPosts } from '$lib/Blog/api';
-import 'svelte-jsx';
+import type { PageServerLoadEvent } from './$types';
 
 const posts = getPosts();
+export const prerender = true;
+	export const csr = false;
 
-/** @type {import('./$types').PageServerLoad} */
-export async function load(event) {
+export async function load(event: PageServerLoadEvent) {
 	const slug = event.params.slug;
 
 	const post = posts.find(el => el.slug === slug)

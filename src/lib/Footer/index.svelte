@@ -1,12 +1,13 @@
 <script lang="ts">
-	import { page } from '$app/stores';
+	import { _ } from 'svelte-i18n'
+	// import { page } from '$app/stores';
 
 	const links = [
 		{ tKey: 'footer_about', path: 'about' },
 		{ tKey: 'footer_blog', path: 'blog' },
-		{ tKey: 'footer_uses', path: 'uses' },
+		// { tKey: 'footer_uses', path: 'uses' },
 		// { tKey: "footer_projects", path: "projects" },
-		{ tKey: 'footer_contact', path: 'contact' }
+		// { tKey: 'footer_contact', path: 'contact' }
 	];
 </script>
 
@@ -20,26 +21,18 @@
 					</a>
 				</div>
 			{/each}
-			<div class="px-5 py-2">
-				<a
-					href="https://notes.biscui.tech"
-					class="text-base leading-6 text-gray-400 hover:text-yellow-400"
-				>
-					'footer_notes'
-				</a>
-			</div>
 		</nav>
 		<div class="mt-8 flex justify-center">
 
 
-			<a href="https://twitter.com/BiscuiTech" class="ml-6 text-gray-400 hover:text-yellow-400">
+ <!-- <a href="https://twitter.com/BiscuiTech" class="ml-6 text-gray-400 hover:text-yellow-400">
 				<span class="sr-only">Twitter</span>
 				<svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
 					<path
 						d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"
 					/>
 				</svg>
-			</a>
+			</a> -->
 			<a href="https://github.com/BiscuiTech" class="ml-6 text-gray-400 hover:text-yellow-400">
 				<span class="sr-only">GitHub</span>
 				<svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
@@ -53,7 +46,7 @@
 		</div>
 		<div class="mt-8">
 			<p class="text-center text-base leading-6 text-gray-400">
-				&copy; 2020 BiscuiTech. 'footer_copyright'.
+				&copy; 2020 BiscuiTech. {$_('footer_copyright')}.
 			</p>
 		</div>
 	</div>

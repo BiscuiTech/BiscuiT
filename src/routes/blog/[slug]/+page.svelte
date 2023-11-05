@@ -1,11 +1,12 @@
 <script>
 	import CoverImage from '$lib/Blog/CoverImage.svelte';
-	import Code from '$lib/Blog/Renderers/Code.svelte';
-	import H1 from '$lib/Blog/Renderers/H1.svelte';
-	import Heading from '$lib/Blog/Renderers/Heading.svelte';
+	import Code from '$lib/Blog/CustomRenderers/Code.svelte'
+	import BlogTitle from '$lib/Blog/BlogTitle.svelte';
+	import Heading from '$lib/Blog/CustomRenderers/Heading.svelte';
 	import { format, parseISO } from 'date-fns';
-	import SvelteMarkdown from 'svelte-markdown';
+	import SvelteMarkdown from '$lib/Blog/SvelteMarkdown/SvelteMarkdown.svelte'
 
+	
 	/** @type {import('./$types').PageData} */
 	export let data;
 	let { post } = data;
@@ -21,7 +22,7 @@
 			src={post.coverImage.url}
 			accreditation={post.coverImage.accreditation}
 		/>
-		<H1>{post.title}</H1>
+		<BlogTitle>{post.title}</BlogTitle>
 		<div class="text-base text-gray-300 mt-2">
 			{`${post.author} | `}
 			<time dateTime={post.publishedOn}>{format(parseISO(post.publishedOn), 'LLLL	d, yyyy')}</time>

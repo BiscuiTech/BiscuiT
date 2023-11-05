@@ -1,10 +1,11 @@
 <script>
+	import { _ } from 'svelte-i18n';
 	export let post;
 	import ListItem from '$lib/Blog/ListItem.svelte'
 </script>
 
 <div>
-	<h2>'latestBlog'</h2>
+	<h2>{$_('home.latestBlog')}</h2>
 	{#if post}
 		<ListItem {post} />
 	{:else}

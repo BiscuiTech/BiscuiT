@@ -21,4 +21,7 @@
 	div {
 		background-color: hsl(200, 100%, 4%);
 	}
+	em {
+		padding-inline: 0;
+	}
 </style>

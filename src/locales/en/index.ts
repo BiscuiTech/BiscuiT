@@ -7,8 +7,8 @@ import about from './about'
 import uses from './uses'
 
 export default {
+  ...common,
   contact,
-  common,
   home,
   blog,
   about,
