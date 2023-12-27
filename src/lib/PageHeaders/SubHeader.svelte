@@ -4,7 +4,7 @@
 
 <style>
 	h2 {
-		font-family: 'Montserrat';
+		font-family: 'Inter';
 		font-size: 24px;
 		font-size: min(max(20px, 2vw), 26px);
 		font-weight: 200;

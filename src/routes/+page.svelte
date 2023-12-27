@@ -35,7 +35,7 @@
 		text-align: left;
 		margin-bottom: 64px;
 		padding: 0;
-		font-family: 'Montserrat';
+		font-family: 'Inter';
 		font-weight: 200;
 	}
 	.welcome > * {
@@ -44,12 +44,18 @@
 	.welcome--hello {
 		font-size: 28px;
 		font-size: max(30px, min(3vh, 38px));
+
+		container-name: welcome;
 	}
 	.welcome--my-name {
 		font-size: 42px;
-		font-size: max(40px, min(6vh, 72px));
-		font-weight: 800;
+		font-weight: normal;
 		line-height: 100%;
+	}
+	@media (min-width: 880px) {
+		.welcome--my-name {
+			font-size: 64px;
+		}
 	}
 	.welcome--from {
 		font-size: 20px;
@@ -77,7 +83,7 @@
 		text-decoration: none;
 		color: white;
 		font-weight: 400;
-		font-family: 'Montserrat';
+		font-family: 'Inter';
 		text-transform: lowercase;
 		cursor: pointer;
 
