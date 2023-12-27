@@ -71,14 +71,14 @@
 
 <style>
 	h1 {
-		font-family: Montserrat;
+		font-family: 'Inter';
 		font-size: 36px;
 		font-size: max(36px, min(4vh, 56px));
 		margin: 24px auto 64px auto;
 		text-align: center;
 	}
 	h2 {
-		font-family: 'Montserrat';
+		font-family: 'Inter';
 		font-size: 24px;
 		font-size: min(max(20px, 2vw), 26px);
 		font-weight: 200;

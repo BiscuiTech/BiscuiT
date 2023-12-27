@@ -52,7 +52,6 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@fontsource/fira-mono": "^5.0.8",
 		"@lukeed/uuid": "^2.0.1",
 		"cookie": "^0.5.0",
 		"svelte-i18n": "^4.0.0"
