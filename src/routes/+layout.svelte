@@ -1,9 +1,11 @@
 <script lang="ts">
+	import '../app.css';
 	import { fly } from 'svelte/transition';
 	import Header from '$lib/Header/index.svelte';
 	import Footer from '$lib/Footer/index.svelte';
 	import '../app.postcss';
 	import type { LayoutData } from './$types';
+	
 	export let data: LayoutData;
 </script>
 
