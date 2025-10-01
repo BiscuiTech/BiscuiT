@@ -10,6 +10,10 @@
 		"lint": "prettier --check --plugin-search-dir=. . && eslint --ignore-path .gitignore .",
 		"format": "prettier --write --plugin-search-dir=. ."
 	},
+	"engines": {
+		"node": ">=24",
+		"npm": ">=11"
+	},
 	"devDependencies": {
 		"@babel/core": "^7.28.3",
 		"@rollup/plugin-json": "^6.1.0",
