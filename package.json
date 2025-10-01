@@ -12,7 +12,7 @@
 	},
 	"engines": {
 		"node": ">= 22 || >=24",
-		"npm": ">=11"
+		"npm": ">=10"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.28.3",
